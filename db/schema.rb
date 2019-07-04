@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_04_104136) do
+ActiveRecord::Schema.define(version: 2019_07_04_115101) do
 
   create_table "booking_records", force: :cascade do |t|
     t.integer "space_id"
@@ -23,6 +23,36 @@ ActiveRecord::Schema.define(version: 2019_07_04_104136) do
 
   create_table "days", force: :cascade do |t|
     t.string "day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "member_subscription", force: :cascade do |t|
+    t.integer "membership_plan_id"
+    t.integer "user_id"
+    t.integer "space_id"
+    t.time "hours_left"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["membership_plan_id"], name: "index_member_subscription_on_membership_plan_id"
+    t.index ["space_id"], name: "index_member_subscription_on_space_id"
+    t.index ["user_id"], name: "index_member_subscription_on_user_id"
+  end
+
+  create_table "member_visit_record", force: :cascade do |t|
+    t.datetime "check_in"
+    t.datetime "check_out"
+    t.integer "user_id"
+    t.integer "space_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["space_id"], name: "index_member_visit_record_on_space_id"
+    t.index ["user_id"], name: "index_member_visit_record_on_user_id"
+  end
+
+  create_table "membership_plan", force: :cascade do |t|
+    t.string "plan_name"
+    t.time "hours_alloted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
