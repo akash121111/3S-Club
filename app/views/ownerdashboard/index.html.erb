@@ -1,0 +1,174 @@
+<style>
+body {
+  font-family: "Lato", sans-serif;
+  background: #e8e9eb;
+}
+
+.sidenav {
+  height: 100%;
+
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  color:white;
+  background-image: linear-gradient(to top,orange,red);
+  overflow-x: hidden;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.sidenav a {
+  padding: 16px 8px 16px 16px;
+  text-decoration: none;
+  font-size: 23px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  background: black;
+  color: #f1f1f1;
+}
+.main{
+  font-size: 15px;
+
+}
+button{
+  padding: 0px;
+  background: none;
+  border:none;
+
+}
+button:hover{
+
+  background:blue;
+  color:white;
+}
+.card:hover{
+    transform: scale(1.05);
+    
+}
+.list-group{
+    max-height: 400px;
+    margin-top: 20px;
+    overflow:scroll;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2 col-xs-2">
+        <div class="sidenav">
+  <div class="side-header">
+    <img src="user.png" alt="Image" height="100px" width="100px">
+    <h3>Owner's Name</h3>
+  </div>
+  <hr>
+  <div class="nav-item">
+  <a href="#about" class="active">Upcoming Bookings</a>
+  <a href="#services">Spaces Details</a>
+  <a href="#clients">Booking Record</a>
+  <a href="#contact">Profile</a>
+  <a href="#contact">Log Out</a>
+  </div>
+  </div>
+  </div>
+      <div class="col-sm-10 col-xs-10">
+        <div class="main">
+         <div class="container-fluid">
+            <div class="row">
+              <div style="background: grey;height: 50px"></div>
+            </div>
+            <h1>Upcoming Bookings...</h1>
+            <div class="row text-center">
+                <div class="col-sm-3">
+                  <div class="card">
+                    <div class="card-header">Booked</div>
+                    <img src="p1.jpg" alt="Image" class="card-img-top" >
+                    <div class="card-body">
+                       <div class="card-text">Latest booking</div>
+                    </div>
+                    <button><div class="card-footer">View Details</div></button>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="card">
+                    <div class="card-header">Booked</div>
+                    <img src="p3.jpg" alt="Image" class="card-img-top" >
+                    <div class="card-body">
+                       <div class="card-text">Latest booking</div>
+                    </div>
+                    <button><div class="card-footer">View Details</div></button>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="card">
+                    <div class="card-header">Booked</div>
+                    <img src="p3.jpg" alt="Image" class="card-img-top" >
+                    <div class="card-body">
+                       
+                       <div class="card-text">Latest booking</div>
+                    </div>
+                    <button><div class="card-footer">View Details</div></button>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="card">
+                    <div class="card-header">Booked</div>
+                    <img src="p1.jpg" alt="Image" class="card-img-top" >
+                    <div class="card-body">
+                       <div class="card-text">Latest booking</div>
+                    </div>
+                    <button><div class="card-footer">View Details</div></button>
+                  </div>
+                </div>
+            </div>
+                <ul class="list-group">
+                <li class="list-group-item active">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item active">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item active">Cras justo odio</li>
+                <li class="list-group-item">Dapibus ac facilisis in</li>
+                <li class="list-group-item">Morbi leo risus</li>
+                <li class="list-group-item">Porta ac consectetur ac</li>
+                <li class="list-group-item">Vestibulum at eros</li>
+            </ul>
+            </div>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+   
+</body>
