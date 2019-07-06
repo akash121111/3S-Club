@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_04_104136) do
+ActiveRecord::Schema.define(version: 2019_07_05_070609) do
 
   create_table "booking_records", force: :cascade do |t|
     t.integer "space_id"
@@ -78,6 +78,19 @@ ActiveRecord::Schema.define(version: 2019_07_04_104136) do
     t.integer "number_of_toilets"
     t.float "size"
     t.index ["user_id"], name: "index_spaces_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "Firstname"
+    t.string "Lastname"
+    t.string "Educationdetails"
+    t.string "Aboutuser"
+    t.string "City"
+    t.string "College"
+    t.string "Phonenumber"
+    t.string "Mobilenumber"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
