@@ -2,9 +2,9 @@ class UserController < ApplicationController
   def index
   end
 
-  def sign_up
+  def new
   end
 
   def log_in
-  end
+  end	 
 end
