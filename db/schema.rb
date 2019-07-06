@@ -69,14 +69,13 @@ ActiveRecord::Schema.define(version: 2019_07_04_104136) do
 
   create_table "spaces", force: :cascade do |t|
     t.string "space_address"
+    t.string "size"
     t.string "dimensions"
     t.string "nearby_landmark"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "floor_number"
     t.integer "number_of_toilets"
-    t.float "size"
     t.index ["user_id"], name: "index_spaces_on_user_id"
   end
 
