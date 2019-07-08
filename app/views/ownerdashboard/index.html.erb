@@ -1,0 +1,92 @@
+
+
+  
+  <body style="background: #e8e9eb">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2 col-xs-2">
+          <div class="sidenav sidenav-collapse"  data-toggle="" id="demo">
+    <div class="side-header">
+      <%= image_tag("user.png", size:"100x100")%>
+      <h3>Owner's Name</h3>
+    </div>
+    <hr>
+    <div class="nav-item">
+    <a href="#about" class="active">Upcoming Bookings</a>
+    <a href="#services">Spaces Details</a>
+    <a href="#clients">Booking Record</a>
+    <a href="#contact">Profile</a>
+    <a href="#contact">Log Out</a>
+    </div>
+    </div>
+    </div>
+        <div class="col-sm-10 col-xs-10">
+          <div class="main">
+           <div class="container-fluid">
+              <div class="row">
+                
+              </div>
+              <button class="hidden visible-xs" style="float: right" data-toggle="collapse" data-target="#demo"  aria-expanded="false" aria-controls="demo"><i class="material-icons">&#xe5c3;</i></button>
+              <h3>Upcoming Bookings...</h3>
+              <div class="row text-center">
+                  <div class="col-sm-3">
+                    <div class="card bg-light">
+                      <div class="card-header">Booked</div>
+                      <%= image_tag("space.jpg",)%>
+                      <div class="card-body">
+                         <div class="card-title"><h5>location of space</h5></div>
+                         <div class="card-text" >
+                           <p style="display: inline;float: left">MON-SAT</p>
+                           <p style="display: inline;float: right;">8AM-12AM</p>
+                         </div>
+                      </div>
+                      <button><div class="card-footer">View Details</div></button>
+                    </div>
+                  </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h3>Booked spaces</h3>
+                  <ul class="list-group">
+                  <li class="list-group-item ">
+                    <div class="media">
+                      <div class="media-left">
+                      <%= image_tag("space.jpg", :class =>"media-object")%>
+                       </div>
+                      <div class="media-body text-right">
+                        <h3 class="media-heading">Address</h3>
+                        <p>Monday-Saturday</p>
+                        <p>8:00 AM - 12:30 PM</p>
+                        <h4>Booked</h4>
+                         <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </li>              
+              </ul>
+                </div>
+                <div class="col-sm-6">
+                  <h3>Released spaces</h3>               
+                  <ul class="list-group">
+                  <li class="list-group-item ">
+                    <div class="media">
+                      <div class="media-left">
+                        <img src="p1.jpg" class="media-object" style="width:100px;height: 100px;">
+                       </div>
+                      <div class="media-body text-right">
+                        <h3 class="media-heading">Address</h3>
+                        <p>Monday-Saturday</p>
+                        <p>8:00 AM - 12:30 PM</p>
+                        <h4>Checkout</h4>
+                         <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </li>    
+              </ul>
+                </div>
+              </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
