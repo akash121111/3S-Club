@@ -5,3 +5,56 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+User.create(email:"a@example.com",
+    password_digest:"abc123",
+    user_type_id:1)
+
+UserDetail.create(
+    fist_name:"lucifer",
+    last_name:"satan",
+    education_details:"B.tech",
+    about_user:"Pro",
+    city:"Delhi",
+    college:"DBIT",
+    phone_number:"956234579",
+    mobile_number:"894563217",
+    user_id:1
+)
+
+
+Space.create(
+     space_address: "abc",
+     size: "50",
+     dimensions: "500*500",
+     floor_number: 2,
+     number_of_toilets: 2,
+     nearby_landmark: "cinema",
+     user_id:1
+)
+
+SpaceLocation.create(
+    latitude: 58.000,
+    longitude: -98.000,
+    space_id:1
+)
+
+SpaceAvailableDay.create(
+    monday: true,
+    tuesday: true,
+    wednesday: false,
+    thursday: true,
+    friday: false,
+    saturday: true,
+    sunday: false,
+    space_id: 1
+)
+
+SpaceAvailabilityTiming.create(
+    start_time: "12:00",
+    end_time: "17:00",
+    user_id: 1,
+    space_id: 1
+)
+

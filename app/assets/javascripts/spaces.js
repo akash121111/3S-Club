@@ -5,7 +5,7 @@ function initMap(){
     var mycoords =new google.maps.LatLng(51.501564,-0.141944)
     //Initial options of map
     var options={
-        
+      
         zoom:16,
         center:mycoords
     }
@@ -25,9 +25,10 @@ function initMap(){
     function addMarker(props){
         var marker=new google.maps.Marker({
             position:props.coords ,
-            map:map
+            map:map,
+            draggable:true
         });
-
+        console.log(marker.getPosition().lat());
         //Check for icon image
         if(props.iconImage){
             marker.setIcon(props.iconImage)
