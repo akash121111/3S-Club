@@ -1,6 +1,6 @@
-class MemberVisitRecord < ActiveRecord::Migration[5.2]
+class CreateMemberVisitRecord < ActiveRecord::Migration[5.2]
   def change
-    create_table :member_visit_record do |t|
+    create_table :member_visit_records do |t|
       t.datetime :check_in
       t.datetime :check_out
       t.references :user, foregion_key: true

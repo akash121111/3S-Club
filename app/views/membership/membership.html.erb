@@ -2,15 +2,22 @@
 <html>
 <head>
 	<title>Membeship Plan</title>
+	
 
 	<script>
 		function myFunction() {
-  		alert("Do you want to proceed?");
+		var txt;	
+  		var r =confirm("Do you want to proceed?");
+  		if (r == true) {
+  				alert("Your selected plan is successfully added to your wallet.")
+			} 
+		else {
+  				alert("Something went wrong please try again.")
+			}
 		}
 </script>
 </head>
 <body>
-	
 	<div class="jumbotron">
   		<h1>Short Offer</h1>
   		<p>You will get 50 hours in your wallet for the building(s)/room(s)/land(s) you choose. </p>

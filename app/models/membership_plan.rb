@@ -1,4 +1,2 @@
 class MembershipPlan < ApplicationRecord
-
-  
 end

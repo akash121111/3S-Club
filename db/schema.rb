@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_04_115101) do
+ActiveRecord::Schema.define(version: 2019_07_07_164830) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "booking_records", force: :cascade do |t|
-    t.integer "space_id"
-    t.integer "user_id"
+    t.bigint "space_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["space_id"], name: "index_booking_records_on_space_id"
@@ -27,41 +30,30 @@ ActiveRecord::Schema.define(version: 2019_07_04_115101) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "member_subscription", force: :cascade do |t|
-    t.integer "membership_plan_id"
-    t.integer "user_id"
-    t.integer "space_id"
-    t.time "hours_left"
+  create_table "member_subscriptions", force: :cascade do |t|
+    t.bigint "membership_plan_id"
+    t.bigint "user_id"
+    t.bigint "space_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["membership_plan_id"], name: "index_member_subscription_on_membership_plan_id"
-    t.index ["space_id"], name: "index_member_subscription_on_space_id"
-    t.index ["user_id"], name: "index_member_subscription_on_user_id"
+    t.float "time_wallet"
+    t.index ["membership_plan_id"], name: "index_member_subscriptions_on_membership_plan_id"
+    t.index ["space_id"], name: "index_member_subscriptions_on_space_id"
+    t.index ["user_id"], name: "index_member_subscriptions_on_user_id"
   end
 
-  create_table "member_visit_record", force: :cascade do |t|
-    t.datetime "check_in"
-    t.datetime "check_out"
-    t.integer "user_id"
-    t.integer "space_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["space_id"], name: "index_member_visit_record_on_space_id"
-    t.index ["user_id"], name: "index_member_visit_record_on_user_id"
-  end
-
-  create_table "membership_plan", force: :cascade do |t|
+  create_table "membership_plans", force: :cascade do |t|
     t.string "plan_name"
-    t.time "hours_alloted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "time_alloted"
   end
 
   create_table "space_availability_timings", force: :cascade do |t|
     t.time "start_time"
     t.time "end_time"
-    t.integer "space_id"
-    t.integer "user_id"
+    t.bigint "space_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["space_id"], name: "index_space_availability_timings_on_space_id"
@@ -81,8 +73,8 @@ ActiveRecord::Schema.define(version: 2019_07_04_115101) do
   end
 
   create_table "space_images", force: :cascade do |t|
-    t.binary "image", limit: 10485760
-    t.integer "space_id"
+    t.binary "image"
+    t.bigint "space_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["space_id"], name: "index_space_images_on_space_id"
@@ -91,7 +83,7 @@ ActiveRecord::Schema.define(version: 2019_07_04_115101) do
   create_table "space_locations", force: :cascade do |t|
     t.float "latitude"
     t.float "longitude"
-    t.integer "space_id"
+    t.bigint "space_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["space_id"], name: "index_space_locations_on_space_id"
@@ -101,7 +93,7 @@ ActiveRecord::Schema.define(version: 2019_07_04_115101) do
     t.string "space_address"
     t.string "dimensions"
     t.string "nearby_landmark"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "floor_number"
@@ -110,4 +102,43 @@ ActiveRecord::Schema.define(version: 2019_07_04_115101) do
     t.index ["user_id"], name: "index_spaces_on_user_id"
   end
 
+  create_table "user_details", force: :cascade do |t|
+    t.string "fist_name"
+    t.string "last_name"
+    t.string "education_details"
+    t.string "about_user"
+    t.string "city"
+    t.string "college"
+    t.integer "phone_number"
+    t.integer "mobile_number"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_details_on_user_id"
+  end
+
+  create_table "user_types", force: :cascade do |t|
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.bigint "user_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_type_id"], name: "index_users_on_user_type_id"
+  end
+
+  add_foreign_key "booking_records", "spaces"
+  add_foreign_key "booking_records", "users"
+  add_foreign_key "space_availability_timings", "spaces"
+  add_foreign_key "space_availability_timings", "users"
+  add_foreign_key "space_images", "spaces"
+  add_foreign_key "space_locations", "spaces"
+  add_foreign_key "spaces", "users"
+  add_foreign_key "user_details", "users"
+  add_foreign_key "users", "user_types"
 end
