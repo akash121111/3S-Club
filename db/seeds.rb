@@ -20,7 +20,7 @@ UserDetail.create(
     college:"DBIT",
     phone_number:"956234579",
     mobile_number:"894563217",
-    user_id:1
+    user_id:6
 )
 
 
@@ -31,7 +31,7 @@ Space.create(
      floor_number: 2,
      number_of_toilets: 2,
      nearby_landmark: "cinema",
-     user_id:1
+     user_id:6
 )
 
 SpaceLocation.create(
@@ -54,7 +54,10 @@ SpaceAvailableDay.create(
 SpaceAvailabilityTiming.create(
     start_time: "12:00",
     end_time: "17:00",
-    user_id: 1,
+    user_id: 6,
     space_id: 1
 )
-
+BookingRecord.create(
+    space_id:1,
+    user_id:6
+)

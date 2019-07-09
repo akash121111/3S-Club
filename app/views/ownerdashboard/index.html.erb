@@ -8,7 +8,7 @@
           <div class="sidenav sidenav-collapse"  data-toggle="" id="demo">
     <div class="side-header">
       <%= image_tag("user.png", size:"100x100")%>
-      <h3>Owner's Name</h3>
+      <h5>Owner's Name</h5>
     </div>
     <hr>
     <div class="nav-item">
@@ -23,24 +23,20 @@
         <div class="col-sm-10 col-xs-10">
           <div class="main">
            <div class="container-fluid">
-              <div class="row">
-                
-              </div>
               <button class="hidden visible-xs" style="float: right" data-toggle="collapse" data-target="#demo"  aria-expanded="false" aria-controls="demo">collapse</button>
               <h3>Upcoming Bookings...</h3>
               <div class="row text-center">
                   <div class="col-sm-3">
-                    <div class="card bg-light">
-                      <div class="card-header">Booked</div>
-                      <%= image_tag("space.jpg",)%>
-                      <div class="card-body">
-                         <div class="card-title"><h5>location</h5></div>
+                    <div class="card">
+                      <%= image_tag("space.jpg",:class =>"card-img-top")%>
+                      <div class="card-block">
+                         <div class="card-title"><h5><%= @space.space_address%></h5></div>
                          <div class="card-text" >
                            <p style="display: inline;float: left">MON-SAT</p>
-                           <p style="display: inline;float: right;"><%= @time.start_time%>-<%= @time.end_time%></p>
+                           <p style="display: inline;float: right;"><%= @time.start_time.strftime("%H:%M")%>-<%= @time.end_time.strftime("%H:%M")%></p>
                          </div>
                       </div>
-                      <button><div class="card-footer">View Details</div></button>
+                      <button type="submit" onclick="href='{show}'"><div class="card-footer">View Details</div></button>
                     </div>
                   </div>
               </div>
