@@ -27,6 +27,7 @@
               <h3>Upcoming Bookings...</h3>
               <div class="row text-center">
                   <div class="col-sm-3">
+                  <form action="/show" methos="get">
                     <div class="card">
                       <%= image_tag("space.jpg",:class =>"card-img-top")%>
                       <div class="card-block">
@@ -36,9 +37,12 @@
                            <p style="display: inline;float: right;"><%= @time.start_time.strftime("%H:%M")%>-<%= @time.end_time.strftime("%H:%M")%></p>
                          </div>
                       </div>
-                      <button type="submit" onclick="href='{show}'"><div class="card-footer">View Details</div></button>
+                     
+                     <button type="submit"><div class="card-footer">View Details</div></button>
+                    
                     </div>
                   </div>
+                  </form>
               </div>
               <div class="row">
                 <div class="col-sm-6">
