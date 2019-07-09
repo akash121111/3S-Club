@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_04_113045) do
+ActiveRecord::Schema.define(version: 2019_07_08_120508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2019_07_04_113045) do
     t.boolean "sunday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "space_id"
+    t.index ["space_id"], name: "index_space_available_days_on_space_id"
   end
 
   create_table "space_images", force: :cascade do |t|
@@ -117,6 +119,7 @@ ActiveRecord::Schema.define(version: 2019_07_04_113045) do
   add_foreign_key "booking_records", "users"
   add_foreign_key "space_availability_timings", "spaces"
   add_foreign_key "space_availability_timings", "users"
+  add_foreign_key "space_available_days", "spaces"
   add_foreign_key "space_images", "spaces"
   add_foreign_key "space_locations", "spaces"
   add_foreign_key "spaces", "users"
