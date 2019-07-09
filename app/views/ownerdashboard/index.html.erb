@@ -26,7 +26,7 @@
               <div class="row">
                 
               </div>
-              <button class="hidden visible-xs" style="float: right" data-toggle="collapse" data-target="#demo"  aria-expanded="false" aria-controls="demo"><i class="material-icons">&#xe5c3;</i></button>
+              <button class="hidden visible-xs" style="float: right" data-toggle="collapse" data-target="#demo"  aria-expanded="false" aria-controls="demo">collapse</button>
               <h3>Upcoming Bookings...</h3>
               <div class="row text-center">
                   <div class="col-sm-3">
@@ -34,10 +34,10 @@
                       <div class="card-header">Booked</div>
                       <%= image_tag("space.jpg",)%>
                       <div class="card-body">
-                         <div class="card-title"><h5>location of space</h5></div>
+                         <div class="card-title"><h5>location</h5></div>
                          <div class="card-text" >
                            <p style="display: inline;float: left">MON-SAT</p>
-                           <p style="display: inline;float: right;">8AM-12AM</p>
+                           <p style="display: inline;float: right;"><%= @time.start_time%>-<%= @time.end_time%></p>
                          </div>
                       </div>
                       <button><div class="card-footer">View Details</div></button>
@@ -70,7 +70,7 @@
                   <li class="list-group-item ">
                     <div class="media">
                       <div class="media-left">
-                        <img src="p1.jpg" class="media-object" style="width:100px;height: 100px;">
+                      <%= image_tag("space.jpg", :class =>"media-object")%>
                        </div>
                       <div class="media-body text-right">
                         <h3 class="media-heading">Address</h3>
