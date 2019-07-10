@@ -5,11 +5,18 @@ class SpacesController < ApplicationController
     end
 
     def edit
-
+        
     end
 
     def update
-        
+        @space_details=User.find(1).spaces
+
+        byebug
+        if @space_details.first.update(space_details_params)
+          redirect_to '/spaces/1/edit'     
+        else
+          redirect_to '/spaces/1/edit' 
+        end
     end
 
     private
@@ -19,7 +26,7 @@ class SpacesController < ApplicationController
     end
 
     def space_details_params
-        params.require(:user_details).permit(:first_name, :last_name, :education_details, :about_user, :city, :college, :phone_number, :mobile_number, :user_id)
+        params.require(:space).permit(:space_address,:size,:dimensions,:floor_number,:number_of_toilets,:nearby_landmark)
     end
 
     def set_space

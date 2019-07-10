@@ -11,44 +11,68 @@
                     dfsdf
                 </div>
                 <div class="col-md-10">
-                    <center><h1>OWNER DETAILS</h1></center><br><br><br>
+                    <center><h1>OWNER DETAILS</h1></center>
+                    <br><br><br>
                     <div class="container-fluid">
-                        <h2>Personal Details</h2><br>
-                        <%= form_for @space do |f| %>
+                        <h2>Account Details</h2><br>
+                       
+                        <%= form_for (@space.user) do |f| %>
                             <div class="form-group">
                                 <%= f.label :email, 'Email' %>
-                                <%= f.text_field :size, :class => 'form-control fc'%>
+                                <%= f.text_field :email, class: 'form-control'%>
+                                <a id='edit-option' href="">Edit</a>
                             </div>
                             <div class="form-group"> 
                                 <%= f.label :password, 'Password' %>
-                                <%= f.text_field :size, :class => 'form-control'%>
+                                <%= f.password_field :password, class: 'form-control'%>
                             </div>
-                            <div class="form-group">
-                                <%= f.label :user_type, 'User Type' %>
-                                <%= f.text_field :size, :class => 'form-control'%>
+                            <div class="form-group"> 
+                                <%= f.label :password, 'Password' %>
+                                <%= f.password_field :password_confirmation, class: 'form-control'%>
                             </div>
+                         
+                            
+                            <div>
+                                <%= submit_tag 'Save Changes', class: "btn btn-primary" %>
+                            </div>
+
+
+                        <% end %>
+                    
+
+                        
+                    </div>
+
+
+                    <br><br><br>
+
+                    <div class="container-fluid">
+                        <h2>Personal Details</h2><br>
+                        <%@user_detail=@space.user.user_detail%>
+                        <%=form_for (@space.user.user_detail)  do |f| %>
+                            
                             <div class="form-group">   
                                 <%= f.label :first_name, 'First Name' %>
-                                <%= f.text_field :size, :class => 'form-control'%>                        
+                                <%= f.text_field :fist_name, class: 'form-control'%>                        
                             </div>
                             <div class="form-group">                               
                                 <%= f.label :last_name, 'Last Name' %>
-                                <%= f.text_field :size, :class => 'form-control'%>                         
+                                <%= f.text_field :last_name, class: 'form-control'%>                         
                             </div>
                             <div class="form-group">                               
                                 <%= f.label :about_owner, 'About Owner' %>
-                                <%= f.text_field :size, :class => 'form-control'%>                         
+                                <%= f.text_field :about_user, class: 'form-control'%>                         
                             </div>
                             <div class="form-group">                               
                                 <%= f.label :phone_number, 'Phone Number' %>
-                                <%= f.text_field :size, :class => 'form-control'%>                         
+                                <%= f.text_field :phone_number, class: 'form-control'%>                         
                             </div>
                             <div class="form-group">                               
                                 <%= f.label :mobile_number, 'Mobile Number' %>
-                                <%= f.text_field :size, :class => 'form-control'%>                         
+                                <%= f.text_field :mobile_number, class: 'form-control'%>                         
                             </div>
                             <div>
-                                <%= submit_tag 'Save Changes', :class=> "btn btn-primary" %>
+                                <%= submit_tag 'Save Changes', class: "btn btn-primary" %>
                             </div>
 
 
@@ -63,12 +87,14 @@
 
 
                     <div class="container-fluid">
+                        <h2>Your Spaces</h2>
+                        <br><br>
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-header">Space1</div>
                                     <div class="card-body"><%= image_tag "space.jpg",class:'img' %></div> 
-                                    <div class="card-footer"><a href=".space_detail">view Details</a></div>
+                                    <div class="card-footer">View Details</div>
                                 </div>
 
                             </div>
@@ -93,9 +119,9 @@
 
                             <div class="col-md-3">
                                 <div class="card">
-                                    <div class="card-header">Header</div>
-                                    <div class="card-body">Content</div> 
-                                    <div class="card-footer">Footer</div>
+                                    <div class="card-header">Add Images</div>
+                                    <div class="card-body"><%= image_tag "plus-icon.png",class:'img' %></div> 
+                                    <div class="card-footer">Tap to add more</div>
                                 </div>
 
                             </div>
@@ -114,7 +140,7 @@
                             
                             <div class="form-group">
                                 <%= f.label :space_address, 'Space Address' %>
-                                <%= f.text_field :size, :class => 'form-control fc'%>
+                                <%= f.text_field :space_address, class: 'form-control fc'%>
                             </div>
 
                             <div id='map'>
@@ -122,23 +148,23 @@
                             
                             <div class="form-group"> 
                                 <%= f.label :size, 'Size' %>
-                                <%= f.text_field :size, :class => 'form-control'%>
+                                <%= f.text_field :size, class: 'form-control'%>
                             </div>
                             <div class="form-group">
                                 <%= f.label :Dimensions, 'Dimensions' %>
-                                <%= f.text_field :size, :class => 'form-control'%>
+                                <%= f.text_field :dimensions, class: 'form-control'%>
                             </div>
                             <div class="form-group">   
                                 <%= f.label :floor_number, 'Floor Number' %>
-                                <%= f.text_field :size, :class => 'form-control'%>                        
+                                <%= f.text_field :floor_number, class: 'form-control'%>                        
                             </div>
                             <div class="form-group">                               
                                 <%= f.label :number_of_toilets, 'Number Of Toilets' %>
-                                <%= f.text_field :size, :class => 'form-control'%>                         
+                                <%= f.text_field :number_of_toilets, class: 'form-control'%>                         
                             </div>
                             <div class="form-group">                               
                                 <%= f.label :nearby_landmark, 'Nearby Landmark' %>
-                                <%= f.text_field :size, :class => 'form-control'%>                         
+                                <%= f.text_field :nearby_landmark, class: 'form-control'%>                         
                             </div>
 
                             <div class="form-group">
