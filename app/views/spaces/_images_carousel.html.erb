@@ -5,15 +5,29 @@
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner">
-    <div class="carousel-item active space-img">
-      <%= image_tag "location11.jpeg",class: "space-img" %>
-    </div>
-    <div class="carousel-item space-img">
-      <%= image_tag "location12.jpeg",class: "space-img" %>
-    </div>
-    <div class="carousel-item space-img">
-      <%= image_tag "location13.jpeg",class: "space-img" %>
-    </div>
+
+      <% if @space.images.attached?%>
+        <%@space.images.each do |image|%>
+           <%if image == @space.images.first%>
+
+              <div class="carousel-item space-img active"> 
+                   <%= image_tag image,class: "space-img" %>
+                </div>
+
+           <%else%>
+                <div class="carousel-item space-img"> 
+                   <%= image_tag image,class: "space-img" %>
+                </div>
+
+           <%end%>
+         
+           
+        <%end%>
+
+      <%else%>
+
+      <%end%>
+    
   </div>
   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

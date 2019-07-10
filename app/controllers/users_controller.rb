@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to '/spaces/1/edit'     
     else
-      @user.errors.fullmessage 
+      @user.errors.full_messages 
     end
   end
 
