@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources:spaces
   resources:users
   resources:user_details
+  resources:space_addresses
   
   root to:'user#log_in' 
 

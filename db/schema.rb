@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_10_080541) do
+ActiveRecord::Schema.define(version: 2019_07_11_090917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,20 @@ ActiveRecord::Schema.define(version: 2019_07_10_080541) do
     t.string "day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "space_addresses", force: :cascade do |t|
+    t.string "street"
+    t.string "city"
+    t.string "pincode"
+    t.string "state"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "space_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "house_number"
+    t.index ["space_id"], name: "index_space_addresses_on_space_id"
   end
 
   create_table "space_availability_timings", force: :cascade do |t|
@@ -94,7 +108,6 @@ ActiveRecord::Schema.define(version: 2019_07_10_080541) do
   end
 
   create_table "spaces", force: :cascade do |t|
-    t.string "space_address"
     t.string "dimensions"
     t.string "nearby_landmark"
     t.bigint "user_id"
@@ -103,6 +116,7 @@ ActiveRecord::Schema.define(version: 2019_07_10_080541) do
     t.integer "floor_number"
     t.integer "number_of_toilets"
     t.float "size"
+    t.string "space_name"
     t.index ["user_id"], name: "index_spaces_on_user_id"
   end
 
@@ -139,6 +153,7 @@ ActiveRecord::Schema.define(version: 2019_07_10_080541) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "booking_records", "spaces"
   add_foreign_key "booking_records", "users"
+  add_foreign_key "space_addresses", "spaces"
   add_foreign_key "space_availability_timings", "spaces"
   add_foreign_key "space_availability_timings", "users"
   add_foreign_key "space_available_days", "spaces"
