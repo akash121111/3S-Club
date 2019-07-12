@@ -7,8 +7,21 @@
     <body>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-2 side-bar">
-                    dfsdf
+                <div class="col-md-2 ">
+                    <div class="sidenav ">
+                        <div class="side-header">
+                            <%= image_tag("user.png", size:"100x100", :class=>"rounded-circle")%>
+                            <h5>Owner's Name</h5>
+                        </div>
+                        <hr>
+                        <div class="nav-item">
+                            <a href="/owner_dashboard" class="active">Upcoming Bookings</a>
+                            <a href="/spaces/1/edit">Spaces Details</a>
+                            <a href="#clients">Booking Record</a>
+                            <a href="/spaces/1/edit">Profile</a>
+                            <a href="#contact">Log Out</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-10">
                     <center><h1>OWNER DETAILS</h1></center>

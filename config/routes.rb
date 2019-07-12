@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  get 'index', to: "ownerdashboard#index"
-  get 'ownerdashboard/new'
-  get 'show', to: "ownerdashboard#show"
-  get 'ownerdashboard/destroy'
+  get 'owner_dashboard', to: "ownerdashboard#upcoming_booking"
+  post 'view_details', to: "ownerdashboard#view_details"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources:spaces
   resources:users
@@ -14,5 +12,7 @@ Rails.application.routes.draw do
   get 'user/index'
   get 'user/sign_up'
   get 'user/log_in'
+  get '/searching', to: 'searchings#index'
+  # get '/search', to: 'userbooking#search'
 
 end
