@@ -5,10 +5,10 @@ class OwnersignupsController<ApplicationController
     if verify_recaptcha(model: @owner) && @owner.save 
     # save post
     #flash[:notice] = "Post successfully created"
-    redirect_to :login
+    redirect_to '/login_user'
     else
       #flash[:"error"] = "Invalid email or password "
-      render :new
+      redirect_to 'sign_up_user'
     end
 
   end

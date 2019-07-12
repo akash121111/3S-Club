@@ -55,9 +55,9 @@ class UserController < ApplicationController
         if @user.save
            flash[:success] ="User was Sucessfully created"
             #flash[:success] = "Hey #{@user.username}, welcome"
-        redirect_to '/login'
+        redirect_to '/login_user'
         else
-          render 'sign_up'
+          render '/sign_up_user'
         end
 	end
 
