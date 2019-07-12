@@ -1,0 +1,88 @@
+
+
+
+
+
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="sidenav text-center">
+            <%= image_tag("user.png",size:"100x100", :class =>"rounded-circle")%>
+            <h5>Member' Name</h5><hr>
+               <a href="dashboard">Dashboard</a><hr>
+               <a href="profile">Profile</a><hr>
+               <a href="map">Maps</a><hr>
+               <a href="home">Logout</a><hr>
+            </div>                        
+        </div>
+        <div class="col-sm-10">
+         <div class="row">
+          <div class="col-sm-9">
+           <form class="form">
+            <div class="form-row">
+             <div class="form-group col-md-6">
+              <label for="inputEmail4">Email</label>
+              <input type="email" class="form-control" id="inputEmail4" value=" " disabled>
+             </div>
+              <div class="form-group col-md-6">
+             <label for="inputPassword4">Password</label>
+              <input type="password" class="form-control" id="inputPassword4" value=" ">
+               </div>
+              </div>
+             
+               
+              <div class="form-row">
+              <div class="form-group col-md-6">
+               <label for="firstname">FirstName</label>
+               <input type="text" class="form-control" id="firstname" value=" ">
+              </div>
+               <div class="form-group col-md-6">
+              <label for="lastname">LastName</label>
+               <input type="text" class="form-control" id="lastname" value=" ">
+                </div>
+               </div>
+
+            <div class="form-group">
+             <label for="inputAddress">ParmenentAddress</label>
+             <input type="text" class="form-control" id="inputpermanentAddress" value=" ">
+            </div>
+
+            <div class="form-group">
+            <label for="inputAddress">CorrespondenceAddress</label>
+            <input type="text" class="form-control" id="inputcorrespondenceAddress" value=" ">
+           </div>
+
+       <div class="form-group">
+    <label for="city">City 2</label>
+    <input type="text" class="form-control" id="city" value=" ">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="college">college</label>
+      <input type="text" class="form-control" id="college" value=" ">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="phno">phonenumber</label>
+      <input type="text" class="form-control" id="phno" value=" ">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="mobno">mobilenumber</label>
+      <input type="text" class="form-control" id="mobno" value=" ">
+    </div>
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Save change</button>
+</form>
+
+            </div>
+        
+            <div class="col-sm-3">
+
+            </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>

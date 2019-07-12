@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 2019_07_11_155821) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
   create_table "member_subscriptions", force: :cascade do |t|
     t.bigint "membership_plans_id"
     t.bigint "users_id"
@@ -71,8 +70,6 @@ ActiveRecord::Schema.define(version: 2019_07_11_155821) do
     t.float "time_alloted"
   end
 
-=======
->>>>>>> f32c76ee48acc997d733b151e64933d5563f4bde
   create_table "searchings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

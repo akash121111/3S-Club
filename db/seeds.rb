@@ -71,8 +71,30 @@ SpaceAvailabilityTiming.create(
     user_id: 1,
     space_id: 1
 )
+<<<<<<< HEAD
 BookingRecord.create(
     space_id:1,
     user_id:1
 )
 >>>>>>> f32c76ee48acc997d733b151e64933d5563f4bde
+=======
+SpaceAddress.create{
+    street:C Block,Sector 63
+    city:Noida
+    pincode:201301
+    state:Uttar Pradesh
+    latitude:28.617232
+    longitude:77.686339
+    space_id: 1
+}
+
+paceAddress.create{
+    street:CBlock,Sector63
+    city:Noida
+    pincode:201301
+    state:Uttar Pradesh
+    latitude:28.617477
+    longitude:77.386950  
+    space_id: 1
+}
+>>>>>>> e4333f536138e36c5c5599305b6baa22653c98ce
