@@ -9,11 +9,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user=User.find(1)
+    @user=User.find(params[:id])
     if @user.update(user_params)
       redirect_to '/spaces/1/edit'     
     else
-      @user.errors.full_messages 
+      redirect_to '/spaces/1/edit' 
     end
   end
 
