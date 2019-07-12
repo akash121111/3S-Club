@@ -1,6 +1,16 @@
 $(document).ready(function(){
-   // $(".space-detail").css("display","none");
+   $(".space-detail").css("display","none");
+   $(".form-control").attr('readonly','true');
+
+    $('#edit-option').click(function(){
+        $(".form-control").prop('readonly','false');
+    });
+
+    $('.card-footer').click(function(){
+        $(".space-detail").css("display","block");
+    });
 });
+
 function initMap(){
     var mycoords =new google.maps.LatLng(51.501564,-0.141944)
     //Initial options of map
