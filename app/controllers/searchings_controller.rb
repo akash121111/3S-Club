@@ -2,17 +2,10 @@ class SearchingsController < ApplicationController
     def index
 
       if params.has_key?(:date) 
-<<<<<<< HEAD
         @a=DateTime.parse(params[:date]).to_date.strftime('%A')
       else 
         date = DateTime.now
       end
-=======
-  @a=DateTime.parse(params[:date]).to_date.strftime('%A')
-else 
-  date = DateTime.now
-end
->>>>>>> 2bcff224429a259146eb6de66037d44f3bfebb59
 
  
     @space_addresses = SpaceAddress.search(params[:search])
