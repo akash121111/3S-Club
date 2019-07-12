@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'index', to: "ownerdashboard#index"
+  get 'owner_dashboard', to: "ownerdashboard#upcoming_booking"
   get 'ownerdashboard/new'
-  get 'show', to: "ownerdashboard#show"
+  post 'view_details', to: "ownerdashboard#view_details"
   get 'ownerdashboard/destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources:spaces

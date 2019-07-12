@@ -41,20 +41,21 @@
     border:none;
   
   }
-  button:hover{
-  
-    background:blue;
-    color:white;
-  }
   .card{
       background:white;
       margin: 0px;
       width: 100%;
       height:auto;
-      margin-top: 10px;
+      border: none;
+  }
+  .card-footer{
+    background: white;
+  }
+  .card-footer:hover{
+    color: white;
+    background-image: linear-gradient(to top,orange,red);
   }
   .card:hover{
-      background: white;
       transform: scale(1.05);
       
   }
@@ -72,10 +73,17 @@
     border-style: none;
     font-weight: bold;
   }
-  label{
-    font-size: 25;
-    font-weight: bold;
+  .media-left{
+   height: auto;
+   width: 200px; 
   }
+  .media-object{
+    height: auto;
+    width: 200px; 
+   }
+   hr{
+     margin: 2px;
+   }
   
   @media screen and (max-height: 550px) {
     .sidenav {padding-top: 15px;display: none;}

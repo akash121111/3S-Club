@@ -28,7 +28,7 @@
               <div class="container bg-light mb-2">
                 <center><h3>Space Details</h3></center><hr>
                 <div>
-                     <img src="p1.jpg" alt="spaces" height="200px" width="100%">
+                     <img src="assets/space-87e83c8b3dacf75cb8280d875ef0fe237ec76830b80b0514a0b573f5bcc345fd.jpg" alt="spaces" height="200px" width="100%">
                      <h6 ><%=@space.space_address%></h6>
                 </div><hr>
                 <div>
@@ -46,21 +46,22 @@
             </div>
              <div class="col-sm-6">
                <div class="container bg-light mb-2">
-                <center><h3>User Details</h3></center><hr>
+                <center><h3>Member Details</h3></center><hr>
                 <div>
-                     <center><img src="p1.jpg" class="rounded-circle"  alt="spaces" height="100px" width="100px"><hr><h4>User Name</h4>
+                     <center><img src="/assets/user-1a2e20cc944c895a698cc7855cd5eb338ab82342715346cd202b1f2157cb55a9.png" class="rounded-circle"  alt="spaces" height="100px" width="100px"><hr>
+                     <h4><%= @member_details.fist_name%> <%= @member_details.last_name%></h4>
                      </center>
                      
                 </div><hr>
                 <div>
                   <label for="address">Address</label>
-                  <input type="text" id="address" class="form-control" value="Sector 63 c-block, Noida" disabled>
+                  <input type="text" id="address" class="form-control" value="<%= @member_details.city%>" disabled>
                   <label for="mobile">Mobile Number</label>
-                  <input type="text" id="mobile" class="form-control" value="9874563210" disabled>
+                  <input type="text" id="mobile" class="form-control" value="<%= @member_details.mobile_number%>" disabled>
                   <label for="email">Email</label>
-                  <input type="text" id="email" class="form-control" value="abc@gmail.com" disabled>
+                  <input type="text" id="email" class="form-control" value="<%= @member.email%>" disabled>
                   <label for="qualification">Qualification</label>
-                  <input type="text" id="qualification" class="form-control" value="B.tech" disabled><br>
+                  <input type="text" id="qualification" class="form-control" value="<%= @member_details.education_details%>" disabled><br>
                   <button class="btn btn-success" style="width: 100%">Short-Term</button>
                 </div>
               </div>
