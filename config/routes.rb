@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
+  get 'sign_up',to: "ownersignups#sign_up"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-<<<<<<< HEAD
+
 
   
-  resources:spaces
+  
 
   root to:'user#log_in'
+
+
+  resources:users
+  
+   
+  post '/owner_signup' ,to: 'ownersignups#create'
+  get '/login',to: 'ownersignups#login'
 
   get 'user/index'
   get 'user/sign_up'
@@ -15,7 +23,6 @@ get '/searching', to: 'searchings#index'
 
   get 'membershipindex', to: 'membership#membershipindex'
   get 'membership', to: 'membership#membership'
-=======
   resources:spaces
  
 	#resources:sessions
@@ -24,7 +31,7 @@ get '/searching', to: 'searchings#index'
 
   get 'sign_up', to:'user#sign_up'
   get 'login', to:'user#login'
->>>>>>> f16fe8eefca43f02349b2ed6d09406313b2f8f41
+
 
   get 'dashboard' , to:'sessions#index'
   post 'login_confirm',to: 'sessions#create'
