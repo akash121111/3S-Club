@@ -16,3 +16,5 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 Rails.application.config.assets.precompile += %w( member_dashboard.scss )
 Rails.application.config.assets.precompile += %w( member_dashboard.js )
+Rails.application.config.assets.precompile += %w( searchings.scss )
+Rails.application.config.assets.precompile += %w( searchings.js )

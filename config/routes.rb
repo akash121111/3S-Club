@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   #resouces:spacesr
        
  #root to:'user#l 
-  get '/searching', to: 'searching#index'
+  get '/searching', to: 'searchings#index'
   
   get 'user/index'
   get 'user/sign_up'
