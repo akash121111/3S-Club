@@ -9,8 +9,11 @@ end
 
  
     @space_addresses = SpaceAddress.search(params[:search])
-    @da=SpaceAvailableDay.searchday(DateTime.parse(params[:date]).to_date.strftime('%A'))
-    @hash = Gmaps4rails.build_markers(@space_addresses) do |r, marker|
+    @findsearchaddresspid=@space_addresses.pluck(:space_id)
+    @findsearchdatepid=SpaceAvailableDay.searchday(@a)
+    @findcommonsearch= @findsearchaddresspid & @findsearchdatepid
+    @aftersearchbydayandaddress=SpaceAddress.find(@findcommonsearch)
+    @hash = Gmaps4rails.build_markers(@aftersearchbydayandaddress) do |r, marker|
       marker.lat r.latitude
       marker.lng r.longitude
       marker.infowindow r.city
