@@ -5,9 +5,9 @@ class UserDetailController < ApplicationController
     end
     
     def update
-        @userdetail=Usedetail.find_by(user_id)
+        @userdetail=Userdetail.find_by(user_id)
         if userdetail.update(userdetail_params)
             flash[:notice]="user detail was successfully updated"
             redirect_to_user_path
         else
-            render 'sign_up'
+            render 'home'
