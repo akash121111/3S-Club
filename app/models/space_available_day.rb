@@ -1,11 +1,11 @@
 class SpaceAvailableDay < ApplicationRecord
     belongs_to:space
-     def self.search(searchday)
-        if searchday
-            where(["searchday = ?",true])
+     def self.searchday(a)
+        if a
+            where([a+"= ?",true]).pluck(:space_id)
 
         else
-            where(["searchday LIKE null"])  
+            all
         end
     end  
 end
