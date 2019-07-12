@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+<<<<<<< HEAD
 User.create(email:"a@example.com",
     password_digest:"abc123",
     user_type_id:1)
@@ -23,9 +24,12 @@ UserDetail.create(
     user_id:6
 )
 
+=======
+>>>>>>> a3ba08384fe70d5e09d5d8bd518bcf62109ac955
 
 Space.create(
-     space_address: "abc",
+    id: 1,
+     space_address: "Noida",
      size: "50",
      dimensions: "500*500",
      floor_number: 2,
@@ -57,7 +61,29 @@ SpaceAvailabilityTiming.create(
     user_id: 6,
     space_id: 1
 )
+<<<<<<< HEAD
 BookingRecord.create(
     space_id:1,
     user_id:6
 )
+=======
+SpaceAddress.create{
+    street:C Block,Sector 63
+    city:Noida
+    pincode:201301
+    state:Uttar Pradesh
+    latitude:28.617232
+    longitude:77.686339
+    space_id: 1
+}
+
+paceAddress.create{
+    street:CBlock,Sector63
+    city:Noida
+    pincode:201301
+    state:Uttar Pradesh
+    latitude:28.617477
+    longitude:77.386950  
+    space_id: 1
+}
+>>>>>>> a3ba08384fe70d5e09d5d8bd518bcf62109ac955

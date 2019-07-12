@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   get 'user/index'
   get 'user/sign_up'
   get 'user/log_in'
+get '/searching', to: 'searchings#index'
+  # get '/search', to: 'userbooking#search'
 
 end
