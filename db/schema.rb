@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2019_07_11_155821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 2019_07_05_070609) do
 
   create_table "booking_records", force: :cascade do |t|
     t.bigint "space_id"
@@ -103,6 +104,7 @@ ActiveRecord::Schema.define(version: 2019_07_11_155821) do
     t.index ["user_id"], name: "index_spaces_on_user_id"
   end
 
+<<<<<<< HEAD
   create_table "user_details", force: :cascade do |t|
     t.string "fist_name"
     t.string "last_name"
@@ -144,4 +146,19 @@ ActiveRecord::Schema.define(version: 2019_07_11_155821) do
   add_foreign_key "spaces", "users"
   add_foreign_key "user_details", "users"
   add_foreign_key "users", "user_types"
+=======
+  create_table "users", force: :cascade do |t|
+    t.string "Firstname"
+    t.string "Lastname"
+    t.string "Educationdetails"
+    t.string "Aboutuser"
+    t.string "City"
+    t.string "College"
+    t.string "Phonenumber"
+    t.string "Mobilenumber"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+>>>>>>> aabf75fe5e7b1700e994e7f70b1920bb1bf99df6
 end

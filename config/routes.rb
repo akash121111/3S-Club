@@ -18,5 +18,7 @@ Rails.application.routes.draw do
   get 'user/log_in'
 
 
+
+  get '/new', to:'user#new' 
 end
   
