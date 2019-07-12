@@ -10,10 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_07_04_101618) do
-
-=======
 ActiveRecord::Schema.define(version: 2019_07_04_113045) do
 
   # These are extensions that must be enabled in order to support this database
@@ -126,5 +122,4 @@ ActiveRecord::Schema.define(version: 2019_07_04_113045) do
   add_foreign_key "spaces", "users"
   add_foreign_key "user_details", "users"
   add_foreign_key "users", "user_types"
->>>>>>> 370acd901cfc8c9d000026c7becbdf8198a76507
 end
