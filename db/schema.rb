@@ -124,5 +124,4 @@ ActiveRecord::Schema.define(version: 2019_07_08_120508) do
   add_foreign_key "space_locations", "spaces"
   add_foreign_key "spaces", "users"
   add_foreign_key "user_details", "users"
-  add_foreign_key "users", "user_types"
 end
