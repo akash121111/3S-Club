@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_07_164830) do
+ActiveRecord::Schema.define(version: 2019_07_11_155821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,15 +31,15 @@ ActiveRecord::Schema.define(version: 2019_07_07_164830) do
   end
 
   create_table "member_subscriptions", force: :cascade do |t|
-    t.bigint "membership_plan_id"
-    t.bigint "user_id"
-    t.bigint "space_id"
+    t.bigint "membership_plans_id"
+    t.bigint "users_id"
+    t.bigint "spaces_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "time_wallet"
-    t.index ["membership_plan_id"], name: "index_member_subscriptions_on_membership_plan_id"
-    t.index ["space_id"], name: "index_member_subscriptions_on_space_id"
-    t.index ["user_id"], name: "index_member_subscriptions_on_user_id"
+    t.index ["membership_plans_id"], name: "index_member_subscriptions_on_membership_plans_id"
+    t.index ["spaces_id"], name: "index_member_subscriptions_on_spaces_id"
+    t.index ["users_id"], name: "index_member_subscriptions_on_users_id"
   end
 
   create_table "membership_plans", force: :cascade do |t|
@@ -47,6 +47,24 @@ ActiveRecord::Schema.define(version: 2019_07_07_164830) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "time_alloted"
+  end
+
+  create_table "searchings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "space_addresses", force: :cascade do |t|
+    t.string "street"
+    t.string "city"
+    t.string "pincode"
+    t.string "state"
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "space_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["space_id"], name: "index_space_addresses_on_space_id"
   end
 
   create_table "space_availability_timings", force: :cascade do |t|
@@ -70,6 +88,8 @@ ActiveRecord::Schema.define(version: 2019_07_07_164830) do
     t.boolean "sunday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "space_id"
+    t.index ["space_id"], name: "index_space_available_days_on_space_id"
   end
 
   create_table "space_images", force: :cascade do |t|
@@ -134,8 +154,10 @@ ActiveRecord::Schema.define(version: 2019_07_07_164830) do
 
   add_foreign_key "booking_records", "spaces"
   add_foreign_key "booking_records", "users"
+  add_foreign_key "space_addresses", "spaces"
   add_foreign_key "space_availability_timings", "spaces"
   add_foreign_key "space_availability_timings", "users"
+  add_foreign_key "space_available_days", "spaces"
   add_foreign_key "space_images", "spaces"
   add_foreign_key "space_locations", "spaces"
   add_foreign_key "spaces", "users"
