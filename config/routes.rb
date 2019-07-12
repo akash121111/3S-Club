@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
-  
-	resources:session
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources:spaces
+ 
+	#resources:sessions
 	resources:user
+  
 
-  #get 'session/new' , to:'session#new'
+  get 'sign_up', to:'user#sign_up'
+  get 'login', to:'user#login'
+
+  get 'dashboard' , to:'sessions#index'
+  post 'login_confirm',to: 'sessions#create'
   #post 'session/create', to:'session#create'
   #delete 'session/destroy'
   #get 'user/index'
