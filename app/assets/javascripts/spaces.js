@@ -1,11 +1,27 @@
 $(document).ready(function(){
-   // $(".space-detail").css("display","none");
+   $(".space-detail").css("display","none");
+   $("#latitude").css("display","none");
+   $("#longitude").css("display","none");
+   $(".form-control").attr('readonly','true');
+
+    $('#edit-option').click(function(){
+        $(".form-control").prop('readonly','false');
+    });
+
+    
+
+    $('.card-footer').click(function(){
+        $(".space-detail").css("display","block");
+    });
 });
-function initMap(){
-    var mycoords =new google.maps.LatLng(51.501564,-0.141944)
+    
+
+
+function initMap(lat,lng){
+    var mycoords =new google.maps.LatLng(lat,lng)
     //Initial options of map
     var options={
-        
+      
         zoom:16,
         center:mycoords
     }
@@ -15,19 +31,26 @@ function initMap(){
     var map=new google.maps.Map(document.getElementById('map'),options);
     addMarker({coords: mycoords});
     
-    //Add marker on click
-    google.maps.event.addListener(map,'click',
-    function(event){
-        addMarker({coords:event.latLng})
-    });
    
     //addMarker Definition
     function addMarker(props){
         var marker=new google.maps.Marker({
             position:props.coords ,
-            map:map
+            map:map,
+            draggable:true
         });
 
+        document.getElementById('latitude').value=marker.getPosition().lat();
+        document.getElementById('longitude').value=marker.getPosition().lng();
+        google.maps.event.addListener(
+            marker,
+            'drag',
+            function(event) {
+                document.getElementById('latitude').value = this.position.lat();
+                document.getElementById('longitude').value = this.position.lng();
+                //alert('drag');
+            });
+        
         //Check for icon image
         if(props.iconImage){
             marker.setIcon(props.iconImage)
@@ -42,12 +65,7 @@ function initMap(){
             });         
         }
     }
-    var markers=[{coords:{lat:31.5204,lng:-74.3587}},
-    {coords:{lat:28.7041,lng:-77.1025}}
-    ];
-    for(var i=0 ;i<markers.length;i++){
-        addMarker(markers[i]);
-    }
+  
 
 }
 

@@ -1,0 +1,140 @@
+<html>
+    <head>
+    
+
+
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 side-bar">
+                    dfsdf
+                </div>
+                
+                <div class="col-md-10">
+                    <div class="container-fluid space-detail">
+                        <br><br><br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3>Space Address</h3>
+                                <% @space_address=SpaceAddress.new%>
+                                <%= form_for @space_address do |f| %>
+                                    <div class="form-group">
+                                        <%= f.label :house_number, 'House Number' %>
+                                        <%= f.text_field :house_number, class: 'form-control'%>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <%= f.label :street, 'Street' %>
+                                        <%= f.text_field :street, class: 'form-control'%>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <%= f.label :city, 'City' %>
+                                        <%= f.text_field :city, class: 'form-control'%>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <%= f.label :pincode, 'Pincode' %>
+                                        <%= f.text_field :pincode, class: 'form-control'%>
+                                    </div>
+                                    <div class="form-group">
+                                        <%= f.label :state, 'State' %>
+                                        <%= f.text_field :state, class: 'form-control'%>
+                                    </div>
+                                     <div class="form-group">                                   
+                                        <%= f.text_field :latitude, class: 'form-control', id:'latitude'%>
+                                    </div>
+                                    <div class="form-group">
+                                        <%= f.text_field :longitude, class: 'form-control', id:'longitude'%>
+                                    </div>
+                                   
+
+                                    <h3>Drag marker to get Address</h3>
+                                    <% provide :head_tags do %>
+                                    <script>
+                                    document.addEventListener("DOMContentLoaded", function(){
+                                        initMap(36.7783,-119.4179);
+                                    });
+                                    </script>
+                                    <% end %>
+                                    
+
+                                    <div id='map'>
+                                    </div><br>
+                                    
+                                    <div>
+                                        <%= submit_tag 'Save Changes', :class=> "btn btn-primary" %><br>
+                                    </div>
+
+
+                                <% end %>
+                            </div>
+
+                            <div class="col-md-12">
+                                <h3>Space Details</h3>
+                                <%= form_for @space do |f| %>
+                                    <div class="form-group"> 
+                                        <%= f.label :size, 'Size' %>
+                                        <%= f.text_field :size, class: 'form-control'%>
+                                    </div>
+                                    <div class="form-group">
+                                        <%= f.label :Dimensions, 'Dimensions' %>
+                                        <%= f.text_field :dimensions, class: 'form-control'%>
+                                    </div>
+                                    <div class="form-group">   
+                                        <%= f.label :floor_number, 'Floor Number' %>
+                                        <%= f.text_field :floor_number, class: 'form-control'%>                        
+                                    </div>
+                                    <div class="form-group">                               
+                                        <%= f.label :number_of_toilets, 'Number Of Toilets' %>
+                                        <%= f.text_field :number_of_toilets, class: 'form-control'%>                         
+                                    </div>
+                                    <div class="form-group">                               
+                                        <%= f.label :nearby_landmark, 'Nearby Landmark' %>
+                                        <%= f.text_field :nearby_landmark, class: 'form-control'%>                         
+                                    </div>
+
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h3>Images</h3>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <%= f.file_field :images %>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <%= render "images_carousel", space:@space %>
+                                    </div>
+                                    
+                                    <div>
+                                        <%= submit_tag 'Save Changes', :class=> "btn btn-primary" %><br>
+                                    </div>
+
+
+                                <% end %>
+                            </div>
+                        </div>
+                        
+                        <br>
+                        
+
+
+
+                     </div><br>
+                </div>
+                
+                </div>                     
+
+                    
+            </div>
+
+        </div>
+
+    </body>
+         
+
+</html>

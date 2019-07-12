@@ -1,0 +1,28 @@
+<%=form_for (@user_detail)  do |f| %>
+                                            
+    <div class="form-group">   
+        <%= f.label :first_name, 'First Name' %>
+        <%= f.text_field :fist_name, class: 'form-control'%>                        
+    </div>
+    <div class="form-group">                               
+        <%= f.label :last_name, 'Last Name' %>
+        <%= f.text_field :last_name, class: 'form-control'%>                         
+    </div>
+    <div class="form-group">                               
+        <%= f.label :about_owner, 'About Owner' %>
+        <%= f.text_field :about_user, class: 'form-control'%>                         
+    </div>
+    <div class="form-group">                               
+        <%= f.label :phone_number, 'Phone Number' %>
+        <%= f.text_field :phone_number, class: 'form-control'%>                         
+    </div>
+    <div class="form-group">                               
+        <%= f.label :mobile_number, 'Mobile Number' %>
+        <%= f.text_field :mobile_number, class: 'form-control'%>                         
+    </div>
+    <div>
+        <%= submit_tag 'Save Changes', class: "btn btn-primary" %>
+    </div>
+
+
+<% end %>
