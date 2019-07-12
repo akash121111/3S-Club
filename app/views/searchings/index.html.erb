@@ -11,15 +11,11 @@
     <span class="input-group-text" id="addon-wrapping"><%= image_tag("baseline_search_black_18dp.png", :alt => "rss feed") %></span>
   </div>
   <%= text_field_tag(:search, params[:search], placeholder: "Enter a City name") %>
-  <%= text_field_tag(:date, params[:date], placeholder: "Enter a date") %>
+  <%= date_field_tag(:date, params[:date], placeholder: "Enter a date") %>
   
 </div>
-<div class="active-pink-3 active-pink-4 mb-4 col-sm-3"><input  id="datepicker" width="276" /></div>
-<script>
-        $('#datepicker').datepicker({
-            uiLibrary: 'bootstrap4'
-        });
-    </script>
+<div class="active-pink-3 active-pink-4 mb-4 col-sm-3"><input type="date" id="datepicker" width="276" /></div>
+
     
 
 
