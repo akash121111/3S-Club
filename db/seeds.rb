@@ -8,8 +8,6 @@
 
 
 
-<<<<<<< HEAD
-=======
 Space.create(
     id: 1,
      space_address: "Noida",
@@ -63,4 +61,3 @@ paceAddress.create{
     longitude:77.386950  
     space_id: 1
 }
->>>>>>> 4e1a2f82abeba704edf1deba161d6ba0c546a84c
