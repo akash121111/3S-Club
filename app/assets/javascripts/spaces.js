@@ -39,6 +39,7 @@ function initMap(lat,lng){
             map:map,
             draggable:true
         });
+<<<<<<< HEAD
 
         document.getElementById('latitude').value=marker.getPosition().lat();
         document.getElementById('longitude').value=marker.getPosition().lng();
@@ -51,6 +52,9 @@ function initMap(lat,lng){
                 //alert('drag');
             });
         
+=======
+        console.log(marker.getPosition().lat());
+>>>>>>> 2bcff224429a259146eb6de66037d44f3bfebb59
         //Check for icon image
         if(props.iconImage){
             marker.setIcon(props.iconImage)

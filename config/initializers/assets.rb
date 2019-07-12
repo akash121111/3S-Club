@@ -1,6 +1,8 @@
 # Be sure to restart your server when you modify this file.
 #Rails.application.config.assets.precompile += %w( spaces.css spaces.coffee )
-%w( spaces ownerdashboard searchings ).each do |controller|
+
+
+%w( spaces user sessions fronts  ownersignups ownerdashboard searchings).each do |controller|
     Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.css"]
 end
 # Version of your assets, change this if you want to expire all your assets.
@@ -21,3 +23,5 @@ Rails.application.config.assets.precompile += %w( member_dashboard.scss )
 Rails.application.config.assets.precompile += %w( member_dashboard.js )
 Rails.application.config.assets.precompile += %w( searchings.scss )
 Rails.application.config.assets.precompile += %w( searchings.js )
+Rails.application.config.assets.precompile += %w( ownersignups.scss )
+Rails.application.config.assets.precompile += %w( ownersignup.js )

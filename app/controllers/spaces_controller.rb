@@ -1,6 +1,7 @@
 class SpacesController < ApplicationController
     before_action :set_space, only: [:show, :destroy, :edit, :update]
     def index
+<<<<<<< HEAD
         
     end
 
@@ -31,6 +32,17 @@ class SpacesController < ApplicationController
             redirect_to '/spaces/1/edit' 
         end
 
+=======
+        @space=Space.new
+    end
+
+    def edit
+
+    end
+
+    def update
+        
+>>>>>>> 2bcff224429a259146eb6de66037d44f3bfebb59
     end
 
     private
@@ -40,7 +52,11 @@ class SpacesController < ApplicationController
     end
 
     def space_details_params
+<<<<<<< HEAD
         params.require(:space).permit(:space_address,:size,:dimensions,:floor_number,:number_of_toilets,:nearby_landmark, :images)
+=======
+        params.require(:user_details).permit(:first_name, :last_name, :education_details, :about_user, :city, :college, :phone_number, :mobile_number, :user_id)
+>>>>>>> 2bcff224429a259146eb6de66037d44f3bfebb59
     end
 
     def set_space
