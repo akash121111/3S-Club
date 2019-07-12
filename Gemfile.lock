@@ -157,6 +157,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    recaptcha (0.3.6)
     regexp_parser (1.5.1)
     rubyzip (1.2.3)
     sass (3.7.4)
@@ -227,6 +228,7 @@ DEPENDENCIES
   pg
   puma (~> 3.11)
   rails (~> 5.2.3)
+  recaptcha
   sass-rails (~> 5.0)
   selenium-webdriver
   turbolinks (~> 5)

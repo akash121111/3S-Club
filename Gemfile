@@ -2,7 +2,14 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.5'
+<<<<<<< HEAD
 gem 'gmaps4rails'
+=======
+gem 'dotenv-rails', :require => 'dotenv/rails-now'
+
+gem "recaptcha", require: "recaptcha/rails"
+
+>>>>>>> f16fe8eefca43f02349b2ed6d09406313b2f8f41
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
