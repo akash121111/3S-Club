@@ -31,7 +31,7 @@
                                             <%= f.password_field :password, class: 'form-control'%>
                                         </div>
                                         <div class="form-group"> 
-                                            <%= f.label :password, 'Password' %>
+                                            <%= f.label :password_confirmation, 'Confirm Password' %>
                                             <%= f.password_field :password_confirmation, class: 'form-control'%>
                                         </div>
                                     
@@ -101,7 +101,7 @@
 
                                 <div class="col-md-3">
                                     <div class="card">
-                                        <div class="card-header"><%= space.space_name%></div>
+                                        <div class="card-header"><%= space.space_name%><%= link_to 'Remove', space, id:'del-space-link',method: :delete, data: { confirm: 'Are you sure?' } %>  </div>
                                         <div class="card-body">
                                             <% if @space.images.attached?%>
                                                 <%@space.images.each do |image|%>
@@ -124,7 +124,11 @@
                             <div class="col-md-3">
                                 <div class="card">
                                     <div class="card-header">Add More Spaces</div>
-                                    <div class="card-body"><%= image_tag "plus-icon.png",class:'img' %></div> 
+                                    <div class="card-body">
+                                        <a href="/spaces/new">
+                                                <%= image_tag "plus-icon.png",class:'img',id:'add-space-icon' %>
+                                        </a>
+                                    </div> 
                                     <div class="card-footer">Tap to add more</div>
                                 </div><br>
 
@@ -165,8 +169,23 @@
                                         <%= f.label :state, 'State' %>
                                         <%= f.text_field :state, class: 'form-control'%>
                                     </div>
+                                     <div class="form-group">                                   
+                                        <%= f.text_field :latitude, class: 'form-control',id:'latitude'%>
+                                    </div>
+                                    <div class="form-group">
+                                        <%= f.text_field :longitude, class: 'form-control', id:'longitude'%>
+                                    </div>
+                                   
 
                                     <h3>Drag marker to get Address</h3>
+                                    <% provide :head_tags do %>
+                                    <script>
+                                    document.addEventListener("DOMContentLoaded", function(){
+                                        initMap(<%=@space.space_address.latitude%>, <%=@space.space_address.longitude%>);
+                                    });
+                                    </script>
+                                    <% end %>
+                                    
 
                                     <div id='map'>
                                     </div><br>

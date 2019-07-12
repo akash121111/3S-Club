@@ -1,11 +1,15 @@
 class SpacesController < ApplicationController
     before_action :set_space, only: [:show, :destroy, :edit, :update]
     def index
-        @space=Space.new
+        
     end
 
     def edit
         
+    end
+
+    def new
+        @space=Space.new
     end
 
     def update
@@ -18,6 +22,15 @@ class SpacesController < ApplicationController
         else
           redirect_to '/spaces/1/edit' 
         end
+    end
+
+    def destroy
+        if @space.destroy
+            redirect_to '/spaces/1/edit'
+        else
+            redirect_to '/spaces/1/edit' 
+        end
+
     end
 
     private
