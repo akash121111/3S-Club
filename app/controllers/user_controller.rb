@@ -50,14 +50,16 @@ class UserController < ApplicationController
 
 
 
-
+         
 		@user = User.new(user_params)
+        @user.user_type_id=1
         if @user.save
-           flash[:success] ="User was Sucessfully created"
-            #flash[:success] = "Hey #{@user.username}, welcome"
+           flash[:success] ="Your registrations is sucessfully completed.Please login"
+           # flash[:success] = "Hey #{@user.username}, welcome"
         redirect_to '/login_user'
         else
-          render '/sign_up_user'
+            flash[:success] ="Sorry, your registration attempt was unsuccessful."
+         redirect_to '/sign_up_user'
         end
 	end
 
@@ -71,19 +73,4 @@ class UserController < ApplicationController
     def new
             @user = User.new
      end
-
-    def update
-            @user = User.find(1)
-            if @user.update(user_params)
-                flash[:notice] = "User was successfully updated"
-                redirect_to user_path(@user)
-            else
-                render 'edit'
-            end
-    end    
-    
-    private
-        def user_params
-         params.require(:user).permit(:Firstname,:Lastname,:Educationdetails,:Aboutuser,:City,:College,:Phonenumber,:Mobilenumber)
-        end
-    end
+ end
