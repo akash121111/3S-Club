@@ -14,11 +14,12 @@ class SessionsController < ApplicationController
   def create
     	
   	user = User.find_by_email(params[:session][:email])
-      
-       if user && user.authenticate(params[:session][:password])
+
+       if user && user.authenticate(params[:session][:password_digest])
         session[:user_id]= user.id
         #flash[:success] = "Login successful"
-        redirect_to '/dashboard' , notice: "Logged in"
+        
+        redirect_to '/owner_dashboard' , notice: "Logged in"
        else
         flash.now[:alert] = "Username or Password incorrect"
         redirect_to '/login'

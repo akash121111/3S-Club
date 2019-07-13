@@ -11,3 +11,6 @@ class UserDetailController < ApplicationController
             redirect_to_user_path
         else
             render 'home'
+        end
+    end
+end

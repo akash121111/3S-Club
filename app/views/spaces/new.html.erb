@@ -8,7 +8,20 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 side-bar">
-                    dfsdf
+                    <div class="sidenav ">
+          <div class="side-header">
+            <%= image_tag("user.png", size:"100x100", :class=>"rounded-circle")%>
+            <h5>Owner's Name</h5>
+          </div>
+          <hr>
+          <div class="nav-item">
+          <a href="/owner_dashboard" class="active">Upcoming Bookings</a>
+          <a href="/spaces/1/edit">Spaces Details</a>
+          <a href="#clients">Booking Record</a>
+          <%= link_to 'Profile', edit_user_detail_path(@user_detail) %>
+          <a href="#contact">Log Out</a>
+          </div>
+        </div>
                 </div>
                 
                 <div class="col-md-10">
@@ -18,7 +31,7 @@
                             <div class="col-md-12">
                                 <h3>Space Address</h3>
                                 <% @space_address=SpaceAddress.new%>
-                                <%= form_for @space_address do |f| %>
+                                <%= form_for(:space_address, :html => {class: "form-horizontal", role: "form"},url: space_addresses_url) do|f| %>
                                     <div class="form-group">
                                         <%= f.label :house_number, 'House Number' %>
                                         <%= f.text_field :house_number, class: 'form-control'%>
@@ -69,7 +82,7 @@
 
                                 <% end %>
                             </div>
-
+                        <br><br><br><br><br>
                             <div class="col-md-12">
                                 <h3>Space Details</h3>
                                 <%= form_for @space do |f| %>

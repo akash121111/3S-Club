@@ -11,9 +11,9 @@ class UsersController < ApplicationController
   def update
     @user=User.find(params[:id])
     if @user.update(user_params)
-      redirect_to '/spaces/1/edit'     
+      redirect_to edit_user_detail_path      
     else
-      redirect_to '/spaces/1/edit' 
+      redirect_to edit_user_detail_path  
     end
   end
 

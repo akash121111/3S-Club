@@ -5,20 +5,22 @@ class SpacesController < ApplicationController
     end
 
     def edit
-        
+        @user_detail=User.find(session[:user_id])
+        @space=Space.find(params[:id])
     end
 
     def new
+        @user_detail=User.find(session[:user_id])
         @space=Space.new
     end
 
     def update
-        @space_details=User.find(1).spaces
+        @space_details=User.find(session[:user_id]).spaces
 
         #@space_details.images.attach(params[:images])
       
         if @space_details.first.update(space_details_params)
-          redirect_to '/spaces/1/edit'     
+          redirect_to edit_space_path     
         else
           redirect_to '/spaces/1/edit' 
         end
@@ -48,6 +50,7 @@ class SpacesController < ApplicationController
     end
 
     def set_space
+        @user_detail=User.find(session[:user_id])
         @space=Space.find(params[:id])
     end
 

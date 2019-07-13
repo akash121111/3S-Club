@@ -1,3 +1,32 @@
-// Place all the styles related to the SpaceAddresses controller here.
+// Place all the styles related to the Spaces controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sidenav {
+    width: 16.67%;
+    height: 100%;
+    position: fixed;
+    margin-top: 4.5%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    color:white;
+    display:block;
+    background-image: linear-gradient(to top,orange,red);
+    overflow-x: hidden;
+    padding-top: 20px;
+    text-align: center;
+  }
+  
+  .sidenav a {
+    padding: 16px 8px 16px 16px;
+    text-decoration: none;
+    font-size: 23px;
+    color: white;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    background: black;
+    color: #f1f1f1;
+  }
