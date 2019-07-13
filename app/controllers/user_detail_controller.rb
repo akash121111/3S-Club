@@ -1,13 +1,26 @@
 class UserDetailController < ApplicationController
 
-    def Userdetail
-    @userdetail=Userdetail.new
-    end
+    def member_form
     
-    def update
-        @userdetail=Userdetail.find_by(user_id)
-        if userdetail.update(userdetail_params)
-            flash[:notice]="user detail was successfully updated"
-            redirect_to_user_path
-        else
-            render 'home'
+    end
+
+    def create
+        @userdetail=Userdetail.create(params[])
+    end
+
+    
+        def update
+            @userdetail = User.find(1)
+            if @userdetail.update(user_params)
+                flash[:notice] = "User was successfully updated"
+                redirect_to user_path(@user)
+            else
+                render 'home'
+            end
+        end    
+    
+    private
+        def user_params
+         params.require(:user).permit(:Firstname,:Lastname,:Educationdetails,:Aboutuser,:City,:College,:Phonenumber,:Mobilenumber)
+        end
+end

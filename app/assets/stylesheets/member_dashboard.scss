@@ -4,6 +4,7 @@
 
 body {
     font-family: "Lato", sans-serif;
+    background-color:gray;
   }
 .sidenav {
     height: 100%;
@@ -12,13 +13,20 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-image: linear-gradient(to top, red, orange);
+    background-image: radial-gradient(red 5%, yellow 15%, green 60%);
     overflow-x: hidden;
     padding-top: 20px;
   }
 
   .form{
-    background:black;
+    
+    margin:5px;
+    border:1px;
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px;
+    margin-top:10px;
+    
   }
   
   .sidenav a {
@@ -44,15 +52,7 @@ body {
   hr{
       margin:0px;
   }
-  .form{
-      border:1px;
-      border-style: solid;
-      border-width: 1px;
-      padding: 10px;
-      margin-top:10px;
-      color: #797777
-  }
-
+  
   .btn btn-primary{
     float:right;
   }

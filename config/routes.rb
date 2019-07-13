@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'user/index'
   get 'user/sign_up'
   get 'user/log_in'
-
+  get 'member_form', to: 'user_detail#member_form'
 
 
   get '/new', to:'user#new' 
