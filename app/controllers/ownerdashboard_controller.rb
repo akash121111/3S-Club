@@ -1,10 +1,13 @@
 class OwnerdashboardController < ApplicationController
   def upcoming_booking
-    @br=BookingRecord.last
-    @space=Space.find_by(id:@br.space_id)
-    @image=SpaceImage.find_by(id:@br.space_id)
-    @time=SpaceAvailabilityTiming.find_by(id:@br.space_id)
-    @day=SpaceAvailableDay.find_by(id:@br.space_id)
+    @user=User.find_by(id:6)
+    @br=@user.booking_record
+    @ubr=@br.last
+    @space=Space.find_by(id:@ubr.space_id)
+    @address=@space.space_address
+    @image=SpaceImage.find_by(id:@ubr.space_id)
+    @time=SpaceAvailabilityTiming.find_by(id:@ubr.space_id)
+    @day=SpaceAvailableDay.find_by(id:@ubr.space_id)
     
   end
   def view_details
