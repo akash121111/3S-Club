@@ -16,7 +16,7 @@
                         <hr>
                         <div class="nav-item">
                             <a href="/owner_dashboard" class="active">Upcoming Bookings</a>
-                            <a href="/spaces/1/edit">Spaces Details</a>
+                            <%= link_to 'Space Details', edit_user_detail_path(@user_detail) %>
                             <a href="#clients">Booking Record</a>
                             <%= link_to 'Profile', edit_user_detail_path(@user_detail) %>
                             <a href="#contact">Log Out</a>

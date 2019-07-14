@@ -26,7 +26,7 @@ class UserDetailsController < ApplicationController
 
 
     private
-
+    
     def user_details_params
         params.require(:user_detail).permit( :fist_name,:last_name,:about_user,:phone_number,:mobile_number)
     end
