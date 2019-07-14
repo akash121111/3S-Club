@@ -37,6 +37,16 @@ finddayid ={ "Monday" => "1", "Tuesday" => "2", "Wednesday" => "3" , "Thursday" 
     end
     end
 
+    def allmap
+      @space_addresses = SpaceAddress.all
+
+ @hash = Gmaps4rails.build_markers( @space_addresses) do |r, marker|
+      marker.lat r.latitude
+      marker.lng r.longitude
+      marker.infowindow r.city
+    end
+  end
+
 
     private
 

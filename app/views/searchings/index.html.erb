@@ -15,7 +15,7 @@
             <h5>Member' Name</h5><hr>
                <a href="/searching">Dashboard</a><hr>
                <a href="profile">Profile</a><hr>
-               <a href="map">Maps</a><hr>
+               <a href="/allmap">Maps</a><hr>
                <a href="home">Logout</a><hr>
             </div>                        
     </div>
@@ -42,7 +42,7 @@
   </div>
   <div class="row">
     <div class="col-sm-4">
-     <h1>Routers</h1>
+     <h1>List View</h1>
 <ul class="list-group" style="height:800px; overflow:scroll"> 
 <% @aftersearchbydayandaddress.each do |s| %>
 <li class="list-group-item">
@@ -57,20 +57,28 @@
 <%= s.longitude %>
 
 <%
-@y=6
+@y=1
 @m=@aftersearchbydayandaddress.pluck(:space_id)
  x = @aftersearchbydayandaddress.pluck(:space_id).length
- i=0
 
+
+i=0
  while i < x
- if(MemberSubscription.where("space_id = ? and user_id=?",m[i],y))
+ 
+ if(MemberSubscription.where("space_id = ? and user_id=?",@m[i],@y).blank?)
       %>
-     <button type="button" class="btn btn-danger" style="margin-top: auto">Book Now</button>
-  <% else%>
-   <button type="button" class="btn btn-danger" style="margin-top: auto"> Now</button>
-   <% end %>
+     <button type="button" class="btn btn-danger" style="margin-top: 8px; float: right">Book Now</button>
+  <% 
+  i=i+1
+  break
+  else%>
+   <button type="button" class="btn btn-danger" style="margin-top: 8px; float: right> Now</button>
    <%
-   i=i+1
+ i=i+1
+   break
+    end %>
+   <%
+  
    end
    %>
    

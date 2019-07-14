@@ -52,7 +52,7 @@ class UserController < ApplicationController
 
          
 		@user = User.new(user_params)
-        @user.user_type_id=1
+        @user.user_type_id=2
         if @user.save
            flash[:success] ="Your registrations is sucessfully completed.Please login"
            # flash[:success] = "Hey #{@user.username}, welcome"
