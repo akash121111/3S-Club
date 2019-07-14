@@ -1,6 +1,6 @@
 class SpaceAddressesController < ApplicationController
     def update
-        @space_address=User.find(params[:id]).spaces.first.space_address
+        @space_address=User.find(1).spaces.first.space_address
 
       
         if @space_address.update(space_address_params)
