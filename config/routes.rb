@@ -21,7 +21,10 @@ Rails.application.routes.draw do
        
   #root to:'user#l 
   get '/searching', to: 'searchings#index'
-
+  get '/allmap', to:'searchings#allmap'
+  
+  post 'owner_signup' ,to: 'ownersignups#create' 
+  get '/login',to: 'ownersignups#login',as: 'login_in_owner'
   get 'user/index'
   get 'user/sign_up'
   get 'user/log_in'

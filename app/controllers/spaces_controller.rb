@@ -33,48 +33,53 @@ class SpacesController < ApplicationController
         @space.nearby_landmark=params[:space][:nearby_landmark]
         @space.user_id=session[:user_id]
         if @space.save 
-        @space_address=SpaceAddress.new
-        @space_address.house_number=params[:space][:space_address][:house_number]
-        @space_address.street=params[:space][:space_address][:street]
-        @space_address.city=params[:space][:space_address][:city]
-        @space_address.pincode=params[:space][:space_address][:pincode]
-        @space_address.state=params[:space][:space_address][:state]
-        @space_address.latitude=params[:space][:space_address][:latitude]
-        @space_address.longitude=params[:space][:space_address][:longitude]
-        @space_address.space_id=@space.id
+            @space_address=SpaceAddress.new
+            @space_address.house_number=params[:space][:space_address][:house_number]
+            @space_address.street=params[:space][:space_address][:street]
+            @space_address.city=params[:space][:space_address][:city]
+            @space_address.pincode=params[:space][:space_address][:pincode]
+            @space_address.state=params[:space][:space_address][:state]
+            @space_address.latitude=params[:space][:space_address][:latitude]
+            @space_address.longitude=params[:space][:space_address][:longitude]
+            @space_address.space_id=@space.id
+            
+            week_days={ "monday"=>1,"tuesday"=>2,"wednesday"=>3 , "thursday"=>4  , "friday"=>5,"saturday"=>6, "sunday"=>7}
         
-        week_days={ "monday"=>1,"tuesday"=>2,"wednesday"=>3 , "thursday"=>4  , "friday"=>5,"saturday"=>6, "sunday"=>7}
-      
-        @space_available_day=SpaceAvailableDay.new
-        
-        week_days.each do |key,value|
-            byebug
-            @space_availability_timing=SpaceAvailabilityTiming.new
-            @space_available_day[key]=params[:space][:space_available_day][key]
-            @space_available_day[:space_id]=@space.id
-            @space_availability_timing[:start_time]=params[:space][:start_time][key]
-            @space_availability_timing[:end_time]=params[:space][:end_time][key]
-            @space_availability_timing[:space_id]=@space.id
-            @space_availability_timing[:day_id]=value
-            @space_availability_timing.save
-        end
+            @space_available_day=SpaceAvailableDay.new
+            
+            week_days.each do |key,value|
+                @space_availability_timing=SpaceAvailabilityTiming.new
+                @space_available_day[key]=params[:space][:space_available_day][key]
+                @space_available_day[:space_id]=@space.id
+                @space_availability_timing[:start_time]=params[:space][:start_time][key]
+                @space_availability_timing[:end_time]=params[:space][:end_time][key]
+                @space_availability_timing[:space_id]=@space.id
+                @space_availability_timing.day_id=value
+                @space_availability_timing.save
+            end
         
            
-        @space_address.save 
+            @space_address.save 
         
-       @space_available_day.save
+            @space_available_day.save
         
             redirect_to '/owner_dashboard'
         else
-
+            redirect_to '/owner_dashboard'
         end
         
     end
 
     def destroy
         @space.space_address.destroy
-        @space.space_availability_timing.destroy
-        @space.spac
+        
+        @space.space_availability_timings.each do|t|
+            t.destroy
+        end
+        @space.space_available_day.destroy
+        @space.booking_records.each do|b|
+            b.destroy
+        end
         if @space.destroy
             redirect_to edit_user_detail_path
         else
