@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_12_191204) do
+ActiveRecord::Schema.define(version: 2019_07_11_090917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,11 +70,6 @@ ActiveRecord::Schema.define(version: 2019_07_12_191204) do
     t.float "time_alloted"
   end
 
-  create_table "searchings", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "space_addresses", force: :cascade do |t|
     t.string "street"
     t.string "city"
@@ -93,11 +88,11 @@ ActiveRecord::Schema.define(version: 2019_07_12_191204) do
     t.time "start_time"
     t.time "end_time"
     t.bigint "space_id"
-    t.bigint "day_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["day_id"], name: "index_space_availability_timings_on_day_id"
     t.index ["space_id"], name: "index_space_availability_timings_on_space_id"
+    t.index ["user_id"], name: "index_space_availability_timings_on_user_id"
   end
 
   create_table "space_available_days", force: :cascade do |t|
@@ -179,7 +174,7 @@ ActiveRecord::Schema.define(version: 2019_07_12_191204) do
   add_foreign_key "booking_records", "users"
   add_foreign_key "space_addresses", "spaces"
   add_foreign_key "space_availability_timings", "spaces"
-  add_foreign_key "space_availability_timings", "users", column: "day_id"
+  add_foreign_key "space_availability_timings", "users"
   add_foreign_key "space_available_days", "spaces"
   add_foreign_key "space_images", "spaces"
   add_foreign_key "space_locations", "spaces"
