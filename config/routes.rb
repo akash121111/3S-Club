@@ -16,7 +16,10 @@ Rails.application.routes.draw do
  
   # get '/search', to: 'userbooking#search'
 
-  root to:'user#log_in'
+  root to:'user#sign_up'
+  get '/kat_gaya', to:'user#kat_gaya'
+  get 'go', to:'user#kat_gaya'
+
        
   #root to:'user#l 
   get '/searching', to: 'searchings#index'

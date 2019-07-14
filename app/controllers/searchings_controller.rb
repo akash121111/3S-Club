@@ -16,15 +16,17 @@ finddayid ={ "Monday" => "1", "Tuesday" => "2", "Wednesday" => "3" , "Thursday" 
     @findsearchaddresspid=@space_addresses.pluck(:space_id)
     @findsearchdatepid=SpaceAvailableDay.searchday(@a)
     @findcommonsearch= @findsearchaddresspid & @findsearchdatepid
-    @aftersearchbydayandaddress=SpaceAddress.find(@findcommonsearch)
+   @aftersearchbydayandaddress=SpaceAddress.find(@findcommonsearch)
 
-x = @aftersearchbydayandaddress.pluck(:space_id).length
-i=0
-while i < x
-  @p=@aftersearchbydayandaddress.pluck(:space_id)[i]
-  @l=SpaceAvailabilityTiming.se(@p,@k)
-  i=i+1
-end
+
+# x = @aftersearchbydayandaddress.pluck(:space_id).length
+# i=0
+
+# while i < x
+#   @p=@aftersearchbydayandaddress.pluck(:space_id)[i]
+#   @l=SpaceAvailabilityTiming.se(@p,@k)
+#   i=i+1
+# end
 
    
     @hash = Gmaps4rails.build_markers(@aftersearchbydayandaddress) do |r, marker|

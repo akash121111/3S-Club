@@ -24,19 +24,18 @@
   <div class="row">
     <div class="col-sm">
      <%= form_tag(searching_path, {:method => 'get'}) do %>
-<div class="input-group active-pink-3 active-pink-4 mb-4 col-sm-3">
- <div class="input-group-prepend">
-    <span class="input-group-text" id="addon-wrapping"><%= image_tag("baseline_search_black_18dp.png", :alt => "rss feed") %></span>
-  </div>
-  <%= text_field_tag(:search, params[:search], placeholder: "Enter a City name") %>
-  <%= date_field_tag(:date, params[:date], placeholder: "Enter a date") %>
-  
-</div>
+              <div class="input-group mb-3">
+              <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">@</span>
+              
+              <%= text_field_tag(:search, params[:search], placeholder: "Enter a City name") %>
+              <%= date_field_tag(:date, params[:date], placeholder: "Enter a date",:class=>"ml-3" )%>
+             <%= time_field_tag(:time, params[:time], placeholder: "Enter a date",:class=>"ml-3" )%>
+              <%= submit_tag('Search', :name => nil,:class=>"ml-5") %>
+               </div>
+               </div>
 
-    
 
-
-    <%= submit_tag('Search', :name => nil) %>
 <% end %>
     </div>
     
@@ -45,98 +44,23 @@
     <div class="col-sm-4">
      <h1>Routers</h1>
 <ul class="list-group" style="height:800px; overflow:scroll"> 
+<% @aftersearchbydayandaddress.each do |s| %>
 <li class="list-group-item">
 <div class="media">
+
 <%= image_tag 'location11.jpg',:class =>"media-object media-left" ,size:"100x100"%>
 <div class="media-body media-right">
-ghfghggghffhg
-ggfhhfgfghfgh
-</div>
-</div>
-</li>
-<li class="list-group-item">
-<div class="media">
-<%= image_tag 'location11.jpg',:class =>"media-object media-left" ,size:"100x100"%>
-<div class="media-body media-right">
-ghfghggghffhg
-ggfhhfgfghfgh
+<%= s.city %>
 <br>
-<button type="button" class="btn btn-danger" style="float: right">Book Now</button>
-</div>
-</div>
+<%= s.latitude %>
+<br>
+<%= s.longitude %>
+
+
+   
+
 </li>
-<li class="list-group-item">
-<div class="media">
-<%= image_tag 'location11.jpg',:class =>"media-object media-left" ,size:"100x100"%>
-<div class="media-body media-right">
-ghfghggghffhg
-ggfhhfgfghfgh
-</div>
-</div>
-</li>
-<li class="list-group-item">
-<div class="media">
-<%= image_tag 'location11.jpg',:class =>"media-object media-left" ,size:"100x100"%>
-<div class="media-body media-right">
-ghfghggghffhg
-ggfhhfgfghfgh
-</div>
-</div>
-</li>
-<li class="list-group-item">
-<div class="media">
-<%= image_tag 'location11.jpg',:class =>"media-object media-left" ,size:"100x100"%>
-<div class="media-body media-right">
-ghfghggghffhg
-ggfhhfgfghfgh
-</div>
-</div>
-</li>
-<li class="list-group-item">
-<div class="media">
-<%= image_tag 'location11.jpg',:class =>"media-object media-left" ,size:"100x100"%>
-<div class="media-body media-right">
-ghfghggghffhg
-ggfhhfgfghfgh
-</div>
-</div>
-</li>
-<li class="list-group-item">
-<div class="media">
-<%= image_tag 'location11.jpg',:class =>"media-object media-left" ,size:"100x100"%>
-<div class="media-body media-right">
-ghfghggghffhg
-ggfhhfgfghfgh
-</div>
-</div>
-</li>
-<li class="list-group-item">
-<div class="media">
-<%= image_tag 'location11.jpg',:class =>"media-object media-left" ,size:"100x100"%>
-<div class="media-body media-right">
-ghfghggghffhg
-ggfhhfgfghfgh
-</div>
-</div>
-</li>
-<li class="list-group-item">
-<div class="media">
-<%= image_tag 'location11.jpg',:class =>"media-object media-left" ,size:"100x100"%>
-<div class="media-body media-right">
-ghfghggghffhg
-ggfhhfgfghfgh
-</div>
-</div>
-</li>
-<li class="list-group-item">
-<div class="media">
-<%= image_tag 'location11.jpg',:class =>"media-object media-left" ,size:"100x100"%>
-<div class="media-body media-right">
-ghfghggghffhg
-ggfhhfgfghfgh
-</div>
-</div>
-</li>
+<% end %> 
 </ul>
     </div>
     <div class="col-sm-8">
@@ -151,9 +75,7 @@ ggfhhfgfghfgh
   </div>
   </div>
   </div>
-  <%#
-
-%>
+  
        
 
 
