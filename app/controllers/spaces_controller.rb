@@ -32,6 +32,7 @@ class SpacesController < ApplicationController
         @space.number_of_toilets=params[:space][:number_of_toilets]
         @space.nearby_landmark=params[:space][:nearby_landmark]
         @space.user_id=session[:user_id]
+        if @space.save 
         @space_address=SpaceAddress.new
         @space_address.house_number=params[:space][:space_address][:house_number]
         @space_address.street=params[:space][:space_address][:street]
@@ -40,22 +41,21 @@ class SpacesController < ApplicationController
         @space_address.state=params[:space][:space_address][:state]
         @space_address.latitude=params[:space][:space_address][:latitude]
         @space_address.longitude=params[:space][:space_address][:longitude]
-        @space_address.space_id=Space.last.id+1
+        @space_address.space_id=@space.id
         
         week_days={ "monday"=>1,"tuesday"=>2,"wednesday"=>3 , "thursday"=>4  , "friday"=>5,"saturday"=>6, "sunday"=>7}
       
         @space_available_day=SpaceAvailableDay.new
-        @space_availability_timing=SpaceAvailabilityTiming.new
-        byebug
+        
         week_days.each do |key,value|
-         
+            byebug
+            @space_availability_timing=SpaceAvailabilityTiming.new
             @space_available_day[key]=params[:space][:space_available_day][key]
-            @space_available_day[:space_id]=Space.last.id+1
+            @space_available_day[:space_id]=@space.id
             @space_availability_timing[:start_time]=params[:space][:start_time][key]
             @space_availability_timing[:end_time]=params[:space][:end_time][key]
-            @space_availability_timing[:space_id]=Space.last.id+1
+            @space_availability_timing[:space_id]=@space.id
             @space_availability_timing[:day_id]=value
-            byebug
             @space_availability_timing.save
         end
         
@@ -63,7 +63,7 @@ class SpacesController < ApplicationController
         @space_address.save 
         
        @space_available_day.save
-        if @space.save 
+        
             redirect_to '/owner_dashboard'
         else
 
