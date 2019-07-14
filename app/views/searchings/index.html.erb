@@ -63,24 +63,21 @@
 
 
 i=0
- while i < x
+
  
  if(MemberSubscription.where("space_id = ? and user_id=?",@m[i],@y).blank?)
       %>
      <button type="button" class="btn btn-danger" style="margin-top: 8px; float: right">Book Now</button>
   <% 
   i=i+1
-  break
+
   else%>
    <button type="button" class="btn btn-danger" style="margin-top: 8px; float: right> Now</button>
    <%
  i=i+1
-   break
-    end %>
-   <%
   
-   end
-   %>
+    end %>
+  
    
 
 </li>
