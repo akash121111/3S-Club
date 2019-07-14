@@ -56,7 +56,23 @@
 <br>
 <%= s.longitude %>
 
+<%
+@y=6
+@m=@aftersearchbydayandaddress.pluck(:space_id)
+ x = @aftersearchbydayandaddress.pluck(:space_id).length
+ i=0
 
+ while i < x
+ if(MemberSubscription.where("space_id = ? and user_id=?",m[i],y))
+      %>
+     <button type="button" class="btn btn-danger" style="margin-top: auto">Book Now</button>
+  <% else%>
+   <button type="button" class="btn btn-danger" style="margin-top: auto"> Now</button>
+   <% end %>
+   <%
+   i=i+1
+   end
+   %>
    
 
 </li>

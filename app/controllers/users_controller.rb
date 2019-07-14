@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
   def index
   end
-def kat_gaya
 
-end
   def sign_up
   end
 

@@ -55,14 +55,12 @@ class UserController < ApplicationController
         if @user.save
            flash[:success] ="User was Sucessfully created"
             #flash[:success] = "Hey #{@user.username}, welcome"
-        redirect_to '/kat_gaya'
+        redirect_to '/login_user'
         else
           render '/sign_up_user'
         end
 	end
-def kat_gaya
 
-end
 	def user_params
       #params[:user]=params
       params.permit(:email, :password, :password_confirmation)

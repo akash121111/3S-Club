@@ -16,6 +16,7 @@ finddayid ={ "Monday" => "1", "Tuesday" => "2", "Wednesday" => "3" , "Thursday" 
     @findsearchaddresspid=@space_addresses.pluck(:space_id)
     @findsearchdatepid=SpaceAvailableDay.searchday(@a)
     @findcommonsearch= @findsearchaddresspid & @findsearchdatepid
+  
    @aftersearchbydayandaddress=SpaceAddress.find(@findcommonsearch)
 
 
