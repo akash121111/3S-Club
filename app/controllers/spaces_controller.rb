@@ -16,8 +16,9 @@ class SpacesController < ApplicationController
 
     def update
         @space_details=User.find(session[:user_id]).spaces
+        @space_detail=@space_details.find(params[:id])
       
-        if @space_details.first.update(space_details_params)
+        if @space_detail.update(space_details_params)
           redirect_to edit_space_path     
         else
           redirect_to edit_space_path  
@@ -25,7 +26,7 @@ class SpacesController < ApplicationController
     end
 
     def create
-        @space=Space.new
+        @space=Space.new(space_details_params)
         @space.size=params[:space][:size]
         @space.dimensions=params[:space][:dimensions]
         @space.floor_number=params[:space][:floor_number]
@@ -63,9 +64,9 @@ class SpacesController < ApplicationController
         
             @space_available_day.save
         
-            redirect_to '/owner_dashboard'
+            redirect_to '/spaces/new'
         else
-            redirect_to '/owner_dashboard'
+            redirect_to '/spaces/new'
         end
         
     end
@@ -81,9 +82,9 @@ class SpacesController < ApplicationController
             b.destroy
         end
         if @space.destroy
-            redirect_to edit_user_detail_path
+            redirect_to '/user_details/'+@user_detail.id.to_s+'/edit'
         else
-            redirect_to edit_user_detail_path 
+            redirect_to '/user_details/'+@user_detail.id.to_s+'/edit' 
         end
 
     end
@@ -93,7 +94,7 @@ class SpacesController < ApplicationController
    
 
     def space_details_params
-        params.require(:space).permit(:space_address,:size,:dimensions,:floor_number,:number_of_toilets,:nearby_landmark, :images)
+        params.require(:space).permit(:space_address,:size,:dimensions,:floor_number,:number_of_toilets,:nearby_landmark, images: [])
     end
 
     def user_details_params
@@ -104,6 +105,7 @@ class SpacesController < ApplicationController
         @user=User.find(session[:user_id])
         @user_detail=@user.user_detail
         @space=Space.find(params[:id])
+        @space_address=@space.space_address
     end
 
 end

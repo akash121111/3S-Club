@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
         session[:user_id]= user.id
         #flash[:success] = "Login successful"
         
-        redirect_to '/owner_dashboard' , notice: "Logged in"
+        redirect_to '/spaces/new' , notice: "Logged in"
        else
         flash.now[:alert] = "Username or Password incorrect"
         redirect_to '/login'

@@ -8,12 +8,10 @@ class SpaceAddressesController < ApplicationController
 
     def update
         @space_address=SpaceAddress.find(params[:id])
-
-      
         if @space_address.update(space_address_params)
-          redirect_to '/spaces/1/edit'     
+          redirect_to '/spaces/'+@space_address.space.id.to_s+'/edit'    
         else
-          redirect_to '/spaces/1/edit' 
+          redirect_to '/spaces/'+@space_address.space.id.to_s+'/edit' 
         end
     end
 
