@@ -31,6 +31,7 @@
               <%= text_field_tag(:search, params[:search], placeholder: "Enter a City name") %>
               <%= date_field_tag(:date, params[:date], placeholder: "Enter a date",:class=>"ml-3" )%>
              <%= time_field_tag(:time, params[:time], placeholder: "Enter a date",:class=>"ml-3" )%>
+             <%= time_field_tag(:time, params[:time], placeholder: "Enter a date",:class=>"ml-3" )%>
               <%= submit_tag('Search', :name => nil,:class=>"ml-5") %>
                </div>
                </div>
@@ -44,8 +45,10 @@
     <div class="col-sm-4">
      <h1>List View</h1>
 <ul class="list-group" style="height:800px; overflow:scroll"> 
-<% @aftersearchbydayandaddress.each do |s| %>
-byebug
+<%
+i=0 
+@aftersearchbydayandaddress.each do |s| %>
+
 <li class="list-group-item">
 <div class="media">
 
@@ -58,27 +61,29 @@ byebug
 <%= s.longitude %>
 
 <%
-@y=1
-@m=@aftersearchbydayandaddress.pluck(:space_id)
- x = @aftersearchbydayandaddress.pluck(:space_id).length
+  @user_id=1
+  @m=@aftersearchbydayandaddress.pluck(:space_id)
 
-
-i=0
+  
 
  
- if(MemberSubscription.where("space_id = ? and user_id=?",@m[i],@y).blank?)
-      %>
-     <button type="button" class="btn btn-danger" style="margin-top: 8px; float: right">Book Now</button>
-  <% 
-  i=i+1
-
-  else%>
-   <button type="button" class="btn btn-danger" style="margin-top: 8px; float: right> Now</button>
-   <%
+ if(MemberSubscription.where("space_id = ? and user_id=?",@m[i],@user_id).blank?) %>
+     <%= link_to 'Gat a membership', "membershipindex?space_id=#{@m[i]}&user_id=#{@user_id}" %>
+     <%= "@m[i] #{@m[i]}"%>
+     <%= "@user_id #{@user_id}"%>
+     <%
+       i=i+1
+ 
+%><%
+  else
+    %>
+   <%= link_to 'book now', "membershipindex?space_id=#{@m[i]}&user_id=#{@user_id}" %>
+<%
  i=i+1
   
-    end %>
-  
+  %><%
+end 
+%>
    
 
 </li>
