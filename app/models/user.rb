@@ -4,8 +4,13 @@ class User < ApplicationRecord
     has_many:spaces
 
 	has_secure_password
-	validates_confirmation_of :password
-	validates_presence_of :password, on: :create
-validates :email, uniqueness: true, presence: true
+	
+    validates_presence_of   :password,:length => {:within => 3..15}, :message => 'Please Enter Your Password.',on: :create
+
+	validates_confirmation_of :password,:message => 'Please Enter Your Password.',on: :create
+	
+    #validates_presence_of :password, on: :create
+    validates :email, :presence=>true, uniqueness:true, :message => ' email already exist.'
+   
 	
 end
