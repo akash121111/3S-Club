@@ -1,6 +1,11 @@
 class SearchingsController < ApplicationController
     def index
 
+@start_time=params['start_time']
+@end_time=params['end_time']
+
+
+
       if params.has_key?(:date) 
   @a=DateTime.parse(params[:date]).to_date.strftime('%A')
 else 
@@ -48,9 +53,35 @@ finddayid ={ "Monday" => "1", "Tuesday" => "2", "Wednesday" => "3" , "Thursday" 
   end
 
 
+
+  def booking
+    
+    @space_id=params['space_id']
+    @user_id=params['user_id']
+    @booking_time=params['booking_time_calculate']
+   
+     @booking_record = BookingRecord.new(booking_params)
+    if  @booking_record.save
+        flash[:success] ="Booking was Sucessfully"
+     
+        
+    else
+        redirect_to 'searching_path' 
+    end
+  
+
+  end
+
+
     private
 
     def article_params
-      params.require(:space_addresses).permit(:search, :date)
+      params.require(:space_addresses).permit(:search, :date,:start_time,:end_time)
+      end
+      def booking_params
+      params.permit(:space_id, :user_id,:booking_time)
       end
 end
+
+
+

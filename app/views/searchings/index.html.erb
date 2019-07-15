@@ -30,8 +30,8 @@
               
               <%= text_field_tag(:search, params[:search], placeholder: "Enter a City name") %>
               <%= date_field_tag(:date, params[:date], placeholder: "Enter a date",:class=>"ml-3" )%>
-             <%= time_field_tag(:time, params[:time], placeholder: "Enter a date",:class=>"ml-3" )%>
-             <%= time_field_tag(:time, params[:time], placeholder: "Enter a date",:class=>"ml-3" )%>
+             <%= time_field_tag(:start_time, params[:start_time], placeholder: "Enter a date",:class=>"ml-3" )%>
+             <%= time_field_tag(:end_time, params[:end_time], placeholder: "Enter a date",:class=>"ml-3" )%>
               <%= submit_tag('Search', :name => nil,:class=>"ml-5") %>
                </div>
                </div>
@@ -61,23 +61,27 @@ i=0
 <%= s.longitude %>
 
 <%
+
+@start_time=params['start_time']
+@end_time=params['end_time']
+
   @user_id=1
   @m=@aftersearchbydayandaddress.pluck(:space_id)
+  @booking_time_calculate=(Time.parse(params['end_time'])  - Time.parse(params['start_time'])) /1.hour
 
   
 
  
  if(MemberSubscription.where("space_id = ? and user_id=?",@m[i],@user_id).blank?) %>
-     <%= link_to 'Gat a membership', "membershipindex?space_id=#{@m[i]}&user_id=#{@user_id}" %>
-     <%= "@m[i] #{@m[i]}"%>
-     <%= "@user_id #{@user_id}"%>
+     <%= link_to 'Gat a membership', "membershipindex?space_id=#{@m[i]}&user_id=#{@user_id}&booking_time=#{@booking_time_calculate}" %>
+  
      <%
        i=i+1
  
 %><%
   else
     %>
-   <%= link_to 'book now', "membershipindex?space_id=#{@m[i]}&user_id=#{@user_id}" %>
+   <%= link_to 'book now', "booking?space_id=#{@m[i]}&user_id=#{@user_id}&booking_time=#{@booking_time_calculate}" %>
 <%
  i=i+1
   
