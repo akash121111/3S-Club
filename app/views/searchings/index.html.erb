@@ -81,7 +81,7 @@ i=0
 %><%
   else
     %>
-   <%= link_to 'book now', "booking?space_id=#{@m[i]}&user_id=#{@user_id}&booking_time=#{@booking_time_calculate}" %>
+   <%= link_to 'book now', "booking?space_id=#{@m[i]}&user_id=#{@user_id}&booking_time=#{@booking_time_calculate}&start_time=#{@start_time}&end_time=#{end_time}" %>
 <%
  i=i+1
   

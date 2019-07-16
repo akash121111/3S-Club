@@ -58,11 +58,30 @@ finddayid ={ "Monday" => "1", "Tuesday" => "2", "Wednesday" => "3" , "Thursday" 
     
     @space_id=params['space_id']
     @user_id=params['user_id']
-    @booking_time=params['booking_time_calculate']
+    @booking_time=params['booking_time']
+    @start_time=params['start_time']
+    @end_time=params['end_time']
    
      @booking_record = BookingRecord.new(booking_params)
     if  @booking_record.save
-        flash[:success] ="Booking was Sucessfully"
+      byebug
+
+        @check_Condition=MemberSubscription.find_by("space_id = ? and user_id=?",@space_id,@user_id)
+        
+
+      @change_remain_time_wallet=@check_Condition.try(:time_wallet)
+      @new_remain_time_wallet=@change_remain_time_wallet-@booking_time.to_f
+      @check_Condition.time_wallet=@new_remain_time_wallet
+   
+      if(@check_Condition.save)
+         flash[:success] ="Booking was Sucessfully"
+      end
+
+     
+     
+    
+
+       
      
         
     else
@@ -79,7 +98,7 @@ finddayid ={ "Monday" => "1", "Tuesday" => "2", "Wednesday" => "3" , "Thursday" 
       params.require(:space_addresses).permit(:search, :date,:start_time,:end_time)
       end
       def booking_params
-      params.permit(:space_id, :user_id,:booking_time)
+      params.permit(:space_id, :user_id,:start_time,:end_time)
       end
 end
 
