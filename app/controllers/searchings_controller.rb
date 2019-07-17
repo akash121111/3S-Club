@@ -6,17 +6,17 @@ class SearchingsController < ApplicationController
 
 
       if params.has_key?(:booking_date) 
-  @a=DateTime.parse(params[:booking_date]).to_date.strftime('%A')
+  @a=DateTime.parse(params[:booking_date]).to_date.strftime('%A').downcase
 else 
   date = DateTime.now
 end
 
-finddayid ={ "Monday" => "1", "Tuesday" => "2", "Wednesday" => "3" , "Thursday" => "4", "Friday" => "5", "Saturday" => "6", "Sunday" => "7"}
+finddayid ={ "monday" => "1", "tuesday" => "2", "wednesday" => "3" , "thursday" => "4", "friday" => "5", "saturday" => "6", "sunday" => "7"}
 
 @k=finddayid[@a].to_i
 
 
-    @space_addresses = SpaceAddress.search(params[:search])
+    @space_addresses = SpaceAddress.search(params[:search].downcase)
     @findsearchaddresspid=@space_addresses.pluck(:space_id)
     @findsearchdatepid=SpaceAvailableDay.searchday(@a)
     @findcommonsearch= @findsearchaddresspid & @findsearchdatepid
