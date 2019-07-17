@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources:users
   resources:user_details
   resources:space_addresses
+  resources:space_available_days
   
    
 

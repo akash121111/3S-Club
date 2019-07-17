@@ -5,6 +5,8 @@ class SpacesController < ApplicationController
     end
 
     def edit
+        @week_days={ "monday"=>1,"tuesday"=>2,"wednesday"=>3 , "thursday"=>4  , "friday"=>5,"saturday"=>6, "sunday"=>7}
+
         @user_detail=User.find(session[:user_id])
         @space=Space.find(params[:id])
     end
@@ -15,6 +17,7 @@ class SpacesController < ApplicationController
     end
 
     def update
+        
         @space_details=User.find(session[:user_id]).spaces
         @space_detail=@space_details.find(params[:id])
       
@@ -44,11 +47,11 @@ class SpacesController < ApplicationController
             @space_address.longitude=params[:space][:space_address][:longitude]
             @space_address.space_id=@space.id
             
-            week_days={ "monday"=>1,"tuesday"=>2,"wednesday"=>3 , "thursday"=>4  , "friday"=>5,"saturday"=>6, "sunday"=>7}
+            @week_days={ "monday"=>1,"tuesday"=>2,"wednesday"=>3 , "thursday"=>4  , "friday"=>5,"saturday"=>6, "sunday"=>7}
         
             @space_available_day=SpaceAvailableDay.new
             
-            week_days.each do |key,value|
+            @week_days.each do |key,value|
                 @space_availability_timing=SpaceAvailabilityTiming.new
                 @space_available_day[key]=params[:space][:space_available_day][key]
                 @space_available_day[:space_id]=@space.id
