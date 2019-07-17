@@ -1,4 +1,6 @@
 class SearchingsController < ApplicationController
+
+
   def index
 
 
@@ -7,11 +9,13 @@ class SearchingsController < ApplicationController
           else 
             date = DateTime.now
           end
+       
           @start_time=params['start_time']
           @end_time=params['end_time']
-          @b=DateTime.parse(@start_time).to_time.strftime('%T')
-          @c=DateTime.parse(@end_time).to_time.strftime('%T')
-
+          if @start_time && @end_time
+            @b=DateTime.parse(@start_time).to_time.strftime('%T')
+            @c=DateTime.parse(@end_time).to_time.strftime('%T')
+          
           finddayid ={ "monday" => "1", "tuesday" => "2", "wednesday" => "3" , "thursday" => "4", "friday" => "5", "saturday" => "6", "sunday" => "7"}
 
           @k=finddayid[@a].to_i
@@ -26,24 +30,13 @@ class SearchingsController < ApplicationController
             
           @aftersearchbydayandaddress=SpaceAddress.find(@findcommonsearch)
             
-  
-
-
-# x = @aftersearchbydayandaddress.pluck(:space_id).length
-# i=0
-
-# while i < x
-#   @p=@aftersearchbydayandaddress.pluck(:space_id)[i]
-#   @l=SpaceAvailabilityTiming.se(@p,@k)
-#   i=i+1
-# end
-
+          end
    
-    @hash = Gmaps4rails.build_markers(@aftersearchbydayandaddress) do |r, marker|
-      marker.lat r.latitude
-      marker.lng r.longitude
-      marker.infowindow r.city
-    end
+          @hash = Gmaps4rails.build_markers(@aftersearchbydayandaddress) do |r, marker|
+          marker.lat r.latitude
+          marker.lng r.longitude
+          marker.infowindow r.city
+          end
     end
   
 

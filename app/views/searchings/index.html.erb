@@ -46,6 +46,7 @@
      <h1>List View</h1>
 <ul class="list-group" style="height:800px; overflow:scroll"> 
 <%
+ if @start_time && @end_time
 i=0 
 @aftersearchbydayandaddress.each do |s| %>
 
@@ -59,7 +60,7 @@ i=0
 <%= s.latitude %>
 <br>
 <%= s.longitude %>
-
+ 
 <%
 
 @start_time=params['start_time']
@@ -91,7 +92,9 @@ end
    
 
 </li>
-<% end %> 
+<% 
+end
+end %> 
 </ul>
     </div>
     <div class="col-sm-8">
