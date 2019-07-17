@@ -91,7 +91,7 @@ class SearchingsController < ApplicationController
                         end
                       
 
-                  end
+     end
 
 
                   private
@@ -102,7 +102,7 @@ class SearchingsController < ApplicationController
                   def booking_params
                   params.permit(:space_id, :user_id,:booking_time,:booking_date,:start_time,:end_time)
                   end
-     end
+end
   
 
 
