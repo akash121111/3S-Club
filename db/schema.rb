@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_15_050408) do
+ActiveRecord::Schema.define(version: 2019_07_16_111724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,14 +53,14 @@ ActiveRecord::Schema.define(version: 2019_07_15_050408) do
 
   create_table "member_subscriptions", force: :cascade do |t|
     t.bigint "membership_plans_id"
-    t.bigint "users_id"
-    t.bigint "spaces_id"
+    t.bigint "user_id"
+    t.bigint "space_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "time_wallet"
     t.index ["membership_plans_id"], name: "index_member_subscriptions_on_membership_plans_id"
-    t.index ["spaces_id"], name: "index_member_subscriptions_on_spaces_id"
-    t.index ["users_id"], name: "index_member_subscriptions_on_users_id"
+    t.index ["space_id"], name: "index_member_subscriptions_on_space_id"
+    t.index ["user_id"], name: "index_member_subscriptions_on_user_id"
   end
 
   create_table "membership_plans", force: :cascade do |t|
@@ -93,10 +93,9 @@ ActiveRecord::Schema.define(version: 2019_07_15_050408) do
     t.time "start_time"
     t.time "end_time"
     t.bigint "space_id"
-    t.bigint "day_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["day_id"], name: "index_space_availability_timings_on_day_id"
+    t.bigint "user_id"
     t.index ["space_id"], name: "index_space_availability_timings_on_space_id"
   end
 
@@ -151,8 +150,8 @@ ActiveRecord::Schema.define(version: 2019_07_15_050408) do
     t.string "about_user"
     t.string "city"
     t.string "college"
-    t.integer "phone_number"
-    t.integer "mobile_number"
+    t.string "phone_number"
+    t.string "mobile_number"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -171,6 +170,9 @@ ActiveRecord::Schema.define(version: 2019_07_15_050408) do
     t.bigint "user_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.string "auth_token"
     t.index ["user_type_id"], name: "index_users_on_user_type_id"
   end
 
@@ -179,7 +181,6 @@ ActiveRecord::Schema.define(version: 2019_07_15_050408) do
   add_foreign_key "booking_records", "users"
   add_foreign_key "space_addresses", "spaces"
   add_foreign_key "space_availability_timings", "spaces"
-  add_foreign_key "space_availability_timings", "users", column: "day_id"
   add_foreign_key "space_available_days", "spaces"
   add_foreign_key "space_images", "spaces"
   add_foreign_key "space_locations", "spaces"

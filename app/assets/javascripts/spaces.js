@@ -1,24 +1,38 @@
-$(document).ready(function(){
-   $(".space-detail").css("display","none");
+document.addEventListener("turbolinks:load",function(){
+
+
+
+//$(document).ready(function(){
+  // $(".space-detail").css("display","none");
+   
    $("#latitude").css("display","none");
    $("#longitude").css("display","none");
-   $(".form-control").attr('readonly','true');
+   $("#latitude2").css("display","none");
+   $("#longitude2").css("display","none");
+   //$(".form-control").attr('readonly','true');
 
     $('#edit-option').click(function(){
-        $(".form-control").prop('readonly','false');
+       //$(".form-control").prop('readonly','false');
     });
-
+  
+//});
+    
+// function initMap(){
+//     var mycoords =new google.maps.LatLng(28.5355, -77.3910 )
+//     var options={
+      
+//         zoom:16,
+//         center:mycoords
+//     }
     
 
-    $('.card-footer').click(function(){
-        $(".space-detail").css("display","block");
-    });
-});
-    
-
+//     //Initialize the map
+//     var map=new google.maps.Map(document.getElementById('create-map'),options);
+// }
 
 function initMap(lat,lng){
-    var mycoords =new google.maps.LatLng(lat,lng)
+    
+    var mycoords =new google.maps.LatLng(28.5355, -77.3910)
     //Initial options of map
     var options={
       
@@ -69,3 +83,7 @@ function initMap(lat,lng){
 
 }
 
+initMap();
+
+
+});

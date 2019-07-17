@@ -43,23 +43,22 @@
                                         <%= f.text_field :state, class: 'form-control'%>
                                     </div>
                                      <div class="form-group">                                   
-                                        <%= f.text_field :latitude, class: 'form-control', id:'latitude'%>
+                                        <%= f.text_field :latitude, class: 'form-control', id:'latitude2'%>
                                     </div>
                                     <div class="form-group">
-                                        <%= f.text_field :longitude, class: 'form-control', id:'longitude'%>
+                                        <%= f.text_field :longitude, class: 'form-control', id:'longitude2'%>
                                     </div>
-                                   
 
-                                    <h3>Drag marker to get Address</h3>
-                                    <% provide :head_tags do %>
+                                     <% provide :head_tags do %>
                                     <script>
-                                    document.addEventListener("DOMContentLoaded", function(){
-                                        initMap(36.7783,-119.4179);
+                                    document.addEventListener("turbolinks:load", function(){
+                                       // initMap();
                                     });
                                     </script>
                                     <% end %>
-                                    
 
+                                    <h3>Drag marker to get Address</h3>
+       
                                     <div id='map'>
                                     </div><br>
                                     
@@ -97,7 +96,7 @@
 
                                     <div class="container-fluid">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 image-heading">
                                                 <h3>Images</h3>
                                             </div>
                                             <div class="col-md-6">

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources:user_details
   resources:space_addresses
   
-  root to:'user#log_in'
+  #root to:'user#log_in'
      
   get '/searching', to: 'searchings#index'
   get 'user/index'
@@ -31,6 +31,7 @@ get '/searching', to: 'searchings#index'
   get '/new', to:'user#new' 
  
 	resources:user
+  resources:password_resets
   root to:'user#index'
   delete 'log_out' , to:'user#destroy'
   get 'sign_up_user', to:'user#sign_up'

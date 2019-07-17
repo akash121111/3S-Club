@@ -17,10 +17,18 @@ class SessionsController < ApplicationController
       
        if user && user.authenticate(params[:session][:password_digest])
         session[:user_id]= user.id
+        user_type=user.user_type_id
+
+        if user_type==1
+          redirect_to '/dashboard' , notice: "Logged in"
+        else
+          redirect_to '/owner_dashboard' , notice: "Logged in"
+          
+        end
         #flash[:success] = "Login successful"
-        redirect_to '/dashboard' , notice: "Logged in"
+        
        else
-        flash.now[:alert] = "Username or Password incorrect"
+        flash[:success] = "Username or Password incorrect"
         redirect_to '/login_user'
        end
   end
