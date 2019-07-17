@@ -38,6 +38,11 @@ class MemberDashboardController < ApplicationController
     end
   end
 
+  def bookingdetail
+    @user=User.all
+
+  end
+
 
   
   def userdetail_params

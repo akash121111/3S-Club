@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'member_dashboard#dashboard'
   post 'dashboard', to: 'member_dashboard#update'
   post 'memberdetail', to: 'member_dashboard#create'
-  
   get 'profile',to: 'member_dashboard#profile'
+  get 'booking',to: 'member_dashboard#bookingdetail'
   
-  get 'member_dashboard/show'
+ 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources:spaces
   resources:users
