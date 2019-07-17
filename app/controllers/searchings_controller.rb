@@ -3,6 +3,8 @@ class SearchingsController < ApplicationController
 
 @start_time=params['start_time']
 @end_time=params['end_time']
+@b=DateTime.parse(@start_time).to_time.strftime('%T')
+@c=DateTime.parse(@end_time).to_time.strftime('%T')
 
 
       if params.has_key?(:booking_date) 
@@ -19,9 +21,13 @@ finddayid ={ "monday" => "1", "tuesday" => "2", "wednesday" => "3" , "thursday" 
     @space_addresses = SpaceAddress.search(params[:search].downcase)
     @findsearchaddresspid=@space_addresses.pluck(:space_id)
     @findsearchdatepid=SpaceAvailableDay.searchday(@a)
-    @findcommonsearch= @findsearchaddresspid & @findsearchdatepid
+
+    @l=SpaceAvailabilityTiming.se(@k,@b,@c)
+    @findcommonsearch= @findsearchaddresspid & @findsearchdatepid & @l
   
    @aftersearchbydayandaddress=SpaceAddress.find(@findcommonsearch)
+  
+  
 
 
 # x = @aftersearchbydayandaddress.pluck(:space_id).length
