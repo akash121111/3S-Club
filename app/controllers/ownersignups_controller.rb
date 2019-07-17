@@ -1,15 +1,27 @@
 class OwnersignupsController<ApplicationController
    skip_before_action :verify_authenticity_token
+   def show
+    @User = User.find(params[:id])
+     
+   end
+   def new
+    @owner = User.new
+     
+   end
+
   def create
-    
     @owner = User.new(owner_params)
+    if verify_recaptcha(model: @owner) && @owner.save
+      UserMailer.signup_confirmation(@User).deliver
+      
+    end
+    
     if verify_recaptcha(model: @owner) && @owner.save 
     # save post
     #flash[:notice] = "Post successfully created"
-    redirect_to "login_in_owner"
-    else
-      #flash[:"error"] = "Invalid email or password "
-       redirect_to login_in_owner_url
+    redirect_to login, notice: "signed up successfully"
+   
+    
     end
 
   end

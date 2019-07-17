@@ -1,7 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script>
+     var captchResponse = $('#g-recaptcha').val();
+var isCaptchaValidated = false;
+var response = captchResponse.getResponse();
+if(response.length == 0) {
+    isCaptchaValidated = false;
+    toast('Please verify that you are a Human.');
+} else {
+    isCaptchaValidated = true;
+}
+
+
+if (isCaptchaValidated ) {
+    //you can now submit your form
+}
+
+    </script>
      <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+     <script type="text/javascript">
+      var onloadCallback = function() {
+        g-recaptcha.render('html_element', {
+          'sitekey' : '6Le1U60UAAAAAH9tXWTYPvH2PFp7HBY2xReD33kj'
+        });
+      };
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
