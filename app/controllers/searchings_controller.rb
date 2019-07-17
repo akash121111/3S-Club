@@ -1,6 +1,6 @@
 class SearchingsController < ApplicationController
     def index
-byebug
+
       if params.has_key?(:date) 
   @a=DateTime.parse(params[:date]).to_date.strftime('%A')
 else 

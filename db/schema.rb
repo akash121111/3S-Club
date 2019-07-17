@@ -10,16 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_11_155821) do
+ActiveRecord::Schema.define(version: 2019_07_17_063539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "booking_records", force: :cascade do |t|
     t.bigint "space_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "booking_time"
+    t.time "start_time"
+    t.time "end_time"
+    t.string "booking_date"
     t.index ["space_id"], name: "index_booking_records_on_space_id"
     t.index ["user_id"], name: "index_booking_records_on_user_id"
   end
@@ -28,6 +53,25 @@ ActiveRecord::Schema.define(version: 2019_07_11_155821) do
     t.string "day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "member_subscriptions", force: :cascade do |t|
+    t.bigint "membership_plans_id"
+    t.bigint "user_id"
+    t.bigint "space_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "time_wallet"
+    t.index ["membership_plans_id"], name: "index_member_subscriptions_on_membership_plans_id"
+    t.index ["space_id"], name: "index_member_subscriptions_on_space_id"
+    t.index ["user_id"], name: "index_member_subscriptions_on_user_id"
+  end
+
+  create_table "membership_plans", force: :cascade do |t|
+    t.string "plan_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.float "time_alloted"
   end
 
   create_table "searchings", force: :cascade do |t|
@@ -45,6 +89,7 @@ ActiveRecord::Schema.define(version: 2019_07_11_155821) do
     t.bigint "space_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "house_number"
     t.index ["space_id"], name: "index_space_addresses_on_space_id"
   end
 
@@ -52,11 +97,11 @@ ActiveRecord::Schema.define(version: 2019_07_11_155821) do
     t.time "start_time"
     t.time "end_time"
     t.bigint "space_id"
-    t.bigint "user_id"
+    t.bigint "day_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["day_id"], name: "index_space_availability_timings_on_day_id"
     t.index ["space_id"], name: "index_space_availability_timings_on_space_id"
-    t.index ["user_id"], name: "index_space_availability_timings_on_user_id"
   end
 
   create_table "space_available_days", force: :cascade do |t|
@@ -91,7 +136,6 @@ ActiveRecord::Schema.define(version: 2019_07_11_155821) do
   end
 
   create_table "spaces", force: :cascade do |t|
-    t.string "space_address"
     t.string "dimensions"
     t.string "nearby_landmark"
     t.bigint "user_id"
@@ -100,6 +144,7 @@ ActiveRecord::Schema.define(version: 2019_07_11_155821) do
     t.integer "floor_number"
     t.integer "number_of_toilets"
     t.float "size"
+    t.string "space_name"
     t.index ["user_id"], name: "index_spaces_on_user_id"
   end
 
@@ -133,11 +178,12 @@ ActiveRecord::Schema.define(version: 2019_07_11_155821) do
     t.index ["user_type_id"], name: "index_users_on_user_type_id"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "booking_records", "spaces"
   add_foreign_key "booking_records", "users"
   add_foreign_key "space_addresses", "spaces"
   add_foreign_key "space_availability_timings", "spaces"
-  add_foreign_key "space_availability_timings", "users"
+  add_foreign_key "space_availability_timings", "users", column: "day_id"
   add_foreign_key "space_available_days", "spaces"
   add_foreign_key "space_images", "spaces"
   add_foreign_key "space_locations", "spaces"
