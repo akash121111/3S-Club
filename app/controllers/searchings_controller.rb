@@ -5,9 +5,8 @@ class SearchingsController < ApplicationController
 @end_time=params['end_time']
 
 
-
-      if params.has_key?(:date) 
-  @a=DateTime.parse(params[:date]).to_date.strftime('%A')
+      if params.has_key?(:booking_date) 
+  @a=DateTime.parse(params[:booking_date]).to_date.strftime('%A')
 else 
   date = DateTime.now
 end
@@ -55,17 +54,20 @@ finddayid ={ "Monday" => "1", "Tuesday" => "2", "Wednesday" => "3" , "Thursday" 
 
 
   def booking
-    
+  
     @space_id=params['space_id']
     @user_id=params['user_id']
     @booking_time=params['booking_time']
+    @start_time=params['start_time']
+     @end_time=params['end_time']
+     @booking_date=params['booking_date']
    
      @booking_record = BookingRecord.new(booking_params)
     if  @booking_record.save
 
         @check_Condition=MemberSubscription.find_by("space_id = ? and user_id=?",@space_id,@user_id)
         
-byebug
+
       @change_remain_time_wallet=@check_Condition.try(:time_wallet)
       @new_remain_time_wallet=@change_remain_time_wallet-@booking_time.to_f
       @check_Condition.time_wallet=@new_remain_time_wallet
@@ -89,10 +91,10 @@ byebug
     private
 
     def article_params
-      params.require(:space_addresses).permit(:search, :date,:start_time,:end_time)
+      params.require(:space_addresses).permit(:search, :booking_date,:start_time,:end_time)
       end
       def booking_params
-      params.permit(:space_id, :user_id,:booking_time)
+      params.permit(:space_id, :user_id,:booking_time,:booking_date,:start_time,:end_time)
       end
 end
 
