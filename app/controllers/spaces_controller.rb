@@ -9,6 +9,7 @@ class SpacesController < ApplicationController
 
         @user_detail=User.find(session[:user_id])
         @space=Space.find(params[:id])
+        @space_available_day=@space.space_available_day
     end
 
     def new
@@ -98,10 +99,6 @@ class SpacesController < ApplicationController
 
     def space_details_params
         params.require(:space).permit(:space_address,:size,:dimensions,:floor_number,:number_of_toilets,:nearby_landmark, images: [])
-    end
-
-    def user_details_params
-        params.require(:user_details).permit(:first_name, :last_name, :education_details, :about_user, :city, :college, :phone_number, :mobile_number, :user_id)
     end
 
     def set_space

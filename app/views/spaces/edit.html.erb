@@ -143,7 +143,7 @@
                          <h3>Space Availability</h3><br>
                             <div class="row">
                                
-                                <% @space_available_day=@space.space_available_day%>
+                                
                                         
                                                 
                                 <%= form_for @space_available_day do |f| %>
@@ -226,15 +226,19 @@
                                                 
                                                 <div class="col-md-6">
                                                     <div class="container-fluid">
-                                                        <%@space_availability_timings.each do|space_availability_timing|%>
+                                                    
+                                                        <%@space_availability_timings.order(day_id: :asc).each do|space_availability_timing|%>
                                                             <%= f.fields_for space_availability_timing do |s| %>
                                                                 <div class="row">
-                                                                    <div class="col-md-6">
-                                                                        <%=s.time_field :start_time%>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <%=s.time_field :end_time%>
-                                                                    </div>
+                                                                    
+                                                                        <div class="col-md-6">
+                                                                           
+                                                                            <%=s.time_field :start_time ,multiple:true %>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            
+                                                                            <%=s.time_field :end_time ,multiple:true%>
+                                                                        </div>
                                                                     
                                                                 </div>
                                                             <%end%>
