@@ -10,13 +10,13 @@
         <%@space.images.each do |image|%>
            <%if image == @space.images.first%>
 
-              <div class="carousel-item space-img active"> 
-                   <%= image_tag image,class: "space-img" %>
+              <div class="carousel-item upload-space-img active"> 
+                   <%= image_tag image,class: "upload-space-img" %>
                 </div>
 
            <%else%>
-                <div class="carousel-item space-img"> 
-                   <%= image_tag image,class: "space-img" %>
+                <div class="carousel-item upload-space-img"> 
+                   <%= image_tag image,class: "upload-space-img" %>
                 </div>
 
            <%end%>
@@ -26,8 +26,8 @@
 
       <%else%>
 
-            <div class="carousel-item space-img active"> 
-                   <%= image_tag "plus-icon.png",class: "space-img" %>
+            <div class="carousel-item upload-space-img active"> 
+                   <%= image_tag "plus-icon.png",class: "upload-space-img" %>
             </div>
       <%end%>
     

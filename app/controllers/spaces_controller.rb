@@ -1,7 +1,9 @@
 class SpacesController < ApplicationController
     before_action :set_space, only: [:show, :destroy, :edit, :update]
     def index
-        
+        @spaces=Space.where(user_id: session[:user_id])
+        @user=User.find(session[:user_id])
+        @user_detail=@user.user_detail
     end
 
     def edit
@@ -86,7 +88,7 @@ class SpacesController < ApplicationController
             b.destroy
         end
         if @space.destroy
-            redirect_to '/user_details/'+@user_detail.id.to_s+'/edit'
+            redirect_to spaces_path
         else
             redirect_to '/user_details/'+@user_detail.id.to_s+'/edit' 
         end

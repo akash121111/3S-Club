@@ -16,7 +16,7 @@
                         <hr>
                         <div class="nav-item">
                             <a href="/owner_dashboard" class="active">Upcoming Bookings</a>
-                            <a href="/spaces/1/edit">Spaces Details</a>
+                            <%= link_to 'Spaces Details', spaces_path %>
                             <a href="#clients">Booking Record</a>
                             <%= link_to 'Profile', edit_user_detail_path(@user_detail) %>
                             <a href="#contact">Log Out</a>
@@ -96,66 +96,6 @@
                     
                     </div>
                     
-
-
-                    <br><br><br>
-
-                    
-
-
-                    <br><br><br>
-
-
-                    <div class="container-fluid">
-                        <h2>Your Spaces</h2>
-                        <br><br>
-                        <div class="row">
-                            
-                            <%@user.spaces.each do |space|%>
-
-                                <div class="col-md-3">
-                                    <div class="card">
-                                        <div class="card-header"><%= space.space_name%><%= link_to 'Remove', space, id:'del-space-link',method: :delete, data: { confirm: 'Are you sure?' } %>  </div>
-                                        <div class="card-body">
-                                            <% if space.images.attached?%>
-                                                <%space.images.each do |image|%>
-                                                    <%if image == space.images.first%>
-
-                                                        <div class="img"> 
-                                                            <%= image_tag image,class: "img-thumbnail" %>
-                                                        </div>
-                                                    <%end%>
-                                                <%end%>
-
-                                            <%else%>
-                                                <div class="img"> 
-                                                        <%= image_tag "plus-icon.png",class: "img-thumbnail" %>
-                                                </div>
-                                            <%end%>
-                                        </div> 
-                                        <div class="card-footer"><%= link_to 'View Details', edit_space_path(space) %></div>
-                                    </div><br>
-                                </div>
-
-                            <%end%>
-                            
-                            <br><br>
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <div class="card-header">Add More Spaces</div>
-                                    <div class="card-body">
-                                        <a href="/spaces/new">
-                                                <%= image_tag "plus-icon.png",class:'img',id:'add-space-icon' %>
-                                        </a>
-                                    </div> 
-                                    <div class="card-footer">Tap to add more</div>
-                                </div><br>
-
-                            </div>
-
-                        <div>
-
-                    </div>
 
                 </div>
 

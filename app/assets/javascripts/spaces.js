@@ -1,13 +1,13 @@
-//document.addEventListener("turbolinks:load",function(){
+document.addEventListener("turbolinks:load",function(){
 
 
 
-$(document).ready(function(){
+//$(document).ready(function(){
   $("#latitude").css("display","none");
   $("#longitude").css("display","none");
   $("#latitude2").css("display","none");
   $("#longitude2").css("display","none");
-   //$(".form-control").attr('readonly','true');
+  
 
     $('#edit-option').click(function(){
         $(".form-control").prop('readonly','false');
@@ -19,7 +19,7 @@ $(document).ready(function(){
      var mycoords =new google.maps.LatLng(28.5355 , 77.3910 )
      var options={
       
-         zoom:16,
+         zoom:2,
          center:mycoords
      }
 
