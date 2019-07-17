@@ -61,48 +61,48 @@ class SearchingsController < ApplicationController
 
     def booking
   
-    @space_id=params['space_id']
-    @user_id=params['user_id']
-    @booking_time=params['booking_time']
-    @start_time=params['start_time']
-     @end_time=params['end_time']
-     @booking_date=params['booking_date']
-   
-     @booking_record = BookingRecord.new(booking_params)
-            if  @booking_record.save
+                @space_id=params['space_id']
+                @user_id=params['user_id']
+                @booking_time=params['booking_time']
+                @start_time=params['start_time']
+                @end_time=params['end_time']
+                @booking_date=params['booking_date']
+              
+                @booking_record = BookingRecord.new(booking_params)
+                        if  @booking_record.save
 
-                 @check_Condition=MemberSubscription.find_by("space_id = ? and user_id=?",@space_id,@user_id)
-        
+                            @check_Condition=MemberSubscription.find_by("space_id = ? and user_id=?",@space_id,@user_id)
+                    
 
-                @change_remain_time_wallet=@check_Condition.try(:time_wallet)
-                @new_remain_time_wallet=@change_remain_time_wallet-@booking_time.to_f
-                @check_Condition.time_wallet=@new_remain_time_wallet
-            
-                @check_Condition.save
-     
-     
-    
+                            @change_remain_time_wallet=@check_Condition.try(:time_wallet)
+                            @new_remain_time_wallet=@change_remain_time_wallet-@booking_time.to_f
+                            @check_Condition.time_wallet=@new_remain_time_wallet
+                        
+                            @check_Condition.save
+                
+                
+                
 
-              flash[:success] ="Booking was Sucessfully"
-     
-        
-            else
-                redirect_to 'searching_path' 
-            end
-          
+                          flash[:success] ="Booking was Sucessfully"
+                
+                    
+                        else
+                            redirect_to 'searching_path' 
+                        end
+                      
 
-      end
+                  end
 
 
-    private
+                  private
 
-    def article_params
-      params.require(:space_addresses).permit(:search, :booking_date,:start_time,:end_time)
-      end
-      def booking_params
-      params.permit(:space_id, :user_id,:booking_time,:booking_date,:start_time,:end_time)
-      end
-end
+                  def article_params
+                  params.require(:space_addresses).permit(:search, :booking_date,:start_time,:end_time)
+                  end
+                  def booking_params
+                  params.permit(:space_id, :user_id,:booking_time,:booking_date,:start_time,:end_time)
+                  end
+     end
   
 
 
