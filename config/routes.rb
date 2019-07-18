@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'owner_dashboard', to: "ownerdashboard#upcoming_booking"
+  get 'owner_dashboard/no_booking', to: "ownerdashboard#no_booking"
   post 'view_details', to: "ownerdashboard#view_details"
   get 'dashboard', to: 'member_dashboard#dashboard'
   get 'profile',to: 'member_dashboard#profile'

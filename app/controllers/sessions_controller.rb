@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
         redirect_to '/dashboard' , notice: "Logged in"
        else
         flash.now[:alert] = "Username or Password incorrect"
-        redirect_to '/login'
+        redirect_to '/login_user'
        end
   end
 
