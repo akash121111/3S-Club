@@ -178,53 +178,16 @@
                                             </div>
                                             <div class='col-md-3'>
                                                  <% @space_available_day=SpaceAvailableDay.new%>
-                                      
-                                 
                                                 <%= f.fields_for :space_available_day do |s| %>
                                                     <div class="container-fluid">
-                                                        <div class="row">
-                                                            <%= s.label :monday, "Yes", :value => "true"  %>
-                                                            <%= s.radio_button :monday, true %>
-                                                            <%= s.label :monday, "No", :value => "false" %>
-                                                            <%= s.radio_button :monday, false, :checked => true %>
-                                                        </div>
-                                                        <div class="row">
-                                                            <%= s.label :tuesday, "Yes", :value => "true"  %>
-                                                            <%= s.radio_button :tuesday, true %>
-                                                            <%= s.label :tuesday, "No", :value => "false" %>
-                                                            <%= s.radio_button :tuesday, false, :checked => true %>
-                                                        </div>
-                                                        <div class="row">
-                                                            <%= s.label :wednesday, "Yes", :value => "true"  %>
-                                                            <%= s.radio_button :wednesday, true %>
-                                                            <%= s.label :wednesday, "No", :value => "false" %>
-                                                            <%= s.radio_button :wednesday, false, :checked => true %>
-                                                        </div>
-                                                        <div class="row">
-                                                            <%= s.label :thursday, "Yes", :value => "true"  %>
-                                                            <%= s.radio_button :thursday, true %>
-                                                            <%= s.label :thursday, "No", :value => "false" %>
-                                                            <%= s.radio_button :thursday, false, :checked => true %>
-                                                        </div>
-                                                        <div class="row">
-                                                            <%= s.label :friday, "Yes", :value => "true"  %>
-                                                            <%= s.radio_button :friday, true %>
-                                                            <%= s.label :friday, "No", :value => "false" %>
-                                                            <%= s.radio_button :friday, false, :checked => true %>
-                                                        </div>
-                                                        <div class="row">
-                                                            <%= s.label :saturday, "Yes", :value => "true"  %>
-                                                            <%= s.radio_button :saturday, true %>
-                                                            <%= s.label :saturday, "No", :value => "false" %>
-                                                            <%= s.radio_button :saturday, false, :checked => true %>
-                                                        </div>
-                                                        <div class="row">
-                                                            <%= s.label :sunday, "Yes", :value => "true"  %>
-                                                            <%= s.radio_button :sunday, true %>
-                                                            <%= s.label :sunday, "No", :value => "false" %>
-                                                            <%= s.radio_button :sunday, false, :checked => true %>
-                                                        </div>
-                                                    
+                                                        <%@week_days.each do|key,value|%>
+                                                            <div class="row">
+                                                                <%= s.label key, "Yes", :value => "true"  %>
+                                                                <%= s.radio_button key, true %>
+                                                                <%= s.label key, "No", :value => "false" %>
+                                                                <%= s.radio_button key, false, :checked => true %>
+                                                            </div>
+                                                        <%end%>
                                                     </div>
                                                 <%end%>   
                                             </div>
@@ -233,57 +196,23 @@
   
                                             <%= f.fields_for :start_time do |s| %>
                                                 <div class='col-md-3'>
-                                                <div class="container-fluid">
-                                                    <div class="row">
-                                                        <%=s.time_field :monday%>
+                                                    <div class="container-fluid">
+                                                        <%@week_days.each do|key,value|%>
+                                                            <div class="row">
+                                                                <%=s.time_field key%>
+                                                            </div>
+                                                        <%end%>
                                                     </div>
-                                                    <div class="row">
-                                                        <%=s.time_field :tuesday%>
-                                                    </div>
-                                                    <div class="row">
-                                                        <%=s.time_field :wednesday%>
-                                                    </div>
-                                                    <div class="row">
-                                                        <%=s.time_field :thursday%>
-                                                    </div>
-                                                    <div class="row">
-                                                        <%=s.time_field :friday%>
-                                                    </div>
-                                                    <div class="row">
-                                                        <%=s.time_field :saturday%>
-                                                    </div>
-                                                    <div class="row">
-                                                        <%=s.time_field :sunday%>
-                                                    </div>
-                                                
-                                                </div>
                                                 </div>
                                             <%end%>
                                             <%= f.fields_for :end_time do |s| %>
                                                 <div class='col-md-3'>
                                                     <div class="container-fluid">
-                                                        <div class="row">
-                                                            <%=s.time_field :monday%>
-                                                        </div>
-                                                        <div class="row">
-                                                            <%=s.time_field :tuesday%>
-                                                        </div>
-                                                        <div class="row">
-                                                            <%=s.time_field :wednesday%>
-                                                        </div>
-                                                        <div class="row">
-                                                            <%=s.time_field :thursday%>
-                                                        </div>
-                                                        <div class="row">
-                                                            <%=s.time_field :friday%>
-                                                        </div>
-                                                        <div class="row">
-                                                            <%=s.time_field :saturday%>
-                                                        </div>
-                                                        <div class="row">
-                                                            <%=s.time_field :sunday%>
-                                                        </div>
-                                                    
+                                                       <%@week_days.each do|key,value|%>
+                                                            <div class="row">
+                                                                <%=s.time_field key%>
+                                                            </div>
+                                                        <%end%>
                                                     </div>
                                                 </div>
                                             <%end%>
