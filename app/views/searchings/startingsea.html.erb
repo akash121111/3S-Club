@@ -1,0 +1,38 @@
+<div class="container-fluid ab">
+    <div class="row">
+         <div class="col-sm-2">
+            <div class="sidenav text-center">
+                      <%= image_tag("user.png",size:"100x100", :class =>"rounded-circle")%>
+                      <h5>Member' Name</h5><hr>
+                        <a href="/searching">Dashboard</a><hr>
+                        <a href="profile">Profile</a><hr>
+                        <a href="/allmap">Maps</a><hr>
+                        <a href="home">Logout</a><hr>
+            </div>                        
+        </div>
+        <div class="col-sm-10">
+                 <div class="container-fluid">
+                     <div class="row">
+                         <div class="col-sm">
+                               <%= form_tag(searching_path, {:method => 'post'}) do %>
+                                        <div class="input-group mb-3">
+                                       
+                                            <div class="input-group-prepend">
+                                                  <span class="input-group-text" id="basic-addon1">@</span>
+                                    
+                                                  <%= text_field_tag(:search, params[:search], placeholder: "Enter a City name") %>
+                                                  <%= date_field_tag(:booking_date, params[:booking_date], placeholder: "",:class=>"ml-3" )%>
+                                                  <%= time_field_tag(:start_time, params[:start_time], placeholder: "Enter a date",:class=>"ml-3" )%>
+                                                  <%= time_field_tag(:end_time, params[:end_time], placeholder: "Enter a date",:class=>"ml-3" )%>
+                                                  <%= submit_tag('Search', :name => nil,:class=>"ml-5", :class=> "btn btn-primary") %>
+                                            </div>
+                                              
+                                        </div>
+
+
+                               <% end %>
+                           </div>
+                    </div> 
+        </div>
+    </div>
+</div>                          

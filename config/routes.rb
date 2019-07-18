@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get '/searching', to: 'searchings#index'
   get '/allmap', to:'searchings#allmap'
   get '/booking', to:'searchings#booking'
+  get '/startingsea', to:'searching#startingsea'
   
   post 'owner_signup' ,to: 'ownersignups#create' 
   get '/login',to: 'ownersignups#login',as: 'login_in_owner'
