@@ -1,5 +1,7 @@
 class SearchingsController < ApplicationController
+  def startingsea
 
+  end  
 
   def index
 
