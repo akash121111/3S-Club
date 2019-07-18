@@ -9,98 +9,105 @@
 
 <div class="container-fluid ab">
     <div class="row">
-    <div class="col-sm-2">
-     <div class="sidenav text-center">
-            <%= image_tag("user.png",size:"100x100", :class =>"rounded-circle")%>
-            <h5>Member' Name</h5><hr>
-               <a href="/searching">Dashboard</a><hr>
-               <a href="profile">Profile</a><hr>
-               <a href="/allmap">Maps</a><hr>
-               <a href="home">Logout</a><hr>
+         <div class="col-sm-2">
+            <div class="sidenav text-center">
+                      <%= image_tag("user.png",size:"100x100", :class =>"rounded-circle")%>
+                      <h5>Member' Name</h5><hr>
+                        <a href="/searching">Dashboard</a><hr>
+                        <a href="profile">Profile</a><hr>
+                        <a href="/allmap">Maps</a><hr>
+                        <a href="home">Logout</a><hr>
             </div>                        
-    </div>
-    <div class="col-sm-10">
-     <div class="container-fluid">
-  <div class="row">
-    <div class="col-sm">
-     <%= form_tag(searching_path, {:method => 'get'}) do %>
-              <div class="input-group mb-3">
-              <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">@</span>
-              
-              <%= text_field_tag(:search, params[:search], placeholder: "Enter a City name") %>
-              <%= date_field_tag(:date, params[:date], placeholder: "Enter a date",:class=>"ml-3" )%>
-             <%= time_field_tag(:time, params[:time], placeholder: "Enter a date",:class=>"ml-3" )%>
-             <%= time_field_tag(:time, params[:time], placeholder: "Enter a date",:class=>"ml-3" )%>
-              <%= submit_tag('Search', :name => nil,:class=>"ml-5") %>
-               </div>
-               </div>
+           </div>
+           <div class="col-sm-10">
+                 <div class="container-fluid">
+                     <div class="row">
+                         <div class="col-sm">
+                               <%= form_tag(searching_path, {:method => 'get'}) do %>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                  <span class="input-group-text" id="basic-addon1">@</span>
+                                    
+                                                  <%= text_field_tag(:search, params[:search], placeholder: "Enter a City name") %>
+                                                  <%= date_field_tag(:booking_date, params[:booking_date], placeholder: "Enter a date",:class=>"ml-3" )%>
+                                                  <%= time_field_tag(:start_time, params[:start_time], placeholder: "Enter a date",:class=>"ml-3" )%>
+                                                  <%= time_field_tag(:end_time, params[:end_time], placeholder: "Enter a date",:class=>"ml-3" )%>
+                                                  <%= submit_tag('Search', :name => nil,:class=>"ml-5") %>
+                                            </div>
+                                        </div>
 
 
-<% end %>
-    </div>
+                               <% end %>
+                           </div>
     
-  </div>
-  <div class="row">
-    <div class="col-sm-4">
-     <h1>List View</h1>
-<ul class="list-group" style="height:800px; overflow:scroll"> 
-<%
-i=0 
-@aftersearchbydayandaddress.each do |s| %>
+                           </div>
+                           <div class="row">
+                              <div class="col-sm-4">
+                                   <h1>List View</h1>
+                                    <ul class="list-group" style="height:800px; overflow:scroll"> 
+                                    <%
+                                    if @start_time && @end_time
+                                    i=0 
+                                    @aftersearchbydayandaddress.each do |s| %>
 
-<li class="list-group-item">
-<div class="media">
+                                    <li class="list-group-item">
+                                    <div class="media">
 
-<%= image_tag 'location11.jpg',:class =>"media-object media-left" ,size:"100x100"%>
-<div class="media-body media-right">
-<%= s.city %>
-<br>
-<%= s.latitude %>
-<br>
-<%= s.longitude %>
+                                    <%= image_tag 'location11.jpg',:class =>"media-object media-left" ,size:"100x100"%>
+                                    <div class="media-body media-right">
+                                    <%= s.city %>
+                                    <br>
+                                    <%= s.latitude %>
+                                    <br>
+                                    <%= s.longitude %>
+                                    
+                                    <%
 
-<%
-  @user_id=1
-  @m=@aftersearchbydayandaddress.pluck(:space_id)
+                                    @start_time=params['start_time']
+                                    @end_time=params['end_time']
 
-  
+                                      @user_id=1
+                                      @m=@aftersearchbydayandaddress.pluck(:space_id)
+                                      @booking_time_calculate=(Time.parse(params['end_time'])  - Time.parse(params['start_time'])) /1.hour
 
- 
- if(MemberSubscription.where("space_id = ? and user_id=?",@m[i],@user_id).blank?) %>
-     <%= link_to 'Gat a membership', "membershipindex?space_id=#{@m[i]}&user_id=#{@user_id}" %>
-     <%= "@m[i] #{@m[i]}"%>
-     <%= "@user_id #{@user_id}"%>
-     <%
-       i=i+1
- 
-%><%
-  else
-    %>
-   <%= link_to 'book now', "membershipindex?space_id=#{@m[i]}&user_id=#{@user_id}" %>
-<%
- i=i+1
-  
-  %><%
-end 
-%>
+                                      
+
+                                    
+                                    if(MemberSubscription.where("space_id = ? and user_id=?",@m[i],@user_id).blank?) %>
+                                        <%= link_to 'Gat a membership', "membershipindex?space_id=#{@m[i]}&user_id=#{@user_id}&booking_time=#{@booking_time_calculate}" %>
+                                      
+                                        <%
+                                          i=i+1
+                                    
+                                    %><%
+                                      else
+                                        %>
+                                      <%= link_to 'book now', "booking?space_id=#{@m[i]}&user_id=#{@user_id}&booking_date=#{params['booking_date']}&start_time=#{DateTime.parse(@start_time).strftime("%I:%M%p")}&end_time=#{DateTime.parse(@end_time).strftime("%I:%M%p")}&booking_time=#{@booking_time_calculate}" %>
+                                    <%
+                                    i=i+1
+                                      
+                                      %><%
+                                    end 
+                                    %>
+                                      
+
+                                    </li>
+                                    <% 
+                                    end
+                                    end %> 
+                                    </ul>
+                                </div>
+                               <div class="col-sm-8">
+                                    <div >  
+                                        <div id="map" style='width: auto; height: 800px; position: fixed;'></div>  
+                                    </div>  
+                                </div>
    
-
-</li>
-<% end %> 
-</ul>
-    </div>
-    <div class="col-sm-8">
-    <div >  
-  <div id="map" style='width: auto; height: 800px; position: fixed;'></div>  
-</div>  
-    </div>
-   
-  </div>
-</div>
-    </div>
-  </div>
-  </div>
+                            </div>
+                          </div>
+                       </div>
+                     </div>
+                   </div>
   </div>
   
        
