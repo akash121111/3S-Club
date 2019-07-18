@@ -4,17 +4,18 @@
 
 body {
     font-family: "Lato", sans-serif;
+    margin-top: 80px;
   }
 .sidenav {
     height: 100%;
     width: 16.6667%;
     position: fixed;
     z-index: 1;
-    top: 0;
+    padding-top: 2px;
     left: 0;
     background-image: linear-gradient(to top, red, orange);
     overflow-x: hidden;
-    padding-top: 20px;
+    
   }
 
   
@@ -31,6 +32,10 @@ body {
   .sidenav a:hover {
     color: white;
     background: black
+  }
+
+  .col-sm-10{
+    padding-top:2px;
   }
   
   

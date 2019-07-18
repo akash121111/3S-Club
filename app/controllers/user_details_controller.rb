@@ -1,11 +1,4 @@
 class UserDetailsController < ApplicationController
-
-  def create
-    
-
-
-
-
     def update
 
         @user_detail=User.find(1).user_detail
@@ -19,9 +12,9 @@ class UserDetailsController < ApplicationController
 
     private
 
-    private
-    def user_params
-     params.require(:user).permit(:Firstname,:Lastname,:Educationdetails,:Aboutuser,:City,:College,:Phonenumber,:Mobilenumber)
+    def user_details_params
+        params.require(:user_detail).permit( :fist_name,:last_name,:about_user,:phone_number,:mobile_number)
     end
 end
+
 

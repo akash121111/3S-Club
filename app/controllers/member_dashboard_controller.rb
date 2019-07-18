@@ -22,7 +22,7 @@ class MemberDashboardController < ApplicationController
     if @member.save
       redirect_to "/dashboard"
       else
-      render 'login'
+      render 'profile'
     end
   end
 
@@ -36,11 +36,13 @@ class MemberDashboardController < ApplicationController
     else
      redirect_to "/dashboard"
     end
+
   end
 
   def bookingdetail
-    @user=User.all
-
+    @user=User.find_by(id:1)
+    @br=@user.booking_records
+    
   end
 
 

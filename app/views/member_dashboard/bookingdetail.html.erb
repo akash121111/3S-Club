@@ -1,4 +1,4 @@
-<%=  session[:user_id] %>
+
 
 <body>
 <div class="container-fluid">
@@ -14,7 +14,20 @@
                <a href="home">Logout</a><hr>
             </div>                        
         </div>
+
+        
         <div class="col-sm-10">
+        <div  style="overflow:scroll;height:600px">
+        <div class="row">
+        <div class="col-sm-9">
+        <% @br.each do |br| %>
+          <% space=Space.find(br.space_id) %>
+
+          <% wallet=space.member_subscription %>
+          <% address=space.space_address%>
+         
+           
+       
            <div class="card mb-3" style="max-width: 1000px;">
              <div class="row no-gutters">
                <div class="col-md-4">
@@ -24,10 +37,29 @@
                    <div class="card-body">
                      <h5 class="card-title">Hey! Welcome</h5>
                      <p class="card-text">These are your details. Thankyou!</p>
+                     <label for="space address">
+                     <%= address.street%>
+                     <%= address.city%>
+                     <%= address.pincode%>
+                    <%= address.state%>
+                     <%= address.house_number%>
+                     </label><br>
+                    
+                     <label for="wallet time">Time left in wallet</label>
+                     <%= wallet.time_wallet %>
+                     
                       
                    </div>
                   </div>
               </div>
+              
+              <% end %>
+          </div>
+          </div>
+          </div>
+          <div class="col-sm-3">
+          </div>
+          <div>
           </div>
         </div>
   </div>

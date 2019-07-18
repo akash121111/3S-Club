@@ -23,7 +23,11 @@ Rails.application.routes.draw do
        
   #root to:'user#l 
   get '/searching', to: 'searchings#index'
+  get '/allmap', to:'searchings#allmap'
+  get '/booking', to:'searchings#booking'
   
+  post 'owner_signup' ,to: 'ownersignups#create' 
+  get '/login',to: 'ownersignups#login',as: 'login_in_owner'
   get 'user/index'
   get 'user/sign_up'
   get 'user/log_in'
@@ -50,6 +54,7 @@ get '/searching', to: 'searchings#index'
   root to:'user#index'
   get 'sign_up_user', to:'user#sign_up'
   get 'login_user', to:'user#login'
+  get 'dashboard' , to:'sessions#index'
   post 'login_confirm',to: 'sessions#create'
   #post 'session/create', to:'session#create'
   #delete 'session/destroy'
