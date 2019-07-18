@@ -55,6 +55,7 @@ class UserController < ApplicationController
         @user.user_type_id=1
 
         if @user.save
+          
            flash[:success] ="Your registrations is sucessfully completed.Please login"
            # flash[:success] = "Hey #{@user.username}, welcome"
         redirect_to '/login_user'
