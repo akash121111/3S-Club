@@ -9,10 +9,10 @@ document.addEventListener("turbolinks:load",function(){
    $("#longitude").css("display","none");
    $("#latitude2").css("display","none");
    $("#longitude2").css("display","none");
-   $(".form-control").attr('readonly','true');
+   //$(".form-control").attr('readonly','true');
 
     $('#edit-option').click(function(){
-        $(".form-control").prop('readonly','false');
+       //$(".form-control").prop('readonly','false');
     });
   
 //});

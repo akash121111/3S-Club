@@ -26,8 +26,9 @@
 
 
     <%= stylesheet_link_tag    'application',params[:controller], media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application',params[:controller], 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+ENV['google_maps_api_key'].to_s %>
+    <%= javascript_include_tag 'application',params[:controller], 'data-turbolinks-track':true %>
+    <%= csrf_meta_tags %>
+    
 
     <%= yield(:head_tags) %>
   </head>

@@ -18,6 +18,8 @@ class OwnerdashboardController < ApplicationController
     @user=User.find_by(id:session[:user_id])
     @booking_record=@user.booking_record
   end
-  def no_booking
+  def booking_records
+    @user=User.find_by(id:6)
+    @spaces=@user.spaces
   end
 end

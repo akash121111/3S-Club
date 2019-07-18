@@ -3,7 +3,7 @@ class CreateSpaceAddresses < ActiveRecord::Migration[5.2]
     create_table :space_addresses do |t|
 
 
-      t.string :street
+       t.string :street
       t.string :city
       t.string :pincode
       t.string :state

@@ -20,7 +20,7 @@ class UserController < ApplicationController
 
 	def create
 
-        #captcha_message = "The data you entered for the CAPTCHA wasn't correct.  Please try again"
+    #captcha_message = "The data you entered for the CAPTCHA wasn't correct.  Please try again"
     #@user = User.new(user_params)
     #if !verify_recaptcha(model: @user, message: captcha_message) || !@user.save
      # render "new"
@@ -53,11 +53,14 @@ class UserController < ApplicationController
          
 		@user = User.new(user_params)
         @user.user_type_id=1
+
         if @user.save
+          
            flash[:success] ="Your registrations is sucessfully completed.Please login"
            # flash[:success] = "Hey #{@user.username}, welcome"
         redirect_to '/login_user'
         else
+          #render :json => { :errors => @user.errors }
             flash[:success] ="Sorry, your registration attempt was unsuccessful."
          redirect_to '/sign_up_user'
         end
@@ -71,6 +74,13 @@ class UserController < ApplicationController
 
     
     def new
-            @user = User.new
-     end
- end
+        @user = User.new
+    end
+
+    def destroy
+        session[:user_id]= nil
+        flash[:success] = "Logged out"
+        redirect_to '/user'
+    end
+
+end

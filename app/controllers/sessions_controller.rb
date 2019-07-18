@@ -15,12 +15,24 @@ class SessionsController < ApplicationController
     	
   	user = User.find_by_email(params[:session][:email])
       
-       if user && user.authenticate(params[:session][:password])
+       if user && user.authenticate(params[:session][:password_digest])
         session[:user_id]= user.id
+        user_type=user.user_type_id
+
+        if user_type==1
+          redirect_to '/dashboard' , notice: "Logged in"
+        else
+          redirect_to '/owner_dashboard' , notice: "Logged in"
+          
+        end
         #flash[:success] = "Login successful"
-        redirect_to '/dashboard' , notice: "Logged in"
+        
        else
+<<<<<<< HEAD
         flash.now[:alert] = "Username or Password incorrect"
+=======
+        flash[:success] = "Username or Password incorrect"
+>>>>>>> 082c29718ccf0394946aa0d2df7d68a40ddd8f8a
         redirect_to '/login_user'
        end
   end
@@ -28,6 +40,6 @@ class SessionsController < ApplicationController
   def destroy
   	session[:user_id]= nil
         #flash[:success] = "Logged out"
-        redirect_to 'login' , notice: "Logged in"
+        redirect_to 'user#index' , notice: "Logged in"
   end
 end

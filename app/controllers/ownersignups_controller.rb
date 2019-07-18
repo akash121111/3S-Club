@@ -3,6 +3,7 @@ class OwnersignupsController<ApplicationController
   def create
     
     @owner = User.new(owner_params)
+    @owner.user_type_id=2
     if verify_recaptcha(model: @owner) && @owner.save 
       # save post
       #flash[:notice] = "Post successfully created"
@@ -29,7 +30,7 @@ class OwnersignupsController<ApplicationController
    def destroy
     session[:user_id]=nil
     flash[:sucess] = "Logged out"
-    redirect_to'/login'
+    redirect_to'/login_user'
      
    end
 

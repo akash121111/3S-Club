@@ -1,0 +1,76 @@
+<body style="background: #e8e9eb">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 col-xs-2">
+      <div class="sidenav sidenav-collapse"  data-toggle="" id="demo">
+         <div class="side-header">
+           <%= image_tag("user.png", size:"100x100", :class=>"rounded-circle")%>
+           <% user_name=@user.user_detail%>
+            <h4><%= user_name.first_name.capitalize%> <%= user_name.last_name.capitalize%></h4>
+          </div>
+            <hr>
+         <div class="nav-item">
+            <a href="/owner_dashboard" class="active">Upcoming Bookings</a>
+            <a href="#services">Spaces Details</a>
+            <a href="#clients">Booking Record</a>
+            <a href="#contact">Profile</a>
+            <a href="#contact">Log Out</a>
+           </div>
+</div>
+</div>
+    <div class="col-sm-10 col-xs-10">
+      <div class="main">
+       <div class="containe">
+          <div class="row mt-4">
+            <div class="col-sm-10">
+              <h4>Booked spaces</h4>
+              <div class="record-table">
+              <table class="table table-border table-hover bg-white">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th>S.No</th>
+                          <th>Date</th>
+                          <th>Sapce Address</th>
+                          <th>Space Name</th>
+                          <th>Member</th>
+                          <th>Mobile Number</th>
+                          <th>Show Details</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+              <% @spaces.each do |spaces|%>
+                
+                <% @booked=spaces.booking_records%>
+                  <% @booked.each do |booked| %>
+                  <% member=User.find_by(id:booked.user_id)%>
+                  <% member_detail=member.user_detail%>
+                  <% address=spaces.space_address%>
+                  <%= form_for booked, :url => view_details_path(booked), :method=> "post" do |f| %>
+                    
+                      
+                      
+                        <tr>
+                        <td><%= booked.id%></td>
+                        <td><%= booked.created_at.strftime("%d-%m-%y")%></td>
+                        <td><%= address.house_number%> <%= address.street%> <%= address.city%> <%= address.state%> (<%= address.pincode%>)</td>
+                        <td><%= spaces.space_name%></td>
+                        <td><%= member_detail.first_name.capitalize%> <%= member_detail.last_name.capitalize%></td>
+                        <td><%= member_detail.mobile_number%></td>
+                        <td><button type="submit" class="btn btn-primary">Details</button></td>
+                      </tr>
+                     
+                <% end%>       
+              <% end %>  
+              <% end %>          
+              </tbody>
+              </table>
+              </div>
+            </div>
+            
+          </div>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
