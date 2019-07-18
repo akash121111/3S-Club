@@ -41,6 +41,10 @@ ActiveRecord::Schema.define(version: 2019_07_18_062350) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "booking_time"
+    t.time "start_time"
+    t.time "end_time"
+    t.string "booking_date"
     t.index ["space_id"], name: "index_booking_records_on_space_id"
     t.index ["user_id"], name: "index_booking_records_on_user_id"
   end
@@ -158,14 +162,14 @@ ActiveRecord::Schema.define(version: 2019_07_18_062350) do
   end
 
   create_table "user_details", force: :cascade do |t|
-    t.string "fist_name"
+    t.string "first_name"
     t.string "last_name"
     t.string "education_details"
     t.string "about_user"
     t.string "city"
     t.string "college"
-    t.integer "phone_number"
-    t.integer "mobile_number"
+    t.string "phone_number"
+    t.string "mobile_number"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -184,6 +188,9 @@ ActiveRecord::Schema.define(version: 2019_07_18_062350) do
     t.bigint "user_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.string "auth_token"
     t.index ["user_type_id"], name: "index_users_on_user_type_id"
   end
 

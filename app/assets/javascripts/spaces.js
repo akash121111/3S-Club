@@ -10,7 +10,7 @@ document.addEventListener("turbolinks:load",function(){
   
 
     $('#edit-option').click(function(){
-        $(".form-control").prop('readonly','false');
+       //$(".form-control").prop('readonly','false');
     });
   
 });
