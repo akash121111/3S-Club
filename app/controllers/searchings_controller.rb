@@ -28,7 +28,7 @@ class SearchingsController < ApplicationController
           @l=SpaceAvailabilityTiming.se(@k,@b,@c)
           @findcommonsearch= @findsearchaddresspid & @findsearchdatepid & @l
             
-          @aftersearchbydayandaddress=SpaceAddress.find(@findcommonsearch)
+          @aftersearchbydayandaddress=SpaceAddress.where(space_id:@findcommonsearch)
             
           end
    
