@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_14_202548) do
+ActiveRecord::Schema.define(version: 2019_07_18_033046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,15 +122,6 @@ ActiveRecord::Schema.define(version: 2019_07_14_202548) do
     t.index ["space_id"], name: "index_space_images_on_space_id"
   end
 
-  create_table "space_locations", force: :cascade do |t|
-    t.float "latitude"
-    t.float "longitude"
-    t.bigint "space_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["space_id"], name: "index_space_locations_on_space_id"
-  end
-
   create_table "spaces", force: :cascade do |t|
     t.string "dimensions"
     t.string "nearby_landmark"
@@ -141,6 +132,7 @@ ActiveRecord::Schema.define(version: 2019_07_14_202548) do
     t.integer "number_of_toilets"
     t.float "size"
     t.string "space_name"
+    t.datetime "deleted_at"
     t.index ["user_id"], name: "index_spaces_on_user_id"
   end
 
@@ -182,7 +174,6 @@ ActiveRecord::Schema.define(version: 2019_07_14_202548) do
   add_foreign_key "space_availability_timings", "spaces"
   add_foreign_key "space_available_days", "spaces"
   add_foreign_key "space_images", "spaces"
-  add_foreign_key "space_locations", "spaces"
   add_foreign_key "spaces", "users"
   add_foreign_key "user_details", "users"
   add_foreign_key "users", "user_types"

@@ -26,12 +26,17 @@
                 
                 <div class="col-md-10">
                     <div class="container-fluid space-detail">
+                    <%= form_for @space do |f| %>
                         <br><br><br>
                         <div class="row">
                             
                             <div class="col-md-6">
                                 <h3>Space Details</h3>
-                                <%= form_for @space do |f| %>
+                                    <div class="form-group"> 
+                                        <%= f.label :space_name, 'Space Name' %>
+                                        <%= f.text_field :space_name, class: 'form-control'%>
+                                    </div>
+                                    
                                     <div class="form-group"> 
                                         <%= f.label :size, 'Size' %>
                                         <%= f.text_field :size, class: 'form-control'%>
@@ -40,14 +45,24 @@
                                         <%= f.label :Dimensions, 'Dimensions' %>
                                         <%= f.text_field :dimensions, class: 'form-control'%>
                                     </div>
-                                    <div class="form-group">   
-                                        <%= f.label :floor_number, 'Floor Number' %>
-                                        <%= f.text_field :floor_number, class: 'form-control'%>                        
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">   
+                                                    <%= f.label :floor_number, 'Floor Number' %>
+                                                    <%= f.text_field :floor_number, class: 'form-control'%>                        
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">                               
+                                                    <%= f.label :number_of_toilets, 'Number Of Toilets' %>
+                                                    <%= f.text_field :number_of_toilets, class: 'form-control'%>                         
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
                                     </div>
-                                    <div class="form-group">                               
-                                        <%= f.label :number_of_toilets, 'Number Of Toilets' %>
-                                        <%= f.text_field :number_of_toilets, class: 'form-control'%>                         
-                                    </div>
+                                    
                                     <div class="form-group">                               
                                         <%= f.label :nearby_landmark, 'Nearby Landmark' %>
                                         <%= f.text_field :nearby_landmark, class: 'form-control'%>                         
@@ -179,51 +194,51 @@
                                       
                                  
                                                 <%= f.fields_for :space_available_day do |s| %>
-                                                <div class="container-fluid">
-                                                    <div class="row">
-                                                        <%= s.label :monday, "Yes", :value => "true"  %>
-                                                        <%= s.radio_button :monday, true %>
-                                                        <%= s.label :monday, "No", :value => "false" %>
-                                                        <%= s.radio_button :monday, false, :checked => true %>
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            <%= s.label :monday, "Yes", :value => "true"  %>
+                                                            <%= s.radio_button :monday, true %>
+                                                            <%= s.label :monday, "No", :value => "false" %>
+                                                            <%= s.radio_button :monday, false, :checked => true %>
+                                                        </div>
+                                                        <div class="row">
+                                                            <%= s.label :tuesday, "Yes", :value => "true"  %>
+                                                            <%= s.radio_button :tuesday, true %>
+                                                            <%= s.label :tuesday, "No", :value => "false" %>
+                                                            <%= s.radio_button :tuesday, false, :checked => true %>
+                                                        </div>
+                                                        <div class="row">
+                                                            <%= s.label :wednesday, "Yes", :value => "true"  %>
+                                                            <%= s.radio_button :wednesday, true %>
+                                                            <%= s.label :wednesday, "No", :value => "false" %>
+                                                            <%= s.radio_button :wednesday, false, :checked => true %>
+                                                        </div>
+                                                        <div class="row">
+                                                            <%= s.label :thursday, "Yes", :value => "true"  %>
+                                                            <%= s.radio_button :thursday, true %>
+                                                            <%= s.label :thursday, "No", :value => "false" %>
+                                                            <%= s.radio_button :thursday, false, :checked => true %>
+                                                        </div>
+                                                        <div class="row">
+                                                            <%= s.label :friday, "Yes", :value => "true"  %>
+                                                            <%= s.radio_button :friday, true %>
+                                                            <%= s.label :friday, "No", :value => "false" %>
+                                                            <%= s.radio_button :friday, false, :checked => true %>
+                                                        </div>
+                                                        <div class="row">
+                                                            <%= s.label :saturday, "Yes", :value => "true"  %>
+                                                            <%= s.radio_button :saturday, true %>
+                                                            <%= s.label :saturday, "No", :value => "false" %>
+                                                            <%= s.radio_button :saturday, false, :checked => true %>
+                                                        </div>
+                                                        <div class="row">
+                                                            <%= s.label :sunday, "Yes", :value => "true"  %>
+                                                            <%= s.radio_button :sunday, true %>
+                                                            <%= s.label :sunday, "No", :value => "false" %>
+                                                            <%= s.radio_button :sunday, false, :checked => true %>
+                                                        </div>
+                                                    
                                                     </div>
-                                                    <div class="row">
-                                                        <%= s.label :tuesday, "Yes", :value => "true"  %>
-                                                        <%= s.radio_button :tuesday, true %>
-                                                        <%= s.label :tuesday, "No", :value => "false" %>
-                                                        <%= s.radio_button :tuesday, false, :checked => true %>
-                                                    </div>
-                                                    <div class="row">
-                                                        <%= s.label :wednesday, "Yes", :value => "true"  %>
-                                                        <%= s.radio_button :wednesday, true %>
-                                                        <%= s.label :wednesday, "No", :value => "false" %>
-                                                        <%= s.radio_button :wednesday, false, :checked => true %>
-                                                    </div>
-                                                    <div class="row">
-                                                        <%= s.label :thursday, "Yes", :value => "true"  %>
-                                                        <%= s.radio_button :thursday, true %>
-                                                        <%= s.label :thursday, "No", :value => "false" %>
-                                                        <%= s.radio_button :thursday, false, :checked => true %>
-                                                    </div>
-                                                    <div class="row">
-                                                        <%= s.label :friday, "Yes", :value => "true"  %>
-                                                        <%= s.radio_button :friday, true %>
-                                                        <%= s.label :friday, "No", :value => "false" %>
-                                                        <%= s.radio_button :friday, false, :checked => true %>
-                                                    </div>
-                                                    <div class="row">
-                                                        <%= s.label :saturday, "Yes", :value => "true"  %>
-                                                        <%= s.radio_button :saturday, true %>
-                                                        <%= s.label :saturday, "No", :value => "false" %>
-                                                        <%= s.radio_button :saturday, false, :checked => true %>
-                                                    </div>
-                                                    <div class="row">
-                                                        <%= s.label :sunday, "Yes", :value => "true"  %>
-                                                        <%= s.radio_button :sunday, true %>
-                                                        <%= s.label :sunday, "No", :value => "false" %>
-                                                        <%= s.radio_button :sunday, false, :checked => true %>
-                                                    </div>
-                                                
-                                                </div>
                                                 <%end%>   
                                             </div>
 
@@ -296,14 +311,14 @@
                             <%= submit_tag 'Save Changes', :class=> "btn btn-primary" %><br>
                         </div>
                             
-                        <% end %>
+                        
                         <br>
 
-
-
-
+                    <% end %>
+                    
                     </div>
                     <br>
+                
                 </div>
                 
                 </div>                     

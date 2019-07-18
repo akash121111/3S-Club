@@ -70,7 +70,7 @@ class SpacesController < ApplicationController
         
             @space_available_day.save
         
-            redirect_to '/spaces/new'
+            redirect_to spaces_path
         else
             redirect_to '/spaces/new'
         end
@@ -78,6 +78,7 @@ class SpacesController < ApplicationController
     end
 
     def destroy
+=begin
         @space.space_address.destroy
         
         @space.space_availability_timings.each do|t|
@@ -87,7 +88,9 @@ class SpacesController < ApplicationController
         @space.booking_records.each do|b|
             b.destroy
         end
-        if @space.destroy
+=end
+        @space.update(deleted_at: Time.now)
+        if @space.deleted_at
             redirect_to spaces_path
         else
             redirect_to '/user_details/'+@user_detail.id.to_s+'/edit' 
@@ -100,7 +103,7 @@ class SpacesController < ApplicationController
    
 
     def space_details_params
-        params.require(:space).permit(:space_address,:size,:dimensions,:floor_number,:number_of_toilets,:nearby_landmark, images: [])
+        params.require(:space).permit(:space_name,:size,:dimensions,:floor_number,:number_of_toilets,:nearby_landmark, images: [])
     end
 
     def set_space

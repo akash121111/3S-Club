@@ -23,31 +23,32 @@
                 <div class="row">
                     
                     <%@spaces.each do |space|%>
+                        <%if space.deleted_at == nil%>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-header"><%= space.space_name%><%= link_to 'Remove', space, id:'del-space-link',method: :delete, data: { confirm: 'Are you sure?' } %>  </div>
+                                    <div class="card-body">
+                                        <% if space.images.attached?%>
+                                            <%space.images.each do |image|%>
+                                                <%if image == space.images.first%>
 
-                        <div class="col-md-3">
-                            <div class="card">
-                                <div class="card-header"><%= space.space_name%><%= link_to 'Remove', space, id:'del-space-link',method: :delete, data: { confirm: 'Are you sure?' } %>  </div>
-                                <div class="card-body">
-                                    <% if space.images.attached?%>
-                                        <%space.images.each do |image|%>
-                                            <%if image == space.images.first%>
-
-                                                <div class="img-container"> 
-                                                    <%= image_tag image,class: "space-img"%>
-                                                </div>
+                                                    <div class="img-container"> 
+                                                        <%= image_tag image,class: "space-img"%>
+                                                    </div>
+                                                <%end%>
                                             <%end%>
+
+                                        <%else%>
+                                            <div> 
+                                                <%= image_tag "plus-icon.png",class: "space-img" %>
+                                            </div>
                                         <%end%>
+                                    </div> 
+                                    <div class="card-footer"><%= link_to 'View Details', edit_space_path(space) %></div>
+                                </div><br>
+                            </div>
 
-                                    <%else%>
-                                        <div> 
-                                            <%= image_tag "plus-icon.png",class: "space-img" %>
-                                        </div>
-                                    <%end%>
-                                </div> 
-                                <div class="card-footer"><%= link_to 'View Details', edit_space_path(space) %></div>
-                            </div><br>
-                        </div>
-
+                        <%end%>
                     <%end%>
                     
                     <br><br>
