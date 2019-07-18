@@ -36,11 +36,11 @@
                                     <%= form_for (@user) do |f| %>
                                         <div class="form-group">
                                             <%= f.label :email, 'Email' %>
-                                            <%= f.text_field :email, class: 'form-control'%>
+                                            <%= f.email_field :email, class: 'form-control'%>
                                         </div>
                                         <div class="form-group"> 
-                                            <%= f.label :password_digest, 'Password' %>
-                                            <%= f.password_field :password_digest, class: 'form-control', placeholder:'*****'%>
+                                            <%= f.label :password, 'Password' %>
+                                            <%= f.password_field :password, class: 'form-control', placeholder:'************'%>
                                         </div>
                                         <div class="form-group"> 
                                             <%= f.label :password_confirmation, 'Confirm Password' %>
@@ -77,11 +77,11 @@
                                             </div>
                                             <div class="form-group">                               
                                                 <%= f.label :phone_number, 'Phone Number' %>
-                                                <%= f.text_field :phone_number, class: 'form-control'%>                         
+                                                <%= f.telephone_field :phone_number, class: 'form-control'%>                         
                                             </div>
                                             <div class="form-group">                               
                                                 <%= f.label :mobile_number, 'Mobile Number' %>
-                                                <%= f.text_field :mobile_number, class: 'form-control'%>                         
+                                                <%= f.telephone_field :mobile_number, class: 'form-control'%>                         
                                             </div>
                                             <div>
                                                 <%= submit_tag 'Save Changes', class: "btn btn-primary" %>
@@ -95,61 +95,57 @@
                     
                     </div>
                     <br><br>
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-6"><h2>Permanent Address</h2></div>
-                            <div class="col-md-6"><h2>Correspondence Address</h2></div>
-                        </div>
-                    </div>
+                    
                     <br>
                     <div class='container-fluid'>
                         <div class="row">
                             <%@user_addresses.each do |user_address| %>
-                         
-                                <div class="col-md-6">
+                                
+                                <div class="col-md-6 col-sm-6">
+                                 <h2><%=UserAddressType.find(user_address.user_address_type.id).address_type%></h2>
+                                    <br>
                                     <%=form_for user_address do |f| %>
                                         <div class="container-fluid">
-                                            <div class="row">
+                                            
                                                 <div class="form-group">
                                                     <%= f.label :address_line_1, 'Address Line 1' %>
-                                                    <%= f.text_field :address_line_1, class: 'form-control address-fields'%>
+                                                    <%= f.text_field :address_line_1, class: 'form-control'%>
                                                 </div>
-                                            </div>
-                                            <div class="row">
+                                            
+                                           
                                                 <div class="form-group"> 
                                                     <%= f.label :address_line_2, 'Address Line 2' %>
-                                                    <%= f.text_field :address_line_2, class: 'form-control address-fields'%>
+                                                    <%= f.text_field :address_line_2, class: 'form-control'%>
                                                 </div>
-                                            </div>
-                                            <div class="row">
+                                            
                                                 <div class="form-group"> 
                                                     <%= f.label :city, 'City' %>
-                                                    <%= f.text_field :city, class: 'form-control address-fields'%>
+                                                    <%= f.text_field :city, class: 'form-control'%>
                                                 </div>
-                                            </div>
-                                            <div class="row">
+                                            
+                                           
                                                 <div class="form-group"> 
                                                     <%= f.label :pincode, 'Pincode' %>
-                                                    <%= f.text_field :pincode, class: 'form-control address-fields'%>
+                                                    <%= f.text_field :pincode, class: 'form-control'%>
                                                 </div>
-                                            </div>
-                                            <div class="row">
+                                         
+                                            
                                                 <div class="form-group"> 
                                                     <%= f.label :state, 'State' %>
-                                                    <%= f.text_field :state, class: 'form-control address-fields'%>
+                                                    <%= f.text_field :state, class: 'form-control'%>
                                                 </div>
-                                            </div>
-                                            <div class="row">
+                                          
+                                            
                                                 <div class="form-group"> 
                                                     <%= f.label :country, 'Country' %>
-                                                    <%= f.text_field :country, class: 'form-control address-fields'%>
+                                                    <%= f.text_field :country, class: 'form-control'%>
                                                 </div>
-                                            </div>
+                                         
                                         
-                                            <div class="row">
+                                            <div>
                                                 <%= submit_tag 'Save Changes', class: "btn btn-primary" %>
-                                            
                                             </div>
+                                            <br>
                                         
                                         </div>
                                     <%end%>
