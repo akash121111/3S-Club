@@ -15,7 +15,11 @@
 //= require activestorage
 //= require turbolinks
 //= require underscore
+<<<<<<< HEAD
 //= require_tree .
+=======
+//= require gmaps/google
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
 
 
 

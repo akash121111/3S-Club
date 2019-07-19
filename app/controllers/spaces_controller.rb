@@ -1,6 +1,7 @@
 class SpacesController < ApplicationController
     before_action :set_space, only: [:show, :destroy, :edit, :update]
     def index
+<<<<<<< HEAD
         @spaces=Space.where(user_id: session[:user_id])
         @user=User.find(session[:user_id])
         @user_detail=@user.user_detail
@@ -16,10 +17,21 @@ class SpacesController < ApplicationController
 
     def new
         @user_detail=User.find(session[:user_id])
+=======
+        
+    end
+
+    def edit
+        
+    end
+
+    def new
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
         @space=Space.new
     end
 
     def update
+<<<<<<< HEAD
         
         @space_details=User.find(session[:user_id]).spaces
         @space_detail=@space_details.find(params[:id])
@@ -94,12 +106,31 @@ class SpacesController < ApplicationController
             redirect_to spaces_path
         else
             redirect_to '/user_details/'+@user_detail.id.to_s+'/edit' 
+=======
+        @space_details=User.find(1).spaces
+
+        #@space_details.images.attach(params[:images])
+      
+        if @space_details.first.update(space_details_params)
+          redirect_to '/spaces/1/edit'     
+        else
+          redirect_to '/spaces/1/edit' 
+        end
+    end
+
+    def destroy
+        if @space.destroy
+            redirect_to '/spaces/1/edit'
+        else
+            redirect_to '/spaces/1/edit' 
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
         end
 
     end
 
     private
 
+<<<<<<< HEAD
    
 
     def space_details_params
@@ -111,6 +142,22 @@ class SpacesController < ApplicationController
         @user_detail=@user.user_detail
         @space=Space.find(params[:id])
         @space_address=@space.space_address
+=======
+    def user_params
+        params.require(:user).permit(:email, :password, :user_type_id)
+    end
+
+    def space_details_params
+        params.require(:space).permit(:space_address,:size,:dimensions,:floor_number,:number_of_toilets,:nearby_landmark, :images)
+    end
+
+    def user_details_params
+        params.require(:user_details).permit(:first_name, :last_name, :education_details, :about_user, :city, :college, :phone_number, :mobile_number, :user_id)
+    end
+
+    def set_space
+        @space=Space.find(params[:id])
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
     end
 
 end

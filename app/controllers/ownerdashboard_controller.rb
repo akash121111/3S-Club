@@ -1,8 +1,11 @@
 class OwnerdashboardController < ApplicationController
   def upcoming_booking
+<<<<<<< HEAD
 
     @user=User.find(session[:user_id])
     @user_detail=@user.user_detail
+=======
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
     @br=BookingRecord.last
     @space=Space.find_by(id:@br.space_id)
     @image=SpaceImage.find_by(id:@br.space_id)
@@ -11,7 +14,10 @@ class OwnerdashboardController < ApplicationController
     
   end
   def view_details
+<<<<<<< HEAD
     
+=======
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
     @br=BookingRecord.find_by(params[:id])
     @space=Space.find_by(id:@br.space_id)
     @image=SpaceImage.find_by(id:@br.space_id)

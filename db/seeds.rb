@@ -7,6 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
 User.create(email:"a@example.com",
     password_digest:"abc123",
     user_type_id:1)
@@ -26,6 +30,10 @@ UserDetail.create(
 
 Space.create(
     space_name:"ZiggleTech",
+<<<<<<< HEAD
+=======
+
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
      size: "50",
      dimensions: "500*500",
      floor_number: 2,
@@ -40,6 +48,7 @@ SpaceLocation.create(
     space_id:1
 )
 
+<<<<<<< HEAD
 SpaceAddress.create(
     house_number:103/1,
     street:1,
@@ -50,6 +59,11 @@ SpaceAddress.create(
     longitude: -98.000,
     space_id:1
 )
+=======
+
+
+
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
 
 SpaceAvailableDay.create(
     monday: true,
@@ -65,8 +79,13 @@ SpaceAvailableDay.create(
 SpaceAvailabilityTiming.create(
     start_time: "12:00",
     end_time: "17:00",
+<<<<<<< HEAD
     user_id: 1,
     space_id: 1
+=======
+    space_id:1,
+    day_id: 1
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
 )
 
 BookingRecord.create(
@@ -74,6 +93,7 @@ BookingRecord.create(
     user_id:1
 )
 
+<<<<<<< HEAD
 SpaceAddress.create{
     street:C Block,Sector 63
     city:Noida
@@ -83,4 +103,17 @@ SpaceAddress.create{
     longitude:77.686339
     space_id: 1
 }
+=======
+SpaceAddress.create(
+    street:"h-16",
+    city:"Noida",
+    pincode:"201301",
+    state:"Uttar Pradesh",
+    latitude:"28.617232",
+    longitude:"77.686339",
+    house_number:"2",
+    space_id: 1
+)
+
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
 

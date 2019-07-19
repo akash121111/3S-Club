@@ -8,6 +8,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 side-bar">
+<<<<<<< HEAD
                     <div class="sidenav ">
                         <div class="side-header">
                             <%= image_tag("user.png", size:"100x100", :class=>"rounded-circle")%>
@@ -22,10 +23,14 @@
                             <a href="#contact">Log Out</a>
                         </div>
                     </div>
+=======
+                    dfsdf
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
                 </div>
                 
                 <div class="col-md-10">
                     <div class="container-fluid space-detail">
+<<<<<<< HEAD
                     <%= form_for @space do |f| %>
                         <br><br><br>
                         <div class="row">
@@ -37,6 +42,68 @@
                                         <%= f.text_field :space_name, class: 'form-control'%>
                                     </div>
                                     
+=======
+                        <br><br><br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h3>Space Address</h3>
+                                <% @space_address=SpaceAddress.new%>
+                                <%= form_for @space_address do |f| %>
+                                    <div class="form-group">
+                                        <%= f.label :house_number, 'House Number' %>
+                                        <%= f.text_field :house_number, class: 'form-control'%>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <%= f.label :street, 'Street' %>
+                                        <%= f.text_field :street, class: 'form-control'%>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <%= f.label :city, 'City' %>
+                                        <%= f.text_field :city, class: 'form-control'%>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <%= f.label :pincode, 'Pincode' %>
+                                        <%= f.text_field :pincode, class: 'form-control'%>
+                                    </div>
+                                    <div class="form-group">
+                                        <%= f.label :state, 'State' %>
+                                        <%= f.text_field :state, class: 'form-control'%>
+                                    </div>
+                                     <div class="form-group">                                   
+                                        <%= f.text_field :latitude, class: 'form-control', id:'latitude2'%>
+                                    </div>
+                                    <div class="form-group">
+                                        <%= f.text_field :longitude, class: 'form-control', id:'longitude2'%>
+                                    </div>
+
+                                     <% provide :head_tags do %>
+                                    <script>
+                                    document.addEventListener("turbolinks:load", function(){
+                                       // initMap();
+                                    });
+                                    </script>
+                                    <% end %>
+
+                                    <h3>Drag marker to get Address</h3>
+       
+                                    <div id='map'>
+                                    </div><br>
+                                    
+                                    <div>
+                                        <%= submit_tag 'Save Changes', :class=> "btn btn-primary" %><br>
+                                    </div>
+
+
+                                <% end %>
+                            </div>
+
+                            <div class="col-md-12">
+                                <h3>Space Details</h3>
+                                <%= form_for @space do |f| %>
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
                                     <div class="form-group"> 
                                         <%= f.label :size, 'Size' %>
                                         <%= f.text_field :size, class: 'form-control'%>
@@ -45,6 +112,7 @@
                                         <%= f.label :Dimensions, 'Dimensions' %>
                                         <%= f.text_field :dimensions, class: 'form-control'%>
                                     </div>
+<<<<<<< HEAD
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-md-6">
@@ -63,6 +131,16 @@
                                     
                                     </div>
                                     
+=======
+                                    <div class="form-group">   
+                                        <%= f.label :floor_number, 'Floor Number' %>
+                                        <%= f.text_field :floor_number, class: 'form-control'%>                        
+                                    </div>
+                                    <div class="form-group">                               
+                                        <%= f.label :number_of_toilets, 'Number Of Toilets' %>
+                                        <%= f.text_field :number_of_toilets, class: 'form-control'%>                         
+                                    </div>
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
                                     <div class="form-group">                               
                                         <%= f.label :nearby_landmark, 'Nearby Landmark' %>
                                         <%= f.text_field :nearby_landmark, class: 'form-control'%>                         
@@ -74,7 +152,11 @@
                                                 <h3>Images</h3>
                                             </div>
                                             <div class="col-md-6">
+<<<<<<< HEAD
                                                 <%= f.file_field :images,multiple: true,size:"300x400" %>
+=======
+                                                <%= f.file_field :images %>
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
                                             </div>
                                         </div>
                                     </div>
@@ -82,6 +164,7 @@
                                     <div class="form-group">
                                         <%= render "images_carousel", space:@space %>
                                     </div>
+<<<<<<< HEAD
                             </div>
 
                             <div class="col-md-6">
@@ -319,6 +402,24 @@
                     </div>
                     <br>
                 
+=======
+                                    
+                                    <div>
+                                        <%= submit_tag 'Save Changes', :class=> "btn btn-primary" %><br>
+                                    </div>
+
+
+                                <% end %>
+                            </div>
+                        </div>
+                        
+                        <br>
+                        
+
+
+
+                     </div><br>
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
                 </div>
                 
                 </div>                     
@@ -331,5 +432,9 @@
     </body>
          
 
+<<<<<<< HEAD
 </html>
 
+=======
+</html>
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36

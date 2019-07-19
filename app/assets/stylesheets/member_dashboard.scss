@@ -11,6 +11,7 @@ body {
     width: 16.6667%;
     position: fixed;
     z-index: 1;
+<<<<<<< HEAD
     top: 0;
     left: 0;
     background-image: linear-gradient(to top, red, orange);
@@ -22,6 +23,16 @@ body {
   .form{
     background:black;
   }
+=======
+    padding-top: 2px;
+    left: 0;
+    background-image: linear-gradient(to top, red, orange);
+    overflow-x: hidden;
+    
+  }
+
+  
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
   
   .sidenav a {
     padding: 6px 8px 6px 16px;
@@ -36,6 +47,13 @@ body {
     color: white;
     background: black
   }
+<<<<<<< HEAD
+=======
+
+  .col-sm-10{
+    padding-top:2px;
+  }
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
   
   
   @media screen and (max-height: 450px) {
@@ -47,6 +65,10 @@ body {
       margin:0px;
   }
   .form{
+<<<<<<< HEAD
+=======
+      background:black;
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
       border:1px;
       border-style: solid;
       border-width: 1px;
@@ -58,4 +80,7 @@ body {
   .btn btn-primary{
     float:right;
   }
+<<<<<<< HEAD
   
+=======
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36

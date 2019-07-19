@@ -1,5 +1,6 @@
 class User < ApplicationRecord
     has_one:user_detail
+<<<<<<< HEAD
     has_many:booking_record
     has_many:spaces
     has_many:user_addresses
@@ -27,3 +28,14 @@ class User < ApplicationRecord
 	
 end
  
+=======
+    has_many:booking_records
+    has_many:spaces
+    has_many:member_subscriptions
+	has_secure_password
+	validates_confirmation_of :password
+	validates_presence_of :password, on: :create
+validates :email, uniqueness: true, presence: true
+	
+end
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36

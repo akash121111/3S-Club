@@ -1,12 +1,17 @@
 
 <% if current_user %>
 Logged in as <%= current_user.email %>
+<<<<<<< HEAD
 <%= button_to "logout", 'log_out', :method => "delete" %>
+=======
+<%= button_to "logout", 'sign_up_user', :method => "get" %>
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
 	<% else %>
     <%= button_to "login", 'login_user', :method => "get" %>
      <%= button_to "signupUser", 'sign_up_user', :method => "get" %>
      <%= button_to "signupOwner", 'sign_up', :method => "get" %>
      <% end %>
+<<<<<<< HEAD
      
 <!--<!DOCTYPE html>
 <html>
@@ -230,3 +235,5 @@ Logged in as <%= current_user.email %>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </html>-->
+=======
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36

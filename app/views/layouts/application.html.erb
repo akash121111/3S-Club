@@ -26,10 +26,15 @@
 
 
     <%= stylesheet_link_tag    'application',params[:controller], media: 'all', 'data-turbolinks-track': 'reload' %>
+<<<<<<< HEAD
     <%= javascript_include_tag 'application',params[:controller], 'data-turbolinks-track':true %>
     <%= csrf_meta_tags %>
     <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+ENV['google_maps_api_key'].to_s %>
     
+=======
+    <%= javascript_include_tag 'application',params[:controller], 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+ENV['google_maps_api_key'].to_s %>
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
 
     <%= yield(:head_tags) %>
   </head>

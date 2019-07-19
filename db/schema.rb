@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2019_07_18_172229) do
+=======
+ActiveRecord::Schema.define(version: 2019_07_17_105813) do
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,9 +101,15 @@ ActiveRecord::Schema.define(version: 2019_07_18_172229) do
     t.time "start_time"
     t.time "end_time"
     t.bigint "space_id"
+<<<<<<< HEAD
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "day_id"
+=======
+    t.bigint "day_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
     t.index ["day_id"], name: "index_space_availability_timings_on_day_id"
     t.index ["space_id"], name: "index_space_availability_timings_on_space_id"
   end
@@ -145,6 +155,7 @@ ActiveRecord::Schema.define(version: 2019_07_18_172229) do
     t.integer "number_of_toilets"
     t.float "size"
     t.string "space_name"
+<<<<<<< HEAD
     t.datetime "deleted_at"
     t.index ["user_id"], name: "index_spaces_on_user_id"
   end
@@ -172,13 +183,25 @@ ActiveRecord::Schema.define(version: 2019_07_18_172229) do
 
   create_table "user_details", force: :cascade do |t|
     t.string "first_name"
+=======
+    t.index ["user_id"], name: "index_spaces_on_user_id"
+  end
+
+  create_table "user_details", force: :cascade do |t|
+    t.string "fist_name"
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
     t.string "last_name"
     t.string "education_details"
     t.string "about_user"
     t.string "city"
     t.string "college"
+<<<<<<< HEAD
     t.string "phone_number"
     t.string "mobile_number"
+=======
+    t.integer "phone_number"
+    t.integer "mobile_number"
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -197,9 +220,12 @@ ActiveRecord::Schema.define(version: 2019_07_18_172229) do
     t.bigint "user_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+<<<<<<< HEAD
     t.string "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string "auth_token"
+=======
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
     t.index ["user_type_id"], name: "index_users_on_user_type_id"
   end
 
@@ -207,14 +233,22 @@ ActiveRecord::Schema.define(version: 2019_07_18_172229) do
   add_foreign_key "booking_records", "spaces"
   add_foreign_key "booking_records", "users"
   add_foreign_key "space_addresses", "spaces"
+<<<<<<< HEAD
   add_foreign_key "space_availability_timings", "days"
   add_foreign_key "space_availability_timings", "spaces"
+=======
+  add_foreign_key "space_availability_timings", "spaces"
+  add_foreign_key "space_availability_timings", "users", column: "day_id"
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
   add_foreign_key "space_available_days", "spaces"
   add_foreign_key "space_images", "spaces"
   add_foreign_key "space_locations", "spaces"
   add_foreign_key "spaces", "users"
+<<<<<<< HEAD
   add_foreign_key "user_addresses", "user_address_types"
   add_foreign_key "user_addresses", "users"
+=======
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
   add_foreign_key "user_details", "users"
   add_foreign_key "users", "user_types"
 end

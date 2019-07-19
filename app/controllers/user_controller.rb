@@ -20,7 +20,11 @@ class UserController < ApplicationController
 
 	def create
 
+<<<<<<< HEAD
     #captcha_message = "The data you entered for the CAPTCHA wasn't correct.  Please try again"
+=======
+        #captcha_message = "The data you entered for the CAPTCHA wasn't correct.  Please try again"
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
     #@user = User.new(user_params)
     #if !verify_recaptcha(model: @user, message: captcha_message) || !@user.save
      # render "new"
@@ -50,6 +54,7 @@ class UserController < ApplicationController
 
 
 
+<<<<<<< HEAD
          
 		@user = User.new(user_params)
         @user.user_type_id=1
@@ -63,6 +68,17 @@ class UserController < ApplicationController
           #render :json => { :errors => @user.errors }
             flash[:success] ="Sorry, your registration attempt was unsuccessful."
          redirect_to '/sign_up_user'
+=======
+
+		@user = User.new(user_params)
+        if @user.save
+            
+           flash[:success] ="User was Sucessfully created"
+            #flash[:success] = "Hey #{@user.username}, welcome"
+        redirect_to '/login_user'
+        else
+          render '/sign_up_user'
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
         end
 	end
 
@@ -71,6 +87,7 @@ class UserController < ApplicationController
       params.permit(:email, :password, :password_confirmation)
     end
     
+<<<<<<< HEAD
 
     
     def new
@@ -84,3 +101,8 @@ class UserController < ApplicationController
     end
 
 end
+=======
+end
+    
+   
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36

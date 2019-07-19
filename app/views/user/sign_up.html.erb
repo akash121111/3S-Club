@@ -81,6 +81,7 @@ button:hover {
 <form style="border:1px solid #ccc" action="/user" method="post">
   <div class="container">
     <h1>User Sign Up</h1>
+<<<<<<< HEAD
     <p>Please fill this form to create an account.</p>
     
     <label for="email"><b>Email</b></label>
@@ -91,21 +92,49 @@ button:hover {
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
     <input type="password" placeholder="Repeat Password" name="password_confirmation"min="3" max="15" required >
+=======
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+    <label for="username"><b>username</b></label>
+    <input type="text" placeholder="Enter username" name="username" required>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="password_confirmation" required>
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
     
     <label>
       <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
     </label>
     
     <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+<<<<<<< HEAD
       <!--<div class="g-recaptcha" data-sitekey="6LcGRq0UAAAAANHyl0mcshHEgyQjgd409cEWLVxG"></div>-->
 
     
    <div class="clearfix">
       <%= button_to "submit", '/user', :method => "post" %>
       <%= button_to "Cancel", '/user', :method => "get" %>  
+=======
+    <!--<div class="g-recaptcha" data-sitekey="6LcGRq0UAAAAANHyl0mcshHEgyQjgd409cEWLVxG"></div>-->
+
+    
+    <div class="clearfix">
+      <input type="submit" value="SignUp">
+    <%= button_to "Cancel", '/user', :method => "get" %>  
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
     </div>
   </div>
 </form>
 
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html> -->
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36

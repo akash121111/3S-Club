@@ -1,14 +1,18 @@
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
 <body>
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-2">
             <div class="sidenav text-center">
             <%= image_tag("user.png",size:"100x100", :class =>"rounded-circle")%>
+<<<<<<< HEAD
             <h5>Member' Name</h5><hr>
                <a href="/searching">Dashboard</a><hr>
                <a href="profile">Profile</a><hr>
@@ -56,10 +60,72 @@
        <div class="form-group">
     <label for="city">City 2</label>
     <input type="text" class="form-control" id="city" value=" ">
+=======
+           
+            <h5>Member' Name</h5><hr>
+               <a href="/searching">Dashboard</a><hr>
+               <a href="profile">Profile</a><hr>
+               <a href="map">Maps</a><hr>
+               <a href="booking">RecentBooked</a><hr>
+               <a href="home">Logout</a><hr>
+            </div>                        
+        </div>
+
+       
+        <div class="col-sm-10">
+        
+         <div class="row">
+          <div class="col-sm-9">
+         
+            <div class="form-row">
+           
+
+             <div class="form-group col-md-6">
+              <label for="Email">Email</label>
+              <input type="email" class="form-control" id="Email" disabled value=" <%= @member.email%>">
+             </div>
+            
+              <div class="form-group col-md-6">
+             <label for="Password">Password</label>
+              <input type="password" class="form-control" id="Password" value=" <%= @member.password%>">
+               </div>
+              </div>
+             
+              <h1>PERSONAL DETAILS</h1> 
+              
+              <div class="form-row">
+              <%= form_for(:session, :html => {class: "form-horizontal", role: "form"},url: dashboard_path,:method=>"post") do |f| %>
+              <div class="form-group col-md-6">
+               <label for="firstname">FirstName</label>
+               <input type="text" name="fist_name" class="form-control" id="fistname" value=" <%=@membr.fist_name%>">
+              </div>
+               <div class="form-group col-md-6">
+              <label for="lastname">LastName</label>
+               <input type="text" name="last_name" class="form-control" id="lastname" value=" <%=@membr.last_name%>">
+                </div>
+               </div>
+
+           
+
+            <div class="form-group">
+            <label for="educationdetails">Educationdetails</label>
+            <input type="text" name="education_details" class="form-control" id="educationdetails" value=" <%=@membr.education_details%>">
+           </div>
+
+           <div class="form-group">
+           <label for="aboutuser">AboutUser</label>
+           <input type="text" name="about_user" class="form-control" id="aboutuser" value=" <%=@membr.about_user%>">
+           </div>
+
+       <div class="form-group">
+    <label for="city">City</label>
+    <input type="text" name="city" class="form-control" id="city" value=" <%=@membr.city%>">
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
   </div>
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="college">college</label>
+<<<<<<< HEAD
       <input type="text" class="form-control" id="college" value=" ">
     </div>
     <div class="form-group col-md-4">
@@ -82,6 +148,28 @@
             </div>
             </div>
 
+=======
+      <input type="text" name="college" class="form-control" id="college" value=" <%=@membr.college%>">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="phno">phonenumber</label>
+      <input type="text" name="phone_number" class="form-control" id="phno" value=" <%=@membr.phone_number%>">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="mobno">mobilenumber</label>
+      <input type="text" name="mobile_number" class="form-control" id="mobno" value=" <%=@membr.mobile_number%>">
+    </div>
+  </div>
+  
+  <input type="submit" class="btn btn-primary" value="Update Changes">
+
+
+            </div>
+        
+           
+            </div>
+<% end %>
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
         </div>
     </div>
 </div>

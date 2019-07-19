@@ -87,7 +87,11 @@ GEM
     ffi (1.11.1-x86-mingw32)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+<<<<<<< HEAD
     gmaps4rails (2.0.5)
+=======
+    gmaps4rails (2.1.2)
+>>>>>>> c03634edb189b857293e9ad3b7dc269b87d05b36
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     io-like (0.3.0)
