@@ -93,7 +93,7 @@
                                         <%if(MemberSubscription.where("space_id = ? and user_id=? and time_wallet>= ?",@m[i],@user_id,@booking_time_calculate).blank?)%>
                                                <%= link_to 'Gat a membership', "membershipindex?space_id=#{@m[i]}&user_id=#{@user_id}&booking_time=#{@booking_time_calculate}", :class=> "btn btn-danger", :style=>"margin-top: 17px;bottom:0;float:right"%>
                                          <% else %>
-                                               <%= link_to 'book now', "booking?space_id=#{@m[i]}&user_id=#{@user_id}&booking_date=#{params['booking_date']}&start_time=#{DateTime.parse(@start_time).strftime("%I:%M%p")}&end_time=#{DateTime.parse(@end_time).strftime("%I:%M%p")}&booking_time=#{@booking_time_calculate}", :class=> "btn btn-success", :style=>"margin-top: 17px;bottom:0;float:right"%>
+                                               <%= link_to 'book now', "bookingdone?space_id=#{@m[i]}&user_id=#{@user_id}&booking_date=#{params['booking_date']}&start_time=#{DateTime.parse(@start_time).strftime("%I:%M%p")}&end_time=#{DateTime.parse(@end_time).strftime("%I:%M%p")}&booking_time=#{@booking_time_calculate}", :class=> "btn btn-success", :style=>"margin-top: 17px;bottom:0;float:right"%>
                                         <% end %>
                                     <%
                                     
