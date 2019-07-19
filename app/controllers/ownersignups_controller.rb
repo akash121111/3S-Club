@@ -35,10 +35,14 @@ class OwnersignupsController<ApplicationController
     session[:user_id]=nil
     flash[:sucess] = "Logged out"
 <<<<<<< HEAD
+<<<<<<< HEAD
     redirect_to'/login'
 =======
     redirect_to'/login_user'
 >>>>>>> 784b6216f3837787a7952bb32dcb26c04850f7d8
+=======
+    redirect_to'/login_user'
+>>>>>>> 4e0934084d2a8241dee169af010d39c991ac5313
      
    end
 
