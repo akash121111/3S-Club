@@ -127,74 +127,89 @@
                             </div>
                         </div>
                                     <br><br><br>
+                        <table>
                         <div class="row">
                             <div class="col-md-6">
-                                <h3>Space Availability</h3>
+                                <h3>Space Availability</h3><br>
                                     <div class="container-fluid">
                                         <div class="row">
-                                            <div class='col-md-3'>
-                                                <b>Day</b><br>
-                                                <div class="container-fluid">
-                                                    <%@week_days.each do|key,value|%>
-                                                        <div class="row">
-                                                            <%=key.upcase%>
+                                            <tr>
+                                                <td>
+                                                    <div class='col-md-3'>
+                                                        <b>Day</b>
+                                                        <div class="container-fluid">
+                                                            <%@week_days.each do|key,value|%>
+                                                                <div class="row">
+                                                                    <%=key.upcase%>
+                                                                </div>
+                                                            <%end%>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                
+                                                <div class='col-md-3'>
+                                                    <td>
+                                                        <b>Availability</b>
+                                                        <% @space_available_day=SpaceAvailableDay.new%>
+                                                        <%= f.fields_for :space_available_day do |s| %>
+                                                            <div class="container-fluid">
+                                                                <%@week_days.each do|key,value|%>
+                                                                    <div class="row">
+                                                                        <%= s.label key, "Yes", :value => "true",class:"radio-button-label"  %>
+                                                                        <%= s.radio_button key, true %>
+                                                                        <%= s.label key, "No", :value => "false",class:"radio-button-label" %>
+                                                                        <%= s.radio_button key, false, :checked => true %>
+                                                                    </div>
+                                                                <%end%>
+                                                            </div>
+                                                        <%end%>
+                                                    </td>  
+                                                </div>
+                                                
+                                                <% @space_=SpaceAvailabilityTiming.new%>
+    
+                                                <td>
+                                                    <%= f.fields_for :start_time do |s| %>
+                                                    
+                                                        <div class='col-md-3'>
+                                                            <b>StartTime</b><br>
+                                                            <div class="container-fluid">
+                                                                <%@week_days.each do|key,value|%>
+                                                                    <div class="row">
+                                                                        <%=s.time_field key%>
+                                                                    </div>
+                                                                <%end%>
+                                                            </div>
                                                         </div>
                                                     <%end%>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class='col-md-3'>
-                                                <b>Availability</b><br>
-                                                 <% @space_available_day=SpaceAvailableDay.new%>
-                                                <%= f.fields_for :space_available_day do |s| %>
-                                                    <div class="container-fluid">
-                                                        <%@week_days.each do|key,value|%>
-                                                            <div class="row">
-                                                                <%= s.label key, "Yes", :value => "true",class:"radio-button-label"  %>
-                                                                <%= s.radio_button key, true %>
-                                                                <%= s.label key, "No", :value => "false",class:"radio-button-label" %>
-                                                                <%= s.radio_button key, false, :checked => true %>
+                                                </td>
+                                                <td> 
+                                                    <%= f.fields_for :end_time do |s| %>
+                                                    <div class='col-md-3'>
+                                                            <b>EndTime</b><br>
+                                                            <div class="container-fluid">
+                                                            <%@week_days.each do|key,value|%>
+                                                                    <div class="row">
+                                                                        <%=s.time_field key%>
+                                                                    </div>
+                                                                <%end%>
                                                             </div>
-                                                        <%end%>
-                                                    </div>
-                                                <%end%>   
-                                            </div>
+                                                        </div>
+                                                        
+                                                    <%end%>
+                                                </td>
 
-                                             <% @space_=SpaceAvailabilityTiming.new%>
-  
-                                            <%= f.fields_for :start_time do |s| %>
-                                                <div class='col-md-3'>
-                                                    <b>Start Time</b><br>
-                                                    <div class="container-fluid">
-                                                        <%@week_days.each do|key,value|%>
-                                                            <div class="row">
-                                                                <%=s.time_field key%>
-                                                            </div>
-                                                        <%end%>
-                                                    </div>
-                                                </div>
-                                            <%end%>
-                                            <%= f.fields_for :end_time do |s| %>
-                                                <div class='col-md-3'>
-                                                    <b>End Time</b><br>
-                                                    <div class="container-fluid">
-                                                       <%@week_days.each do|key,value|%>
-                                                            <div class="row">
-                                                                <%=s.time_field key%>
-                                                            </div>
-                                                        <%end%>
-                                                    </div>
-                                                </div>
-                                            <%end%>
-
-                                        </div>
+                                            </div>
+                                        </tr>
                                     </div>
                             </div>  
-                        </div>  
+                        </div>
+                        </table>  
 
                             <br><br>
                         <div class="row">
-                            <%= submit_tag 'Save Changes', :class=> "btn btn-primary" %><br>
+                            <%= submit_tag 'Create Space', :class=> "btn btn-primary" %><br>
                         </div>
                             
                         

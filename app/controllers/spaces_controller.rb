@@ -8,13 +8,13 @@ class SpacesController < ApplicationController
     end
 
     def edit
-        @user_detail=User.find(session[:user_id])
+        @user=User.find(session[:user_id])
         @space=Space.find(params[:id])
         @space_available_day=@space.space_available_day
     end
 
     def new
-        @user_detail=User.find(session[:user_id])
+        @user=User.find(session[:user_id])
         @space=Space.new
         
     end
