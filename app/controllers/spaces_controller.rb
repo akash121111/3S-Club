@@ -1,5 +1,6 @@
 class SpacesController < ApplicationController
     before_action :set_space, only: [:show, :destroy, :edit, :update]
+    before_action :set_week_days, only: [:edit,:new, :update]
     def index
         @spaces=Space.where(user_id: session[:user_id])
         @user=User.find(session[:user_id])
@@ -7,20 +8,18 @@ class SpacesController < ApplicationController
     end
 
     def edit
-        @week_days={ "monday"=>1,"tuesday"=>2,"wednesday"=>3 , "thursday"=>4  , "friday"=>5,"saturday"=>6, "sunday"=>7}
-
-        @user_detail=User.find(session[:user_id])
+        @user=User.find(session[:user_id])
         @space=Space.find(params[:id])
         @space_available_day=@space.space_available_day
     end
 
     def new
-        @user_detail=User.find(session[:user_id])
+        @user=User.find(session[:user_id])
         @space=Space.new
+        
     end
 
-    def update
-        
+    def update     
         @space_details=User.find(session[:user_id]).spaces
         @space_detail=@space_details.find(params[:id])
       
@@ -50,8 +49,6 @@ class SpacesController < ApplicationController
             @space_address.longitude=params[:space][:space_address][:longitude]
             @space_address.space_id=@space.id
             
-            @week_days={ "monday"=>1,"tuesday"=>2,"wednesday"=>3 , "thursday"=>4  , "friday"=>5,"saturday"=>6, "sunday"=>7}
-        
             @space_available_day=SpaceAvailableDay.new
             
             @week_days.each do |key,value|
@@ -69,6 +66,7 @@ class SpacesController < ApplicationController
             @space_address.save 
         
             @space_available_day.save
+            flash[:success] ="Space created Successfully!!!"
         
             redirect_to spaces_path
         else
@@ -78,17 +76,6 @@ class SpacesController < ApplicationController
     end
 
     def destroy
-=begin
-        @space.space_address.destroy
-        
-        @space.space_availability_timings.each do|t|
-            t.destroy
-        end
-        @space.space_available_day.destroy
-        @space.booking_records.each do|b|
-            b.destroy
-        end
-=end
         @space.update(deleted_at: Time.now)
         if @space.deleted_at
             redirect_to spaces_path
@@ -111,6 +98,10 @@ class SpacesController < ApplicationController
         @user_detail=@user.user_detail
         @space=Space.find(params[:id])
         @space_address=@space.space_address
+    end
+
+    def set_week_days
+        @week_days={ "monday"=>1,"tuesday"=>2,"wednesday"=>3 , "thursday"=>4  , "friday"=>5,"saturday"=>6, "sunday"=>7}
     end
 
 end

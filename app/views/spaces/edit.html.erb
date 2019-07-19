@@ -8,20 +8,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 ">
-                    <div class="sidenav ">
-                        <div class="side-header">
-                            <%= image_tag("user.png", size:"100x100", :class=>"rounded-circle")%>
-                            <h5>Owner's Name</h5>
-                        </div>
-                        <hr>
-                        <div class="nav-item">
-                            <a href="/owner_dashboard" class="active">Upcoming Bookings</a>
-                            <%= link_to 'Spaces Details', spaces_path %>
-                            <a href="#clients">Booking Record</a>
-                            <%= link_to 'Profile', edit_user_detail_path(@user_detail) %>
-                            <a href="#contact">Log Out</a>
-                        </div>
-                    </div>
+                    <%= render "layouts/sidebar" %>
                 </div>
                 <div class="col-md-10 mt-5">
                     <center><h1>OWNER DETAILS</h1></center>
@@ -52,13 +39,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">   
                                                     <%= f.label :floor_number, 'Floor Number' %>
-                                                    <%= f.text_field :floor_number, class: 'form-control'%>                        
+                                                    <%= f.number_field :floor_number, class: 'form-control  space-number-fields'%>                        
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">                               
                                                     <%= f.label :number_of_toilets, 'Number Of Toilets' %>
-                                                    <%= f.text_field :number_of_toilets, class: 'form-control'%>                         
+                                                    <%= f.number_field :number_of_toilets, class: 'form-control space-number-fields'%>                         
                                                 </div>
                                             </div>
                                         </div>
@@ -154,117 +141,109 @@
                         
                         <br>
                         <div class="container_fluid">
-                         <h3>Space Availability</h3><br>
-                            <div class="row">
-                               
-                                
-                                        
-                                                
+                         <h3>Space Availability</h3>
+                            <div class="row">           
                                 <%= form_for @space_available_day do |f| %>
                                     
                                         <div class="container-fluid">
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <b>Day</b>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <b>Availability</b>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <b>Start Time</b>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <b>End Time</b>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="row">
-                                                <div class='col-md-3'>
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            Monday
-                                                        </div>
-                                                        <div class="row">
-                                                            Tuesday
-                                                        </div>
-                                                        <div class="row">
-                                                            Wednesday
-                                                        </div>
-                                                        <div class="row">
-                                                            Thursday
-                                                        </div>
-                                                        <div class="row">
-                                                            Wednesday
-                                                        </div>
-                                                        <div class="row">
-                                                            Friday
-                                                        </div>
-                                                        <div class="row">
-                                                            Saturday
-                                                        </div>
-                                                        <div class="row">
-                                                            Sunday
-                                                        </div>
-                                                    
-                                                    </div>
-                                                </div>
-                                                <div class='col-md-3'>
-                                                    
-                                                    <%= f.fields_for :space_available_day do |s| %>
-                                                    <div class="container-fluid">
-                                                        <%@week_days.each do|key,value|%>
-                                                       
-                                                            <div class="row">
-                                                                
-                                                                <% if @space_available_day[key] == true %>
-                                                                    <%= s.label key, "Yes", :value => "true"  %>
-                                                                    <%= s.radio_button key,true, checked:true  %>
-                                                                    <%= s.label key, "No", :value => "false" %>
-                                                                    <%= s.radio_button key, false%>
-                                                                <%else%>
-                                                                    <%= s.label key, "Yes", :value => "true"  %>
-                                                                    <%= s.radio_button key,true %>
-                                                                    <%= s.label key, "No", :value => "false" %>
-                                                                    <%= s.radio_button key, false, checked:true %>
-                                                                <% end%>
-                                                                
+                                            <table>
+                                                <div class="row">
+                                                    <tr>
+                                                        <div class='col-md-3'>
+                                                            
+                                                            <div class="container-fluid">
+                                                                <td width="30%">
+                                                                    <b>Day</b>
+                                                                    <%@week_days.each do|key,value|%>
+                                                                        <div class="row">
+                                                                            <%=key.upcase%>
+                                                                        </div>
+                                                                    <%end%>
+                                                                </td>
                                                             </div>
-
-                                                        <%end%>
-                                                        
-                                                    </div>
-                                                    <%end%>   
-                                                </div>
-
-                                                <% @space_availability_timings=@space.space_availability_timings%>
-                                                
-                                                <div class="col-md-6">
-                                                    <div class="container-fluid">
-                                                    
-                                                        <%@space_availability_timings.order(day_id: :asc).each do|space_availability_timing|%>
-                                                            <%= f.fields_for space_availability_timing do |s| %>
-                                                                <div class="row">
-                                                                    
-                                                                        <div class="col-md-6">
-                                                                           
-                                                                            <%=s.time_field :start_time ,multiple:true %>
-                                                                        </div>
-                                                                        <div class="col-md-6">
+                                                        </div>
+                                                        <div class='col-md-3'>
+                                                            <td style="padding:35px;">
+                                                                <b>Availability</b>
+                                                                <%= f.fields_for :space_available_day do |s| %>
+                                                                <div class="container-fluid">
+                                                                    <%@week_days.each do|key,value|%>
+                                                                
+                                                                        <div class="row">
                                                                             
-                                                                            <%=s.time_field :end_time ,multiple:true%>
+                                                                            <% if @space_available_day[key] == true %>
+                                                                                <%= s.label key, "Yes", :value => "true",class:"radio-button-label"%>
+                                                                                <%= s.radio_button key,true, checked:true  %>
+                                                                                <%= s.label key, "No", :value => "false" ,class:"radio-button-label"%>
+                                                                                <%= s.radio_button key, false%>
+                                                                            <%else%>
+                                                                                <%= s.label key, "Yes", :value => "true",class:"radio-button-label"  %>
+                                                                                <%= s.radio_button key,true %>
+                                                                                <%= s.label key, "No", :value => "false",class:"radio-button-label" %>
+                                                                                <%= s.radio_button key, false, checked:true %>
+                                                                            <% end%>
+                                                                            
                                                                         </div>
+
+                                                                    <%end%>
                                                                     
                                                                 </div>
-                                                            <%end%>
-                                                        <%end%>
-                                                    </div>
-                                                
+                                                                <%end%> 
+                                                            </td>  
+                                                        </div>
+
+                                                        <% @space_availability_timings=@space.space_availability_timings%>
+                                                        
+                                                        <div class="col-md-6 start-end-time">
+                                                            <td width="80%">
+                                                                <div class="container-fluid">
+                                                                    <%@space_availability_timings.order(day_id: :asc).each do|space_availability_timing|%>
+                                                                        <%= f.fields_for space_availability_timing do |s| %>
+                                                                            
+                                                                            <div class="row">
+                                                                                <table>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <%if @space_availability_timings.order(day_id: :asc).first== space_availability_timing%>
+                                                                                                <div class="row">
+                                                                                                    <div class="col-md-12">
+                                                                                                        <b class="start-time-heading">Start Time</b>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            <%end%>
+                                                                                            <div class="col-md-6">
+                                                                                                <%=s.time_field :start_time ,multiple:true %>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <%if @space_availability_timings.order(day_id: :asc).first== space_availability_timing%>
+                                                                                                <div class="row">
+                                                                                                    <div class="col-md-12">
+                                                                                                        <b class="start-time-heading">End Time</b>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            <%end%>
+                                                                                            <div class="col-md-6">
+                                                                                                <%=s.time_field :end_time ,multiple:true%>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                                    
+                                                                                    
+                                                                                
+                                                                            </div>
+                                                                        <%end%>
+                                                                    <%end%>
+                                                                </div>
+                                                            </td>
+                                                        </div>
+                                                    </tr>
                                                 </div>
-                                                      
-                                            
-                                            </div>
+                                            </table>
                                             
                                         <div>
+                                        <br>
 
                                         <%= submit_tag 'Save Changes', :class=> "btn btn-primary" %><br>
 
