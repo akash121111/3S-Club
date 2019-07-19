@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
     before_action :set_space, only: [:show, :destroy, :edit, :update]
-    before_action :set_week_days, only: [:edit,:new, :update]
+    before_action :set_week_days, only: [:edit,:new,:create, :update]
     def index
         @spaces=Space.where(user_id: session[:user_id])
         @user=User.find(session[:user_id])
@@ -24,7 +24,7 @@ class SpacesController < ApplicationController
         @space_detail=@space_details.find(params[:id])
       
         if @space_detail.update(space_details_params)
-          redirect_to edit_space_path     
+          redirect_to edit_space_path  
         else
           redirect_to edit_space_path  
         end

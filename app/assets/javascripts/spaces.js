@@ -7,7 +7,7 @@ document.addEventListener("turbolinks:load",function(){
   $("#longitude").css("display","none");
   $("#latitude2").css("display","none");
   $("#longitude2").css("display","none");
-  $('#space_start_time_monday').prop("disabled", true);
+  //$('#space_start_time_monday').prop("disabled", true);
   week_days=["monday","tuesday","wednesday","thursday","friday","saturday","sunday"]
   
  // for(var i=0;i<7;i++){

@@ -1,63 +1,76 @@
 
-
-  
   <body style="background: #e8e9eb">
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2 col-xs-2">
-        <div class="sidenav ">
-          <div class="side-header">
-            <%= image_tag("user.png", size:"100x100", :class=>"rounded-circle")%>
-            <h5>Owner's Name</h5>
-          </div>
-          <hr>
-          <div class="nav-item">
-          <a href="/owner_dashboard" class="active">Upcoming Bookings</a>
-          <%= link_to 'Space Details', edit_user_detail_path(@user_detail) %>
-          <a href="#clients">Booking Record</a>
-          <%= link_to 'Profile', edit_user_detail_path(@user_detail) %>
-          <a href="#contact">Log Out</a>
-          </div>
-        </div>
-      </div>
+      <%= render "layouts/sidebar" %>
+  </div>
       <div class="col-sm-10 col-xs-10">
         <div class="main">
          <div class="container-fluid">
-            <button class="hidden visible-xs" style="float: right" data-toggle="collapse" data-target="#demo"  aria-expanded="false" aria-controls="demo">collapse</button>
             <h4>Upcoming Bookings</h4><hr>
             <div class="row text-center">
-                <div class="col-sm-3">
-                <%= form_for @br, :url => view_details_path(@br), :method=> "post" do |f| %>
-                  <div class="card">
-                  <div class="card-header"><%= @space.space_name%></div>>
-                    <%= image_tag("space.jpg",:class =>"card-img-top")%>
-                    <div class="card-block bg-white">
-                       <div class="card-title "><h6><%= @space.space_address%></h6></div>
-                    </div> 
-                   <button type="submit"><div class="card-footer">View Details</div></button>    
-                  </div>
-                  </div>
+            <% @spaces.each do |spaces|%>
+              
+              <% @booked=spaces.booking_records%>
+              
+              <% @booked.each do |booked| %>
+                      
+                      <% current_date=Date.parse DateTime.now.strftime("%y/%m/%d").to_s %>
+                      <% date= Date.parse booked.created_at.strftime("%y/%m/%d").to_s%>
+                      <% days=(current_date-date).to_i%>
+                        <% if days <= 7 %>
+                        <%  @address=spaces.space_address%>
+                        <%  @space_detail=Space.find_by(id:booked.space_id)%>
+                        <div class="col-sm-6 col-md-3 col-xs-6 mt-2 mb-2">
+                        <%= form_for booked, :url => view_details_path(booked), :method=> "post" do |f| %>
+                          <input type="text" name="booked_id" value="<%=booked.id%>" hidden>
+                          <div class="card">
+
+                          <div class="card-header bg-white"> <%= @space_detail.space_name%></div>
+                            <%= image_tag("location12.jpeg",:class =>"card-img")%>
+                            <div class="card-block bg-white">
+                              <div class="card-title "><h6><%= @address.street%> <%= @address.city%> <%= @address.state%> (<%= @address.pincode%>)</h6></div>
+                            </div> 
+                          <button type="submit"><div class="card-footer">View Details</div></button>    
+                          </div>
+                          </div>
+                  
+                  <% end %>
                 <% end %>
+              <% end %>
+              <% end %>
             </div><hr>
             <div class="row mt-4">
               <div class="col-sm-10">
                 <h4>Booked spaces</h4>
                 <ul class="list-group">
-                <li class="list-group-item ">
-                  <div class="media">
-                    <div class="media-left">
-                    <%= image_tag("space.jpg", :class =>"media-object")%>
-                    <p>Address sdbf mfnsdbfhs shdhjsdf </p>
-                     </div>
-                    <div class="media-body text-right">
-                      <h5><i>Booked by -</i> member Name</h5>
-                      <p><i>Date </i> 11/06/2019-11/7/2019</p>
-                      <p><i>Time</i> 8:00 to 12:00</p>
-                      <h4>Booked</h4>
-                       <button class="btn btn-primary">Details</button>
+                <% @spaces.each do |spaces|%>
+                  <% @booked=spaces.booking_records%>
+                    <% @booked.each do |booked| %>
+                    <% member=User.find_by(id:booked.user_id)%>
+                    <% member_detail=member.user_detail%>
+                    <% address=spaces.space_address%>
+                    <%= form_for booked, :url => view_details_path(booked), :method=> "post" do |f| %>
+                      <input type="text" name="booked_id" value="<%=booked.id%>" hidden>
+                    <li class="list-group-item ">
+                    <div class="media">
+                      <div class="media-left">
+                      <%= image_tag("space.jpg", :class =>"media-object")%>
+                      <p><%= address.street%> <%= address.city%> <%= address.state%> (<%= address.pincode%>)</p>
+                       </div>
+                      <div class="media-body text-right">
+                        
+                        <p><i>Date </i> <%= booked.created_at.strftime("%d/%m/%y")%></p>
+                        <p><i>Time</i> </p>
+                        <h4>Booked</h4>
+                         <button class="btn btn-primary">Details</button>
+                      </div>
                     </div>
-                  </div>
-                </li>              
+                  </li>   
+                  <% end%>       
+                <% end %>  
+                <% end %>          
             </ul>
               </div>
               

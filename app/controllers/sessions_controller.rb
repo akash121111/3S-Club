@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
   def create
     	
   	user = User.find_by_email(params[:session][:email])
+      
        if user && user.authenticate(params[:session][:password_digest])
         session[:user_id]= user.id
         user_type=user.user_type_id
@@ -21,7 +22,7 @@ class SessionsController < ApplicationController
         if user_type==1
           redirect_to '/dashboard' , notice: "Logged in"
         else
-          redirect_to '/owner_dashboard' , notice: "Logged in"
+          redirect_to spaces_path , notice: "Logged in"
           
         end
         #flash[:success] = "Login successful"

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'owner_dashboard', to: "ownerdashboard#upcoming_booking"
+  get 'booking_records', to: "ownerdashboard#booking_records"
   post 'view_details', to: "ownerdashboard#view_details"
+  get 'no_space', to: "ownerdashboard#no_space"
   get 'dashboard', to: 'member_dashboard#dashboard'
   post 'dashboard', to: 'member_dashboard#update'
   post 'memberdetail', to: 'member_dashboard#create'
@@ -60,6 +62,8 @@ get '/searching', to: 'searchings#index'
   get 'sign_up_user', to:'user#sign_up'
   get 'login_user', to:'user#login'
   get 'dashboard' , to:'sessions#index'
+  get 'dashboard' , to:'sessions#index'
+  get 'logout' , to:'sessions#destroy'
   post 'login_confirm',to: 'sessions#create'
 end
   
