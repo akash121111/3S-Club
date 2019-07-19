@@ -15,11 +15,12 @@ class SearchingsController < ApplicationController
           if @start_time && @end_time
             @b=DateTime.parse(@start_time).to_time.strftime('%T')
             @c=DateTime.parse(@end_time).to_time.strftime('%T')
-          
+       
           finddayid ={ "monday" => "1", "tuesday" => "2", "wednesday" => "3" , "thursday" => "4", "friday" => "5", "saturday" => "6", "sunday" => "7"}
 
           @k=finddayid[@a].to_i
-
+          
+          @checkability=BookingRecord.sear(params[:booking_date],@b,@c)
 
           @space_addresses = SpaceAddress.search(params[:search].downcase)
           @findsearchaddresspid=@space_addresses.pluck(:space_id)
@@ -27,8 +28,9 @@ class SearchingsController < ApplicationController
 
           @l=SpaceAvailabilityTiming.se(@k,@b,@c)
           @findcommonsearch= @findsearchaddresspid & @findsearchdatepid & @l
-            
-          @aftersearchbydayandaddress=SpaceAddress.where(space_id:@findcommonsearch)
+
+          @findcommonsearch1=(@findcommonsearch - @checkability ) | (@findcommonsearch -@checkability )
+          @aftersearchbydayandaddress=SpaceAddress.where(space_id:@findcommonsearch1)
             
           end
    
@@ -52,7 +54,7 @@ class SearchingsController < ApplicationController
 
 
 
-    def booking
+    def bookingdone
   
                 @space_id=params['space_id']
                 @user_id=params['user_id']

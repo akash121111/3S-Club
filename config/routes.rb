@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   get 'owner_dashboard', to: "ownerdashboard#upcoming_booking"
   post 'view_details', to: "ownerdashboard#view_details"
   get 'dashboard', to: 'member_dashboard#dashboard'
+  post 'dashboard', to: 'member_dashboard#update'
+  post 'memberdetail', to: 'member_dashboard#create'
   get 'profile',to: 'member_dashboard#profile'
-  get 'member_dashboard/new'
-  get 'member_dashboard/show'
+  get 'booking',to: 'member_dashboard#bookingdetail'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources:spaces
   resources:users
@@ -14,6 +15,11 @@ Rails.application.routes.draw do
   resources:user_addresses
    
 
+
+
+  
+
+
  
   # get '/search', to: 'userbooking#search'
 
@@ -22,7 +28,7 @@ Rails.application.routes.draw do
   #root to:'user#l 
   get '/searching', to: 'searchings#index'
   get '/allmap', to:'searchings#allmap'
-  get '/booking', to:'searchings#booking'
+  get '/bookingdone', to:'searchings#bookingdone'
   
   post 'owner_signup' ,to: 'ownersignups#create' 
   get '/login',to: 'ownersignups#login',as: 'login_in_owner'
