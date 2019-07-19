@@ -7,10 +7,10 @@ class CreateSpaceAddresses < ActiveRecord::Migration[5.2]
       t.string :street
 =======
        t.string :street
->>>>>>> 2bcff224429a259146eb6de66037d44f3bfebb59
+>>>>>>> 541cfcb6a5c45fecfe57d36695eb3a086b7b7eb5
 =======
        t.string :street
->>>>>>> 541cfcb6a5c45fecfe57d36695eb3a086b7b7eb5
+>>>>>>> 784b6216f3837787a7952bb32dcb26c04850f7d8
       t.string :city
       t.string :pincode
       t.string :state

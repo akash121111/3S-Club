@@ -2,7 +2,7 @@
 #Rails.application.config.assets.precompile += %w( spaces.css spaces.coffee )
 
 
-%w( spaces user sessions fronts membership ).each do |controller|
+%w( spaces user sessions fronts membership user_details ).each do |controller|
     Rails.application.config.assets.precompile += ["#{controller}.js", "#{controller}.css"]
 end
 # Version of your assets, change this if you want to expire all your assets.
@@ -25,3 +25,5 @@ Rails.application.config.assets.precompile += %w( searchings.scss )
 Rails.application.config.assets.precompile += %w( searchings.js )
 Rails.application.config.assets.precompile += %w( ownersignups.scss )
 Rails.application.config.assets.precompile += %w( ownersignups.js )
+Rails.application.config.assets.precompile += %w( password_resets.css )
+Rails.application.config.assets.precompile += %w( password_resets.js )

@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   resources:users
   resources:user_details
   resources:space_addresses
-  
+  resources:space_available_days
+  resources:user_addresses
    
 
  
@@ -32,35 +33,30 @@ Rails.application.routes.draw do
   get 'user/sign_up'
   get 'user/log_in'
   get 'sign_up',to: "ownersignups#sign_up"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  #root to:'user#log_in'
+  
   post '/owner_signup' ,to: 'ownersignups#create'
-  get '/login',to: 'ownersignups#login'
 
+  get 'signup',to:'ownersignups#sign_up'
   #get 'user/index'
   #get 'user/sign_up'
   #get 'user/log_in'
 get '/searching', to: 'searchings#index'
   # get '/search', to: 'userbooking#search'
 
+
+ 
   get 'membershipindex', to: 'membership#membershipindex'
   get 'membership', to: 'membership#membership'
 
-
-
   get '/new', to:'user#new' 
- 	#resources:sessions
+ 
 	resources:user
+  resources:password_resets
   root to:'user#index'
+  delete 'log_out' , to:'user#destroy'
   get 'sign_up_user', to:'user#sign_up'
   get 'login_user', to:'user#login'
   get 'dashboard' , to:'sessions#index'
   post 'login_confirm',to: 'sessions#create'
-  #post 'session/create', to:'session#create'
-  #delete 'session/destroy'
-  #get 'user/index'
-  #get 'user/sign_up', to:'user#sign_up'
-  #get 'user/log_in'
- # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
   

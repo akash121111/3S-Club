@@ -1,10 +1,9 @@
 class MemberDashboardController < ApplicationController
-  protect_from_forgery
 
 
 
   def dashboard
-    @member=UserDetail.new
+   
   end
 
  
@@ -15,14 +14,13 @@ class MemberDashboardController < ApplicationController
   end
 
   def create
-    
+    byebug
     @member = UserDetail.new(userdetail_params)
     @member.user_id=session[:user_id]
-  
     if @member.save
+      redirect_to "/profile"
+    else
       redirect_to "/dashboard"
-      else
-      render 'profile'
     end
   end
 
@@ -50,7 +48,7 @@ class MemberDashboardController < ApplicationController
   def userdetail_params
   
     #params[:user]=params
-    params.permit(:fist_name, :last_name, :education_details,:about_user,:city,:college,:phone_number,:mobile_number)
+    params.permit(:first_name, :last_name, :education_details,:about_user,:city,:college,:phone_number,:mobile_number)
   end
 
   

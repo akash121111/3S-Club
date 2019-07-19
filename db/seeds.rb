@@ -7,7 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-
 User.create(email:"a@example.com",
     password_digest:"abc123",
     user_type_id:1)
@@ -27,7 +26,6 @@ UserDetail.create(
 
 Space.create(
     space_name:"ZiggleTech",
-
      size: "50",
      dimensions: "500*500",
      floor_number: 2,
@@ -60,8 +58,8 @@ SpaceAvailableDay.create(
 SpaceAvailabilityTiming.create(
     start_time: "12:00",
     end_time: "17:00",
-    space_id:1,
-    day_id: 1
+    user_id: 1,
+    space_id: 1
 )
 
 BookingRecord.create(

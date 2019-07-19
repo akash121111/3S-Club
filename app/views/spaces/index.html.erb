@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 ">
+             <%= render "layouts/sidebar" %>
+        </div>
+        <div class="col-md-10 mt-5">
+            <div class="container-fluid">
+                <h2>Your Spaces</h2>
+                <br><br>
+                <div class="row">
+                    
+                    <%@spaces.each do |space|%>
+                        <%if space.deleted_at == nil%>
+                            <div class="col-md-3">
+                                <div class="card">
+                                    <div class="card-header"><%= space.space_name%><%= link_to 'Remove', space, id:'del-space-link',method: :delete, data: { confirm: 'Are you sure?' } %>  </div>
+                                    <div class="card-body">
+                                        <% if space.images.attached?%>
+                                            <%space.images.each do |image|%>
+                                                <%if image == space.images.first%>
+
+                                                    <div class="img-container"> 
+                                                        <%= image_tag image,class: "space-img"%>
+                                                    </div>
+                                                <%end%>
+                                            <%end%>
+
+                                        <%else%>
+                                            <div> 
+                                                <%= image_tag "plus-icon.png",class: "space-img" %>
+                                            </div>
+                                        <%end%>
+                                    </div> 
+                                    <div class="card-footer"><%= link_to 'View Details', edit_space_path(space) %></div>
+                                </div><br>
+                            </div>
+
+                        <%end%>
+                    <%end%>
+                    
+                    <br><br>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header">Add More Spaces</div>
+                            <div class="card-body">
+                                <a href="/spaces/new">
+                                        <%= image_tag "plus-icon.png",class:'space-img',id:'add-space-icon' %>
+                                </a>
+                            </div> 
+                            <div class="card-footer">Tap to add more</div>
+                        </div><br>
+
+                    </div>
+
+                <div>
+
+            </div>
+
+        </div>
+    </div>
+</div>          
