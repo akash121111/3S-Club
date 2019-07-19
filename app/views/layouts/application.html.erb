@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SharedStudySpace</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    
+
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+    <script type="6Le1U60UAAAAADLHyPCBpq_oo2SEthHxQ0U55KV5"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer></script>
+
+
+    <%= stylesheet_link_tag    'application',params[:controller], media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application',params[:controller], 'data-turbolinks-track':true %>
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key='+ENV['google_maps_api_key'].to_s %>
+    
+
+    <%= yield(:head_tags) %>
+  </head>
+
+
+  <body>
+
+    <%= render "layouts/navbar" %>
+     <%= render 'layouts/message' %> 
+
+    <%= yield %>
+  </body>
+ 
+</html>

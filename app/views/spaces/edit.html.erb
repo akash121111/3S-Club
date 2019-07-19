@@ -1,0 +1,273 @@
+<html>
+    <head>
+    
+
+
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 ">
+                    <%= render "layouts/sidebar" %>
+                </div>
+                <div class="col-md-10 mt-5">
+                    <center><h1>OWNER DETAILS</h1></center>
+                    <br>
+                    
+
+                    <div class="container-fluid space-detail" id="space-details">
+                        <br><br><br>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3>Space Details</h3>
+                                <%= form_for @space do |f| %>
+                                     <div class="form-group"> 
+                                        <%= f.label :space_name, 'Space Name' %>
+                                        <%= f.text_field :space_name, class: 'form-control'%>
+                                    </div>
+                                    
+                                    <div class="form-group"> 
+                                        <%= f.label :size, 'Size' %>
+                                        <%= f.text_field :size, class: 'form-control'%>
+                                    </div>
+                                    <div class="form-group">
+                                        <%= f.label :Dimensions, 'Dimensions' %>
+                                        <%= f.text_field :dimensions, class: 'form-control'%>
+                                    </div>
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">   
+                                                    <%= f.label :floor_number, 'Floor Number' %>
+                                                    <%= f.number_field :floor_number, class: 'form-control  space-number-fields'%>                        
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">                               
+                                                    <%= f.label :number_of_toilets, 'Number Of Toilets' %>
+                                                    <%= f.number_field :number_of_toilets, class: 'form-control space-number-fields'%>                         
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    </div>
+                                    <div class="form-group">                               
+                                        <%= f.label :nearby_landmark, 'Nearby Landmark' %>
+                                        <%= f.text_field :nearby_landmark, class: 'form-control'%>                         
+                                    </div>
+
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-6 image-heading">
+                                                <h3>Images</h3>
+                                            </div>
+                                            
+                                            <div class="col-md-6">
+                                                <%= f.file_field :images, multiple:true %>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <%= render "images_carousel", space:@space %>
+                                    </div>
+                                    
+                                    <div>
+                                        <%= submit_tag 'Save Changes', :class=> "btn btn-primary" %><br>
+                                    </div>
+                                    
+                                <% end %>
+                                
+                            </div>
+
+                            <div class="col-md-6">
+                                <h3>Space Address</h3>
+                                <%= form_for @space_address do |f| %>
+                                    <div class="form-group">
+                                        <%= f.label :house_number, 'House Number' %>
+                                        <%= f.text_field :house_number, class: 'form-control'%>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <%= f.label :street, 'Street' %>
+                                        <%= f.text_field :street, class: 'form-control'%>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <%= f.label :city, 'City' %>
+                                        <%= f.text_field :city, class: 'form-control'%>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <%= f.label :pincode, 'Pincode' %>
+                                        <%= f.text_field :pincode, class: 'form-control'%>
+                                    </div>
+                                    <div class="form-group">
+                                        <%= f.label :state, 'State' %>
+                                        <%= f.text_field :state, class: 'form-control'%>
+                                    </div>
+                                     <div class="form-group">                                   
+                                        <%= f.text_field :latitude, class: 'form-control',id:'latitude'%>
+                                    </div>
+                                    <div class="form-group">
+                                        <%= f.text_field :longitude, class: 'form-control', id:'longitude'%>
+                                    </div>
+                                   
+
+                                    <h3>Drag marker to get Address</h3>
+                                    <% provide :head_tags do %>
+                                        <script>
+                                            document.addEventListener("DOMContentLoaded", function(){
+                                                m(<%=@space.space_address.latitude%> , <%=@space.space_address.longitude%>);
+                                            });
+                                        </script>
+                                    <% end %>
+                                    
+
+                                    <div id='map'>
+                                    </div>
+                                    
+                                    <br>
+                                    
+                                    <div>
+                                        <%= submit_tag 'Save Changes', :class=> "btn btn-primary" %><br>
+                                    </div>
+
+
+                                <% end %>
+                                
+                            </div>
+                        </div>
+                        
+                        <br>
+                        <div class="container_fluid">
+                         <h3>Space Availability</h3><br>
+                            <div class="row">
+                               
+                                
+                                        
+                                                
+                                <%= form_for @space_available_day do |f| %>
+                                    
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <b>Day</b>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <b>Availability</b>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <b>Start Time</b>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <b>End Time</b>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                                <div class='col-md-3'>
+                                                    <div class="container-fluid">
+                                                        <div class="row">
+                                                            Monday
+                                                        </div>
+                                                        <div class="row">
+                                                            Tuesday
+                                                        </div>
+                                                        <div class="row">
+                                                            Wednesday
+                                                        </div>
+                                                        <div class="row">
+                                                            Thursday
+                                                        </div>
+                                                        <div class="row">
+                                                            Wednesday
+                                                        </div>
+                                                        <div class="row">
+                                                            Friday
+                                                        </div>
+                                                        <div class="row">
+                                                            Saturday
+                                                        </div>
+                                                        <div class="row">
+                                                            Sunday
+                                                        </div>
+                                                    
+                                                    </div>
+                                                </div>
+                                                <div class='col-md-3'>
+                                                    
+                                                    <%= f.fields_for :space_available_day do |s| %>
+                                                    <div class="container-fluid">
+                                                        <%@week_days.each do|key,value|%>
+                                                       
+                                                            <div class="row">
+                                                                
+                                                                <% if @space_available_day[key] == true %>
+                                                                    <%= s.label key, "Yes", :value => "true"  %>
+                                                                    <%= s.radio_button key,true, checked:true  %>
+                                                                    <%= s.label key, "No", :value => "false" %>
+                                                                    <%= s.radio_button key, false%>
+                                                                <%else%>
+                                                                    <%= s.label key, "Yes", :value => "true"  %>
+                                                                    <%= s.radio_button key,true %>
+                                                                    <%= s.label key, "No", :value => "false" %>
+                                                                    <%= s.radio_button key, false, checked:true %>
+                                                                <% end%>
+                                                                
+                                                            </div>
+
+                                                        <%end%>
+                                                        
+                                                    </div>
+                                                    <%end%>   
+                                                </div>
+
+                                                <% @space_availability_timings=@space.space_availability_timings%>
+                                                
+                                                <div class="col-md-6">
+                                                    <div class="container-fluid">
+                                                    
+                                                        <%@space_availability_timings.order(day_id: :asc).each do|space_availability_timing|%>
+                                                            <%= f.fields_for space_availability_timing do |s| %>
+                                                                <div class="row">
+                                                                    
+                                                                        <div class="col-md-6">
+                                                                           
+                                                                            <%=s.time_field :start_time ,multiple:true %>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            
+                                                                            <%=s.time_field :end_time ,multiple:true%>
+                                                                        </div>
+                                                                    
+                                                                </div>
+                                                            <%end%>
+                                                        <%end%>
+                                                    </div>
+                                                
+                                                </div>
+                                                      
+                                            
+                                            </div>
+                                            
+                                        <div>
+
+                                        <%= submit_tag 'Save Changes', :class=> "btn btn-primary" %><br>
+
+                                <%end%>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <br>
+
+                </div>
+            </div>
+        </div>
+
+    </body>
+         
+
+</html>
