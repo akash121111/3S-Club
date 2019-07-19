@@ -69,6 +69,7 @@ class SpacesController < ApplicationController
             @space_address.save 
         
             @space_available_day.save
+            flash[:success] ="Space created Successfully!!!"
         
             redirect_to spaces_path
         else

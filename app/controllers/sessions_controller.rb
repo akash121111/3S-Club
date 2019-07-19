@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
         if user_type==1
           redirect_to '/dashboard' , notice: "Logged in"
         else
-          redirect_to '/owner_dashboard' , notice: "Logged in"
+          redirect_to spaces_path , notice: "Logged in"
           
         end
         #flash[:success] = "Login successful"

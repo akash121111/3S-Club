@@ -2,20 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2 col-xs-2">
-        <div class="sidenav">
-  <div class="side-header">
-    <%= image_tag("user.png",:class=> "rounded-circle",size:"100x100")%>
-    <h4>Owner's Name</h4>
-  </div>
-  <hr>
-  <div class="nav-item">
-  <a href="/owner_dashboard">Upcoming Bookings</a>
-  <a href="#services">Spaces Details</a>
-  <a href="/booking_records">Booking Record</a>
-  <a href="#contact">Profile</a>
-  <a href="/logout">Log Out</a>
-  </div>
-  </div>
+      <%= render "layouts/sidebar" %>
   </div>
       <div class="col-sm-10 col-xs-10">
         <div class="main">

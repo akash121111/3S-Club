@@ -6,15 +6,18 @@ class OwnersignupsController<ApplicationController
    end
   def create
     
-    @owner = User.new(owner_params)
+    @owner = User.new(signup_params)
     @owner.user_type_id=2
     if verify_recaptcha(model: @owner) && @owner.save 
+      @user_detail=UserDetail.new(user_params)
+      @user_detail.user_id=@owner.id
+      @user_detail.save
       # save post
       #flash[:notice] = "Post successfully created"
   
       #flash[:"error"] = "Invalid email or password "
       
-      redirect_to "/owner_dashboard"
+      redirect_to "login_user"
     else
       #flash[:"error"] = "Invalid email or password "
        redirect_to login_in_owner_url
@@ -40,7 +43,10 @@ class OwnersignupsController<ApplicationController
 
   private
 
-  def owner_params
+  def signup_params
     params.permit(:email, :password, :password_confirmation)
+  end
+  def user_params
+    params.permit(:first_name, :last_name, :mobile_number)
   end
 end

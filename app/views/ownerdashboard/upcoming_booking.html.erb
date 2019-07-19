@@ -3,21 +3,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2 col-xs-2">
-        <div class="sidenav sidenav-collapse"  data-toggle="" id="demo">
-           <div class="side-header">
-             <%= image_tag("user.png", size:"100x100", :class=>"rounded-circle")%>
-             <% user_name=@user.user_detail%>
-              <h4><%= user_name.first_name.capitalize%> <%= user_name.last_name.capitalize%></h4>
-            </div>
-              <hr>
-           <div class="nav-item">
-              <a href="/owner_dashboard" class="active">Upcoming Bookings</a>
-              <a href="#services">Spaces Details</a>
-              <a href="/booking_records">Booking Record</a>
-              <a href="#contact">Profile</a>
-              <a href="/logout">Log Out</a>
-             </div>
-  </div>
+      <%= render "layouts/sidebar" %>
   </div>
       <div class="col-sm-10 col-xs-10">
         <div class="main">
@@ -29,7 +15,7 @@
               <% @booked=spaces.booking_records%>
               
               <% @booked.each do |booked| %>
-               
+                      
                       <% current_date=Date.parse DateTime.now.strftime("%y/%m/%d").to_s %>
                       <% date= Date.parse booked.created_at.strftime("%y/%m/%d").to_s%>
                       <% days=(current_date-date).to_i%>
@@ -42,7 +28,7 @@
                           <div class="card">
 
                           <div class="card-header bg-white"> <%= @space_detail.space_name%></div>
-                            <%= image_tag("space.jpg",:class =>"card-img-top")%>
+                            <%= image_tag("location12.jpeg",:class =>"card-img")%>
                             <div class="card-block bg-white">
                               <div class="card-title "><h6><%= @address.street%> <%= @address.city%> <%= @address.state%> (<%= @address.pincode%>)</h6></div>
                             </div> 
@@ -74,7 +60,7 @@
                       <p><%= address.street%> <%= address.city%> <%= address.state%> (<%= address.pincode%>)</p>
                        </div>
                       <div class="media-body text-right">
-                        <h5><i>Booked by -</i> <%= member_detail.first_name.capitalize %> <%= member_detail.last_name.capitalize%></h5>
+                        
                         <p><i>Date </i> <%= booked.created_at.strftime("%d/%m/%y")%></p>
                         <p><i>Time</i> </p>
                         <h4>Booked</h4>

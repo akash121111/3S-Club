@@ -8,20 +8,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 ">
-                    <div class="sidenav ">
-                        <div class="side-header">
-                            <%= image_tag("user.png", size:"100x100", :class=>"rounded-circle")%>
-                            <h5>Owner's Name</h5>
-                        </div>
-                        <hr>
-                        <div class="nav-item">
-                            <a href="/owner_dashboard" class="active">Upcoming Bookings</a>
-                            <%= link_to 'Spaces Details', spaces_path %>
-                            <a href="#clients">Booking Record</a>
-                            <%= link_to 'Profile', edit_user_detail_path(@user_detail) %>
-                            <a href="#contact">Log Out</a>
-                        </div>
-                    </div>
+                    <%= render "layouts/sidebar" %>
                 </div>
                 <div class="col-md-10 mt-5">
                     <center><h1>OWNER DETAILS</h1></center>
@@ -33,7 +20,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <h3>Space Details</h3>
-                                <%= form_for @space do |f| %>
+                                <%= form_for :@space do |f| %>
                                      <div class="form-group"> 
                                         <%= f.label :space_name, 'Space Name' %>
                                         <%= f.text_field :space_name, class: 'form-control'%>
@@ -52,13 +39,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">   
                                                     <%= f.label :floor_number, 'Floor Number' %>
-                                                    <%= f.text_field :floor_number, class: 'form-control'%>                        
+                                                    <%= f.number_field :floor_number, class: 'form-control  space-number-fields'%>                        
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">                               
                                                     <%= f.label :number_of_toilets, 'Number Of Toilets' %>
-                                                    <%= f.text_field :number_of_toilets, class: 'form-control'%>                         
+                                                    <%= f.number_field :number_of_toilets, class: 'form-control space-number-fields'%>                         
                                                 </div>
                                             </div>
                                         </div>
@@ -95,7 +82,7 @@
 
                             <div class="col-md-6">
                                 <h3>Space Address</h3>
-                                <%= form_for @space_address do |f| %>
+                                <%= form_for :@space_address do |f| %>
                                     <div class="form-group">
                                         <%= f.label :house_number, 'House Number' %>
                                         <%= f.text_field :house_number, class: 'form-control'%>
