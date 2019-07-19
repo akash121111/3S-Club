@@ -43,10 +43,16 @@ class OwnersignupsController<ApplicationController
 
   private
 
+<<<<<<< HEAD
   def signup_params
     params.permit(:email, :password, :password_confirmation)
   end
   def user_params
     params.permit(:first_name, :last_name, :mobile_number)
   end
+=======
+  def owner_params
+    params.permit(:email, :password, :password_confirmation)
+  end
+>>>>>>> 4e0934084d2a8241dee169af010d39c991ac5313
 end

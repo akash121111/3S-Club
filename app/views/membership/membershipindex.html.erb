@@ -10,8 +10,16 @@
   		var r =confirm("Do you want to proceed?");
 		if (r == true) 
 		{	var p = 50.0;
+<<<<<<< HEAD
 			window.location.assign("http://localhost:3000/membership?p="+p,"_self")
   			alert("Your selected plan is successfully added to your wallet.")
+=======
+			var user_id = 11;
+			var space_id = 66;
+			window.location.assign("http://localhost:3000/membership?p="+p+"&user_id="+user_id+
+			"&space_id="+space_id+"_self");
+  			alert("Your selected plan is successfully added to your wallet.");
+>>>>>>> 4e0934084d2a8241dee169af010d39c991ac5313
 		} 
 		else 
 		{
@@ -24,7 +32,14 @@
   		var r =confirm("Do you want to proceed?");
 		if (r == true) 
 		{	var p = 150.0;
+<<<<<<< HEAD
 			window.location.assign("http://localhost:3000/membership?p="+p,"_self")
+=======
+			var user_id = 11;
+			var space_id = 66;
+			window.location.assign("http://localhost:3000/membership?p="+p+"&user_id="+user_id+
+			"&space_id="+space_id+"_self");
+>>>>>>> 4e0934084d2a8241dee169af010d39c991ac5313
   			alert("Your selected plan is successfully added to your wallet.")
 		} 
 		else 
@@ -35,12 +50,12 @@
 </script>
 </head>
 <body>
-	<div class="jumbotron">
+	<div class="jumbotron" style="background-color: sandybrown;">
   		<h1>Short Offer</h1>
   		<p>You will get 50 hours in your wallet for the building(s)/room(s)/land(s) you choose. </p>
-  		<p><a class="btn btn-primary btn-lg" href="#" role="button" onclick="myFunction1()">Select</a></p>
+  		<p><button class="btn btn-primary btn-lg" href="#" role="button" onclick="myFunction1()">Select</button></p>
 	</div>
-	<div class="jumbotron">
+	<div class="jumbotron" style="background-color: chocolate;">
   		<h1>Long Offer</h1>
   		<p>You will get 150 hours in your wallet for the building(s)/room(s)/land(s) you choose. </p>
   		<p><a class="btn btn-primary btn-lg" href="#" role="button" onclick="myFunction2()">Select</a></p>
