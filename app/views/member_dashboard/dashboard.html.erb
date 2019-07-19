@@ -1,17 +1,5 @@
 <body>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-2">
-      <div class="sidenav text-center">
-          <%= image_tag("user.png",size:"100x100", :class =>"rounded-circle")%>
-          <h5>Member' Name</h5><hr>
-          <a href="/searching">Dashboard</a><hr>
-            <a href="profile">Profile</a><hr>
-            <a href="/allmap">Maps</a><hr>
-            <a href="booking">RecentBooked</a><hr>
-           <%= link_to 'Log out', log_out_path, method: :delete %>
-      </div>                        
-    </div>
+ <%= render "layouts/member_sidebar" %>
 
     <div class="col-sm-10">
       <div class="row">
@@ -57,7 +45,7 @@
                            <label for="mobno">Mobilenumber</label>
                            <input type="text" name="mobile_number" class="form-control" id="mobno">
                           </div>
-                         <input type="submit" class="btn btn-primary" value="Save Details" onsubmit="return userdetail()">
+                         <input type="submit" class="btn btn-primary" value="Save Details">
                          
                      
             

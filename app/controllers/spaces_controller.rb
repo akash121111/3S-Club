@@ -16,7 +16,7 @@ class SpacesController < ApplicationController
     def new
         @user=User.find(session[:user_id])
         @space=Space.new
-        
+        @user_detail=@user.user_detail
     end
 
     def update     

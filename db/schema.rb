@@ -54,15 +54,14 @@ ActiveRecord::Schema.define(version: 2019_07_18_172229) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
   create_table "member_subscriptions", force: :cascade do |t|
-    t.bigint "membership_plans_id"
+    t.bigint "membership_plan_id"
     t.bigint "user_id"
     t.bigint "space_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "time_wallet"
-    t.index ["membership_plans_id"], name: "index_member_subscriptions_on_membership_plans_id"
+    t.index ["membership_plan_id"], name: "index_member_subscriptions_on_membership_plan_id"
     t.index ["space_id"], name: "index_member_subscriptions_on_space_id"
     t.index ["user_id"], name: "index_member_subscriptions_on_user_id"
   end
@@ -207,7 +206,6 @@ ActiveRecord::Schema.define(version: 2019_07_18_172229) do
   add_foreign_key "booking_records", "spaces"
   add_foreign_key "booking_records", "users"
   add_foreign_key "space_addresses", "spaces"
-  add_foreign_key "space_availability_timings", "days"
   add_foreign_key "space_availability_timings", "spaces"
   add_foreign_key "space_available_days", "spaces"
   add_foreign_key "space_images", "spaces"

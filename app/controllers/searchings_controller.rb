@@ -57,7 +57,7 @@ class SearchingsController < ApplicationController
     def bookingdone
   
                 @space_id=params['space_id']
-                @user_id=params['user_id']
+                @user_id=session[:user_id]
                 @booking_time=params['booking_time']
                 @start_time=params['start_time']
                 @end_time=params['end_time']
@@ -72,7 +72,7 @@ class SearchingsController < ApplicationController
                             @change_remain_time_wallet=@check_Condition.try(:time_wallet)
                             @new_remain_time_wallet=@change_remain_time_wallet-@booking_time.to_f
                             @check_Condition.time_wallet=@new_remain_time_wallet
-                        
+                        byebug
                             @check_Condition.save
                 
                 

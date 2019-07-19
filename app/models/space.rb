@@ -5,5 +5,6 @@ class Space < ApplicationRecord
     has_one:space_address
     has_many:space_availability_timings
     has_one:space_available_day
+    has_many:member_subscriptions
 
 end

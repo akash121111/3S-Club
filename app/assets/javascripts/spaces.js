@@ -96,7 +96,6 @@ function disableTimeField(weekday){
     
    
     //addMarker Definition
-
     function addMarker(props){
         var marker=new google.maps.Marker({
             position:props.coords ,
