@@ -40,7 +40,7 @@ class MemberDashboardController < ApplicationController
   end
 
   def bookingdetail
-    @user=User.find_by(id:1)
+    @user=User.find_by(id:session[:user_id])
     @br=@user.booking_records
     
   end
