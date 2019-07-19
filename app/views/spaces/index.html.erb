@@ -19,7 +19,7 @@
                                             <%space.images.each do |image|%>
                                                 <%if image == space.images.first%>
 
-                                                    <div class="img-container"> 
+                                                    <div> 
                                                         <%= image_tag image,class: "space-img"%>
                                                     </div>
                                                 <%end%>
@@ -44,7 +44,7 @@
                             <div class="card-header">Add More Spaces</div>
                             <div class="card-body">
                                 <a href="/spaces/new">
-                                        <%= image_tag "plus-icon.png",class:'space-img',id:'add-space-icon' %>
+                                        <%= image_tag "plus-icon.png",class:'space-img' %>
                                 </a>
                             </div> 
                             <div class="card-footer">Tap to add more</div>

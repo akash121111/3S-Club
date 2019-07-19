@@ -186,10 +186,10 @@
                                                 </td>
                                                 <td> 
                                                     <%= f.fields_for :end_time do |s| %>
-                                                    <div class='col-md-3'>
+                                                        <div class='col-md-3'>
                                                             <b>EndTime</b><br>
                                                             <div class="container-fluid">
-                                                            <%@week_days.each do|key,value|%>
+                                                                <%@week_days.each do|key,value|%>
                                                                     <div class="row">
                                                                         <%=s.time_field key%>
                                                                     </div>
@@ -198,7 +198,7 @@
                                                         </div>
                                                         
                                                     <%end%>
-                                                </td>
+                                                </td>     
 
                                             </div>
                                         </tr>

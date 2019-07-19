@@ -7,13 +7,30 @@ document.addEventListener("turbolinks:load",function(){
   $("#longitude").css("display","none");
   $("#latitude2").css("display","none");
   $("#longitude2").css("display","none");
+  $('#space_start_time_monday').prop("disabled", true);
+  week_days=["monday","tuesday","wednesday","thursday","friday","saturday","sunday"]
   
+ // for(var i=0;i<7;i++){
+  //    disableTimeField(week_days[i]);
+  //}
 
     $('#edit-option').click(function(){
        //$(".form-control").prop('readonly','false');
     });
   
 });
+
+function disableTimeField(weekday){
+   if(document.getElementById('space_space_available_day_'+weekday+'_false').checked){
+     document.getElementById('space_start_time_'+weekday).disabled=true;
+     document.getElementById('space_end_time_'+weekday).disabled=true;
+   }
+   if(document.getElementById("sspace_available_day_space_available_day_"+weekday+"_false").checked){
+    document.getElementById("space_available_day_space_availability_timing_start_time").disabled=true;
+    document.getElementById("space_available_day_space_availability_timing_end_time").disabled=true;
+  }
+
+}
     
  function initMap(){
      var mycoords =new google.maps.LatLng(28.5355 , 77.3910 )
