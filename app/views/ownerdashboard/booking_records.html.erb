@@ -12,9 +12,9 @@
          <div class="nav-item">
             <a href="/owner_dashboard" class="active">Upcoming Bookings</a>
             <a href="#services">Spaces Details</a>
-            <a href="#clients">Booking Record</a>
+            <a href="/booking_records">Booking Record</a>
             <a href="#contact">Profile</a>
-            <a href="#contact">Log Out</a>
+            <a href="/logout">Log Out</a>
            </div>
 </div>
 </div>
@@ -25,7 +25,7 @@
             <div class="col-sm-10">
               <h4>Booked spaces</h4>
               <div class="record-table">
-              <table class="table table-border table-hover bg-white">
+              <table class="table table-bordered table-hover bg-white">
                       <thead class="thead-dark">
                         <tr>
                           <th>S.No</th>
@@ -36,11 +36,11 @@
                           <th>Mobile Number</th>
                           <th>Show Details</th>
                         </tr>
-                        </thead>
-                        <tbody>
-              <% @spaces.each do |spaces|%>
-                
-                <% @booked=spaces.booking_records%>
+                        </thead >
+                        <tbody class="text-center">
+                    
+                  <% @spaces.each do |spaces|%> 
+                  <% @booked=spaces.booking_records%>
                   <% @booked.each do |booked| %>
                   <% member=User.find_by(id:booked.user_id)%>
                   <% member_detail=member.user_detail%>
@@ -50,18 +50,19 @@
                       
                       
                         <tr>
-                        <td><%= booked.id%></td>
-                        <td><%= booked.created_at.strftime("%d-%m-%y")%></td>
+                        <th><%= booked.id%></th>
+                        <td><%= booked.created_at.strftime("%d-%m-%Y")%></td>
                         <td><%= address.house_number%> <%= address.street%> <%= address.city%> <%= address.state%> (<%= address.pincode%>)</td>
                         <td><%= spaces.space_name%></td>
                         <td><%= member_detail.first_name.capitalize%> <%= member_detail.last_name.capitalize%></td>
                         <td><%= member_detail.mobile_number%></td>
-                        <td><button type="submit" class="btn btn-primary">Details</button></td>
+                        <td><input type="submit" class="btn btn-primary pt-1 pb-1 w-5" value="Details"></td>
                       </tr>
                      
                 <% end%>       
               <% end %>  
-              <% end %>          
+              <% end %>     
+                  
               </tbody>
               </table>
               </div>

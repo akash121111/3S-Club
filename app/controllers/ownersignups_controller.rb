@@ -1,5 +1,9 @@
 class OwnersignupsController<ApplicationController
    skip_before_action :verify_authenticity_token
+
+   def sign_up
+
+   end
   def create
     
     @owner = User.new(owner_params)
@@ -10,7 +14,7 @@ class OwnersignupsController<ApplicationController
   
       #flash[:"error"] = "Invalid email or password "
       
-      redirect_to "login_in_owner"
+      redirect_to "/owner_dashboard"
     else
       #flash[:"error"] = "Invalid email or password "
        redirect_to login_in_owner_url

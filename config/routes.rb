@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'owner_dashboard', to: "ownerdashboard#upcoming_booking"
   get 'booking_records', to: "ownerdashboard#booking_records"
   post 'view_details', to: "ownerdashboard#view_details"
+  get 'no_space', to: "ownerdashboard#no_space"
   get 'dashboard', to: 'member_dashboard#dashboard'
   get 'profile',to: 'member_dashboard#profile'
   get 'member_dashboard/new'
@@ -11,13 +12,19 @@ Rails.application.routes.draw do
   resources:users
   resources:user_details
   resources:space_addresses
-  
-  #root to:'user#log_in'
-     
+  resources:space_available_days
+  resources:user_addresses
+   
+
+ 
+  # get '/search', to: 'userbooking#search'
+
+  root to:'user#log_in'
+       
+  #root to:'user#l 
   get '/searching', to: 'searchings#index'
   get '/allmap', to:'searchings#allmap'
   get '/booking', to:'searchings#booking'
-  get '/startingsea', to:'searching#startingsea'
   
   post 'owner_signup' ,to: 'ownersignups#create' 
   get '/login',to: 'ownersignups#login',as: 'login_in_owner'
@@ -27,10 +34,15 @@ Rails.application.routes.draw do
   get 'sign_up',to: "ownersignups#sign_up"
   
   post '/owner_signup' ,to: 'ownersignups#create'
-  get '/login',to: 'ownersignups#login'
 
-
+  get 'signup',to:'ownersignups#sign_up'
+  #get 'user/index'
+  #get 'user/sign_up'
+  #get 'user/log_in'
 get '/searching', to: 'searchings#index'
+  # get '/search', to: 'userbooking#search'
+
+
  
   get 'membershipindex', to: 'membership#membershipindex'
   get 'membership', to: 'membership#membership'
@@ -44,6 +56,8 @@ get '/searching', to: 'searchings#index'
   get 'sign_up_user', to:'user#sign_up'
   get 'login_user', to:'user#login'
   get 'dashboard' , to:'sessions#index'
+  get 'dashboard' , to:'sessions#index'
+  get 'logout' , to:'sessions#destroy'
   post 'login_confirm',to: 'sessions#create'
 end
   

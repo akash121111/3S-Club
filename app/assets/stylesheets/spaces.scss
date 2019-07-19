@@ -37,19 +37,16 @@
     margin-top:0;
 }
 
-.card{
-    width: 97%;
-}
+
 
 #del-space-link{
     float: right;
 }
-
-.img{
-    width: 100%;
-    height: 100%;
-    margin: 0%;
+.card{
+    width: 90%;
+    height: 300px;
 }
+
 
 .card-body{
     padding: 0%;
@@ -61,7 +58,13 @@
 }
 
 .card-footer{
+    
     background-color: white;
+}
+
+.space-img{
+    height: 200px;
+    width: 100%
 }
 
 #map{
@@ -70,7 +73,8 @@
     background-color: aqua;
 }
 
-.space-img{
-    height: 400px;
+.upload-space-img{
     width: 100%;
+    height: 405px;
 }
+

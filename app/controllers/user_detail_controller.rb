@@ -14,5 +14,3 @@ class UserDetailController < ApplicationController
         end
     end
 end
-
-    

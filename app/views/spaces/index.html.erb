@@ -1,167 +1,74 @@
-<html>
-    <head>
-    
-
-
-    </head>
-    <body>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-2 side-bar">
-                    dfsdf
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2 ">
+            <div class="sidenav ">
+                <div class="side-header">
+                    <%= image_tag("user.png", size:"100x100", :class=>"rounded-circle")%>
+                    <h5>Owner's Name</h5>
                 </div>
-                <div class="col-md-10">
-                    <center><h1>OWNER DETAILS</h1></center><br><br><br>
-                    <div class="container-fluid">
-                        <h2>Personal Details</h2><br>
-                        <%= form_for @space do |f| %>
-                            <div class="form-group">
-                                <%= f.label :email, 'Email' %>
-                                <%= f.text_field :size, :class => 'form-control fc'%>
-                            </div>
-                            <div class="form-group"> 
-                                <%= f.label :password, 'Password' %>
-                                <%= f.text_field :size, :class => 'form-control'%>
-                            </div>
-                            <div class="form-group">
-                                <%= f.label :user_type, 'User Type' %>
-                                <%= f.text_field :size, :class => 'form-control'%>
-                            </div>
-                            <div class="form-group">   
-                                <%= f.label :first_name, 'First Name' %>
-                                <%= f.text_field :size, :class => 'form-control'%>                        
-                            </div>
-                            <div class="form-group">                               
-                                <%= f.label :last_name, 'Last Name' %>
-                                <%= f.text_field :size, :class => 'form-control'%>                         
-                            </div>
-                            <div class="form-group">                               
-                                <%= f.label :about_owner, 'About Owner' %>
-                                <%= f.text_field :size, :class => 'form-control'%>                         
-                            </div>
-                            <div class="form-group">                               
-                                <%= f.label :phone_number, 'Phone Number' %>
-                                <%= f.text_field :size, :class => 'form-control'%>                         
-                            </div>
-                            <div class="form-group">                               
-                                <%= f.label :mobile_number, 'Mobile Number' %>
-                                <%= f.text_field :size, :class => 'form-control'%>                         
-                            </div>
-                            <div>
-                                <%= submit_tag 'Save Changes', :class=> "btn btn-primary" %>
-                            </div>
-
-
-                        <% end %>
+                <hr>
+                <div class="nav-item">
+                    <a href="/owner_dashboard" class="active">Upcoming Bookings</a>
+                    <%= link_to 'Spaces Details', spaces_path %>
+                    <a href="#clients">Booking Record</a>
+                    <%= link_to 'Profile', edit_user_detail_path(@user_detail) %>
+                    <a href="#contact">Log Out</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10 mt-5">
+            <div class="container-fluid">
+                <h2>Your Spaces</h2>
+                <br><br>
+                <div class="row">
                     
-
-                        
-                    </div>
-
-
-                    <br><br><br>
-
-
-                    <div class="container-fluid">
-                        <div class="row">
+                    <%@spaces.each do |space|%>
+                        <%if space.deleted_at == nil%>
                             <div class="col-md-3">
                                 <div class="card">
-                                    <div class="card-header">Space1</div>
-                                    <div class="card-body"><%= image_tag "space.jpg",class:'img' %></div> 
-                                    <div class="card-footer"><a href=".space_detail">view Details</a></div>
-                                </div>
+                                    <div class="card-header"><%= space.space_name%><%= link_to 'Remove', space, id:'del-space-link',method: :delete, data: { confirm: 'Are you sure?' } %>  </div>
+                                    <div class="card-body">
+                                        <% if space.images.attached?%>
+                                            <%space.images.each do |image|%>
+                                                <%if image == space.images.first%>
 
+                                                    <div class="img-container"> 
+                                                        <%= image_tag image,class: "space-img"%>
+                                                    </div>
+                                                <%end%>
+                                            <%end%>
+
+                                        <%else%>
+                                            <div> 
+                                                <%= image_tag "plus-icon.png",class: "space-img" %>
+                                            </div>
+                                        <%end%>
+                                    </div> 
+                                    <div class="card-footer"><%= link_to 'View Details', edit_space_path(space) %></div>
+                                </div><br>
                             </div>
 
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <div class="card-header">Header</div>
-                                    <div class="card-body">Content</div> 
-                                    <div class="card-footer">Footer</div>
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <div class="card-header">Header</div>
-                                    <div class="card-body">Content</div> 
-                                    <div class="card-footer">Footer</div>
-                                </div>
-
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="card">
-                                    <div class="card-header">Header</div>
-                                    <div class="card-body">Content</div> 
-                                    <div class="card-footer">Footer</div>
-                                </div>
-
-                            </div>
-
-                        <div>
+                        <%end%>
+                    <%end%>
+                    
+                    <br><br>
+                    <div class="col-md-3">
+                        <div class="card">
+                            <div class="card-header">Add More Spaces</div>
+                            <div class="card-body">
+                                <a href="/spaces/new">
+                                        <%= image_tag "plus-icon.png",class:'space-img',id:'add-space-icon' %>
+                                </a>
+                            </div> 
+                            <div class="card-footer">Tap to add more</div>
+                        </div><br>
 
                     </div>
 
-                    
+                <div>
 
-                    <div class="container-fluid space-detail">
-                        <br><br><br>
-                        <h3>Space Details</h3>
-                        <%= form_for @space do |f| %>
-                            
-                            
-                            <div class="form-group">
-                                <%= f.label :space_address, 'Space Address' %>
-                                <%= f.text_field :size, :class => 'form-control fc'%>
-                            </div>
-
-                            <div id='map'>
-                            </div><br>
-                            
-                            <div class="form-group"> 
-                                <%= f.label :size, 'Size' %>
-                                <%= f.text_field :size, :class => 'form-control'%>
-                            </div>
-                            <div class="form-group">
-                                <%= f.label :Dimensions, 'Dimensions' %>
-                                <%= f.text_field :size, :class => 'form-control'%>
-                            </div>
-                            <div class="form-group">   
-                                <%= f.label :floor_number, 'Floor Number' %>
-                                <%= f.text_field :size, :class => 'form-control'%>                        
-                            </div>
-                            <div class="form-group">                               
-                                <%= f.label :number_of_toilets, 'Number Of Toilets' %>
-                                <%= f.text_field :size, :class => 'form-control'%>                         
-                            </div>
-                            <div class="form-group">                               
-                                <%= f.label :nearby_landmark, 'Nearby Landmark' %>
-                                <%= f.text_field :size, :class => 'form-control'%>                         
-                            </div>
-
-                            <div class="form-group">
-                                <h3>Images</h3>
-                                <%= render "images_carousel", space:@space %>
-                            </div>
-                            
-                            <div>
-                                <%= submit_tag 'Save Changes', :class=> "btn btn-primary" %><br>
-                            </div>
-
-
-                        <% end %>
-
-
-
-                     </div>
-                </div>
             </div>
 
         </div>
-
-    </body>
-         
-
-</html>
+    </div>
+</div>          

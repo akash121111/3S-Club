@@ -1,7 +1,12 @@
 class OwnerdashboardController < ApplicationController
   def upcoming_booking
-    @user=User.find_by(id:6)
+    @user=User.find_by(id:9)
     @spaces=@user.spaces
+    if @spaces.first==nil
+      redirect_to 'no_space'
+    else
+      redirect_to 'owner_dashboard'
+    end
   end
   def view_details
     br_id=params[:booked_id]
@@ -19,7 +24,9 @@ class OwnerdashboardController < ApplicationController
     @booking_record=@user.booking_record
   end
   def booking_records
-    @user=User.find_by(id:6)
+    @user=User.find_by(id:9)
     @spaces=@user.spaces
+  end
+  def no_space
   end
 end

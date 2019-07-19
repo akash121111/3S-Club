@@ -1,5 +1,5 @@
 class SpaceAvailabilityTiming < ApplicationRecord
-    belongs_to:user
+    belongs_to:day
     belongs_to:space
 
      def self.se(a_data,b_data,c_data)

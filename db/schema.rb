@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_17_063539) do
+ActiveRecord::Schema.define(version: 2019_07_18_062350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,8 @@ ActiveRecord::Schema.define(version: 2019_07_17_063539) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "day_id"
+    t.index ["day_id"], name: "index_space_availability_timings_on_day_id"
     t.index ["space_id"], name: "index_space_availability_timings_on_space_id"
   end
 
@@ -144,7 +146,29 @@ ActiveRecord::Schema.define(version: 2019_07_17_063539) do
     t.integer "number_of_toilets"
     t.float "size"
     t.string "space_name"
+    t.datetime "deleted_at"
     t.index ["user_id"], name: "index_spaces_on_user_id"
+  end
+
+  create_table "user_address_types", force: :cascade do |t|
+    t.string "address_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_addresses", force: :cascade do |t|
+    t.string "address_line_1"
+    t.string "address_line_2"
+    t.string "city"
+    t.string "pincode"
+    t.string "state"
+    t.string "country"
+    t.bigint "user_address_type_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_address_type_id"], name: "index_user_addresses_on_user_address_type_id"
+    t.index ["user_id"], name: "index_user_addresses_on_user_id"
   end
 
   create_table "user_details", force: :cascade do |t|
@@ -184,11 +208,14 @@ ActiveRecord::Schema.define(version: 2019_07_17_063539) do
   add_foreign_key "booking_records", "spaces"
   add_foreign_key "booking_records", "users"
   add_foreign_key "space_addresses", "spaces"
+  add_foreign_key "space_availability_timings", "days"
   add_foreign_key "space_availability_timings", "spaces"
   add_foreign_key "space_available_days", "spaces"
   add_foreign_key "space_images", "spaces"
   add_foreign_key "space_locations", "spaces"
   add_foreign_key "spaces", "users"
+  add_foreign_key "user_addresses", "user_address_types"
+  add_foreign_key "user_addresses", "users"
   add_foreign_key "user_details", "users"
   add_foreign_key "users", "user_types"
 end

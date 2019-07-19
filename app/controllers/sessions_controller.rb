@@ -28,11 +28,7 @@ class SessionsController < ApplicationController
         #flash[:success] = "Login successful"
         
        else
-<<<<<<< HEAD
-        flash.now[:alert] = "Username or Password incorrect"
-=======
         flash[:success] = "Username or Password incorrect"
->>>>>>> 082c29718ccf0394946aa0d2df7d68a40ddd8f8a
         redirect_to '/login_user'
        end
   end

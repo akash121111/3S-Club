@@ -2,6 +2,7 @@ class User < ApplicationRecord
     has_one:user_detail
     has_many:booking_records
     has_many:spaces
+    has_many:user_addresses
 
 	has_secure_password
 	validates_presence_of   :password,:length => {:within => 3..15}, :message => 'Please Enter Your Password.',on: :create
