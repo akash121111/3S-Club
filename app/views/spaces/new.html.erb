@@ -157,9 +157,17 @@
                                                                 <%@week_days.each do|key,value|%>
                                                                     <div class="row">
                                                                         <%= s.label key, "Yes", :value => "true",class:"radio-button-label"  %>
-                                                                        <%= s.radio_button key, true %>
+                                                                        <%= s.radio_button key, true ,class:'rButtonYes'%>
                                                                         <%= s.label key, "No", :value => "false",class:"radio-button-label" %>
-                                                                        <%= s.radio_button key, false, :checked => true %>
+                                                                        <%= s.radio_button key, false,class:'rButtonNo',:checked => true %>
+                                                                        
+                                                                        <% provide :head_tags do %>
+                                                                            <script>
+                                                                                document.addEventListener("DOMContentLoaded", function(){
+                                                                                    disableNewTimeField("<%=key.to_s%>");
+                                                                                });
+                                                                            </script>
+                                                                        <% end %>
                                                                     </div>
                                                                 <%end%>
                                                             </div>
