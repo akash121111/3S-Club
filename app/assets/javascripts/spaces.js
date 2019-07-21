@@ -5,15 +5,11 @@ document.addEventListener("turbolinks:load",function(){
 //$(document).ready(function(){
     var startTimeArray=document.querySelectorAll(".start-time-array");
     var endTimeArray=document.querySelectorAll(".end-time-array");
-  $("#latitude").css("display","none");
-  $("#longitude").css("display","none");
-  $("#latitude2").css("display","none");
-  $("#longitude2").css("display","none");
-$("input[id='space_available_day_space_availability_timing_start_time']").map(function(){
-    if(document.getElementById('space_available_day_space_available_day_monday_true').checked)
-       return $(this).prop('readOnly','true');});
-
-  $('.rButtonYes').click(function(){
+    $("#latitude").css("display","none");
+    $("#longitude").css("display","none");
+    $("#latitude2").css("display","none");
+    $("#longitude2").css("display","none");
+    $('.rButtonYes').click(function(){
         var weekday=this.id.split("_")[4];
         document.getElementById('space_start_time_'+weekday).readOnly=false;
         document.getElementById('space_end_time_'+weekday).readOnly=false;
@@ -41,10 +37,57 @@ $("input[id='space_available_day_space_availability_timing_start_time']").map(fu
         endTimeArray[week_days.indexOf(weekday)].readOnly=true;
     });
 
+    $(".edit_space_available_day").submit(function(){
+        var startTimeValues = $("input[id='space_available_day_space_availability_timing_start_time']").map(function(){return $(this).val();}).get();
+        var endTimeValues = $("input[id='space_available_day_space_availability_timing_end_time']").map(function(){return $(this).val();}).get();
+        var week_days=["monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
+        var flag=1;
+        var msg="";
+        $.each( week_days, function( key, value ) {
+          if($("#space_available_day_space_available_day_"+value+"_true").prop('checked')===true){
+            if (startTimeValues[key]!=="" &&endTimeValues[key]!==""){
+                flag=1;
+            }
+            else{
+                msg="You have not entered start Time or End Time for some Selected Days";
+                
+                flag=0;
+            }
+         }
+        });
+    
+        if(flag===0){
+            alert(msg);
+            return false;
+        }
   
+    });
+
+    $("#new_space").submit(function(){
+        var week_days=["monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
+        var flag=1;
+        var msg="";
+        $.each( week_days, function( key, value ) {
+          if($("#space_space_available_day_"+value+"_true").prop('checked')===true){
+            if ($('#space_start_time_'+value).val()!=="" && $('#space_end_time_'+value).val()!==""){
+                flag=1;
+            }
+            else{
+                msg="You have not entered start Time or End Time for some Selected Days";
+                
+                flag=0;
+            }
+         }
+        });
+        if (flag===0){
+            alert(msg);
+            return false;
+        }
+  
+    });
 
     $('#edit-option').click(function(){
-       //$(".form-control").prop('readonly','false');
+        //$(".form-control").prop('readonly','false');
     });
   
 });

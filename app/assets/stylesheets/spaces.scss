@@ -31,6 +31,13 @@
     color: #f1f1f1;
   }
 
+  @media (max-width: 200px) {
+    #sidenav {
+        display: none;
+    }
+}
+
+
 .form-control{
     width: 80%;
     margin: 0%;
@@ -40,6 +47,9 @@
     margin-top:0;
 }
 
+input[readonly] {
+    background-color:rgba(209, 207, 207, 0.445);
+}
 
 
 #del-space-link{

@@ -212,7 +212,7 @@
                                                                                                 </div>
                                                                                             <%end%>
                                                                                             <div class="col-md-6">
-                                                                                                <%=s.time_field :start_time ,multiple:true, class:"start-time-array" %>
+                                                                                                <%=s.time_field :start_time ,multiple:true, class:"start-time-array",min:"07:00", max:"23:59",onkeydown:"return false" %>
                                                                                             </div>
                                                                                         </td>
                                                                                         <td>
@@ -224,7 +224,7 @@
                                                                                                 </div>
                                                                                             <%end%>
                                                                                             <div class="col-md-6">
-                                                                                                <%=s.time_field :end_time ,multiple:true, class:"end-time-array"%>
+                                                                                                <%=s.time_field :end_time ,multiple:true, class:"end-time-array",min:"07:00", max:"23:59",onkeydown:"return false" %>
                                                                                             </div>
                                                                                         </td>
                                                                                     </tr>
@@ -247,7 +247,7 @@
                                         <%@week_days.each do|key,value|%>
                                         <% provide :head_tags do %>
                                             <script>
-                                                document.addEventListener("DOMContentLoaded", function(){
+                                                document.addEventListener("turbolinks:load", function(){
                                                 
                                                     disableEditTimeField("<%=value.to_s%>");
                                                 });

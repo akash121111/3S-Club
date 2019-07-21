@@ -161,13 +161,6 @@
                                                                         <%= s.label key, "No", :value => "false",class:"radio-button-label" %>
                                                                         <%= s.radio_button key, false,class:'rButtonNo',:checked => true %>
                                                                         
-                                                                        <% provide :head_tags do %>
-                                                                            <script>
-                                                                                document.addEventListener("DOMContentLoaded", function(){
-                                                                                    disableNewTimeField("<%=key.to_s%>");
-                                                                                });
-                                                                            </script>
-                                                                        <% end %>
                                                                     </div>
                                                                 <%end%>
                                                             </div>
@@ -185,7 +178,7 @@
                                                             <div class="container-fluid">
                                                                 <%@week_days.each do|key,value|%>
                                                                     <div class="row">
-                                                                        <%=s.time_field key%>
+                                                                        <%=s.time_field key,min:"07:00", max:"23:59",onkeydown:"return false" %>
                                                                     </div>
                                                                 <%end%>
                                                             </div>
@@ -199,8 +192,16 @@
                                                             <div class="container-fluid">
                                                                 <%@week_days.each do|key,value|%>
                                                                     <div class="row">
-                                                                        <%=s.time_field key%>
+                                                                        <%=s.time_field key ,min:"07:00", max:"23:59",onkeydown:"return false" %>
                                                                     </div>
+                                                                    
+                                                                    <% provide :head_tags do %>
+                                                                        <script>
+                                                                            document.addEventListener("turbolinks:load", function(){
+                                                                                disableNewTimeField("<%=key.to_s%>");
+                                                                            });
+                                                                        </script>
+                                                                    <% end %>
                                                                 <%end%>
                                                             </div>
                                                         </div>
