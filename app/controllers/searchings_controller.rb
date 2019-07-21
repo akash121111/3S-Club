@@ -5,7 +5,7 @@ class SearchingsController < ApplicationController
 
 
           if params.has_key?(:booking_date) 
-            @a=DateTime.parse(params[:booking_date]).to_date.strftime('%A').downcase
+            @DayFind=DateTime.parse(params[:booking_date]).to_date.strftime('%A').downcase
           else 
             date = DateTime.now
           end
@@ -13,25 +13,37 @@ class SearchingsController < ApplicationController
           @start_time=params['start_time']
           @end_time=params['end_time']
           if @start_time && @end_time
-            @b=DateTime.parse(@start_time).to_time.strftime('%T')
-            @c=DateTime.parse(@end_time).to_time.strftime('%T')
+            @StartingTime=DateTime.parse(@start_time).to_time.strftime('%T')
+            @EndingTime=DateTime.parse(@end_time).to_time.strftime('%T')
        
           finddayid ={ "monday" => "1", "tuesday" => "2", "wednesday" => "3" , "thursday" => "4", "friday" => "5", "saturday" => "6", "sunday" => "7"}
-
-          @k=finddayid[@a].to_i
           
-          @checkability=BookingRecord.sear(params[:booking_date],@b,@c)
+          # if (params[:booking_date]+" "+DateTime.parse(@start_time).strftime("%H:%M:%S") < DateTime.now + 480.minutes)
+           
+          # else  
+
+          @hasesDay=finddayid[@DayFind].to_i
+          
+          @checkability=BookingRecord.sear(params[:booking_date],@StartingTime,@EndingTime)
 
           @space_addresses = SpaceAddress.search(params[:search].downcase)
           @findsearchaddresspid=@space_addresses.pluck(:space_id)
-          @findsearchdatepid=SpaceAvailableDay.searchday(@a)
+          @findsearchdatepid=SpaceAvailableDay.searchday(@DayFind)
 
-          @l=SpaceAvailabilityTiming.se(@k,@b,@c)
+          @l=SpaceAvailabilityTiming.se(@hasesDay,@StartingTime,@EndingTime)
           @findcommonsearch= @findsearchaddresspid & @findsearchdatepid & @l
 
           @findcommonsearch1=(@findcommonsearch - @checkability ) | (@findcommonsearch -@checkability )
-          @aftersearchbydayandaddress=SpaceAddress.where(space_id:@findcommonsearch1)
+          
+
+          #if space is deleted
+          @space=Space.all
+          @spacenotdelete= @space.where(deleted_at: nil).pluck(:id)
+          @afterDeleteCheck=@spacenotdelete && @findcommonsearch1
             
+
+           @aftersearchbydayandaddress=SpaceAddress.where(space_id:@afterDeleteCheck)
+          # end
           end
    
           @hash = Gmaps4rails.build_markers(@aftersearchbydayandaddress) do |r, marker|
@@ -43,9 +55,15 @@ class SearchingsController < ApplicationController
   
 
     def allmap
-      @space_addresses = SpaceAddress.all
+      @space_addresses = SpaceAddress.all.pluck(:space_id)
+      @space=Space.all
+      @spacenotdelete= @space.where(deleted_at: nil).pluck(:id)
+      @common=@space_addresses && @spacenotdelete
+      @aftersearchnotdeleted=SpaceAddress.where(space_id: @common)
 
-      @hash = Gmaps4rails.build_markers( @space_addresses) do |r, marker|
+
+
+      @hash = Gmaps4rails.build_markers(  @aftersearchnotdeleted) do |r, marker|
         marker.lat r.latitude
         marker.lng r.longitude
         marker.infowindow r.city
@@ -72,7 +90,7 @@ class SearchingsController < ApplicationController
                             @change_remain_time_wallet=@check_Condition.try(:time_wallet)
                             @new_remain_time_wallet=@change_remain_time_wallet-@booking_time.to_f
                             @check_Condition.time_wallet=@new_remain_time_wallet
-                        byebug
+                      
                             @check_Condition.save
                 
                 
@@ -82,11 +100,17 @@ class SearchingsController < ApplicationController
                 
                     
                         else
+                          flash[:danger] ="Booking was not Sucessfully"
                             redirect_to 'searching_path' 
                         end
                       
 
      end
+     def user_booking_records
+                            # @user=User.find_by(id:session[:user_id])
+                            # @user_detail=@user.user_detail
+                            # @spaces=@user.spaces
+    end
 
 
                   private

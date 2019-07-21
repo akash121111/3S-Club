@@ -8,6 +8,8 @@ class SubscriptionMailMailer < ApplicationMailer
   def message_to(user,plan)
     @user = user
     @plan = plan
-    mail(to: "abhishekjakhmolaabbu@gmail.com", subject: 'Subscription Confirmation')
+    # user_id = User.find_by(params[:user_id])
+    # email = user_id.email
+    mail(to: "akashkumar12111@gmail.com", subject: 'Subscription Confirmation')
   end
 end

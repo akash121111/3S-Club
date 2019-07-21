@@ -9,7 +9,7 @@
          <div class="container-fluid">
           <div class="row">
             <div class="col-sm-6">
-              <div class="container-fluid bg-light mb-2">
+              <div class="container-fluid bg-light mb-2 ">
                 <center><h3>Space Details</h3></center><hr>
                 <div>
                      <img src="assets/space-87e83c8b3dacf75cb8280d875ef0fe237ec76830b80b0514a0b573f5bcc345fd.jpg" alt="spaces" height="200px" width="100%">
@@ -19,9 +19,9 @@
                   <label for="size">Size</label>
                   <input type="text" id="size" class="form-control" value="<%= @space.size%> sq ft." disabled>
                   <label for="date">Date</label>
-                  <input type="text" id="date" class="form-control" value="<%= @br.created_at.strftime("%d/%m/%y")%>" disabled>
+                  <input type="text" id="date" class="form-control" value="<%= @br.booking_date%>" disabled>
                   <label for="days">Days</label>
-                  <input type="text" id="days" class="form-control" value="Mon-Sat" disabled>
+                  <input type="text" id="days" class="form-control" value="<%= @br.booking_date.to_date.strftime("%A")%>" disabled>
                   <label for="timing">Timing</label>
                   <input type="text" id="timing" class="form-control" value="<%= @br.start_time.strftime("%H:%M")%>-<%= @br.end_time.strftime("%H:%M")%>" disabled><br>
                   
@@ -29,7 +29,7 @@
               </div>
             </div>
              <div class="col-sm-6">
-               <div class="container-fluid bg-light mb-2">
+               <div class="container-fluid bg-light mb-2 p-3">
                 <center><h3>Member Details</h3></center><hr>
                 <div>
                      <center><img src="/assets/user-1a2e20cc944c895a698cc7855cd5eb338ab82342715346cd202b1f2157cb55a9.png" class="rounded-circle"  alt="spaces" height="100px" width="100px"><hr>
@@ -45,7 +45,15 @@
                   <input type="text" id="email" class="form-control" value="<%= @member.email%>" disabled>
                   <label for="qualification">Qualification</label>
                   <input type="text" id="qualification" class="form-control" value="<%= @member_details.education_details%>" disabled><br>
-                  <footer class="btn btn-success" style="width: 100%">Short-Term</footer>
+                  <% ms=@space.member_subscriptions%>
+                  <% ms.each do |subscription|%>
+                    <% if @member.id==subscription.user_id%>
+                    <% @planId=subscription.membership_plans_id%>
+                    <% break%>
+                    <% end%>
+                  <% end%>
+                  <% plan_name=MembershipPlan.find_by(id:@planId)%>
+                  <footer class="btn btn-success" style="width: 100%"><%= plan_name.plan_name%></footer>
                 </div>
               </div>
             </div>

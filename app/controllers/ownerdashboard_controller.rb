@@ -17,6 +17,7 @@ class OwnerdashboardController < ApplicationController
     @member=User.find_by(id:@br.user_id)
     @member_details=@member.user_detail
     @user_detail=@member.user_detail
+    
   end
   def booking_records
     @user=User.find_by(id:session[:user_id])

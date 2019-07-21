@@ -1,0 +1,83 @@
+<body style="background: #e8e9eb">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-2">
+          <%= render "layouts/member_sidebar" %>
+         </div>
+
+    <div class="col-sm-10 col-xs-10">
+      <div class="main">
+       <div class="container">
+          <div class="row">
+            <div class="col-sm-10">
+              <h4>Booking Records</h4>
+              <div class="record-table">
+              <table class="table table-bordered table-hover bg-white">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th>S.No</th>
+                          <th>Date</th>
+                          <th>Sapce Address</th>
+                          <th>Space Name</th>
+                          <th>Start Time</th>
+                          <th>End Time</th>
+                          <th>Mobile Number</th>
+                          <th>Show Details</th>
+                          <th>Cancel</th>
+                        </tr>
+                        </thead >
+                                    <% @user=User.find_by(id: session[:user_id])%>                   
+                                    <% @booked=@user.booking_records.order('created_at DESC')%>
+                                    
+                                     <% 
+                                     
+                                     @booked.each do |br|%>    
+                                      <% space=SpaceAddress.find(br.space_id) %>
+                                      <% spacename=Space.find(br.space_id)%>
+                                      <% 
+                                      mobile=UserDetail.find(br.user_id)%>
+                                    
+                                    <tbody class="text-center">
+                                     
+                                      <input type="text" name="booked_id" value="<%=br.id%>" hidden>
+                                        
+                                        
+                                          <tr>
+                                          <th><%= br.id%></th>
+                                          <td><%= br.booking_date%></td>
+                                          <td><%= space.house_number%> <%= space.street%> <%= space.city%> <%= space.state%> (<%= space.pincode%>)</td>
+                                          <td><%= spacename.space_name %></td>
+                                          <td><%= br.start_time.to_time.strftime("%I:%M %p") %></td>
+                                          <td><%= br.end_time.to_time.strftime("%I:%M %p") %></td>
+                                          <td><%= mobile.phone_number %> <%= mobile.mobile_number %>  </td>
+                                          <td><input type="submit" class="btn btn-primary pt-1 pb-1 w-5" value="Details"></td>
+                                          <% if  br.booking_date+" "+(br.start_time).strftime("%H:%M:%S") < DateTime.now - 120.minutes %>
+                                          <td><input type="submit" disabled class="btn btn-danger pt-1 pb-1 w-5" value="cancel"></td>
+                                          <% else %>
+                                           <td> <%= link_to 'Cancel', 
+                                                      userbooking_path(br.id), 
+                                                                  method: :delete, 
+                                                                  data: { confirm: 'Are you sure?' } ,:class=> "btn btn-danger pt-1 pb-1 w-5"
+                                                                  %> 
+
+                                           <% end %></td>
+                                        </tr> 
+                                      
+                                  
+                                    
+
+
+                  
+              </tbody>
+                             <% end%>      
+              </table>
+              </div>
+            </div>
+            
+          </div>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

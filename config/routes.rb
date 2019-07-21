@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources:space_addresses
   resources:space_available_days
   resources:user_addresses
+  resources :userbooking, :except => [:index,:update]
    
 
 
@@ -31,6 +32,8 @@ Rails.application.routes.draw do
   get '/searching', to: 'searchings#index'
   get '/allmap', to:'searchings#allmap'
   get '/bookingdone', to:'searchings#bookingdone'
+  get '/userbookingrecords', to:'searchings#user_booking_records'
+  get '/mainpage',to:'searchings#mainpage'
   
   post 'owner_signup' ,to: 'ownersignups#create' 
   get '/login',to: 'ownersignups#login',as: 'login_in_owner'

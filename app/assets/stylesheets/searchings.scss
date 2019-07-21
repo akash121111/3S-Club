@@ -4,6 +4,13 @@
 .ab{
   margin-top: 12px ;
 }
+.shift{
+                   position: absolute;
+                    top: 384px;
+                    left: 342px;
+                    height: 30px;
+                    width: 50px;
+}
 .col-sm-2{
   padding: 0%;
 }
@@ -37,3 +44,10 @@
     color: white;
     background: black
   }
+.record-table{
+    max-height: 500px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    overflow:scroll;
+    scroll-behavior: auto;
+   }
