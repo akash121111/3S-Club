@@ -10,18 +10,16 @@ body {
     height: 100%;
     width: 16.6667%;
     position: fixed;
+    margin-top: -20px;
     z-index: 1;
-    top: 0;
+    padding-top: 2px;
     left: 0;
     background-image: linear-gradient(to top, red, orange);
     overflow-x: hidden;
-    padding-top: 20px;
-    margin-top: 80px;
+    
   }
 
-  .form{
-    background:black;
-  }
+  
   
   .sidenav a {
     padding: 6px 8px 6px 16px;
@@ -36,6 +34,10 @@ body {
     color: white;
     background: black
   }
+
+  .col-sm-10{
+    padding-top:2px;
+  }
   
   
   @media screen and (max-height: 450px) {
@@ -43,10 +45,10 @@ body {
     .sidenav a {font-size: 18px;}
   }
 
-  hr{
-      margin:0px;
-  }
+  
+  
   .form{
+
       border:1px;
       border-style: solid;
       border-width: 1px;
@@ -58,4 +60,3 @@ body {
   .btn btn-primary{
     float:right;
   }
-  

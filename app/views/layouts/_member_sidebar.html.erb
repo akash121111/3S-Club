@@ -1,0 +1,20 @@
+
+            <div class="sidenav text-center">
+            <% 
+        
+           
+             @user= User.find_by_id(session[:user_id])
+           
+
+            %>
+             <%= gravatar_for @user, size: 150%>
+               <h5>Member' Name</h5><hr>
+               <a href="/searching">Dashboard</a><hr>
+               <a href="profile">Profile</a><hr>
+               <a href="/allmap">Maps</a><hr>
+               <a href="/booking">RecentBooked</a><hr>
+               <a href="/userbookingrecords">Booking Records</a><hr>
+                <%= link_to 'Log out', log_out_path, method: :delete %>
+                
+            </div>                        
+        

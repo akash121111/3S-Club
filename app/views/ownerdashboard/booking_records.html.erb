@@ -1,0 +1,65 @@
+<body style="background: #e8e9eb">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 col-xs-2">
+     <%= render "layouts/sidebar" %>
+</div>
+    <div class="col-sm-10 col-xs-10">
+      <div class="main">
+       <div class="container">
+          <div class="row">
+            <div class="col-sm-10">
+              <h4>Booking Records</h4>
+              <div class="record-table">
+              <table class="table table-bordered table-hover bg-white">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th>S.No</th>
+                          <th>Date</th>
+                          <th>Sapce Address</th>
+                          <th>Space Name</th>
+                          <th>Member</th>
+                          <th>Mobile Number</th>
+                          <th>Show Details</th>
+                        </tr>
+                        </thead >
+                        
+                    
+                  <% @spaces.each do |spaces|%> 
+                  <% @booked=spaces.booking_records%>
+                  <% @booked.each do |booked| %>
+                  <% member=User.find_by(id:booked.user_id)%>
+                  <% member_detail=member.user_detail%>
+                  <% address=spaces.space_address%>
+                  <tbody class="text-center">
+                  <%= form_for booked, :url => view_details_path(booked.id), :method=> "post" do |f| %>
+                    <input type="text" name="booked_id" value="<%=booked.id%>" hidden>
+                      
+                      
+                        <tr>
+                        <th><%= booked.id%></th>
+                        <td><%= booked.booking_date%></td>
+                        <td><%= address.house_number%> <%= address.street%> <%= address.city%> <%= address.state%> (<%= address.pincode%>)</td>
+                        <td><%= spaces.space_name%></td>
+                        <td><%= member_detail.first_name.capitalize%> <%= member_detail.last_name.capitalize%></td>
+                        <td><%= member_detail.mobile_number%></td>
+                        <td><input type="submit" class="btn btn-primary pt-1 pb-1 w-5" value="Details"></td>
+                      </tr> 
+                     
+                <% end%>       
+                  
+                  
+              </tbody>
+              <% end %>  
+              <% end %> 
+              </table>
+              </div>
+            </div>
+            
+          </div>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

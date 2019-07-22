@@ -16,14 +16,14 @@ class SpacesController < ApplicationController
     def new
         @user=User.find(session[:user_id])
         @space=Space.new
-        
+        @user_detail=@user.user_detail
     end
 
     def update    
         @space_details=User.find(session[:user_id]).spaces
         @space_detail=@space_details.find(params[:id])
         if @space_detail.update(space_details_params)
-          redirect_to edit_space_path     
+          redirect_to edit_space_path  
         else
           redirect_to edit_space_path  
         end

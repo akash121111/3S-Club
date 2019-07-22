@@ -177,7 +177,6 @@ function disableEditTimeField(day_no){
     
    
     //addMarker Definition
-
     function addMarker(props){
         var marker=new google.maps.Marker({
             position:props.coords ,

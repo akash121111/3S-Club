@@ -1,49 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Membeship Plan</title>
-	
+    <title>Membeship Plan</title>
+    
 
-	<script>
-		function myFunction1() {
-		var txt;	
-  		var r =confirm("Do you want to proceed?");
-		if (r == true) 
-		{	var p = 50.0;
-			window.location.assign("http://localhost:3000/membership?p="+p,"_self")
-  			alert("Your selected plan is successfully added to your wallet.")
-		} 
-		else 
-		{
-  			alert("Something went wrong please try again.")
-		}
-		}
+    <script>
+        function myFunction1() {
+        var txt;    
+         var r =confirm("Do you want to proceed?");
+        if (r == true)
+        {    var p = 50.0;
+            var user_id = document.getElementById('userid').value;
+            var space_id = document.getElementById('spaceid').value;
+            window.location.assign("http://localhost:3000/membership?p="+p+"&user_id="+user_id+
+            "&space_id="+space_id+"_self");
+             alert("Your selected plan is successfully added to your wallet.");
+        }
+        else
+        {
+             alert("Something went wrong please try again.")
+        }
+        }
 
-		function myFunction2() {
-		var txt;	
-  		var r =confirm("Do you want to proceed?");
-		if (r == true) 
-		{	var p = 150.0;
-			window.location.assign("http://localhost:3000/membership?p="+p,"_self")
-  			alert("Your selected plan is successfully added to your wallet.")
-		} 
-		else 
-		{
-  			alert("Something went wrong please try again.")
-		}
-		}
+        function myFunction2() {
+        var txt;    
+         var r =confirm("Do you want to proceed?");
+        if (r == true)
+        {    var p = 150.0;
+            var user_id = document.getElementById('userid').value;
+            var space_id = document.getElementById('spaceid').value;
+            window.location.assign("http://localhost:3000/membership?p="+p+"&user_id="+user_id+
+            "&space_id="+space_id+"_self");
+             alert("Your selected plan is successfully added to your wallet.")
+        }
+        else
+        {
+             alert("Something went wrong please try again.")
+        }
+        }
 </script>
 </head>
 <body>
-	<div class="jumbotron">
-  		<h1>Short Offer</h1>
-  		<p>You will get 50 hours in your wallet for the building(s)/room(s)/land(s) you choose. </p>
-  		<p><a class="btn btn-primary btn-lg" href="#" role="button" onclick="myFunction1()">Select</a></p>
-	</div>
-	<div class="jumbotron">
-  		<h1>Long Offer</h1>
-  		<p>You will get 150 hours in your wallet for the building(s)/room(s)/land(s) you choose. </p>
-  		<p><a class="btn btn-primary btn-lg" href="#" role="button" onclick="myFunction2()">Select</a></p>
-	</div>
+        <input type = "text" value = "<%= @user_id %>" id = "userid" hidden>
+        <input type = "text" value = "<%= @space_id %>" id = "spaceid" hidden>
+    <div class="jumbotron plan" style="background-color: sandybrown;">
+         <h1>Short Offer</h1>
+         <p>You will get 50 hours in your wallet for the building(s)/room(s)/land(s) you choose. </p>
+         <p><button class="btn btn-primary btn-lg" href="#" role="button" onclick="myFunction1()">Select</button></p>
+    </div>
+    <div class="jumbotron" style="background-color: chocolate;">
+         <h1>Long Offer</h1>
+         <p>You will get 150 hours in your wallet for the building(s)/room(s)/land(s) you choose. </p>
+         <p><a class="btn btn-primary btn-lg" href="#" role="button" onclick="myFunction2()">Select</a></p>
+    </div>
 </body>
 </html>

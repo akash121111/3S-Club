@@ -1,14 +1,15 @@
 <div class="sidenav">
     <div class="side-header">
-        <%= image_tag("user.png", size:"100x100", :class=>"rounded-circle")%>
+        <%= image_tag("user.png", size:"100x100", :class=>"rounded-circle") %>
         <h5>Owner's Name</h5>
     </div>
     <hr>
     <div class="nav-item">
-        <a href="/owner_dashboard" class="active">Upcoming Bookings</a>
+        <%= link_to 'Upcoming bookings', "/owner_dashboard" %>
         <%= link_to 'Spaces Details', spaces_path %>
-        <a href="#clients">Booking Record</a>
-        <%= link_to 'Profile', edit_user_detail_path(@user) %>
-        <a href="#contact">Log Out</a>
+        <%= link_to 'Booking Records', "/booking_records", :method=>"get"%>
+        <%= link_to 'Profile', edit_user_detail_path(@user_detail) %>
+        <%= link_to 'Log Out' ,'/log_out', :method=>"delete"%>
+        
     </div>
 </div>
