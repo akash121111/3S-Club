@@ -3,39 +3,32 @@ class SessionsController < ApplicationController
 
   end
 
-  def home
-    
-  end
-
-  def new
-    
-  end
-
   def create
     	
   	user = User.find_by_email(params[:session][:email])
-      
-       if user && user.authenticate(params[:session][:password_digest])
-        session[:user_id]= user.id
-        user_type=user.user_type_id
-
-        if user_type==1
-          redirect_to '/dashboard' , notice: "Logged in"
+        if user && user.authenticate(params[:session][:password_digest])
+          if user.signup_active == true
+            session[:user_id]= user.id
+            user_type=user.user_type_id
+            if user_type==1
+              redirect_to '/dashboard',notice:"Logged in!!"
+            else
+            redirect_to '/owner_dashboard',notice:"Logged in!!"
+            end
+          else
+          flash[:success] = 'Please activate your account by following the 
+          instructions in the account confirmation email you received to proceed'
+          redirect_to '/login_user'
+          end     
         else
-          redirect_to '/owner_dashboard' , notice: "Logged in"
-          
-        end
-        #flash[:success] = "Login successful"
-        
-       else
-        flash[:success] = "Username or Password incorrect"
+        flash[:success] = "ooohhhh...Username or Password incorrect"
         redirect_to '/login_user'
-       end
+        end
   end
 
   def destroy
+    User.find(session[:user_id]).destroy
   	session[:user_id]= nil
-        #flash[:success] = "Logged out"
-        redirect_to 'user#index' , notice: "Logged in"
+    redirect_to 'root_url' , notice: "Logged out!"
   end
 end
