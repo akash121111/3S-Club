@@ -4,9 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    	
-  	user = User.find_by_email(params[:session][:email])
-        if user && user.authenticate(params[:session][:password_digest])
+  	user = User.find_by_email(params[:email])
+        if user && user.authenticate(params[:password_digest])
           if user.signup_active == true
             session[:user_id]= user.id
             user_type=user.user_type_id
