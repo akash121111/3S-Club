@@ -10,6 +10,10 @@ document.addEventListener("turbolinks:load",function(){
     $("#latitude2").css("display","none");
     $("#longitude2").css("display","none");
 
+    
+   
+            
+    
     $("#space_space_address_pincode").focusout(geocode);
 
     $('.rButtonYes').click(function(){
@@ -89,17 +93,37 @@ document.addEventListener("turbolinks:load",function(){
   
     });
 
-    $('#edit-option').click(function(){
-        //$(".form-control").prop('readonly','false');
+    $('#space_space_name').focusout(function(){
+        validate();
     });
-  
+
 });
+
+function validate(){
+    var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+    var name = document.getElementById('space_space_name').value;
+    if(!regName.test(name)){
+        alert('Please enter Correct Space Name.').delay(1000);
+        document.getElementById('space_space_name').focus();
+        
+        return false;
+    }else{
+        alert('Valid name given.');
+        return true;
+    }
+}
 
 function disableNewTimeField(weekday){
    
      document.getElementById('space_start_time_'+weekday).readOnly=true;
      document.getElementById('space_end_time_'+weekday).readOnly=true;
  
+}
+function enable(){   
+ debugger
+    document.getElementById('user_password').readOnly=false;
+    document.getElementById('user_password_confirmation').readOnly=false;
+
 }
 
 function disableEditTimeField(day_no){
@@ -219,14 +243,14 @@ function disableEditTimeField(day_no){
 
 function geocode(e){
     // Prevent actual submit
-    e.preventDefault();
+    
 
     var location = document.getElementById('space_space_address_pincode').value;
 
     axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
       params:{
         address:location,
-        key: 'AIzaSyBg_AOpFhWzNWRzhyaM1l_MC3J85fRfavk'
+        key: 'AIzaSyDWlUxnRmFh7fhZYVst6tMS751Gqvr1fL4'
       }
     })
     .then(function(response){
@@ -235,7 +259,7 @@ function geocode(e){
       // Geometry
       var lat = response.data.results[0].geometry.location.lat;
       var lng = response.data.results[0].geometry.location.lng;
-      initMap(lat,lng);
+      m(lat,lng);
     })
     .catch(function(error){
       console.log(error);
