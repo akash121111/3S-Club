@@ -10,7 +10,7 @@ class User < ApplicationRecord
     #validates_presence_of :password, on: :create
     validates :email, :presence=>true, uniqueness:true
 	before_create { generate_token(:auth_token)}
-
+	before_update { generate_token(:auth_token)}
 	def generate_token(column)
 		begin
 			self[column] = SecureRandom.urlsafe_base64

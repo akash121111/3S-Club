@@ -26,13 +26,39 @@
                                             <%= f.email_field :email, class: 'form-control'%>
                                         </div>
                                         <div class="form-group"> 
-                                            <%= f.label :password, 'Password' %>
-                                            <%= f.password_field :password, class: 'form-control', placeholder:'************'%>
+                                            <%= f.label :password, 'Old Password' %><p style="color:red">Verify your old password!!!</p>
+                                            <%= f.password_field :password, class: 'form-control', placeholder:'************',id:'user_old_password'%>
+                                        </div>
+                                        <div class="form-group"> 
+                                            <%= f.label :password, 'New Password' %>
+                                            <%= f.password_field :password, class: 'form-control'%>
                                         </div>
                                         <div class="form-group"> 
                                             <%= f.label :password_confirmation, 'Confirm Password' %>
                                             <%= f.password_field :password_confirmation, class: 'form-control'%>
                                         </div>
+                                        <% provide :head_tags do %>
+                                            <script>
+                    
+                                                document.addEventListener("DOMContentLoaded", function(){
+                                                    $('#user_old_password').focusout(function(){
+                                                        $.ajax({
+                                                                type : "get",
+                                                                data : { data_value: $('#user_old_password').val() }
+                                                        });
+                                                        <% if (@user.authenticate(params[:data_value])) %>
+                                                            
+                                                           
+                                                                document.getElementById('user_password').readOnly=false;
+                                                                document.getElementById('user_password_confirmation').readOnly=false;
+                                                                
+                                                            
+                                                            
+                                                        <% end %>
+                                                    });
+                                                });
+                                            </script>
+                                        <% end %>
                                     
                                         
                                         <div>
@@ -64,11 +90,11 @@
                                             </div>
                                             <div class="form-group">                               
                                                 <%= f.label :phone_number, 'Phone Number' %>
-                                                <%= f.telephone_field :phone_number, class: 'form-control'%>                         
+                                                <%= f.number_field :phone_number, class: 'form-control'%>                         
                                             </div>
                                             <div class="form-group">                               
                                                 <%= f.label :mobile_number, 'Mobile Number' %>
-                                                <%= f.telephone_field :mobile_number, class: 'form-control'%>                         
+                                                <%= f.number_field :mobile_number, class: 'form-control'%>                         
                                             </div>
                                             <div>
                                                 <%= submit_tag 'Save Changes', class: "btn btn-primary" %>
@@ -113,7 +139,7 @@
                                            
                                                 <div class="form-group"> 
                                                     <%= f.label :pincode, 'Pincode' %>
-                                                    <%= f.text_field :pincode, class: 'form-control'%>
+                                                    <%= f.number_field :pincode, class: 'form-control'%>
                                                 </div>
                                          
                                             

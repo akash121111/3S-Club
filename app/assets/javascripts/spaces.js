@@ -9,6 +9,9 @@ document.addEventListener("turbolinks:load",function(){
     $("#longitude").css("display","none");
     $("#latitude2").css("display","none");
     $("#longitude2").css("display","none");
+
+    $("#space_space_address_pincode").focusout(geocode);
+
     $('.rButtonYes').click(function(){
         var weekday=this.id.split("_")[4];
         document.getElementById('space_start_time_'+weekday).readOnly=false;
@@ -211,6 +214,35 @@ function disableEditTimeField(day_no){
     }
 
 }
+
+
+
+
+function geocode(e){
+    // Prevent actual submit
+    e.preventDefault();
+
+    var location = document.getElementById('space_space_address_pincode').value;
+
+    axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
+      params:{
+        address:location,
+        key: 'AIzaSyBg_AOpFhWzNWRzhyaM1l_MC3J85fRfavk'
+      }
+    })
+    .then(function(response){
+      // Log full response
+      console.log(response);
+      // Geometry
+      var lat = response.data.results[0].geometry.location.lat;
+      var lng = response.data.results[0].geometry.location.lng;
+      initMap(lat,lng);
+    })
+    .catch(function(error){
+      console.log(error);
+    });
+  }
+
 
 
 

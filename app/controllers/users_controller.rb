@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to edit_user_detail_path      
     else
+      flash[:danger]=@user.errors.first[1]
       redirect_to edit_user_detail_path  
     end
   end

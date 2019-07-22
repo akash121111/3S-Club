@@ -62,13 +62,18 @@ class SpacesController < ApplicationController
             end
         
            
-            @space_address.save 
-        
-            @space_available_day.save
-            flash[:success] ="Space created Successfully!!!"
-        
-            redirect_to spaces_path
+            if @space_address.save 
+                @space_available_day.save
+                flash[:success] ="Space created Successfully!!!"
+            
+                redirect_to spaces_path
+            else
+                flash[:danger]=@space_address.errors.first[1]
+                redirect_to '/spaces/new'
+            end        
+            
         else
+            flash[:danger]=@space.errors.first[1]
             redirect_to '/spaces/new'
         end
         

@@ -27,8 +27,8 @@
                                     </div>
                                     
                                     <div class="form-group"> 
-                                        <%= f.label :size, 'Size' %>
-                                        <%= f.text_field :size, class: 'form-control'%>
+                                        <%= f.label :size, 'Size (in Sq. feet)' %>
+                                        <%= f.number_field :size, class: 'form-control'%>
                                     </div>
                                     <div class="form-group">
                                         <%= f.label :Dimensions, 'Dimensions' %>
@@ -100,7 +100,7 @@
 
                                     <div class="form-group">
                                         <%= f.label :pincode, 'Pincode' %>
-                                        <%= f.text_field :pincode, class: 'form-control'%>
+                                        <%= f.number_field :pincode, class: 'form-control'%>
                                     </div>
                                     <div class="form-group">
                                         <%= f.label :state, 'State' %>
