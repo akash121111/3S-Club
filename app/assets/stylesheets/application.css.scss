@@ -1,2 +1,45 @@
 //@import "bootstrap-sprockets";
 //@import "bootstrap";
+.sidenav {
+  width: 16.67%;
+  height: 100%;
+  position: fixed;
+  margin-top: 60px;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  color:white;
+  display:block;
+  background-image: linear-gradient(to top,orange,red);
+  overflow-x: hidden;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.sidenav a {
+  padding: 16px 8px 16px 16px;
+  text-decoration: none;
+  font-size: 23px;
+  color: white;
+  display: block;
+}
+
+.sidenav a:hover {
+  background: black;
+  color: #f1f1f1;
+}
+@media screen and (max-width:350px) {
+  .sidenav {padding-top: 15px;display: none;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+  #preloader{
+    position:fixed;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff 
+    url('https://cdn.dribbble.com/users/1534154/screenshots/3388410/loading.gif') no-repeat center;
+    z-index: 99999;
+  }
+  

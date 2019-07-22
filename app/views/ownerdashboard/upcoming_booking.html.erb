@@ -10,8 +10,9 @@
          <div class="container-fluid">
             <h4>Upcoming Bookings</h4><hr>
             <div class="row text-center">
+            
             <% @spaces.each do |spaces|%>
-              
+              <% image=spaces.images.first%>
               <% @booked=spaces.booking_records%>
               
               <% @booked.each do |booked| %>
@@ -28,7 +29,7 @@
                           <div class="card">
 
                           <div class="card-header bg-white"> <%= @space_detail.space_name%></div>
-                            <%= image_tag("location12.jpeg",:class =>"card-img")%>
+                          <%= image_tag image,:class =>"card-img" %>
                             <div class="card-block bg-white">
                               <div class="card-title "><h6><%= @address.street%> <%= @address.city%> <%= @address.state%> (<%= @address.pincode%>)</h6></div>
                             </div> 
