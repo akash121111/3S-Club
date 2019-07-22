@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-
+default :from => '3SClub@gmail.com'
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -10,4 +10,10 @@ class UserMailer < ApplicationMailer
     @user = user
     mail :to =>user.email, :subject => "Password Reset"
   end
+
+  def signup_email(user)
+    @user = user
+    mail :to => @user.email, :subject => 'Sign Up Confirmation'
+  end
+
 end

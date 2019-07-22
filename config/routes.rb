@@ -68,5 +68,10 @@ get '/searching', to: 'searchings#index'
   get 'dashboard' , to:'sessions#index'
   get 'logout' , to:'sessions#destroy'
   post 'login_confirm',to: 'sessions#create'
+  resources :user do
+    member do
+      get :confirm_email
+    end
+  end
 end
   

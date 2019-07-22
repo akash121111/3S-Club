@@ -42,6 +42,10 @@
    <%= yield(:head_tags) %>
  </head>
 
+    <%= stylesheet_link_tag 'application',params[:controller], media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application',params[:controller], 'data-turbolinks-track':true %>
+    <%= csrf_meta_tags %>
+
 
  <body>
 

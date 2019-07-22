@@ -1,7 +1,68 @@
-<h2 class="center">log-in<h2>
+
 
 <%= form_for(:session, :html => {class: "form-horizontal", role: "form"},url: login_confirm_path ) do |f| %>
-    <div class="form-group">
+   <title>Login Page</title>
+   <!--Made with love by Mutiullah Samim -->
+   
+  <!--Bootsrap 4 CDN-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--Fontawesome CDN-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  <!--Custom styles-->
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+<body>
+<div class="container">
+  <div class="d-flex justify-content-center h-100">
+    <div class="card">
+      <div class="card-header">
+        <h3>Log In</h3>
+        <!--<div class="d-flex justify-content-end social_icon">
+          <span><i class="fab fa-facebook-square"></i></span>
+          <span><i class="fab fa-google-plus-square"></i></span>
+          <span><i class="fab fa-twitter-square"></i></span>
+        </div>-->
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" placeholder="username">
+            
+          </div>
+          <div class="input-group form-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" class="form-control" placeholder="password">
+          </div>
+          <div class="row align-items-center remember">
+            <input type="checkbox">Remember Me
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Login" class="btn float-right login_btn">
+          </div>
+        </form>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex justify-content-center links">
+          Don't have an account?<%= link_to "SIGN UP", sign_up_user_path %>
+        </div>
+        <div class="d-flex justify-content-center">
+          <%= link_to "Forgot your password?", new_password_reset_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+   <!-- <div class="form-group">
        <div class="control-label col-sm-2">
        <%= f.label :email %>
        </div>
@@ -28,5 +89,5 @@
         <%= link_to "forgotten password?", new_password_reset_path %>
         <a href="user#index">Create account</a>
      </div>
-   </div>
+   </div>-->
 <% end %> 
