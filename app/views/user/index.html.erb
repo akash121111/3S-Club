@@ -1,13 +1,48 @@
 <!DOCTYPE html>
 <html>
-<body>
-<% if current_user %>
+<head>
+   <title>3S-Club</title>
+   <style type="text/css">
+       .home{
+           margin-top: 5%;
+           margin-left: 40%;
+       }
+       .btn-home{
+           display: block;
+           width: 320px;
+          background-image: linear-gradient(to top,white,#5F9EA0);
+           color: white;
+           padding: 10px;
+           margin-bottom: 5px;
+
+       }
+       .btn{
+           width: 300px;
+           color: grey;
+           font-size: 20px;
+           font-weight: bold;
+       }
+       .home-text{
+           display: block;
+           width: 320px;
+           margin-bottom: 5px;
+           text-align: center;
+       }
+   </style>
+</head>
+<body id="body">
+   <% if current_user %>
 Logged in as <%= current_user.email %>.
 <%= button_to "logout", 'log_out', :method => "delete" %>
 <% else %>
-<%= button_to "login", 'login_user', :method => "get" %>
-<%= button_to "signupUser", 'sign_up_user', :method => "get" %>
-<%= button_to "signupOwner", 'sign_up', :method => "get" %>
+<div class="home center-block text-centere">
+   <div class="home-text"><h3><span style="color:black">Welcome to</span></h3></div>
+   <div class="home-text"><h1><span style="color:green">3S</span><spane style="color:red"> CLUB</spane></h1></div>
+<div class="btn-home"><%= button_to "Login", 'login_user', :method => "get" ,:class=>"btn"%></div>
+<div class="btn-home" ><%= button_to "Signup As Member", 'sign_up_user', :method => "get",:class=>"btn" %></div>
+<div class="btn-home"><%= button_to "Signup As Owner", 'sign_up', :method => "get",:class=>"btn" %></div>
+</div>
 <% end %>
 </body>
+</html>
 </html>

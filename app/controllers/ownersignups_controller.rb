@@ -12,14 +12,11 @@ class OwnersignupsController<ApplicationController
       @user_detail=UserDetail.new(user_params)
       @user_detail.user_id=@owner.id
       @user_detail.save
-      # save post
-      #flash[:notice] = "Post successfully created"
-  
-      #flash[:"error"] = "Invalid email or password "
+     
       
       redirect_to "/login_user"
     else
-      #flash[:"error"] = "Invalid email or password "
+   
        redirect_to login_in_owner_url
     end
 
