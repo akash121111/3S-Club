@@ -1,0 +1,57 @@
+// Place all the styles related to the searchings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.pro{
+    margin-top: -88px;
+}
+.ab{
+  margin-top: 12px ;
+}
+// .shift{
+//                    position: absolute;
+//                     top: 384px;
+//                     left: 342px;
+//                     height: 30px;
+//                     width: 50px;
+// }
+.col-sm-2{
+  padding: 0%;
+      margin-top: -32px;
+}
+.col-sm-10{
+  padding: 0%;
+  margin-top: 16px ;
+}
+
+
+.sidenav {
+   height: 100%;
+    width: 16.6667%;
+    position: fixed;
+    margin-top: 12px; 
+    z-index: 1;
+    padding-top: 2px;
+    left: 0;
+    background-image: linear-gradient(to top, red, orange);
+    overflow-x: hidden;
+  }
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: black;
+    display: block;
+    margin:0px;
+  }
+  
+  .sidenav a:hover {
+    color: white;
+    background: black
+  }
+.record-table{
+    max-height: 500px;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    overflow:scroll;
+    scroll-behavior: auto;
+   }
