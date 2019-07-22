@@ -32,7 +32,8 @@
                                      <% 
                                      
                                      @booked.each do |br|%>    
-                                      <% space=SpaceAddress.find(br.space_id) %>
+                                      <%
+                                      space=SpaceAddress.find(br.space_id) %>
                                       <% spacename=Space.find(br.space_id)%>
                                       <% 
                                       mobile=UserDetail.find(br.user_id)%>
@@ -50,8 +51,8 @@
                                           <td><%= br.start_time.to_time.strftime("%I:%M %p") %></td>
                                           <td><%= br.end_time.to_time.strftime("%I:%M %p") %></td>
                                           <td><%= mobile.phone_number %> <%= mobile.mobile_number %>  </td>
-                                          <td><input type="submit" class="btn btn-primary pt-1 pb-1 w-5" value="Details"></td>
-                                          <% if  br.booking_date+" "+(br.start_time).strftime("%H:%M:%S") < DateTime.now - 120.minutes %>
+                                          <td> <%= link_to 'detail', edit_userbooking_path(br.space_id) %>  </td>
+                                          <% if  DateTime.parse(br.booking_date+" "+(br.start_time).strftime("%H:%M:%S")+"+0530") - 120.minutes < DateTime.now  %>
                                           <td><input type="submit" disabled class="btn btn-danger pt-1 pb-1 w-5" value="cancel"></td>
                                           <% else %>
                                            <td> <%= link_to 'Cancel', 
