@@ -1,9 +1,6 @@
-<body style="background: #e8e9eb">
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-2 col-xs-2">
-     <%= render "layouts/sidebar" %>
+`4 <body style="background: #e8e9eb">
+
 </div>
     <div class="col-sm-10 col-xs-10">
       <div class="main">
@@ -24,7 +21,7 @@
                           <th>Show Details</th>
                         </tr>
                         </thead >
-                        
+                        <tbody class="text-center">
                     
                   <% @spaces.each do |spaces|%> 
                   <% @booked=spaces.booking_records%>
@@ -32,27 +29,25 @@
                   <% member=User.find_by(id:booked.user_id)%>
                   <% member_detail=member.user_detail%>
                   <% address=spaces.space_address%>
-                  <tbody class="text-center">
-                  <%= form_for booked, :url => view_details_path(booked.id), :method=> "post" do |f| %>
-                    <input type="text" name="booked_id" value="<%=booked.id%>" hidden>
+                  <%= form_for booked, :url => view_details_path(booked), :method=> "post" do |f| %>
+                    
                       
                       
                         <tr>
                         <th><%= booked.id%></th>
-                        <td><%= booked.booking_date%></td>
+                        <td><%= booked.created_at.strftime("%d-%m-%Y")%></td>
                         <td><%= address.house_number%> <%= address.street%> <%= address.city%> <%= address.state%> (<%= address.pincode%>)</td>
                         <td><%= spaces.space_name%></td>
                         <td><%= member_detail.first_name.capitalize%> <%= member_detail.last_name.capitalize%></td>
                         <td><%= member_detail.mobile_number%></td>
                         <td><input type="submit" class="btn btn-primary pt-1 pb-1 w-5" value="Details"></td>
-                      </tr> 
+                      </tr>
                      
                 <% end%>       
-                  
+              <% end %>  
+              <% end %>     
                   
               </tbody>
-              <% end %>  
-              <% end %> 
               </table>
               </div>
             </div>
