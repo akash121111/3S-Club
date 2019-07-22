@@ -15,14 +15,14 @@
               <table class="table table-bordered table-hover bg-white">
                       <thead class="thead-dark">
                         <tr>
-                          <th>S.No</th>
+                          <%# <th>S.No</th> %>
                           <th>Date</th>
                           <th>Sapce Address</th>
                           <th>Space Name</th>
                           <th>Start Time</th>
                           <th>End Time</th>
                           <th>Mobile Number</th>
-                          <th>Show Details</th>
+                          <th>Details</th>
                           <th>Cancel</th>
                         </tr>
                         </thead >
@@ -44,14 +44,14 @@
                                         
                                         
                                           <tr>
-                                          <th><%= br.id%></th>
+                                        
                                           <td><%= br.booking_date%></td>
                                           <td><%= space.house_number%> <%= space.street%> <%= space.city%> <%= space.state%> (<%= space.pincode%>)</td>
                                           <td><%= spacename.space_name %></td>
                                           <td><%= br.start_time.to_time.strftime("%I:%M %p") %></td>
                                           <td><%= br.end_time.to_time.strftime("%I:%M %p") %></td>
                                           <td><%= mobile.phone_number %> <%= mobile.mobile_number %>  </td>
-                                          <td> <%= link_to 'detail', edit_userbooking_path(br.space_id) %>  </td>
+                                          <td> <%= link_to 'Detail', edit_userbooking_path(br.space_id) ,:class=> "btn btn-primary pt-1 pb-1 w-5" %>  </td>
                                           <% if  DateTime.parse(br.booking_date+" "+(br.start_time).strftime("%H:%M:%S")+"+0530") - 120.minutes < DateTime.now  %>
                                           <td><input type="submit" disabled class="btn btn-danger pt-1 pb-1 w-5" value="cancel"></td>
                                           <% else %>
