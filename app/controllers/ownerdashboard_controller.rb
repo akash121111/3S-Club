@@ -6,7 +6,7 @@ class OwnerdashboardController < ApplicationController
     
   end
   def view_details
-    
+    @user=User.find(session[:user_id])
     br_id=params[:booked_id]
     @br=BookingRecord.find_by(id:br_id)
     @space=Space.find_by(id:@br.space_id)
@@ -24,6 +24,5 @@ class OwnerdashboardController < ApplicationController
     @user_detail=@user.user_detail
     @spaces=@user.spaces
   end
-  def no_space
-  end
+
 end

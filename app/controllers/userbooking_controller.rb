@@ -1,4 +1,6 @@
    class UserbookingController < ApplicationController
+
+    
    def destroy
                               @booking = BookingRecord.find(params[:id])
                               @time_add=@booking.booking_time
@@ -18,7 +20,7 @@
                               redirect_to userbookingrecords_path
     end
     def edit
-        
+         @user=User.find(session[:user_id])
         @space=Space.find(params[:id])
         @space_available_day=@space.space_available_day
     end
@@ -27,4 +29,23 @@
         @space=Space.new
        
     end
-end
+     def edit
+        @user=User.find(session[:user_id])
+        @space=Space.find(params[:id])
+        @space_available_day=@space.space_available_day
+    end
+
+
+    def space_details_params
+        params.require(:space).permit(:space_name,:size,:dimensions,:floor_number,:number_of_toilets,:nearby_landmark, images: [])
+    end
+
+    def set_space
+        @user=User.find(session[:user_id])
+        @user_detail=@user.user_detail
+        @space=Space.find(params[:id])
+        @space_address=@space.space_address
+    end
+
+
+    end

@@ -11,6 +11,7 @@ class User < ApplicationRecord
     #validates_presence_of :password, on: :create
     validates :email, :presence=>true, uniqueness:true
 	before_create { generate_token(:auth_token)}
+	before_update { generate_token(:auth_token)}
 	def generate_token(column)
 		begin
 			self[column] = SecureRandom.urlsafe_base64
@@ -21,9 +22,26 @@ class User < ApplicationRecord
 	   	generate_token(:password_reset_token)
 	   	self.password_reset_sent_at= Time.zone.now
 	   	save!
-	   	UserMailer.password_reset(self).deliver
-	   	
-	   end   
+	end   
+	
+	def send_signup_email()
+	   	generate_token(:auth_token)
+	   	save!
+	   	UserMailer.signup_email(self).deliver
+	end
+
+	def email_activate
+    self.signup_active = true
+    self.auth_token = nil
+    save!(:validate => false)
+    end  
+
+private
+	def confirmation_token
+     	if self.auth_token.blank?
+        	self.auth_token = SecureRandom.urlsafe_base64.to_s
+      	end
+    end   
 	
 end
  

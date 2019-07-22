@@ -27,8 +27,8 @@
                                     </div>
                                     
                                     <div class="form-group"> 
-                                        <%= f.label :size, 'Size' %>
-                                        <%= f.text_field :size, class: 'form-control'%>
+                                        <%= f.label :size, 'Size (in Sq. feet)' %>
+                                        <%= f.number_field :size, class: 'form-control'%>
                                     </div>
                                     <div class="form-group">
                                         <%= f.label :Dimensions, 'Dimensions' %>
@@ -100,7 +100,7 @@
 
                                     <div class="form-group">
                                         <%= f.label :pincode, 'Pincode' %>
-                                        <%= f.text_field :pincode, class: 'form-control'%>
+                                        <%= f.number_field :pincode, class: 'form-control'%>
                                     </div>
                                     <div class="form-group">
                                         <%= f.label :state, 'State' %>
@@ -173,14 +173,14 @@
                                                                             
                                                                             <% if @space_available_day[key] == true %>
                                                                                 <%= s.label key, "Yes", :value => "true",class:"radio-button-label"%>
-                                                                                <%= s.radio_button key,true, checked:true  %>
+                                                                                <%= s.radio_button key,true, checked:true,class:'rButtonEditYes'  %>
                                                                                 <%= s.label key, "No", :value => "false" ,class:"radio-button-label"%>
-                                                                                <%= s.radio_button key, false%>
+                                                                                <%= s.radio_button key, false,class:'rButtonEditNo'%>
                                                                             <%else%>
                                                                                 <%= s.label key, "Yes", :value => "true",class:"radio-button-label"  %>
-                                                                                <%= s.radio_button key,true %>
+                                                                                <%= s.radio_button key,true,class:'rButtonEditYes' %>
                                                                                 <%= s.label key, "No", :value => "false",class:"radio-button-label" %>
-                                                                                <%= s.radio_button key, false, checked:true %>
+                                                                                <%= s.radio_button key, false, checked:true,class:'rButtonEditNo' %>
                                                                             <% end%>
                                                                             
                                                                         </div>
@@ -212,7 +212,7 @@
                                                                                                 </div>
                                                                                             <%end%>
                                                                                             <div class="col-md-6">
-                                                                                                <%=s.time_field :start_time ,multiple:true %>
+                                                                                                <%=s.time_field :start_time ,multiple:true, class:"start-time-array",min:"07:00", max:"23:59",onkeydown:"return false" %>
                                                                                             </div>
                                                                                         </td>
                                                                                         <td>
@@ -224,7 +224,7 @@
                                                                                                 </div>
                                                                                             <%end%>
                                                                                             <div class="col-md-6">
-                                                                                                <%=s.time_field :end_time ,multiple:true%>
+                                                                                                <%=s.time_field :end_time ,multiple:true, class:"end-time-array",min:"07:00", max:"23:59",onkeydown:"return false" %>
                                                                                             </div>
                                                                                         </td>
                                                                                     </tr>
@@ -244,6 +244,16 @@
                                             
                                         <div>
                                         <br>
+                                        <%@week_days.each do|key,value|%>
+                                        <% provide :head_tags do %>
+                                            <script>
+                                                document.addEventListener("turbolinks:load", function(){
+                                                
+                                                    disableEditTimeField("<%=value.to_s%>");
+                                                });
+                                            </script>
+                                        <% end %>
+                                        <% end %>
 
                                         <%= submit_tag 'Save Changes', :class=> "btn btn-primary" %><br>
 

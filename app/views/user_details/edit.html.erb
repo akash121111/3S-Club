@@ -26,14 +26,18 @@
                                             <%= f.email_field :email, class: 'form-control'%>
                                         </div>
                                         <div class="form-group"> 
-                                            <%= f.label :password, 'Password' %>
-                                            <%= f.password_field :password, class: 'form-control', placeholder:'************'%>
+                                            <%= f.label :current_password, 'Current Password' %>
+                                            <%= f.password_field :current_password, class: 'form-control',id:'user_old_password'%>
+                                        </div>
+                                        <div class="form-group"> 
+                                            <%= f.label :password, 'New Password' %>
+                                            <%= f.password_field :password, class: 'form-control'%>
                                         </div>
                                         <div class="form-group"> 
                                             <%= f.label :password_confirmation, 'Confirm Password' %>
                                             <%= f.password_field :password_confirmation, class: 'form-control'%>
                                         </div>
-                                    
+                                        
                                         
                                         <div>
                                             <%= submit_tag 'Save Changes', class: "btn btn-primary" %>
@@ -64,11 +68,11 @@
                                             </div>
                                             <div class="form-group">                               
                                                 <%= f.label :phone_number, 'Phone Number' %>
-                                                <%= f.telephone_field :phone_number, class: 'form-control'%>                         
+                                                <%= f.number_field :phone_number, class: 'form-control'%>                         
                                             </div>
                                             <div class="form-group">                               
                                                 <%= f.label :mobile_number, 'Mobile Number' %>
-                                                <%= f.telephone_field :mobile_number, class: 'form-control'%>                         
+                                                <%= f.number_field :mobile_number, class: 'form-control'%>                         
                                             </div>
                                             <div>
                                                 <%= submit_tag 'Save Changes', class: "btn btn-primary" %>
@@ -113,7 +117,7 @@
                                            
                                                 <div class="form-group"> 
                                                     <%= f.label :pincode, 'Pincode' %>
-                                                    <%= f.text_field :pincode, class: 'form-control'%>
+                                                    <%= f.number_field :pincode, class: 'form-control'%>
                                                 </div>
                                          
                                             

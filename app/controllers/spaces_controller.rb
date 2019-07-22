@@ -1,6 +1,6 @@
 class SpacesController < ApplicationController
     before_action :set_space, only: [:show, :destroy, :edit, :update]
-    before_action :set_week_days, only: [:edit,:new,:create, :update]
+    before_action :set_week_days, only: [:edit,:create,:new, :update]
     def index
         @spaces=Space.where(user_id: session[:user_id])
         @user=User.find(session[:user_id])
@@ -19,10 +19,9 @@ class SpacesController < ApplicationController
         @user_detail=@user.user_detail
     end
 
-    def update     
+    def update    
         @space_details=User.find(session[:user_id]).spaces
         @space_detail=@space_details.find(params[:id])
-      
         if @space_detail.update(space_details_params)
           redirect_to edit_space_path  
         else
@@ -63,13 +62,18 @@ class SpacesController < ApplicationController
             end
         
            
-            @space_address.save 
-        
-            @space_available_day.save
-            flash[:success] ="Space created Successfully!!!"
-        
-            redirect_to spaces_path
+            if @space_address.save 
+                @space_available_day.save
+                flash[:success] ="Space created Successfully!!!"
+            
+                redirect_to spaces_path
+            else
+                flash[:danger]=@space_address.errors.first[1]
+                redirect_to '/spaces/new'
+            end        
+            
         else
+            flash[:danger]=@space.errors.first[1]
             redirect_to '/spaces/new'
         end
         

@@ -67,6 +67,7 @@ class SearchingsController < ApplicationController
         marker.lat r.latitude
         marker.lng r.longitude
         marker.infowindow r.city
+       
       end
     end
 

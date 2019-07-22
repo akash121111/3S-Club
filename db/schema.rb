@@ -200,6 +200,9 @@ ActiveRecord::Schema.define(version: 2019_07_20_080952) do
     t.string "password_reset_token"
     t.datetime "password_reset_sent_at"
     t.string "auth_token"
+    t.string "signup_token"
+    t.datetime "signup_at"
+    t.boolean "signup_active", default: false
     t.index ["user_type_id"], name: "index_users_on_user_type_id"
   end
 

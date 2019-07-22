@@ -27,3 +27,6 @@ Rails.application.config.assets.precompile += %w( ownersignups.scss )
 Rails.application.config.assets.precompile += %w( ownersignups.js )
 Rails.application.config.assets.precompile += %w( password_resets.css )
 Rails.application.config.assets.precompile += %w( password_resets.js )
+Rails.application.config.assets.precompile += %w( userbooking.scss )
+Rails.application.config.assets.precompile += %w( userbooking.js )
+

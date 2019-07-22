@@ -11,6 +11,7 @@ class SpaceAddressesController < ApplicationController
         if @space_address.update(space_address_params)
           redirect_to '/spaces/'+@space_address.space.id.to_s+'/edit'    
         else
+          flash[:danger]=@space_address.errors.first[1]
           redirect_to '/spaces/'+@space_address.space.id.to_s+'/edit' 
         end
     end

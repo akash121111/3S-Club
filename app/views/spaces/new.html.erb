@@ -25,8 +25,8 @@
                                     </div>
                                     
                                     <div class="form-group"> 
-                                        <%= f.label :size, 'Size' %>
-                                        <%= f.text_field :size, class: 'form-control'%>
+                                        <%= f.label :size, 'Size(in Sq. feet)' %>
+                                        <%= f.number_field :size, class: 'form-control'%>
                                     </div>
                                     <div class="form-group">
                                         <%= f.label :Dimensions, 'Dimensions' %>
@@ -94,7 +94,7 @@
 
                                             <div class="form-group">
                                                 <%= s.label :pincode, 'Pincode' %>
-                                                <%= s.text_field :pincode, class: 'form-control'%>
+                                                <%= s.number_field :pincode, class: 'form-control'%>
                                             </div>
                                             <div class="form-group">
                                                 <%= s.label :state, 'State' %>
@@ -157,9 +157,10 @@
                                                                 <%@week_days.each do|key,value|%>
                                                                     <div class="row">
                                                                         <%= s.label key, "Yes", :value => "true",class:"radio-button-label"  %>
-                                                                        <%= s.radio_button key, true %>
+                                                                        <%= s.radio_button key, true ,class:'rButtonYes'%>
                                                                         <%= s.label key, "No", :value => "false",class:"radio-button-label" %>
-                                                                        <%= s.radio_button key, false, :checked => true %>
+                                                                        <%= s.radio_button key, false,class:'rButtonNo',:checked => true %>
+                                                                        
                                                                     </div>
                                                                 <%end%>
                                                             </div>
@@ -177,7 +178,7 @@
                                                             <div class="container-fluid">
                                                                 <%@week_days.each do|key,value|%>
                                                                     <div class="row">
-                                                                        <%=s.time_field key%>
+                                                                        <%=s.time_field key,min:"07:00", max:"23:59",onkeydown:"return false" %>
                                                                     </div>
                                                                 <%end%>
                                                             </div>
@@ -191,8 +192,16 @@
                                                             <div class="container-fluid">
                                                                 <%@week_days.each do|key,value|%>
                                                                     <div class="row">
-                                                                        <%=s.time_field key%>
+                                                                        <%=s.time_field key ,min:"07:00", max:"23:59",onkeydown:"return false" %>
                                                                     </div>
+                                                                    
+                                                                    <% provide :head_tags do %>
+                                                                        <script>
+                                                                            document.addEventListener("turbolinks:load", function(){
+                                                                                disableNewTimeField("<%=key.to_s%>");
+                                                                            });
+                                                                        </script>
+                                                                    <% end %>
                                                                 <%end%>
                                                             </div>
                                                         </div>
