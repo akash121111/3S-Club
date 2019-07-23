@@ -76,7 +76,7 @@ document.addEventListener("turbolinks:load",function(){
         var msg="";
         $.each( week_days, function( key, value ) {
           if($("#space_space_available_day_"+value+"_true").prop('checked')===true){
-            if ($('#space_start_time_'+value).val()!=="" && $('#space_end_time_'+value).val()!==""){
+            if (($('#space_start_time_'+value).val()!=="" && $('#space_end_time_'+value).val()!=="")||($('#space_start_time_'+value).val()  >= $('#space_end_time_'+value).val())){
                 flag=1;
             }
             else{
@@ -103,12 +103,12 @@ function validate(){
     var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
     var name = document.getElementById('space_space_name').value;
     if(!regName.test(name)){
-        alert('Please enter Correct Space Name.').delay(1000);
+        //alert('Please enter Correct Space Name.').delay(1000);
+        document.getElementById('space_space_name').title="hey";
         document.getElementById('space_space_name').focus();
         
         return false;
     }else{
-        alert('Valid name given.');
         return true;
     }
 }

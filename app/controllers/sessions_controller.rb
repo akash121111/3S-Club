@@ -14,7 +14,6 @@ class SessionsController < ApplicationController
   def create
     	
   	user = User.find_by_email(params[:session][:email])
-      byebug
        if user && user.authenticate(params[:session][:password_digest])
         session[:user_id]= user.id
         user_type=user.user_type_id
