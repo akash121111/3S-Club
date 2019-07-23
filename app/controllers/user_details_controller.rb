@@ -17,6 +17,7 @@ class UserDetailsController < ApplicationController
      
         @user_detail=User.find(session[:user_id]).user_detail
         if @user_detail.update(user_details_params)
+          flash[:success]="Address Updated Successfully"
           redirect_to edit_user_detail_path    
         else
           flash[:danger]=@user_detail.errors.first[1]

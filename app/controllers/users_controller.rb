@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def update
     @user=User.find(params[:id])
     if @user.authenticate(params[:user][:current_password]) && @user.update(user_params)
+      flash[:success]="Password Changed"
       redirect_to edit_user_detail_path      
     else
       flash[:danger]="Incorrect Password Details"
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :current_password, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end
 

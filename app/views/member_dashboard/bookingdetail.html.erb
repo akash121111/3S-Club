@@ -13,7 +13,8 @@
            <div  style="overflow:scroll;height:600px">
              <div class="row">
                <div class="col-sm-9">
-                   <% @br.each do |br| %>
+               
+                   <% @users.each do |br| %>
                        <% space=Space.find(br.space_id) %>
                        <% wallet=space.member_subscriptions.first%>
                        <% address=space.space_address%>
@@ -34,8 +35,9 @@
                                  <%= address.house_number%>
                                 </label><br>
                     
-                                <label for="wallet time">Time left in wallet</label>
+                               <strong> <label for="wallet time">Time left in wallet =></label> </strong>
                                    <%= wallet.time_wallet %>
+                                    <%= link_to 'Add more time in wallet', "membershipindex?space_id=#{br.space_id}&user_id=#{session[:user_id]}", :class=> "btn btn-danger", :style=>"margin-top: 17px;bottom:0;float:right"%>
                             </div>
                           </div>
                           </div>

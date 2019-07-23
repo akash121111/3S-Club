@@ -9,11 +9,11 @@ class SpaceAvailableDay < ApplicationRecord
         end
     end  
 
-    validates :monday, inclusion: { in: [true, false] },optional: true
-    validates :tuesday, inclusion: { in: [true, false] },optional: true
-    validates :wednesday, inclusion: { in: [true, false] },optional: true
-    validates :thursday, inclusion: { in: [true, false] },optional: true
-    validates :friday, inclusion: { in: [true, false] },optional: true
-    validates :saturday, inclusion: { in: [true, false] },optional: true
-    validates :sunday, inclusion: { in: [true, false] },optional: true
+    validates :monday, inclusion: { in: [true, false] }
+    validates :tuesday, inclusion: { in: [true, false] }
+    validates :wednesday, inclusion: { in: [true, false] }
+    validates :thursday, inclusion: { in: [true, false] }
+    validates :friday, inclusion: { in: [true, false] }
+    validates :saturday, inclusion: { in: [true, false] }
+    validates :sunday, inclusion: { in: [true, false] }
 end

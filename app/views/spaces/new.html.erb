@@ -22,28 +22,33 @@
                                     <div class="form-group"> 
                                         <%= f.label :space_name, 'Space Name' %>
                                         <%= f.text_field :space_name, class: 'form-control'%>
+                                        <span id="span_space_name_error" class="error-text"></span>
                                     </div>
                                     
                                     <div class="form-group"> 
                                         <%= f.label :size, 'Size(in Sq. feet)' %>
                                         <%= f.number_field :size, class: 'form-control'%>
+                                        <span id="span_size_error" class="error-text"></span>
                                     </div>
                                     <div class="form-group">
-                                        <%= f.label :Dimensions, 'Dimensions' %>
-                                        <%= f.text_field :dimensions, class: 'form-control'%>
+                                        <%= f.label :Dimensions, 'Dimensions(in metres)' %>
+                                        <%= f.text_field :dimensions, class: 'form-control',placeholder: 'e.g. 100x100'%>
+                                        <span id="span_dimensions_error" class="error-text"></span>
                                     </div>
                                     <div class="container-fluid">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">   
                                                     <%= f.label :floor_number, 'Floor Number' %>
-                                                    <%= f.number_field :floor_number, class: 'form-control  space-number-fields'%>                        
+                                                    <%= f.number_field :floor_number, class: 'form-control  space-number-fields'%>
+                                                    <span id="span_floor_number_error" class="error-text"></span>                        
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">                               
                                                     <%= f.label :number_of_toilets, 'Number Of Toilets' %>
-                                                    <%= f.number_field :number_of_toilets, class: 'form-control  space-number-fields'%>                         
+                                                    <%= f.number_field :number_of_toilets, class: 'form-control  space-number-fields'%> 
+                                                    <span id="span_number_of_toilets_error" class="error-text"></span>                        
                                                 </div>
                                             </div>
                                         </div>
@@ -52,7 +57,8 @@
                                     
                                     <div class="form-group">                               
                                         <%= f.label :nearby_landmark, 'Nearby Landmark' %>
-                                        <%= f.text_field :nearby_landmark, class: 'form-control'%>                         
+                                        <%= f.text_field :nearby_landmark, class: 'form-control'%> 
+                                        <span id="span_nearby_landmark_error" class="error-text"></span>                        
                                     </div>
 
                                     <div class="container-fluid">
@@ -80,25 +86,30 @@
                                             <div class="form-group">
                                                 <%= s.label :house_number, 'House Number' %>
                                                 <%= s.text_field :house_number, class: 'form-control'%>
+                                                <span id="span_house_number_error" class="error-text"></span>
                                             </div>
                                             
                                             <div class="form-group">
                                                 <%= s.label :street, 'Street' %>
                                                 <%= s.text_field :street, class: 'form-control'%>
+                                                <span id="span_street_error" class="error-text"></span>
                                             </div>
 
                                             <div class="form-group">
                                                 <%= s.label :city, 'City' %>
                                                 <%= s.text_field :city, class: 'form-control'%>
+                                                <span id="span_city_error" class="error-text"></span>
                                             </div>
 
                                             <div class="form-group">
                                                 <%= s.label :pincode, 'Pincode' %>
                                                 <%= s.number_field :pincode, class: 'form-control'%>
+                                                <span id="span_pincode_error" class="error-text"></span>
                                             </div>
                                             <div class="form-group">
                                                 <%= s.label :state, 'State' %>
                                                 <%= s.text_field :state, class: 'form-control'%>
+                                                <span id="span_state_error" class="error-text"></span>
                                             </div>
                                             <div class="form-group">                                   
                                                 <%= s.text_field :latitude, class: 'form-control', id:'latitude2'%>
@@ -215,7 +226,7 @@
                             </div>  
                         </div>
                         </table>  
-
+                        <span id="span_time_error" class="error-text"></span>
                             <br><br>
                         <div class="row">
                             <%= submit_tag 'Create Space', :class=> "btn btn-primary" %><br>

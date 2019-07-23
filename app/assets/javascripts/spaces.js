@@ -76,7 +76,7 @@ document.addEventListener("turbolinks:load",function(){
         var msg="";
         $.each( week_days, function( key, value ) {
           if($("#space_space_available_day_"+value+"_true").prop('checked')===true){
-            if (($('#space_start_time_'+value).val()!=="" && $('#space_end_time_'+value).val()!=="")||($('#space_start_time_'+value).val()  >= $('#space_end_time_'+value).val())){
+            if ($('#space_start_time_'+value).val()!=="" && $('#space_end_time_'+value).val()!=="" ){
                 flag=1;
             }
             else{
@@ -87,28 +87,143 @@ document.addEventListener("turbolinks:load",function(){
          }
         });
         if (flag===0){
-            alert(msg);
+            $('#spanTimeError').html(msg);
             return false;
         }
   
     });
-
+    
     $('#space_space_name').focusout(function(){
-        validate();
+        var element=$('#space_space_name');
+        var txtElement=$('#span_space_name_error');
+        var regex= /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/;
+        var msg="Space name must contain only Letters and Spaces";
+        validate(element,txtElement,regex,msg);
+    });
+    $('#space_size').focusout(function(){
+        var element=$('#space_size');
+        var txtElement=$('#span_space_size_error');
+        var regex= /^\d*\.?\d*$/;
+        var msg="Space Size must be in Digits and Decimals";
+        validate(element,txtElement,regex,msg);
+    });
+    $('#space_dimensions').focusout(function(){
+        var element=$('#space_dimensions');
+        var txtElement=$('#span_dimensions_error');
+        var regex= /^\d+(\.\d+)?x\d+(\.\d+)?$/;
+        var msg="Dimensions must be like 200*400";
+        validate(element,txtElement,regex,msg);
+    });
+    $('#space_floor_number').focusout(function(){
+        var element=$('#space_floor_number');
+        var txtElement=$('#span_floor_number_error');
+        var regex= /^\d{1,2}$/;
+        var msg="Floor Number must not exceed 2 digits and should be Positive";
+        validate(element,txtElement,regex,msg);
+    });
+    $('#space_number_of_toilets').focusout(function(){
+        var element=$('#space_number_of_toilets');
+        var txtElement=$('#span_number_of_toilets_error');
+        var regex= /^\d{1,2}$/;
+        var msg="Please provide in two digits!!!";
+        validate(element,txtElement,regex,msg);
+    });
+    $('#space_nearby_landmark').focusout(function(){
+        var element=$('#space_nearby_landmark');
+        var txtElement=$('#span_nearby_landmark_error');
+        var regex= /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
+        var msg="Nearby Landmark should be in Alphanumerics only";
+        validate(element,txtElement,regex,msg);
+    });
+   
+    // New Page Space Address Validations
+
+    $('#space_space_address_house_number').focusout(function(){
+        var element=$('#space_space_address_house_number');
+        var txtElement=$('#span_house_number_error');
+        var regex= /^[A-Za-z0-9_/-]*$/;
+        var msg="House Number does not seems correct";
+        validate(element,txtElement,regex,msg);
+    });
+    $('#space_space_address_street').focusout(function(){
+        var element=$('#space_space_address_street');
+        var txtElement=$('#span_street_error');
+        var regex= /^[A-Za-z0-9_]*$/;
+        var msg="Inappropriate value for street";
+        validate(element,txtElement,regex,msg);
+    });
+    $('#space_space_address_city').focusout(function(){
+        var element=$('#space_space_address_city');
+        var txtElement=$('#span_city_error');
+        var regex= /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
+        var msg="Inappropriate City Name";
+        validate(element,txtElement,regex,msg);
+    });
+    $('#space_space_address_pincode').focusout(function(){
+        var element=$('#space_space_address_pincode');
+        var txtElement=$('#span_pincode_error');
+        var regex= /^[0-9]*{1,6}$/;
+        var msg="Space name must not contain only Letters and Spaces";
+        validate(element,txtElement,regex,msg);
+    });
+    $('#space_space_address_state').focusout(function(){
+        var element=$('#space_space_address_state');
+        var txtElement=$('#span_state_error'); 
+        var regex= /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
+        var msg="Inappropriate State Name";
+        validate(element,txtElement,regex,msg);
     });
 
+    // Edit Page Space Address Validations
+
+    $('#space_address_house_number').focusout(function(){
+        var element=$('#space_address_house_number');
+        var txtElement=$('#span_house_number_error');
+        var regex= /^[A-Za-z0-9_/-]*$/;
+        var msg="House Number does not seems correct";
+        validate(element,txtElement,regex,msg);
+    });
+    $('#space_address_street').focusout(function(){
+        var element=$('#space_address_street');
+        var txtElement=$('#span_street_error');
+        var regex= /^[A-Za-z0-9_]*$/;
+        var msg="Inappropriate value for street";
+        validate(element,txtElement,regex,msg);
+    });
+    $('#space_address_city').focusout(function(){
+        var element=$('#space_address_city');
+        var txtElement=$('#span_city_error');
+        var regex= /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
+        var msg="Inappropriate City Name";
+        validate(element,txtElement,regex,msg);
+    });
+    $('#space_address_pincode').focusout(function(){
+        var element=$('#space_address_pincode');
+        var txtElement=$('#span_pincode_error');
+        var regex= /^[0-9]*{1,6}$/;
+        var msg="Space name must not contain only Letters and Spaces";
+        validate(element,txtElement,regex,msg);
+    });
+    $('#space_address_state').focusout(function(){
+        var element=$('#space_address_state');
+        var txtElement=$('#span_state_error'); 
+        var regex= /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
+        var msg="Inappropriate State Name";
+        validate(element,txtElement,regex,msg);
+    });
+    
 });
 
-function validate(){
-    var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
-    var name = document.getElementById('space_space_name').value;
-    if(!regName.test(name)){
-        //alert('Please enter Correct Space Name.').delay(1000);
-        document.getElementById('space_space_name').title="hey";
-        document.getElementById('space_space_name').focus();
+function validate(element,txtElement,regex,msg){
+    var value=element.val();
+    if(!regex.test(value)){
         
+        element.focus();
+        txtElement.html(msg);
         return false;
-    }else{
+    }
+    else{
+        txtElement.html("");
         return true;
     }
 }
@@ -119,12 +234,7 @@ function disableNewTimeField(weekday){
      document.getElementById('space_end_time_'+weekday).readOnly=true;
  
 }
-function enable(){   
- debugger
-    document.getElementById('user_password').readOnly=false;
-    document.getElementById('user_password_confirmation').readOnly=false;
 
-}
 
 function disableEditTimeField(day_no){
     var startTimeArray=document.querySelectorAll(".start-time-array");

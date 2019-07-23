@@ -7,14 +7,14 @@
 
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="row" style="margin-top: -70px;overflow: scroll;">
         <div class="col-sm-2">
 
  <%= render "layouts/member_sidebar" %>
  </div>
            <div class="col-sm-10">
                  <div class="container-fluid">
-                     <div class="row">
+                     <div class="row" >
                          <div class="col-sm">
                              <div class="form-group">
     
@@ -40,6 +40,7 @@
                            </div>
     
                            </div>
+                      
                            <div class="row">
                               <div class="col-sm-4">
                                    <h1>List View</h1>
@@ -48,13 +49,14 @@
                                     if @start_time && @end_time
                                     i=0 
                                     @aftersearchbydayandaddress.each do |s| %>
-
+                                     <% space=Space.find_by_id(s.space_id) %>
+                                     <% image=space.images.first%>
                                     <li class="list-group-item">
                                     <div class="media">
-
-                                    <%= image_tag 'location11.jpg',:class =>"media-object media-left" ,size:"100x100"%>
+                                     <%= image_tag image,:class =>"media-object media-left",size:"130x130" %>
+                                    
                                     <div class="media-body media-right">
-                                    <% space=Space.find_by_id(s.space_id) %>
+                                   
                                    <span > Name:</span> <%= space.space_name %><br>
 
                                     Address:<%=  s.house_number  %><%=  s.street  %><%= s.city%> <%= s.state %><%= (s.pincode)%>

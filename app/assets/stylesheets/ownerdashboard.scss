@@ -3,37 +3,10 @@
     font-family:"Loto" sans-serif;
   }
   
-  .sidenav {
-    
-    height: 100%;
-    position: fixed;
-    margin-top: 60px;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    color:white;
-    display:block;
-    background-image: linear-gradient(to top,orange,red);
-    overflow-x: hidden;
-    padding-top: 20px;
-    text-align: center;
-  }
   
-  .sidenav a {
-    padding: 16px 8px 16px 16px;
-    text-decoration: none;
-    font-size: 23px;
-    color: white;
-    display: block;
-  }
-  
-  .sidenav a:hover {
-    background: black;
-    color: #f1f1f1;
-  }
   .main{
     font-size: 15px;
-    margin-top: 20px;
+    margin-top: 1%;
   
   }
   button{
@@ -98,3 +71,4 @@
     .sidenav a {font-size: 18px;}
   }
 
+  

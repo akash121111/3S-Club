@@ -1,46 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Membeship Plan</title>
-	
+    <title>Membeship Plan</title>
+    
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top"   style="padding:0; height:60px; background-color:rgba(0,123,255,.5)!important;opacity: 1">
-  <a class="navbar-brand" href="#">3S-Club</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top"   style="padding:0; height:60px; background-color:rgba(30,144,255)!important; opacity:1 ">
+<abbr title="Home"><a class="navbar-brand" href="user#index">3S-Club</a></abbr>
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+   <span class="navbar-toggler-icon"></span>
+ </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#"><i class="fa fa-home" style="color:green"></i> <span class="sr-only">(current)</span></a>
+ <div class="collapse navbar-collapse" id="navbarSupportedContent">
+   <ul class="navbar-nav mr-auto">
+     <li class="nav-item active">
+     <abbr title="Home"><a class="nav-link" href="user#index"><i class="fa fa-home" style="color:green"></i> <span class="sr-only">(current)</span></a></abbr>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link" href="#">Help</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Help</a>
-	  </li>
-	  <li class="nav-item">
-        <a class="nav-link" href="#">Contact</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About Us</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		<i class="fa fa-gear fa-spin" style="color:blue"></i>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#"><i class="fa fa-credit-card"></i> My Wallet</a>
-          <a class="dropdown-item" href="#"><i class="fa fa-address-book"></i>  My Profie</a>
-        </div>
-      </li>
-     
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-    <button>LOGOUT</button>
-        
-    </form>
-  </div>
+       <a class="nav-link" href="#">Contact</a>
+     </li>
+     <li class="nav-item">
+       <a class="nav-link" href="#">About Us</a>
+     </li>
+   </ul>
+   <form class="form-inline my-2 my-lg-0">
+   <% if session[:user_id] %>
+   <%= link_to 'Log Out' ,'/log_out', :method=>"delete"%>
+   <% end %>
+   </form>
+ </div>
 </nav>
 </body>
 </html>
+
