@@ -23,8 +23,10 @@ class SpacesController < ApplicationController
         @space_details=User.find(session[:user_id]).spaces
         @space_detail=@space_details.find(params[:id])
         if @space_detail.update(space_details_params)
+          flash[:success]="Space Details Updated"
           redirect_to edit_space_path  
         else
+          flash[:danger]=@space_address.errors.first[1]
           redirect_to edit_space_path  
         end
     end
@@ -80,11 +82,12 @@ class SpacesController < ApplicationController
     end
 
     def destroy
-        byebug
         @space.update(deleted_at: Time.now)
         if @space.deleted_at
+            flash[:success]="Space Deleted Successfully"
             redirect_to spaces_path
         else
+            flash[:danger]="Space Not Deleted"
             redirect_to '/user_details/'+@user_detail.id.to_s+'/edit' 
         end
 
