@@ -35,9 +35,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => "localhost:3000"}
+ 
 
   config.action_mailer.perform_caching = false
 
@@ -65,15 +63,18 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
+
   config.action_mailer.smtp_settings = {
-    address: 'smtp.sendgrid.net',
-    port: 587,
-    domain: '3S-Club.com',
-    user_name: ENV['SENDGRID_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'],
-    authentication: "plain",
-    enable_starttls_auto: true
-  }
+  address: 'smtp.sendgrid.net',
+  port: 587,
+  domain: '3SClub.com',
+  user_name: ENV['SENDGRID_USERNAME'],
+  password: ENV['SENDGRID_PASSWORD'],
+  authentication: :plain,
+  enable_starttls_auto: true
+}
+  
   config.action_mailer.default_url_options = {:host => "localhost:3000"}
 end
