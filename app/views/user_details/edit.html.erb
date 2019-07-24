@@ -101,7 +101,7 @@
                                 
                                 <div class="col-md-6 col-sm-6">
                                 <%@user_address_type=UserAddressType.find(user_address.user_address_type.id)%>
-                                 <h2><%=@user_address_type.address_type%></h2>
+                                 <h2>&nbsp;<%=@user_address_type.address_type%></h2>
                                     <br>
                                     <%=form_for user_address do |f| %>
                                     
@@ -109,7 +109,7 @@
                                             
                                                 <div class="form-group">
                                                     <%= f.label :address_line_1, 'Address Line 1' %>
-                                                    <%= f.text_field :address_line_1, class: 'form-control'%>
+                                                    <%= f.text_field :address_line_1, class: 'form-control address-line-1'%>
                                                     <span id="span_address_line_1_error_<%=@user_address_type.id%>" class="error-text"></span>
                                                 </div>
                                             

@@ -9,7 +9,6 @@
       <% if @space.images.attached?%>
         <%@space.images.each do |image|%>
            <%if image == @space.images.first%>
-
               <div class="carousel-item upload-space-img active"> 
                    <%= image_tag image,class: "upload-space-img" %>
                 </div>
