@@ -11,4 +11,7 @@ class SpaceAvailabilityTiming < ApplicationRecord
             all
         end
     end  
+
+    validates :start_time, time: true,allow_blank: true
+    validates :start_time, time: true,allow_blank: true
 end

@@ -28,12 +28,44 @@
   background: black;
   color: #f1f1f1;
 }
-@media screen and (max-width:350px) {
-  .sidenav {padding-top: 15px;display: none;}
-  .sidenav a {font-size: 18px;}
+.sidebar-open{
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  margin-top: 0px;
 }
-
-
+.sidebar-cancel{
+  display: none;
+}
+@media only screen 
+and (min-device-width : 240px) 
+and (max-device-width : 767px) {                                                                                                                                                        
+  .sidenav {
+    padding-top: 15px;
+    display: none;
+    width: 50%;
+  }
+  .col-sm-12{
+    padding-left: 45px;
+  }
+  .main{
+    margin-top: 50px;
+  }
+  .row{
+    margin-left: -30px;
+    margin-top: -10px;
+  }
+  .sidenav a {font-size:40px;}
+  .sidebar-open{display: block;}
+  .sidebar-cancel{display: block;}
+  .space-number-fields{
+    margin-right: 0px;
+    position: relative;
+    right: 5%;
+    width: 80%;
+}
+}
   #preloader{
     position:fixed;
     width: 100%;
@@ -42,4 +74,4 @@
     url('https://cdn.dribbble.com/users/1534154/screenshots/3388410/loading.gif') no-repeat center;
     z-index: 99999;
   }
-  
+ 

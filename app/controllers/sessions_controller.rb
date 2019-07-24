@@ -10,9 +10,9 @@ class SessionsController < ApplicationController
             session[:user_id]= user.id
             user_type=user.user_type_id
             if user_type==1
-              redirect_to '/dashboard',notice:"Logged in!!"
+              redirect_to '/dashboard'
             else
-            redirect_to '/owner_dashboard',notice:"Logged in!!"
+            redirect_to '/owner_dashboard'
             end
           else
           flash[:success] = 'Please activate your account by following the 
