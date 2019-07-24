@@ -6,52 +6,62 @@
 
  <%= render "layouts/member_sidebar" %>
  </div>
-    <div class="col-sm-10">
+   <div class="col-sm-10">
       <div class="row">
         <div class="col-sm-9">
           <h1>Enter Personal Details</h1>
-          <%= form_for(:session, :html => {class: "form-horizontal", role: "form"},url: "memberdetail",:method=>"post") do |f| %>
-             <div class="form-row">
+          <div
+          <%= form_for(:session, :html => {class: "form-horizontal", id:"form_for_details",role: "form"},url: "memberdetail",:method=>"post") do |f| %>
+            
+            <div class="form-row">
                     
                       
                         
                           <div class="form-group col-sm-6">
                            <label for="firstname">FirstName</label>
-                           <input type="text" name="first_name" class="form-control" id="firstname">
+                           <input type="text" name="first_name" class="form-control" id="firstname" >
+                           <span id="firstnametext" class="text-danger-font-weight-bold"></span>
                           </div>
                           <div class="form-group col-sm-6">
                            <label for="lastname">LastName</label>
                            <input type="text" name="last_name" class="form-control" id="lastname">
-                          </div>
+                           <span id="lastnametext" class="text-danger-font-weight-bold"></span>
+                           </div>
               </div>
                        
                           <div class="form-group">
                            <label for="educationdetails">Educationdetails</label>
                            <input type="text" name="education_details" class="form-control" id="educationdetails">
-                          </div>
+                           <span id="educationdetailstext" class="text-danger-font-weight-bold"></span>
+                           </div>
                           <div class="form-group">
                            <label for="aboutuser">AboutUser</label>
                            <input type="text" name="about_user" class="form-control" id="aboutuser">
-                          </div>
+                           <span id="aboutusertext" class="text-danger-font-weight-bold"></span>
+                           </div>
                           <div class="form-group">
                            <label for="city">City</label>
                            <input type="text" name="city" class="form-control" id="city">
-                          </div>
+                           <span id="citytext" class="text-danger-font-weight-bold"></span>
+                           </div>
                           <div class="form-row">
                           <div class="form-group col-md-4">
                            <label for="college">College</label>
                            <input type="text" name="college" class="form-control" id="college">
-                          </div>
+                          <span id="collegetext" class="text-danger-font-weight-bold"></span>
+                           </div>
                           <div class="form-group col-md-4">
                            <label for="phno">Phonenumber</label>
                            <input type="text" name="phone_number" class="form-control" id="phno">
+                           <span id="phonenumber" class="text-danger-font-weight-bold"></span>
                           </div>
                           <div class="form-group col-md-4">
                            <label for="mobno">Mobilenumber</label>
                            <input type="text" name="mobile_number" class="form-control" id="mobno">
-                          </div>
-                         <input type="submit" class="btn btn-primary" value="Save Details">
-                         
+                           <span id="mobilenumber" class="text-danger-font-weight-bold"></span>
+                           </div>
+                         <input type="submit" id="save" class="btn btn-primary" value="Save Details" >
+                        
                      
             
           <% end %>
@@ -60,5 +70,4 @@
     </div>
   </div>
 </div>
-
 </body>
