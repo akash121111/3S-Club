@@ -4,20 +4,20 @@
 
 
     </head>
-    <body>
+    <body style="backgound: #e8e9eb">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-2 side-bar">
                      <%= render "layouts/sidebar" %>
                 </div>
                 
-                <div class="col-md-10">
+                <div class="col-lg-10 col-sm-12">
                     <div class="container-fluid space-detail">
                     <%= form_for @space do |f| %>
                         <br><br><br>
                         <div class="row">
                             
-                            <div class="col-md-6">
+                            <div class="col-lg-6 col-sm-12">
                                 <h3>Space Details</h3>
                                     <div class="form-group"> 
                                         <%= f.label :space_name, 'Space Name' %>
@@ -34,13 +34,13 @@
                                     </div>
                                     <div class="container-fluid">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-sm-6">
                                                 <div class="form-group">   
                                                     <%= f.label :floor_number, 'Floor Number' %>
                                                     <%= f.number_field :floor_number, class: 'form-control  space-number-fields'%>                        
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-sm-6">
                                                 <div class="form-group">                               
                                                     <%= f.label :number_of_toilets, 'Number Of Toilets' %>
                                                     <%= f.number_field :number_of_toilets, class: 'form-control  space-number-fields'%>                         
@@ -57,10 +57,10 @@
 
                                     <div class="container-fluid">
                                         <div class="row">
-                                            <div class="col-md-6 image-heading">
+                                            <div class="col-lg-6 col-sm-12 image-heading">
                                                 <h3>Images</h3>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-sm-12">
                                                 <%= f.file_field :images,multiple: true,size:"300x400" %>
                                             </div>
                                         </div>
@@ -71,7 +71,7 @@
                                     </div>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-6 col-sm-12">
                                  <% @space_address=SpaceAddress.new%>
                                     <h3>Space Address</h3>
                                     <%= f.fields_for :space_address do |s| %>
@@ -129,7 +129,7 @@
                                     <br><br><br>
                         <table>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-lg-6 col-sm-12">
                                 <h3>Space Availability</h3><br>
                                     <div class="container-fluid">
                                         <div class="row">
