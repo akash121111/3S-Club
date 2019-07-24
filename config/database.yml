@@ -11,11 +11,7 @@ default: &default
   pool: 5
   host: localhost
   username: postgres
-<<<<<<< HEAD
-  password: 9411238477
-=======
-  password: Postgres
->>>>>>> c68f5070bed72e77fed5df00c0ddb35dde2cc4e6
+  password: postgres
 
   timeout: 5000
 
