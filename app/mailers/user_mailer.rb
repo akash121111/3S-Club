@@ -8,7 +8,7 @@ default :from => '3SClub@gmail.com'
   def password_reset(user)
   #send a resetpwd email to the user
     @user = user
-    mail :to =>user.email, :subject => "Password Reset"
+    mail :to =>@user.email, :subject => "Password Reset"
   end
 
   def signup_email(user)

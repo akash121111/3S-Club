@@ -1,7 +1,7 @@
 class UserController < ApplicationController
     skip_before_action :verify_authenticity_token
     def index
-	end	
+	  end	
 
     def list
     @users = User.all
@@ -12,7 +12,6 @@ class UserController < ApplicationController
 	end
 
    
-
   def sign_up
 	end
 
@@ -21,6 +20,9 @@ class UserController < ApplicationController
     @user = User.new(user_params)
     @user.user_type_id = 1
     if @user.save
+      @member=UserDetail.new(member_params)
+      @member.user_id=@user.id
+      @member.save
       UserMailer.signup_email(@user).deliver
       flash[:success] ="Your registrations is sucessfully completed.Please check registered email"
       redirect_to '/login_user'
@@ -33,6 +35,11 @@ class UserController < ApplicationController
   def user_params
     #params[:user]=params
     params.permit(:email, :password, :password_confirmation)
+  end
+
+  def member_params
+    #params[:user]=params
+    params.permit(:first_name, :last_name, :mobile_number)
   end
     
 
