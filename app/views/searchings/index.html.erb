@@ -23,7 +23,7 @@
                                         <div class="input-group mb-3">
                                        
                                             <div class="input-group-prepend">
-                                                  <span class="input-group-text" id="basic-addon1">@</span>
+                                                  <span class="input-group-text" id="basic-addon1"><%= image_tag("18dp.png", size:"18x18") %></span>
                                     
                                                   <%= text_field_tag(:search, params[:search], placeholder: "Enter a City name", :class=>"form-control col-sm-8") %>
                                                   <%= date_field_tag(:booking_date, params[:booking_date], placeholder: "",:class=>"ml-3" , min: Date.today)%>
@@ -55,18 +55,13 @@
                                     <div class="media">
                                      <%= image_tag image,:class =>"media-object media-left",size:"130x130" %>
                                     
-                                    <div class="media-body media-right">
+                                    <div class="media-body media-right" style="margin-left: 23px;">
                                    
                                    <span > Name:</span> <%= space.space_name %><br>
 
                                     Address:<%=  s.house_number  %><%=  s.street  %><%= s.city%> <%= s.state %><%= (s.pincode)%>
                                     <br>
-                                    Near:<%= space.nearby_landmark%>
-                                    
-                                   
-                                    <br>
-                                    Size:<%= space.size %> sq ft.
-                                  
+                                     <%= link_to 'Detail', edit_userbooking_path(s.space_id) ,:class=> "btn btn-primary pt-1 pb-1 w-5" ,:style=>"margin-top: 7px; margin-left: 120px;width: 97px;}"%>  
                                     <%
 
                                     @start_time=params['start_time']

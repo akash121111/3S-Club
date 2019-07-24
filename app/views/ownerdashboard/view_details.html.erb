@@ -2,18 +2,18 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-2 col-xs-2">
+      <div class="col-lg-2">
       <%= render "layouts/sidebar" %>
   </div>
-      <div class="col-sm-10 col-xs-10">
+      <div class="col-lg-10 col-sm-12 mt-1">
         <div class="main">
          <div class="container-fluid">
           <div class="row">
-            <div class="col-sm-6">
-              <div class="container-fluid bg-light mb-2 ">
+            <div class="col-lg-6 col-sm-12 space-details">
+              <div class="container-fluid  bg-light mb-5 ">
                 <center><h3>Space Details</h3></center><hr>
                 <div>
-                     <%= image_tag @space.images.first, style:"height:200px;width:100%" %>
+                     <%= image_tag @space.images.first, style:"height:220px;width:100%" %>
                      <h6 ><%=@address.street%> <%=@address.city%> <%=@address.state%> (<%=@address.pincode%>)</h6>
                 </div><hr>
                 <div>
@@ -29,8 +29,8 @@
                 </div>
               </div>
             </div>
-             <div class="col-sm-6">
-               <div class="container-fluid bg-light mb-2 p-3">
+             <div class="col-lg-6 col-sm-12 member-details">
+               <div class="container-fluid bg-light mb-5 pb-5">
                 <center><h3>Member Details</h3></center><hr>
                 <div>
                      <center><img src="/assets/user-1a2e20cc944c895a698cc7855cd5eb338ab82342715346cd202b1f2157cb55a9.png" class="rounded-circle"  alt="spaces" height="100px" width="100px"><hr>
