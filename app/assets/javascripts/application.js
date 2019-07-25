@@ -22,4 +22,15 @@
 function preloader(){
     $('#preloader').css("display","none");
 }
+$(document).ready(function(){
+  $('.sidebar-open').click(function(){
+      $('.sidenav').slideDown();
+      $(this).fadeOut(1000);
+  });
+  $('.sidebar-cancel').click(function(){
+    $('.sidenav').slideUp();
+    $('.sidebar-open').fadeIn(1500);
+});
+
+});
 

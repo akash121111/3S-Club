@@ -11,7 +11,7 @@ default: &default
   pool: 5
   host: localhost
   username: postgres
-  password: Postgres
+  password: PostgreSQL
 
   timeout: 5000
 
@@ -28,4 +28,8 @@ test:
 
 production:
   <<: *default
+  host: localhost
   database: shared_study_space
+  username: postgres
+  password: PostgreSQL
+
