@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_20_080952) do
+ActiveRecord::Schema.define(version: 2019_07_19_101034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,12 +56,12 @@ ActiveRecord::Schema.define(version: 2019_07_20_080952) do
   end
 
   create_table "member_subscriptions", force: :cascade do |t|
+    t.bigint "membership_plan_id"
     t.bigint "user_id"
     t.bigint "space_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "time_wallet"
-    t.bigint "membership_plan_id"
     t.index ["membership_plan_id"], name: "index_member_subscriptions_on_membership_plan_id"
     t.index ["space_id"], name: "index_member_subscriptions_on_space_id"
     t.index ["user_id"], name: "index_member_subscriptions_on_user_id"
@@ -124,6 +124,15 @@ ActiveRecord::Schema.define(version: 2019_07_20_080952) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["space_id"], name: "index_space_images_on_space_id"
+  end
+
+  create_table "space_locations", force: :cascade do |t|
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "space_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["space_id"], name: "index_space_locations_on_space_id"
   end
 
   create_table "spaces", force: :cascade do |t|
@@ -200,12 +209,12 @@ ActiveRecord::Schema.define(version: 2019_07_20_080952) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "booking_records", "spaces"
   add_foreign_key "booking_records", "users"
-  add_foreign_key "member_subscriptions", "membership_plans"
   add_foreign_key "space_addresses", "spaces"
   add_foreign_key "space_availability_timings", "days"
   add_foreign_key "space_availability_timings", "spaces"
   add_foreign_key "space_available_days", "spaces"
   add_foreign_key "space_images", "spaces"
+  add_foreign_key "space_locations", "spaces"
   add_foreign_key "spaces", "users"
   add_foreign_key "user_addresses", "user_address_types"
   add_foreign_key "user_addresses", "users"

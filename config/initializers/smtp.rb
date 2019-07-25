@@ -4,6 +4,6 @@ ActionMailer::Base.smtp_settings = {
   domain: '3SClub.com',
   user_name: ENV['SENDGRID_USERNAME'],
   password: ENV['SENDGRID_PASSWORD'],
-  authentication: :plain,
+  authentication: :login,
   enable_starttls_auto: true
 }

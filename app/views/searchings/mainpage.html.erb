@@ -24,7 +24,7 @@
                                         <div class="input-group" align="center">
                                        
                                             <div class="input-group-prepend">
-                                                  <span class="input-group-text" id="basic-addon1">@</span>
+                                                  <span class="input-group-text" id="basic-addon1"><%= image_tag("18dp.png", size:"18x18") %></span>
                                     
                                                   <%= text_field_tag(:search, params[:search], placeholder: "Enter a City name", :class=>"form-control col-sm-8") %>
                                                   <%= date_field_tag(:booking_date, params[:booking_date], placeholder: "",:class=>"ml-3" , min: Date.today)%>

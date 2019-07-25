@@ -24,14 +24,33 @@
         border-radius: 10px;
         border: 1px solid #25055f;
       }
+
+      @media only screen 
+      and (min-device-width : 240px) 
+      and (max-device-width : 767px) {                                                                                                                                                        
+  .register-form{
+  
+    padding: 25px 20px;
+    background: white;
+    box-shadow: 2px 2px 4px #ab8de0;
+    border-radius: 5px;
+    position: relative;
+    left: 0px;
+  }
+  .container{
+    margin-left:0px;
+    margin-right:0px;
+  }
+}
       
     </style>
   </head>
   <body>
+
   <center>
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2">
+        <div class="col-lg-6 col-sm-12 col-md-offset-3 col-sm-offset-2">
           <div class="register-form">
             <form action="/owner_signup" method="post">
               <h2 class="text-center">Owner Signup</h2>
@@ -65,12 +84,14 @@
                   <input type="checkbox" required="required"> You agree to the <a href="#">Terms</a> & <a href="#">Conditions</a>.
                 </label>
               </div>
+              <div class="g-recaptcha ml-3 " data-sitekey="6Le1U60UAAAAAH9tXWTYPvH2PFp7HBY2xReD33kj
+              "></div>
+                              <div class="action">
+                            
+                              </div>
                 <div class="row">
-                <div class="g-recaptcha ml-3 " data-sitekey="6Le1U60UAAAAAH9tXWTYPvH2PFp7HBY2xReD33kj
-"></div>
-                <div class="action">
-              
-                </div>
+                
+               
                 
                  <div class="col-md-6 col-xs-12">
                   <div class="form-group">
