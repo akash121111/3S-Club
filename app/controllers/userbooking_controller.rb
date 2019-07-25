@@ -19,11 +19,7 @@
 
                               redirect_to userbookingrecords_path
     end
-    def edit
-         @user=User.find(session[:user_id])
-        @space=Space.find(params[:id])
-        @space_available_day=@space.space_available_day
-    end
+    
     def new
 
         @space=Space.new
@@ -32,7 +28,20 @@
      def edit
         @user=User.find(session[:user_id])
         @space=Space.find(params[:id])
+        @add=SpaceAddress.where(space_id: @space).first
+        @user_id_space=@space.user_id
+        @email=User.find_by(id:  @user_id_space)
+        @phoneandMobile=UserDetail.where(user_id:  @user_id_space).first
         @space_available_day=@space.space_available_day
+
+        @space_add=SpaceAddress.find_by(space_id: @space)
+
+
+          @hash = Gmaps4rails.build_markers(@space_add) do |r, marker|
+          marker.lat r.latitude
+          marker.lng r.longitude
+          marker.infowindow r.city
+          end
     end
 
 
@@ -40,12 +49,6 @@
         params.require(:space).permit(:space_name,:size,:dimensions,:floor_number,:number_of_toilets,:nearby_landmark, images: [])
     end
 
-    def set_space
-        @user=User.find(session[:user_id])
-        @user_detail=@user.user_detail
-        @space=Space.find(params[:id])
-        @space_address=@space.space_address
-    end
-
+   
 
     end

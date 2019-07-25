@@ -34,6 +34,7 @@ Rails.application.routes.draw do
   get '/bookingdone', to:'searchings#bookingdone'
   get '/userbookingrecords', to:'searchings#user_booking_records'
   get '/mainpage',to:'searchings#mainpage'
+
   
   post 'owner_signup' ,to: 'ownersignups#create' 
   get '/login',to: 'ownersignups#login',as: 'login_in_owner'
