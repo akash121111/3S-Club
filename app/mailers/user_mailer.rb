@@ -13,6 +13,7 @@ default :from => '3SClub@gmail.com'
 
   def signup_email(user)
     @user = user
+  
     mail :to => @user.email, :subject => 'Sign Up Confirmation'
   end
 
