@@ -26,6 +26,7 @@
        
     end
      def edit
+        
         @user=User.find(session[:user_id])
         @space=Space.find(params[:id])
         @add=SpaceAddress.where(space_id: @space).first
