@@ -74,4 +74,56 @@ and (max-device-width : 767px) {
     url('https://cdn.dribbble.com/users/1534154/screenshots/3388410/loading.gif') no-repeat center;
     z-index: 99999;
   }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  #li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #111;
+  }
+  
+  #navid {
+    padding:0; 
+    height:60px; 
+    background-color:rgb(157, 214, 223)!important; 
+    opacity:1 
+  }
+  
+  #brand {
+    font-size: xx-large
+  }
+  
+  #aofli {
+    background-color:rgb(157, 214, 223); 
+    opacity:1
+  }
+  
+  #message {
+    float: right; 
+    background-color: rgb(216, 103, 205); 
+    margin-left: auto; 
+    opacity: 1
+  }
+  
+  #aofmessage {
+    color: white; 
+    opacity:1
+  }
+  
  
