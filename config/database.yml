@@ -28,7 +28,7 @@ test:
 
 production:
   <<: *default
-  host: localhost
+  host: ec2-3-92-174-107.compute-1.amazonaws.com
   database: shared_study_space
   username: <%= Rails.application.credentials.dig(:postgres_username) %>
   password:  <%= Rails.application.credentials.dig(:postgres_password) %>
