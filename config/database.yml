@@ -11,7 +11,7 @@ default: &default
   pool: 5
   host: localhost
   username: postgres
-  password: postgres
+  password: Postgres
 
   timeout: 5000
 
@@ -30,6 +30,6 @@ production:
   <<: *default
   host: localhost
   database: shared_study_space
-  username: postgres
-  password: PostgreSQL
+  username: <%= Rails.application.credentials.dig(:postgres_username) %>
+  password:  <%= Rails.application.credentials.dig(:postgres_password) %>
 
