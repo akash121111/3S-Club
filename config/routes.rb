@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'owner_dashboard', to: "ownerdashboard#upcoming_booking"
   get 'booking_records', to: "ownerdashboard#booking_records"
   post 'view_details', to: "ownerdashboard#view_details"
@@ -61,7 +62,7 @@ get '/searching', to: 'searchings#index'
 	resources:user
   resources:password_resets
   root to:'user#index'
-  delete 'log_out' , to:'user#destroy'
+  delete 'log_out' , to:'user#destroy',as: 'log_out'
   get 'sign_up_user', to:'user#sign_up'
   get 'login_user', to:'user#login'
   get 'dashboard' , to:'sessions#index'

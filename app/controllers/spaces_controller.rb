@@ -1,4 +1,5 @@
 class SpacesController < ApplicationController
+    before_action :is_owner?
     before_action :set_space, only: [:show, :destroy, :edit, :update]
     before_action :set_week_days, only: [:edit,:create,:new, :update]
     def index
@@ -23,8 +24,10 @@ class SpacesController < ApplicationController
         @space_details=User.find(session[:user_id]).spaces
         @space_detail=@space_details.find(params[:id])
         if @space_detail.update(space_details_params)
+          flash[:success]="Space Details Updated"
           redirect_to edit_space_path  
         else
+          flash[:danger]=@space_address.errors.first[1]
           redirect_to edit_space_path  
         end
     end
@@ -49,7 +52,6 @@ class SpacesController < ApplicationController
             @space_address.space_id=@space.id
             
             @space_available_day=SpaceAvailableDay.new
-            
             @week_days.each do |key,value|
                 @space_availability_timing=SpaceAvailabilityTiming.new
                 @space_available_day[key]=params[:space][:space_available_day][key]
@@ -80,11 +82,12 @@ class SpacesController < ApplicationController
     end
 
     def destroy
-        byebug
         @space.update(deleted_at: Time.now)
         if @space.deleted_at
+            flash[:success]="Space Deleted Successfully"
             redirect_to spaces_path
         else
+            flash[:danger]="Space Not Deleted"
             redirect_to '/user_details/'+@user_detail.id.to_s+'/edit' 
         end
 

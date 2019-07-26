@@ -1,8 +1,5 @@
-<button class="btn sidebar-open btn-primary"><i class="fa fa-bars"></i></button>
+
 <div class="sidenav">
-<button type="button" class="close sidebar-cancel mr-2" aria-label="Close">
-  <span aria-hidden="true">X</span>
-</button>
     <div class="side-header">
         <%= gravatar_for @user, style:"heigth:100px;width:100px;" %>
         <h5 class="mt-2">Owner's Name</h5>
@@ -11,9 +8,9 @@
     <div class="nav-item">
         <%= link_to 'Upcoming bookings', "/owner_dashboard" %>
         <%= link_to 'Spaces Details', spaces_path %>
-        <%= link_to 'Booking Records', "/booking_records", :method=>"get"%>
+        <%= link_to 'Booking Records', "/booking_records" %>
         <%= link_to 'Profile', edit_user_detail_path(@user_detail) %>
-        <%= link_to 'Log Out' ,'/log_out', :method=>"delete"%>
+        <%= link_to 'Log Out' ,'/log_out', :method=>"delete" %>
         
     </div>
 </div>

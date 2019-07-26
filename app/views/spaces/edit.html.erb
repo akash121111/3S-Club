@@ -10,7 +10,7 @@
                 <div class="col-lg-2 ">
                     <%= render "layouts/sidebar" %>
                 </div>
-                <div class="col-md-10 mt-5">
+                <div class="col-lg-10 col-sm-12 mt-5">
                     <center><h1>OWNER DETAILS</h1></center>
                     <br>
                     
@@ -18,34 +18,39 @@
                     <div class="container-fluid space-detail" id="space-details">
                         <br><br><br>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-lg-6 col-sm-12">
                                 <h3>Space Details</h3>
                                 <%= form_for @space do |f| %>
                                      <div class="form-group"> 
                                         <%= f.label :space_name, 'Space Name' %>
                                         <%= f.text_field :space_name, class: 'form-control'%>
+                                        <span id="span_space_name_error" class="error-text"></span>
                                     </div>
                                     
                                     <div class="form-group"> 
                                         <%= f.label :size, 'Size (in Sq. feet)' %>
                                         <%= f.number_field :size, class: 'form-control'%>
+                                        <span id="span_size_error" class="error-text"></span>
                                     </div>
                                     <div class="form-group">
-                                        <%= f.label :Dimensions, 'Dimensions' %>
-                                        <%= f.text_field :dimensions, class: 'form-control'%>
+                                        <%= f.label :Dimensions, 'Dimensions(in metres)' %>
+                                        <%= f.text_field :dimensions, class: 'form-control',placeholder: 'e.g. 100x100'%>
+                                        <span id="span_dimensions_error" class="error-text"></span>
                                     </div>
                                     <div class="container-fluid">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-sm-6">
                                                 <div class="form-group">   
                                                     <%= f.label :floor_number, 'Floor Number' %>
-                                                    <%= f.number_field :floor_number, class: 'form-control  space-number-fields'%>                        
+                                                    <%= f.number_field :floor_number, class: 'form-control  space-number-fields'%>   
+                                                    <span id="span_floor_number_error" class="error-text"></span>                     
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-sm-6">
                                                 <div class="form-group">                               
                                                     <%= f.label :number_of_toilets, 'Number Of Toilets' %>
-                                                    <%= f.number_field :number_of_toilets, class: 'form-control space-number-fields'%>                         
+                                                    <%= f.number_field :number_of_toilets, class: 'form-control space-number-fields'%>
+                                                    <span id="span_number_of_toilets_error" class="error-text"></span>                         
                                                 </div>
                                             </div>
                                         </div>
@@ -53,16 +58,17 @@
                                     </div>
                                     <div class="form-group">                               
                                         <%= f.label :nearby_landmark, 'Nearby Landmark' %>
-                                        <%= f.text_field :nearby_landmark, class: 'form-control'%>                         
+                                        <%= f.text_field :nearby_landmark, class: 'form-control'%>
+                                        <span id="span_nearby_landmark_error" class="error-text"></span>                         
                                     </div>
 
                                     <div class="container-fluid">
                                         <div class="row">
-                                            <div class="col-md-6 image-heading">
+                                            <div class="col-lg-6 col-sm-12 image-heading">
                                                 <h3>Images</h3>
                                             </div>
                                             
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-sm-12">
                                                 <%= f.file_field :images, multiple:true %>
                                             </div>
                                         </div>
@@ -80,31 +86,36 @@
                                 
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-6 col-sm-12">
                                 <h3>Space Address</h3>
                                 <%= form_for @space_address do |f| %>
                                     <div class="form-group">
                                         <%= f.label :house_number, 'House Number' %>
                                         <%= f.text_field :house_number, class: 'form-control'%>
+                                        <span id="span_house_number_error" class="error-text"></span>
                                     </div>
                                     
                                     <div class="form-group">
                                         <%= f.label :street, 'Street' %>
                                         <%= f.text_field :street, class: 'form-control'%>
+                                        <span id="span_street_error" class="error-text"></span>
                                     </div>
 
                                     <div class="form-group">
                                         <%= f.label :city, 'City' %>
                                         <%= f.text_field :city, class: 'form-control'%>
+                                        <span id="span_city_error" class="error-text"></span>
                                     </div>
 
                                     <div class="form-group">
                                         <%= f.label :pincode, 'Pincode' %>
                                         <%= f.number_field :pincode, class: 'form-control'%>
+                                        <span id="span_pincode_error" class="error-text"></span>
                                     </div>
                                     <div class="form-group">
                                         <%= f.label :state, 'State' %>
                                         <%= f.text_field :state, class: 'form-control'%>
+                                        <span id="span_state_error" class="error-text"></span>
                                     </div>
                                      <div class="form-group">                                   
                                         <%= f.text_field :latitude, class: 'form-control',id:'latitude'%>
@@ -140,9 +151,10 @@
                         </div>
                         
                         <br>
-                        <div class="container_fluid">
+                        <div class="container_fluidSS">
                          <h3>Space Availability</h3>
-                            <div class="row">           
+                            <div class="row">  
+                            <div class="col-lg-6 col-sm-12">         
                                 <%= form_for @space_available_day do |f| %>
                                     
                                         <div class="container-fluid">
@@ -151,7 +163,7 @@
                                                     <tr>
                                                         <div class='col-md-3'>
                                                             
-                                                            <div class="container-fluid">
+                                                            <div class="container-fluid days">
                                                                 <td width="30%">
                                                                     <b>Day</b>
                                                                     <%@week_days.each do|key,value|%>
@@ -162,7 +174,7 @@
                                                                 </td>
                                                             </div>
                                                         </div>
-                                                        <div class='col-md-3'>
+                                                        <div class='col-md-3 days'>
                                                             <td style="padding:35px;">
                                                                 <b>Availability</b>
                                                                 <%= f.fields_for :space_available_day do |s| %>
@@ -196,7 +208,7 @@
                                                         
                                                         <div class="col-md-6 start-end-time">
                                                             <td width="80%">
-                                                                <div class="container-fluid">
+                                                                <div class="container-fluid timing">
                                                                     <%@space_availability_timings.order(day_id: :asc).each do|space_availability_timing|%>
                                                                         <%= f.fields_for space_availability_timing do |s| %>
                                                                             
@@ -241,7 +253,7 @@
                                                     </tr>
                                                 </div>
                                             </table>
-                                            
+                                            <span id="spanTimeError" class="error-text"></span>
                                         <div>
                                         <br>
                                         <%@week_days.each do|key,value|%>

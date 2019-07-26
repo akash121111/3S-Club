@@ -1,7 +1,7 @@
 //@import "bootstrap-sprockets";
 //@import "bootstrap";
 .sidenav {
-  width: 16.67%;
+  width: auto;
   height: 100%;
   position: fixed;
   margin-top: 60px;
@@ -29,14 +29,13 @@
   color: #f1f1f1;
 }
 .sidebar-open{
-  width: 100%;
+  background:#e8e9eb;
   display: none;
   position: fixed;
   z-index: 1;
   margin-top: 0px;
-}
-.sidebar-cancel{
-  display: none;
+  border-radius: 50%;
+  color: orangered;
 }
 @media only screen 
 and (min-device-width : 240px) 
@@ -45,6 +44,11 @@ and (max-device-width : 767px) {
     padding-top: 15px;
     display: none;
     width: 50%;
+    z-index: 934583;
+    margin-top: 0px;
+  }
+  .record-list{
+    padding-left: 15px;
   }
   .col-sm-12{
     padding-left: 45px;
@@ -58,13 +62,29 @@ and (max-device-width : 767px) {
   }
   .sidenav a {font-size:40px;}
   .sidebar-open{display: block;}
-  .sidebar-cancel{display: block;}
   .space-number-fields{
     margin-right: 0px;
     position: relative;
     right: 5%;
     width: 80%;
 }
+.navbar-brand{
+  margin-left: 60px;
+}
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 15px;
+}
+
+::-webkit-scrollbar-track-piece  {
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  height: 30px;
+  background-color: #0A4C95;
 }
   #preloader{
     position:fixed;
@@ -72,6 +92,6 @@ and (max-device-width : 767px) {
     height: 100vh;
     background: #ffffff 
     url('https://cdn.dribbble.com/users/1534154/screenshots/3388410/loading.gif') no-repeat center;
-    z-index: 99999;
+    z-index: 1;
   }
  

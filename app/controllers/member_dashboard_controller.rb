@@ -1,6 +1,5 @@
 class MemberDashboardController < ApplicationController
-  protect_from_forgery
-
+  before_action :is_member?
 
 
   def dashboard

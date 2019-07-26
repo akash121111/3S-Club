@@ -9,6 +9,7 @@ class SpaceAddressesController < ApplicationController
     def update
         @space_address=SpaceAddress.find(params[:id])
         if @space_address.update(space_address_params)
+          flash[:success]="Address Updated Successfully"
           redirect_to '/spaces/'+@space_address.space.id.to_s+'/edit'    
         else
           flash[:danger]=@space_address.errors.first[1]
