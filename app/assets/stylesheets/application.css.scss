@@ -94,7 +94,7 @@ and (max-device-width : 767px) {
     url('https://cdn.dribbble.com/users/1534154/screenshots/3388410/loading.gif') no-repeat center;
     z-index: 1;
   }
-  ul {
+  #ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -104,18 +104,6 @@ and (max-device-width : 767px) {
   
   #li {
     float: left;
-  }
-  
-  li a {
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  li a:hover {
-    background-color: #111;
   }
   
   #navid {
@@ -132,7 +120,16 @@ and (max-device-width : 767px) {
   
   #aofli {
     background-color:rgb(157, 214, 223); 
-    opacity:1
+    opacity:1;
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  #aofli:hover {
+    background-color: #111;
   }
   
   #message {
