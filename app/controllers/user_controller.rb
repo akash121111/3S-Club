@@ -20,9 +20,7 @@ class UserController < ApplicationController
     @user = User.new(user_params)
     @user.user_type_id = 1
     if @user.save
-      @member=UserDetail.new(member_params)
-      @member.user_id=@user.id
-      @member.save
+      
       UserMailer.signup_email(@user).deliver_now
       flash[:success] ="Your registrations is sucessfully completed.Please check registered email"
       redirect_to '/login_user'

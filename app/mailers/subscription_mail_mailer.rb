@@ -13,4 +13,14 @@ class SubscriptionMailMailer < ApplicationMailer
     @show = User.find(session[:user_id])
     mail(to: @show.email, subject: 'Subscription Confirmation')
   end
+  def booking_message(space_id,user_id,booking_time, start_time, end_time, booking_date)
+  
+  #  @show = User.find_by(id: user_id)
+  #  mail(to: @show.email, subject: 'Booking Confirmation')
+  #  @owner = Space.find_by(space_id)
+  #  @user_id = @owner.user_id
+  #  @email = User.find_by(@user_id)
+   mail(to: "akashkumar12111@gmail.com", subject: 'Booking Confirmation')
+ end
+  
 end

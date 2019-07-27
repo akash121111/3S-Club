@@ -1,9 +1,24 @@
 class MemberDashboardController < ApplicationController
   before_action :is_member?
+  protect_from_forgery
+before_action :set_user_addresses, only: [:profile]
+ def set_user_addresses
+ 
+      @user=User.find(session[:user_id])
+      if @user.user_addresses.first ==nil
+        ua=UserAddress.new(user_id: @user.id , user_address_type_id: 1)
+        ua.save
+        ua=UserAddress.new(user_id: @user.id , user_address_type_id: 2)
+        ua.save
+      end
+      @user_addresses=@user.user_addresses
+    end
+
 
 
   def dashboard
     @user1=UserDetail.find_by(user_id: session[:user_id])
+    
    if @user1.blank?
       @member=UserDetail.new
    else
