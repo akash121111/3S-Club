@@ -18,7 +18,7 @@ function Compare() {
         else {
           
 
-            window.location.assign("/searching?search=" + search + "&booking_date=" + booking_date + "&start_time=" + start_time + "&end_time=git " + end_time);
+            window.location.assign("/searching?search=" + search + "&booking_date=" + booking_date + "&start_time=" + start_time + "&end_time=" + end_time);
         }
 
     }

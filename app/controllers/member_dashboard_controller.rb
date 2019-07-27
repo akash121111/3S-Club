@@ -4,6 +4,7 @@ class MemberDashboardController < ApplicationController
 
   def dashboard
     @user1=UserDetail.find_by(user_id: session[:user_id])
+    byebug
    if @user1.blank?
       @member=UserDetail.new
    else

@@ -18,8 +18,8 @@ class SearchingsController < ApplicationController
        
           finddayid ={ "monday" => "1", "tuesday" => "2", "wednesday" => "3" , "thursday" => "4", "friday" => "5", "saturday" => "6", "sunday" => "7"}
           
-           if (params[:booking_date]+" "+DateTime.parse(@start_time).strftime("%H:%M:%S") < DateTime.now + 480.minutes)
-               flash[:success] ="Your registrations is sucessfully completed.Please check registered email"
+           if (DateTime.parse(params[:booking_date]+" "+params[:start_time]+"+0530") - 480.minutes < DateTime.now )
+               flash[:danger] ="Sorry You Have To Book This Space Before 8 Hours"
            
            else  
 

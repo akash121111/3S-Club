@@ -12,4 +12,5 @@ class SubscriptionMailMailer < ApplicationMailer
     # email = user_id.email
     mail(to: "akashkumar12111@gmail.com", subject: 'Subscription Confirmation')
   end
+  
 end
