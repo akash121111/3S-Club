@@ -10,6 +10,7 @@ class SubscriptionMailMailer < ApplicationMailer
     @plan = plan
     # user_id = User.find_by(params[:user_id])
     # email = user_id.email
-    mail(to: "akashkumar12111@gmail.com", subject: 'Subscription Confirmation')
+    @show = User.find(session[:user_id])
+    mail(to: @show.email, subject: 'Subscription Confirmation')
   end
 end
