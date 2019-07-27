@@ -10,7 +10,7 @@
                 <div class="col-lg-2 ">
                     <%= render "layouts/sidebar" %>
                 </div>
-                <div class="col-md-10 mt-5">
+                <div class="col-lg-10 col-sm-12 mt-5">
                     <center><h1>OWNER DETAILS</h1></center>
                     <br>
                     
@@ -39,14 +39,14 @@
                                     </div>
                                     <div class="container-fluid">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-sm-6">
                                                 <div class="form-group">   
                                                     <%= f.label :floor_number, 'Floor Number' %>
                                                     <%= f.number_field :floor_number, class: 'form-control  space-number-fields'%>   
                                                     <span id="span_floor_number_error" class="error-text"></span>                     
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-sm-6">
                                                 <div class="form-group">                               
                                                     <%= f.label :number_of_toilets, 'Number Of Toilets' %>
                                                     <%= f.number_field :number_of_toilets, class: 'form-control space-number-fields'%>
@@ -64,11 +64,11 @@
 
                                     <div class="container-fluid">
                                         <div class="row">
-                                            <div class="col-md-6 image-heading">
+                                            <div class="col-lg-6 col-sm-12 image-heading">
                                                 <h3>Images</h3>
                                             </div>
                                             
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-sm-12">
                                                 <%= f.file_field :images, multiple:true %>
                                             </div>
                                         </div>
@@ -151,9 +151,10 @@
                         </div>
                         
                         <br>
-                        <div class="container_fluid">
+                        <div class="container_fluidSS">
                          <h3>Space Availability</h3>
-                            <div class="row">           
+                            <div class="row">  
+                            <div class="col-lg-6 col-sm-12">         
                                 <%= form_for @space_available_day do |f| %>
                                     
                                         <div class="container-fluid">
@@ -162,7 +163,7 @@
                                                     <tr>
                                                         <div class='col-md-3'>
                                                             
-                                                            <div class="container-fluid">
+                                                            <div class="container-fluid days">
                                                                 <td width="30%">
                                                                     <b>Day</b>
                                                                     <%@week_days.each do|key,value|%>
@@ -173,7 +174,7 @@
                                                                 </td>
                                                             </div>
                                                         </div>
-                                                        <div class='col-md-3'>
+                                                        <div class='col-md-3 days'>
                                                             <td style="padding:35px;">
                                                                 <b>Availability</b>
                                                                 <%= f.fields_for :space_available_day do |s| %>
@@ -207,7 +208,7 @@
                                                         
                                                         <div class="col-md-6 start-end-time">
                                                             <td width="80%">
-                                                                <div class="container-fluid">
+                                                                <div class="container-fluid timing">
                                                                     <%@space_availability_timings.order(day_id: :asc).each do|space_availability_timing|%>
                                                                         <%= f.fields_for space_availability_timing do |s| %>
                                                                             

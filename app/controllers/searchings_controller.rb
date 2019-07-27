@@ -1,5 +1,5 @@
 class SearchingsController < ApplicationController
-
+  before_action :is_member?
 
   def index
 

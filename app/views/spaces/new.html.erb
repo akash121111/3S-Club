@@ -138,18 +138,17 @@
                             </div>
                         </div>
                                     <br><br><br>
-                        
+                       
                         <div class="row">
                         </table>
                             <div class="col-lg-6 col-sm-12">
                                 <h3>Space Availability</h3><br>
                                     <div class="container-fluid">
                                         <div class="row">
-                                            <tr>
-                                                <td>
-                                                    <div class='col-md-3'>
+                                       
+                                                    <div class='col-sm-3'>
                                                         <b>Day</b>
-                                                        <div class="container-fluid">
+                                                        <div class="container-fluid days mt-2">
                                                             <%@week_days.each do|key,value|%>
                                                                 <div class="row">
                                                                     <%=key.upcase%>
@@ -158,14 +157,14 @@
                                                             
                                                         </div>
                                                     </div>
-                                                </td>
+                                               
                                                 
-                                                <div class='col-md-3'>
-                                                    <td>
+                                                <div class='col-sm-3'>
+                                                   
                                                         <b>Availability</b>
                                                         <% @space_available_day=SpaceAvailableDay.new%>
                                                         <%= f.fields_for :space_available_day do |s| %>
-                                                            <div class="container-fluid">
+                                                            <div class="container-fluid days mt-2">
                                                                 <%@week_days.each do|key,value|%>
                                                                     <div class="row">
                                                                         <%= s.label key, "Yes", :value => "true",class:"radio-button-label"  %>
@@ -177,17 +176,17 @@
                                                                 <%end%>
                                                             </div>
                                                         <%end%>
-                                                    </td>  
+                                                     
                                                 </div>
                                                 
                                                 <% @space_=SpaceAvailabilityTiming.new%>
     
-                                                <td>
+                                              
                                                     <%= f.fields_for :start_time do |s| %>
                                                     
-                                                        <div class='col-md-3'>
+                                                        <div class='col-sm-3'>
                                                             <b>StartTime</b><br>
-                                                            <div class="container-fluid">
+                                                            <div class="container-fluid timing mt-2">
                                                                 <%@week_days.each do|key,value|%>
                                                                     <div class="row">
                                                                         <%=s.time_field key,min:"07:00", max:"23:59",onkeydown:"return false" %>
@@ -196,12 +195,11 @@
                                                             </div>
                                                         </div>
                                                     <%end%>
-                                                </td>
-                                                <td> 
+                                               
                                                     <%= f.fields_for :end_time do |s| %>
-                                                        <div class='col-md-3'>
+                                                        <div class='col-sm-3'>
                                                             <b>EndTime</b><br>
-                                                            <div class="container-fluid">
+                                                            <div class="container-fluid timing mt-2">
                                                                 <%@week_days.each do|key,value|%>
                                                                     <div class="row">
                                                                         <%=s.time_field key ,min:"07:00", max:"23:59",onkeydown:"return false" %>
@@ -219,6 +217,7 @@
                                                         </div>
                                                         
                                                     <%end%>
+<<<<<<< HEAD
                                                 </td>     
                                             </tr>
                                             
@@ -227,6 +226,16 @@
                             </div>  
                         </table>
                         </div>  
+=======
+                                                  
+
+                                            </div>
+                                       
+                                    </div>
+                            </div>  
+                        </div>
+                          
+>>>>>>> b31f9dfed08c26573d1389551540f3d6994ca491
                         <span id="span_time_error" class="error-text"></span>
                             <br><br>
                         <div class="row">

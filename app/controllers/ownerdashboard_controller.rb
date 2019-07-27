@@ -1,4 +1,5 @@
 class OwnerdashboardController < ApplicationController
+  before_action :is_owner?
   def upcoming_booking
     @user=User.find_by(id:session[:user_id])
     @user_detail=@user.user_detail
