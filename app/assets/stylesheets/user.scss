@@ -74,3 +74,64 @@ color: white;
 .links a{
 margin-left: 4px;
 }
+
+       .home{
+           margin-top: 5%;
+           margin-left: 40%;
+       }
+       .btn-home{
+           display: block;
+           width: 320px;
+          background-image: linear-gradient(to top,white,#5F9EA0);
+           color: white;
+           padding: 10px;
+           margin-bottom: 5px;
+
+       }
+       .btn{
+           width: 300px;
+           color: grey;
+           font-size: 20px;
+           font-weight: bold;
+       }
+       .home-text{
+           display: block;
+           width: 320px;
+           margin-bottom: 5px;
+           text-align: center;
+       }
+       @media only screen 
+       and (min-device-width : 240px) 
+       and (max-device-width : 767px) {  
+
+        .home{
+            margin-top: 5%;
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+        .btn-home{
+            display: block;
+            width: 100%;
+           background-image: linear-gradient(to top,white,#5F9EA0);
+            color: white;
+            padding: 10px;
+            margin-bottom: 5px;
+ 
+        }
+        .btn{
+            width: 100%;
+            color: black;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .home-text{
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .sidebar-open{
+             display: none;
+        }
+
+       }

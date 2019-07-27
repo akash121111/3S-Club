@@ -1,11 +1,12 @@
 
   <body style="background: #e8e9eb">
+ 
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-2">
       <%= render "layouts/sidebar" %>
   </div>
-      <div class="col-lg-10 col-sm-12 mt-5">
+      <div class="col-lg-10 col-sm-12">
         <div class="main">
          <div class="container-fluid">
             <h4>Upcoming Bookings</h4><hr>
@@ -43,12 +44,16 @@
               <% end %>
             </div><hr>
             <div class="row mt-4">
-              <div class="col-sm-12 col-lg-10">
-                <h4>Booked spaces</h4>
+              <div class="col-sm-12 col-lg-10 " style="padding-left:15px;">
+                <h4>Last Weeks Bookings</h4>
                 <ul class="list-group">
                 <% @spaces.each do |spaces|%>
                   <% @booked=spaces.booking_records%>
                     <% @booked.each do |booked| %>
+                      <% current_date=Date.parse DateTime.now.strftime("%y/%m/%d").to_s %>
+                      <% date= Date.parse booked.created_at.strftime("%y/%m/%d").to_s%>
+                      <% days=(current_date-date).to_i%>
+                        <% if days <= 14 && days >7 %>
                     <% member=User.find_by(id:booked.user_id)%>
                     <% member_detail=member.user_detail%>
                     <% address=spaces.space_address%>
@@ -57,18 +62,19 @@
                     <li class="list-group-item ">
                     <div class="media">
                       <div class="media-left">
-                      <%= image_tag("space.jpg", :class =>"media-object")%>
+                      <%= image_tag(spaces.images.first, :class =>"media-object",style:"height:150px")%>
                       <p><%= address.street%> <%= address.city%> <%= address.state%> (<%= address.pincode%>)</p>
                        </div>
                       <div class="media-body text-right">
-                        <h3><i>Booked by - </i> <%= member_detail.first_name.capitalize%> <%= member_detail.last_name.capitalize%></h3>
-                        <p><i>Date </i> <%= booked.booking_date%></p>
-                        <p><i>Time</i> </p>
-                        <h4>Booked</h4>
+                        <h4><i>Booked by - </i> <%= member_detail.first_name.capitalize%> <%= member_detail.last_name.capitalize%></h4>
+                        <p><i><b>Date</b></i> <%= booked.booking_date%></p>
+                        <p><i><b>Timing</b></i> <%= booked.start_time.strftime("%H:%M")%>-<%= booked.end_time.strftime("%H:%M")%></p>
+                        <h5 style="color:green">Booked</h5>
                          <button class="btn btn-primary">Details</button>
                       </div>
                     </div>
                   </li>   
+                  <% end%>
                   <% end%>       
                 <% end %>  
                 <% end %>          

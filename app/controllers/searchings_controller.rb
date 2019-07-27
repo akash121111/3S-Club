@@ -1,5 +1,5 @@
 class SearchingsController < ApplicationController
-before_action :require_user, only: [:index, :bookingdone, :user_booking_records,:mainpage]
+  before_action :is_member?
 
   def index
 

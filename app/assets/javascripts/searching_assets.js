@@ -16,8 +16,9 @@ function Compare() {
             // window.location.assign("https://localhost:3000/searching?search=" +search+ "&booking_date=" +booking_date+ "&start_time=" +start_time+ "&end_time= "+end_time);
         }
         else {
+          
 
-            window.location.assign("/searching?search=" + search + "&booking_date=" + booking_date + "&start_time=" + start_time + "&end_time= " + end_time);
+            window.location.assign("/searching?search=" + search + "&booking_date=" + booking_date + "&start_time=" + start_time + "&end_time=git " + end_time);
         }
 
     }
