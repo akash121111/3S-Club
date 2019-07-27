@@ -69,7 +69,7 @@
                                                                <div class="form-group"> 
                                                                     <%= f.label :street, 'Space Address' %>
                                                                     <br>
-                                                                    <input type="text"  value= '<%= "#{@add.house_number} #{@add.street} ,#{@add.city} ,#{@add.state}(#{@add.pincode})" %>'%>
+                                                                    <input type="text"  value= '<%= "#{@add.house_number} #{@add.street} ,#{@add.city} ,#{@add.state}(#{@add.pincode})" %>' class="form-control" disabled="true"%>
                                                                     
                                                                 </div>
                                                           <% end %>

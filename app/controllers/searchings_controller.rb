@@ -1,9 +1,9 @@
 class SearchingsController < ApplicationController
-
+before_action :require_user, only: [:index, :bookingdone, :user_booking_records,:mainpage]
 
   def index
 
-
+       
           if params.has_key?(:booking_date) 
             @DayFind=DateTime.parse(params[:booking_date]).to_date.strftime('%A').downcase
           else 
@@ -18,9 +18,10 @@ class SearchingsController < ApplicationController
        
           finddayid ={ "monday" => "1", "tuesday" => "2", "wednesday" => "3" , "thursday" => "4", "friday" => "5", "saturday" => "6", "sunday" => "7"}
           
-          # if (params[:booking_date]+" "+DateTime.parse(@start_time).strftime("%H:%M:%S") < DateTime.now + 480.minutes)
+           if (params[:booking_date]+" "+DateTime.parse(@start_time).strftime("%H:%M:%S") < DateTime.now + 480.minutes)
+               flash[:success] ="Your registrations is sucessfully completed.Please check registered email"
            
-          # else  
+           else  
 
           @hasesDay=finddayid[@DayFind].to_i
           
@@ -43,7 +44,7 @@ class SearchingsController < ApplicationController
             
 
            @aftersearchbydayandaddress=SpaceAddress.where(space_id:@afterDeleteCheck)
-          # end
+           end
           end
    
           @hash = Gmaps4rails.build_markers(@aftersearchbydayandaddress) do |r, marker|
@@ -97,7 +98,7 @@ class SearchingsController < ApplicationController
                 
                 
 
-                          flash[:success] ="Booking was Sucessfully"
+                        
                 
                     
                         else
@@ -122,6 +123,10 @@ class SearchingsController < ApplicationController
                   def booking_params
                   params.permit(:space_id, :user_id,:booking_time,:booking_date,:start_time,:end_time)
                   end
+
+
+
+                
 end
   
 
