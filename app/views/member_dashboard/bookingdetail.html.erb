@@ -13,22 +13,23 @@
            <div  style="overflow:scroll;height:600px">
              <div class="row">
                <div class="col-sm-9">
-               
+                 <h3>Here Are Your Wallet Information </h3>
                    <% @users.each do |br| %>
                        <% space=Space.find(br.space_id) %>
-                        <% image=space.images.first%>
+                        
                        <% wallet=MemberSubscription.where(user_id: session[:user_id],space_id: br.space_id).first%>
                        <% address=space.space_address%>
                       <div class="card mb-3" style="max-width: 1000px;">
                          <div class="row no-gutters">
                             <div class="col-md-4">
-                             <%= image_tag image,:class =>"card-img" %>
+                            
+                             <%= image_tag space.images.first,:class =>"card-img" %>
                             </div>
                          <div class="col-md-8">
                            <div class="card-body">
                              <h5 class="card-title">Hey! Welcome</h5>
                                <p class="card-text">These are your details. Thankyou!</p>
-                                 <label for="space address">
+                                 <strong>Address =></strong><label for="space address">
                                  <%= address.street%>
                                  <%= address.city%>
                                  <%= address.pincode%>

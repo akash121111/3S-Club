@@ -14,32 +14,41 @@
                           
                           <div class="text-center">
                           
-                       <h1><span style="color: blue;">3S<span> CLUB </h1>
+                      <div class="home-text"><h1><span style="color:green">3S</span><spane style="color:red"> CLUB</spane></h1></div>
                        <h3><em>Don't worry about the space,</em> </h3>
                        <h3><em>keep your work running<em> </h3>    
                           </div>
                           <br>
                           <div style="margin-left: 150px;">
-                               <%= form_tag(searching_path, {:method => 'get'}) do %>
+                               <%= form_tag(searching_path, {:method => 'get',:id=>'search-form'}) do %>
                                         <div class="input-group" align="center">
                                        
-                                            <div class="input-group-prepend">
-                                                  <span class="input-group-text" id="basic-addon1"><%= image_tag("18dp.png", size:"18x18") %></span>
-                                    
-                                                  <%= text_field_tag(:search, params[:search], placeholder: "Enter a City name", :class=>"form-control col-sm-8") %>
-                                                  <%= date_field_tag(:booking_date, params[:booking_date], placeholder: "",:class=>"ml-3" , min: Date.today)%>
-                                                  <%= time_field_tag(:start_time, params[:start_time], placeholder: "Enter a date",:class=>"ml-3" )%>
-                                                  <%= time_field_tag(:end_time, params[:end_time], placeholder: "Enter a date",:class=>"ml-3" )%>
-                                                  <%= submit_tag('Search', :name => nil,:class=>"ml-5", :class=> "btn btn-primary ml-3") %>
-                                            </div>
-                                              
-                                        </div>
+                                          <div class="input-group-prepend">
+                                                 <span class="input-group-text" id="basic-addon1"><%= image_tag("18dp.png", size:"18x18") %></span>
 
+                                                 <%= text_field_tag(:search, params[:search], placeholder: "Enter a City name", :id => "search", :class=>"form-control col-sm-8") %>
+
+                                                 <%= date_field_tag(:booking_date, params[:booking_date], placeholder: "",:class=>"ml-3" ,:id => "bookingdate", min: Date.today)%>
+                                                 <%= time_field_tag(:start_time, params[:start_time],:class=>"input-group date timepicker",:id => "starttime", :class=>"ml-3" )%>
+                                                 <%= time_field_tag(:end_time, params[:end_time], placeholder: "Enter a date", :id => "endtime", :class=>"ml-3")%>
+                                                 <%= submit_tag('Search', :name => nil,  :id => "searchcity", :class=>"ml-5", :class=> "btn btn-primary ml-3") %>
+                                               
+
+                                           </div>
+                                              
+                                       <div class="form-group">
+
+
+                                       </div>
+                            
 
                            
                                  <% end %>
 
-                         </div>        
+                         </div>  
+                         
+                                       <br>
+                                       <span id="searchtext" class="text-danger-font-weight-bold" style="margin-right: 256px;"></span>      
                                </div>
                                 </center>
                            </div>

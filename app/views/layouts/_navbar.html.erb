@@ -4,36 +4,35 @@
     <title>Membeship Plan</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top"   style="padding:0; height:60px; background-color:rgb(157, 214, 223)!important; opacity:1 ">
-<abbr title="Home"><a class="navbar-brand" href="user#index">3S-Club</a></abbr>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="navid">
+<abbr title="Home"><a class="navbar-brand" id="brand"  href="user#index">3S-Club</a></abbr>
 
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-   <span class="navbar-toggler-icon"></span>
- </button>
 
- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-   <ul class="navbar-nav mr-auto">
-     <li class="nav-item active">
-     <abbr title="Home"><a class="nav-link" href="user#index" style="background-color:rgb(157, 214, 223); opacity:1"><i class="fa fa-home" style="color:green"></i> <span class="sr-only">(current)</span></a></abbr>
-     </li>
-     <li class="nav-item">
-       <a class="nav-link" href="#" style="background-color:rgb(157, 214, 223); opacity:1">Help</a>
+ <div  id="navbarSupportedContent">
+   <ul id="ul">
+     <li id="li">
+       <a class="nav-link" href="#" id="aofli">Help</a>
       </li>
-      <li class="nav-item">
-       <a class="nav-link" href="#" style="background-color:rgb(157, 214, 223); opacity:1">Contact</a>
+      <li id="li">
+       <a class="nav-link" href="#" id="aofli">Contact</a>
      </li>
-     <li class="nav-item">
-       <a class="nav-link" href="#" style="background-color:rgb(157, 214, 223); opacity:1">About Us</a>
+     <li id="li">
+       <a class="nav-link" href="#" id="aofli">About Us</a>
      </li>
-   </ul>
-   <form class="form-inline my-2 my-lg-0"  style="background-color:rgb(157, 214, 223); opacity:1">
-   <% if session[:user_id] %>
-   <%= link_to 'Log Out' ,'/log_out', :method=>"delete"%>
-   <% end %>
-   </form>
- </div>
+    </ul>
+</div>
+<div id="message">
+      <% if session[:user_id] %>
+        <% @show = User.find(session[:user_id]) %>
+        <a class="nav-link" href="#" id="aofmessage">Welcome! <%=@show.email%></a>
+      <% end %>
+</div>
 </nav>
 
+
 </body>
+
 </html>
+
+
 

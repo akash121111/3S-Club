@@ -1,4 +1,5 @@
 class SpacesController < ApplicationController
+    before_action :is_owner?
     before_action :set_space, only: [:show, :destroy, :edit, :update]
     before_action :set_week_days, only: [:edit,:create,:new, :update]
     def index
@@ -51,7 +52,6 @@ class SpacesController < ApplicationController
             @space_address.space_id=@space.id
             
             @space_available_day=SpaceAvailableDay.new
-            
             @week_days.each do |key,value|
                 @space_availability_timing=SpaceAvailabilityTiming.new
                 @space_available_day[key]=params[:space][:space_available_day][key]
@@ -82,7 +82,7 @@ class SpacesController < ApplicationController
     end
 
     def destroy
-        byebug
+       
         @space.update(deleted_at: Time.now)
         if @space.deleted_at
             flash[:success]="Space Deleted Successfully"

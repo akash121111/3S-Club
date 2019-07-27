@@ -23,5 +23,21 @@ class ApplicationController < ActionController::Base
             redirect_to root_path
         end
     end
-
+    def is_owner?
+        if logged_in? && current_user.user_type_id==2
+            @user_type=current_user.id
+        else
+            flash[:error]="You are not correct user please login here"
+            redirect_to  root_url
+        end
+    end
+    def is_member?
+        if logged_in? && current_user.user_type_id==1
+            @user_type=current_user.id
+        else
+            flash[:error]="You are not correct user please login here"
+            redirect_to root_url
+        end
+    end
+    
 end
