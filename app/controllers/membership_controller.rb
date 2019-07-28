@@ -7,7 +7,7 @@ class MembershipController < ApplicationController
      @newEntry.space_id = params[:space_id]
      @newEntry.time_wallet = 50.0
      @newEntry.save
-     SubscriptionMailMailer.message_to(@newEntry,@member1).deliver_now
+     SubscriptionMailMailer.message_to(@newEntry,@member1,params(session[:user_id])).deliver_now
    end
 
    def create_long_plan(member2)
@@ -16,8 +16,9 @@ class MembershipController < ApplicationController
      @newEntry.user_id = params[:user_id]
      @newEntry.space_id = params[:space_id]
      @newEntry.time_wallet = 150.0
+    
      @newEntry.save
-     SubscriptionMailMailer.message_to(@newEntry,@member2).deliver_now
+     SubscriptionMailMailer.message_to(@newEntry,@member2,params(session[:user_id])).deliver_now
    end
 
    def membership
@@ -46,13 +47,13 @@ class MembershipController < ApplicationController
          @customer.membership_plan_id = 1
          @customer.time_wallet = @customer.time_wallet + 50.0
          @customer.save
-         SubscriptionMailMailer.message_to(@customer,@member1).deliver_now
+         SubscriptionMailMailer.message_to(@customer,@member1,params(session[:user_id])).deliver_now
        elsif @long==params[:p].to_f
          @customer = MemberSubscription.find_by(user_id: params[:user_id], space_id: params[:space_id])
          @customer.membership_plan_id = 2
          @customer.time_wallet = @customer.time_wallet + 150.0
          @customer.save
-         SubscriptionMailMailer.message_to(@customer,@member2).deliver_now
+         SubscriptionMailMailer.message_to(@customer,@member2,params(session[:user_id])).deliver_now
        end
      end
      redirect_to request.referer
