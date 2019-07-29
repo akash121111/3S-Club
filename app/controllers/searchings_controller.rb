@@ -86,7 +86,7 @@ class SearchingsController < ApplicationController
                 @booking_record = BookingRecord.new(booking_params)
                         if  @booking_record.save
 
-                            @check_Condition=MemberSubscription.find_by("space_id = ? and user_id=?",@space_id,@user_id)
+                            @check_Condition=MemberSubscription.find_by("user_id=?",@user_id)
                     
 
                             @change_remain_time_wallet=@check_Condition.try(:time_wallet)
