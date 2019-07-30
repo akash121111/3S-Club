@@ -21,6 +21,41 @@
      </li>
     </ul>
 </div>
+<% if logged_in? %>
+
+<% if (User.where(id: session[:user_id],user_type_id: 1).blank?) %>
+
+<%else%>
+<% if(MemberSubscription.where("user_id=?",session[:user_id]).blank?) %>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Wallet
+  </button>
+  
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="">Hours left: <strong>0 hrs.</strong></a>
+   
+    <a class="dropdown-item" href="membershipindex?user_id=<%=session[:user_id]%>">get a membership</a>
+    
+  </div>
+</div>
+<% else %>
+ <% wallet=MemberSubscription.where(user_id: session[:user_id]).first%>
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Wallet
+  </button>
+  
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="">Hours left: <strong><%= wallet.time_wallet %>hrs.</strong></a>
+   
+    <a class="dropdown-item" href="membershipindex?user_id=<%=session[:user_id]%>">Add More Hours</a>
+    
+  </div>
+</div>
+<% end %>
+<% end %>
+<% end %>
 <div id="message">
       <% if session[:user_id] %>
         <% @show = User.find(session[:user_id]) %>

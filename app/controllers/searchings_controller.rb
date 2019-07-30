@@ -94,7 +94,7 @@ class SearchingsController < ApplicationController
                             @check_Condition.time_wallet=@new_remain_time_wallet
                       
                             @check_Condition.save
-                            SubscriptionMailMailer.booking_message(@space_id,@user_id,@booking_time, @start_time, @end_time, @booking_date).deliver_now
+                            #SubscriptionMailMailer.booking_message(@space_id,@user_id,@booking_time, @start_time, @end_time, @booking_date).deliver_now
                 
                 
                 

@@ -1,5 +1,6 @@
 class MembershipController < ApplicationController
 
+  
    def create_short_plan(member1)
      @newEntry = MemberSubscription.new
      @newEntry.membership_plan_id = 1
