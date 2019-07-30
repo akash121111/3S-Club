@@ -8,6 +8,9 @@ class OwnersignupsController<ApplicationController
         @owner = User.new(signup_params)
     @owner.user_type_id=2
     if @owner.save
+      @user=UserDetail.new(user_params)
+      @user.user_id=@owner.id
+      @user.save
       UserMailer.signup_email(@owner).deliver
       flash[:success] ="Your registrations is sucessfully completed.Please check registered email"
       redirect_to '/login_user'
@@ -48,6 +51,9 @@ class OwnersignupsController<ApplicationController
 
   def signup_params
     params.permit(:email, :password, :password_confirmation)
+  end
+  def user_params
+    params.permit(:first_name, :last_name, :mobile_number)
   end
  
 end

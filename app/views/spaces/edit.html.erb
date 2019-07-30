@@ -151,19 +151,19 @@
                         </div>
                         
                         <br>
-                        <div class="container_fluidSS">
+                        <div class="container_fluid">
                          <h3>Space Availability</h3>
                             <div class="row">  
                             <div class="col-lg-6 col-sm-12">         
                                 <%= form_for @space_available_day do |f| %>
                                     
-                                        <div class="container-fluid">
+                                        <div class="container-fluid days">
                                             <table>
                                                 <div class="row">
                                                     <tr>
                                                         <div class='col-md-3'>
                                                             
-                                                            <div class="container-fluid days">
+                                                            <div class="container-fluid">
                                                                 <td width="30%">
                                                                     <b>Day</b>
                                                                     <%@week_days.each do|key,value|%>
@@ -174,7 +174,7 @@
                                                                 </td>
                                                             </div>
                                                         </div>
-                                                        <div class='col-md-3 days'>
+                                                        <div class='col-md-3'>
                                                             <td style="padding:35px;">
                                                                 <b>Availability</b>
                                                                 <%= f.fields_for :space_available_day do |s| %>
@@ -211,14 +211,14 @@
                                                                 <div class="container-fluid timing">
                                                                     <%@space_availability_timings.order(day_id: :asc).each do|space_availability_timing|%>
                                                                         <%= f.fields_for space_availability_timing do |s| %>
-                                                                            
+                                                                            <table>
                                                                             <div class="row">
-                                                                                <table>
+                                                                                
                                                                                     <tr>
                                                                                         <td>
                                                                                             <%if @space_availability_timings.order(day_id: :asc).first== space_availability_timing%>
                                                                                                 <div class="row">
-                                                                                                    <div class="col-md-12">
+                                                                                                    <div class="col-md-12 mb-1">
                                                                                                         <b class="start-time-heading">Start Time</b>
                                                                                                     </div>
                                                                                                 </div>
@@ -230,7 +230,7 @@
                                                                                         <td>
                                                                                             <%if @space_availability_timings.order(day_id: :asc).first== space_availability_timing%>
                                                                                                 <div class="row">
-                                                                                                    <div class="col-md-12">
+                                                                                                    <div class="col-md-12 mb-1">
                                                                                                         <b class="start-time-heading">End Time</b>
                                                                                                     </div>
                                                                                                 </div>
@@ -240,11 +240,9 @@
                                                                                             </div>
                                                                                         </td>
                                                                                     </tr>
-                                                                                </table>
-                                                                                    
-                                                                                    
                                                                                 
                                                                             </div>
+                                                                            </table>
                                                                         <%end%>
                                                                     <%end%>
                                                                 </div>

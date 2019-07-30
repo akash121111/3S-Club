@@ -5,13 +5,12 @@ class SubscriptionMailMailer < ApplicationMailer
   #
   #   en.subscription_mail_mailer.message_to.subject
   #
-  def message_to(user,plan)
+  def message_to(user,plan,see)
     @user = user
     @plan = plan
-    # user_id = User.find_by(params[:user_id])
-    # email = user_id.email
-    @show = User.find(session[:user_id])
-    mail(to: @show.email, subject: 'Subscription Confirmation')
+    user_id = User.find_by(user_id: see)
+    email = user_id.email
+    mail(to: email, subject: 'Subscription Confirmation')
   end
   def booking_message(space_id,user_id,booking_time, start_time, end_time, booking_date)
   

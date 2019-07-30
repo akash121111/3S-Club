@@ -2,7 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+.error-text{
+    color: red;
+}
 .image-heading h3{
     margin-top:0;
 }
@@ -79,6 +81,13 @@ input[type=time]{
 .start-time-heading{
     position: relative;
     left: 15%;
+}
+.days .row{
+    height: 40px;
+}
+.timing .row{
+    height: 0px;
+    margin-top: 10px;
 }
 @media only screen 
 and (min-device-width : 240px) 
