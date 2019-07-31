@@ -7,6 +7,50 @@ function Compare() {
     var et = minFromMidnight(end_time);
   
     if (search.match(/^[a-zA-Z]+$/)) {
+        // Create date from input value
+        var inputDate = new Date(booking_date);
+
+        // Get today's date
+        var todaysDate = new Date();
+
+       
+            if (inputDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0)) {
+
+                var now = new Date();
+                var d = new Date('1970-01-01T' + start_time);
+
+                var nowTime = now.getHours() * 60 + now.getMinutes();
+                var todaytime = d.getHours() * 60 + d.getMinutes();
+
+
+                // compare nowTime and dateTime
+                if (todaytime > nowTime) {
+
+                    
+                    window.location.assign("/searching?search=" + search + "&booking_date=" + booking_date + "&start_time=" + start_time + "&end_time=" + end_time);
+                   
+                }
+                else {
+                    alert("please enter a valid starting time");
+                    $("#searchtext").text("please enter a valid starting time").css("color", "red");
+                    $("#searchtext").show().delay(5000).fadeOut();
+
+                }
+
+                
+        }
+
+        // Create date from input value
+        var inputDate = new Date(booking_date);
+
+        // Get today's date
+        var todaysDate = new Date();
+
+
+        if (inputDate.setHours(0, 0, 0, 0) > todaysDate.setHours(0, 0, 0, 0)) {
+
+        
+    
         
         if (start_time > end_time) {
 
@@ -20,6 +64,7 @@ function Compare() {
 
             window.location.assign("/searching?search=" + search + "&booking_date=" + booking_date + "&start_time=" + start_time + "&end_time=" + end_time);
         }
+    }
 
     }
 
@@ -74,7 +119,37 @@ document.addEventListener("turbolinks:load", function () {
 
 
     });
+    $("#starttime").focusout(function () {
+     
+        var booking_date = $("#bookingdate").val();
+        var start_time = $("#starttime").val();
 
+        var inputDate = new Date(booking_date);
+
+        // Get today's date
+        var todaysDate = new Date();
+
+        // call setHours to take the time out of the comparison
+        if (inputDate.setHours(0, 0, 0, 0) == todaysDate.setHours(0, 0, 0, 0)) {
+           
+            var now = new Date();
+            var  d= new Date('1970-01-01T' + start_time);
+
+            var nowTime = now.getHours() * 60 + now.getMinutes();
+            var todaytime = d.getHours() * 60 + d.getMinutes();
+            
+
+            // compare nowTime and dateTime
+            if (todaytime < nowTime) {
+               
+                $("#searchtext").text("Starting time should be greater than the current time").css("color", "red");
+                $("#searchtext").show().delay(5000).fadeOut();
+            }
+           
+        }
+
+
+    });
 
 });
 
