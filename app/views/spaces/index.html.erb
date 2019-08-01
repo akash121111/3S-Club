@@ -10,6 +10,7 @@
                 <div class="row">
                     
                     <%@spaces.each do |space|%>
+                   
                         <%if space.deleted_at == nil%>
                             <div class="col-lg-3 col-sm-6">
                                 <div class="card">
@@ -42,12 +43,12 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="card">
                             <div class="card-header">Add More Spaces</div>
-                            <div class="card-body">
                                 <a href="/spaces/new">
+                                    <div class="card-body">
                                         <%= image_tag "plus-icon.png",class:'space-img' %>
+                                    </div> 
+                                    <div class="card-footer">Tap to add more</div>
                                 </a>
-                            </div> 
-                            <div class="card-footer">Tap to add more</div>
                         </div><br>
 
                     </div>

@@ -24,6 +24,16 @@ class OwnerdashboardController < ApplicationController
     @user=User.find_by(id:session[:user_id])
     @user_detail=@user.user_detail
     @spaces=@user.spaces
+    @from_date=params[:from_date]
+    @to_date=params[:to_date]
+  end
+  def searching_records
+    @user=User.find_by(id:session[:user_id])
+    @user_detail=@user.user_detail
+    @spaces=@user.spaces
+    
+    @start_date=params[:start_date]
+    @end_date=params[:end_date]
   end
 
 end

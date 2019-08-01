@@ -23,7 +23,7 @@
                </div>
              
                 <h2>PERSONAL DETAILS</h2> 
-                 <%= form_for(:session, :html => {class: "form-horizontal", role: "form"},url: dashboard_path,:method=>"post") do |f| %>
+                 <%= form_for(:session, :html => {class: "form-horizontal", role: "form"},url:  profile_path,:method=>"post") do |f| %>
                    <div class="form-row">
                      <div class="form-group col-md-6">
                        <label for="firstname">FirstName</label>
@@ -69,7 +69,78 @@
               <% end %>
             </div>
           </div>
-        </div>
+      
+        <div class='container-fluid'>
+                        <div class="row">
+                            <%@user_addresses.each do |user_address| %>
+                                
+                                <div class="col-md-6 col-sm-6">
+                                <%@user_address_type=UserAddressType.find(user_address.user_address_type.id)%>
+                                 <h2>&nbsp;<%=@user_address_type.address_type%></h2>
+                                    <br>
+                                    <%=form_for user_address do |f| %>
+                                    
+                                        <div class="container-fluid">
+                                            
+                                                <div class="form-group">
+                                                    <%= f.label :address_line_1, 'Address Line 1' %>
+                                                    <%= f.text_field :address_line_1, class: 'form-control address-line-1'%>
+                                                    <span id="span_address_line_1_error_<%=@user_address_type.id%>" class="error-text"></span>
+                                                </div>
+                                            
+                                           
+                                                <div class="form-group"> 
+                                                    <%= f.label :address_line_2, 'Address Line 2' %>
+                                                    <%= f.text_field :address_line_2, class: 'form-control address-line-2'%>
+                                                    <span id="span_address_line_2_error_<%=@user_address_type.id%>" class="error-text"></span>
+                                                </div>
+                                            
+                                                <div class="form-group"> 
+                                                    <%= f.label :city, 'City' %>
+                                                    <%= f.text_field :city, class: 'form-control city'%>
+                                                    <span id="span_city_error_<%=@user_address_type.id%>" class="error-text"></span>
+                                                </div>
+                                            
+                                           
+                                                <div class="form-group"> 
+                                                    <%= f.label :pincode, 'Pincode' %>
+                                                    <%= f.number_field :pincode, class: 'form-control pincode'%>
+                                                    <span id="span_pincode_error_<%=@user_address_type.id%>" class="error-text"></span>
+                                                </div>
+                                         
+                                            
+                                                <div class="form-group"> 
+                                                    <%= f.label :state, 'State' %>
+                                                    <%= f.text_field :state, class: 'form-control state'%>
+                                                    <span id="span_state_error_<%=@user_address_type.id%>" class="error-text"></span>
+                                                </div>
+                                          
+                                            
+                                                <div class="form-group"> 
+                                                    <%= f.label :country, 'Country' %>
+                                                    <%= f.text_field :country, class: 'form-control country'%>
+                                                    <span id="span_country_error_<%=@user_address_type.id%>" class="error-text"></span>
+                                                </div>
+                                         
+                                        
+                                            <div>
+                                                <%= submit_tag 'Save Changes', class: "btn btn-primary" %>
+                                            </div>
+                                            <br>
+                                        
+                                        </div>
+                                    <%end%>
+                                </div>
+                            <% end %> 
+                                    
+                            
+                            
+
+                            
+                        </div>
+                    
+                    </div>
+  </div>
     </div>
   </div>
 </body>

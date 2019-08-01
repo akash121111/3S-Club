@@ -36,7 +36,7 @@
                                       space=SpaceAddress.find(br.space_id) %>
                                       <% spacename=Space.find(br.space_id)%>
                                       <% 
-                                      mobile=UserDetail.find(br.user_id)%>
+                                       mobile=UserDetail.find_by(user_id: spacename.user_id)%>
                                     
                                     <tbody class="text-center">
                                      
@@ -58,7 +58,7 @@
                                            <td> <%= link_to 'Cancel', 
                                                       userbooking_path(br.id), 
                                                                   method: :delete, 
-                                                                  data: { confirm: 'Are you sure?' } ,:class=> "btn btn-danger pt-1 pb-1 w-5"
+                                                                  data: { confirm: 'Are you sure to cancel booking?' } ,:class=> "btn btn-danger pt-1 pb-1 w-5"
                                                                   %> 
 
                                            <% end %></td>

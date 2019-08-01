@@ -7,6 +7,9 @@ gem 'dotenv-rails', :require => 'dotenv/rails-now'
 gem "recaptcha", require: "recaptcha/rails"
 gem 'sendgrid-ruby'
 gem 'gmaps4rails', '~> 2.0.1'
+gem 'geocoder'
+gem 'geokit'
+gem 'momentjs-rails', '~> 2.17', '>= 2.17.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record

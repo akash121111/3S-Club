@@ -2,11 +2,12 @@ Rails.application.routes.draw do
 
   get 'owner_dashboard', to: "ownerdashboard#upcoming_booking"
   get 'booking_records', to: "ownerdashboard#booking_records"
+  get 'searching_records', to: "ownerdashboard#searching_records"
   post 'view_details', to: "ownerdashboard#view_details"
   get 'no_space', to: "ownerdashboard#no_space"
   get 'dashboard', to: 'member_dashboard#dashboard'
   post 'dashboard', to: 'member_dashboard#update'
-  post 'memberdetail', to: 'member_dashboard#create'
+  get 'memberdetail', to: 'member_dashboard#create'
   get 'profile',to: 'member_dashboard#profile'
   get 'booking',to: 'member_dashboard#bookingdetail'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
   get '/bookingdone', to:'searchings#bookingdone'
   get '/userbookingrecords', to:'searchings#user_booking_records'
   get '/mainpage',to:'searchings#mainpage'
+
   
   post 'owner_signup' ,to: 'ownersignups#create' 
   get '/login',to: 'ownersignups#login',as: 'login_in_owner'

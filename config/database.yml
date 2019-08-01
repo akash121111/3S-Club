@@ -20,7 +20,7 @@ development:
   database: shared_study_space
 
 # Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
+# re-generated from your develoCCpment database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
@@ -28,4 +28,8 @@ test:
 
 production:
   <<: *default
+  host: localhost
   database: shared_study_space
+  username: <%= Rails.application.credentials.dig(:postgres_username) %>
+  password:  <%= Rails.application.credentials.dig(:postgres_password) %>
+

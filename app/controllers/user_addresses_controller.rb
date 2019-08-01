@@ -4,7 +4,13 @@ class UserAddressesController < ApplicationController
         @user_address=UserAddress.find(params[:id])
         if @user_address.update(user_address_params)
             flash[:success]="Address Updated Successfully"
-            redirect_to '/user_details/'+@user.user_detail.id.to_s+'/edit'
+
+            if @user.user_type_id == 2
+                redirect_to '/user_details/'+@user.user_detail.id.to_s+'/edit'
+            else 
+                redirect_to '/profile'
+            end
+
         else
             flash[:danger]=@user_address.errors.first[1]
             redirect_to '/user_details/'+@user.user_detail.id.to_s+'/edit'
