@@ -11,7 +11,7 @@ default: &default
   pool: 5
   host: localhost
   username: postgres
-  password: Postgres
+  password: Abhishek#1
 
   timeout: 5000
 
