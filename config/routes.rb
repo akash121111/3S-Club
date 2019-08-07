@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
  
   # get '/search', to: 'userbooking#search'
+  get ‘/tags’ => ‘tags#index’, as: ‘tags’
 
  
        

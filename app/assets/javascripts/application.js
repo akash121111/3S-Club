@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require jquery
-
+//= require jquery-ui/autocomplete
 //= require activestorage
 //= require turbolinks
 //= require underscore
