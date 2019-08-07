@@ -4,15 +4,32 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-2">
-      <%= render "layouts/sidebar" %>
-  </div>
+         <%= render "layouts/sidebar" %>
+      </div>
+     
       <div class="col-lg-10 col-sm-12">
-        <div class="main">
-         <div class="container-fluid">
-            <h4>Upcoming Bookings</h4><hr>
-            <div class="row text-center">
-            
-            <% @spaces.each do |spaces|%>
+      <div class="row">
+      <div class="col-lg-10 col-sm-12">
+        <div class="row searching-block">
+              <div class="col-lg-4 col-sm-5">
+                  <input id="datepickerfrom" width="276" >
+              </div>
+              <div class="col-lg-4 col-sm-5">
+                <input id="datepickerto" width="276" >
+              </div>
+              <div class="col-lg-4 col-sm-2">
+              <button class="btn btn-primary pt-1 search">Search</button>
+              </div>
+        </div>
+      </div>
+    </div>
+      <div id="search"></div>
+      <div class="main">
+      <div class="container-fluid">
+         <h4>Upcoming Bookings</h4><hr>
+         <div class="row text-center">
+         
+         <% @spaces.each do |spaces|%>
               <% image=spaces.images.first%>
               <% @booked=spaces.booking_records%>
               
@@ -29,8 +46,12 @@
                           <input type="text" name="booked_id" value="<%=booked.id%>" hidden>
                           <div class="card">
 
-                          <div class="card-header bg-white"> <%= @space_detail.space_name%></div>
-                          <%= image_tag image,:class =>"card-img" %>
+                          <div class="card-header bg-white d-inline-block"><h6>
+                            <div class="d-inline" style="float:left"> <%= booked.booking_date.strftime("%d-%m-%Y")%></div>
+                            <div class="d-inline" style="float:right"><%= booked.start_time.strftime("%H:%M")%>-<%= booked.end_time.strftime("%H:%M")%></div>
+                            </h6>
+                            </div>
+                          <%= image_tag image,:class =>"card_img" %>
                             <div class="card-block bg-white">
                               <div class="card-title "><h6><%= @address.street%> <%= @address.city%> <%= @address.state%> (<%= @address.pincode%>)</h6></div>
                             </div> 

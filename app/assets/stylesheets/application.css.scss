@@ -84,7 +84,7 @@ and (max-device-width : 767px) {
 
 ::-webkit-scrollbar-thumb:vertical {
   height: 30px;
-  background-color: #0A4C95;
+  background-color: rgb(155, 157, 160);
 }
   #preloader{
     position:fixed;
@@ -148,3 +148,7 @@ and (max-device-width : 767px) {
   {
     margin-left: 50px;
   }
+  a.disabled {
+  pointer-events: none;
+  cursor: default;
+}

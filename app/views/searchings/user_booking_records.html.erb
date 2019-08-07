@@ -52,7 +52,7 @@
                                           <td><%= br.end_time.to_time.strftime("%I:%M %p") %></td>
                                           <td><%= mobile.phone_number %> <%= mobile.mobile_number %>  </td>
                                           <td> <%= link_to 'Detail', edit_userbooking_path(br.space_id) ,:class=> "btn btn-primary pt-1 pb-1 w-5" %>  </td>
-                                          <% if  DateTime.parse(br.booking_date+" "+(br.start_time).strftime("%H:%M:%S")+"+0530") - 120.minutes < DateTime.now  %>
+                                          <% if  DateTime.parse([ br.booking_date, (br.start_time).strftime("%H:%M:%S")+"+0530" ].join(' ')) - 120.minutes < DateTime.now  %>
                                           <td><input type="submit" disabled class="btn btn-danger pt-1 pb-1 w-5" value="cancel"></td>
                                           <% else %>
                                            <td> <%= link_to 'Cancel', 

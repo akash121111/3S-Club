@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'owner_dashboard', to: "ownerdashboard#upcoming_booking"
   get 'booking_records', to: "ownerdashboard#booking_records"
+  get 'searching_records', to: "ownerdashboard#searching_records"
   post 'view_details', to: "ownerdashboard#view_details"
   get 'no_space', to: "ownerdashboard#no_space"
   get 'dashboard', to: 'member_dashboard#dashboard'

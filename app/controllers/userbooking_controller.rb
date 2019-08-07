@@ -2,12 +2,13 @@
 
     
    def destroy
+ 
                               @booking = BookingRecord.find(params[:id])
                               @time_add=@booking.booking_time
                               @user_id=@booking.user_id
                               @space_id=@booking.space_id
                              
-                              @check_Condition=MemberSubscription.find_by("space_id = ? and user_id=?",@space_id,@user_id)
+                              @check_Condition=MemberSubscription.find_by("user_id=?",@user_id)
                     
 
                               @change_remain_time_wallet=@check_Condition.try(:time_wallet)

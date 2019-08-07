@@ -12,9 +12,6 @@
                 </div>
                 <div class="col-lg-10 col-sm-12 mt-5">
                     <center><h1>OWNER DETAILS</h1></center>
-                    <br>
-                    
-
                     <div class="container-fluid space-detail" id="space-details">
                         <br><br><br>
                         <div class="row">
@@ -150,7 +147,7 @@
                             </div>
                         </div>
                         
-                        <br>
+                        
                         <div class="container_fluid">
                          <h3>Space Availability</h3>
                             <div class="row">  
@@ -163,9 +160,10 @@
                                                     <tr>
                                                         <div class='col-md-3'>
                                                             
-                                                            <div class="container-fluid">
+                                                            
                                                                 <td width="30%">
                                                                     <b>Day</b>
+                                                                    <div class="container-fluid days mt-2">
                                                                     <%@week_days.each do|key,value|%>
                                                                         <div class="row">
                                                                             <%=key.upcase%>
@@ -174,11 +172,11 @@
                                                                 </td>
                                                             </div>
                                                         </div>
-                                                        <div class='col-md-3'>
+                                                        <div class='col-md-3 '>
                                                             <td style="padding:35px;">
-                                                                <b>Availability</b>
+                                                                <b class="availabilityheading">Availability</b>
                                                                 <%= f.fields_for :space_available_day do |s| %>
-                                                                <div class="container-fluid">
+                                                                <div class="container-fluid days mt-2">
                                                                     <%@week_days.each do|key,value|%>
                                                                 
                                                                         <div class="row">
@@ -207,8 +205,8 @@
                                                         <% @space_availability_timings=@space.space_availability_timings%>
                                                         
                                                         <div class="col-md-6 start-end-time">
-                                                            <td width="80%">
-                                                                <div class="container-fluid timing">
+                                                            <td width="80%" style="padding-top:16px">
+                                                                <div class="container-fluid edittiming">
                                                                     <%@space_availability_timings.order(day_id: :asc).each do|space_availability_timing|%>
                                                                         <%= f.fields_for space_availability_timing do |s| %>
                                                                             <table>

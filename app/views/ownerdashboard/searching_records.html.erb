@@ -5,22 +5,23 @@
     <div class="col-sm-2 col-xs-2">
      <%= render "layouts/sidebar" %>
     </div>
+    
     <div class="col-lg-10 col-sm-12">
     <div class="row">
-      <div class="col-lg-10 col-sm-12">
-        <div class="row  searching-block">
-              <div class="col-lg-4 col-sm-5">
-                  <input id="datepickerfrom" width="276" value=<%=@start_date %> >
-              </div>
-              <div class="col-lg-4 col-sm-5">
-                <input id="datepickerto" width="276" value=<%=@end_date %> >
-              </div>
-              <div class="col-lg-4 col-sm-2">
-              <button class="btn btn-primary pt-1 search">Search</button>
-              </div>
-        </div>
+    <div class="col-lg-10 col-sm-12">
+      <div class="row searching-block">
+            <div class="col-lg-4 col-sm-5">
+                <input id="datepickerfrom" width="276" value=<%=@start_date %> >
+            </div>
+            <div class="col-lg-4 col-sm-5">
+              <input id="datepickerto" width="276" value=<%=@end_date %> >
+            </div>
+            <div class="col-lg-4 col-sm-2">
+            <button class="btn btn-primary pt-1 search">Search</button>
+            </div>
       </div>
     </div>
+  </div>
       <div class="main">
        <div class="container-fluid">
           <div class="row">
@@ -39,12 +40,10 @@
                           <th>Show Details</th>
                         </tr>
                         </thead >
-                        
-                    
-                  <% @spaces.each do |spaces|%>
-                     
-                          <% @booked=spaces.booking_records%>
-                          <% @booked.each do |booked| %>
+                        <% @spaces.each do |spaces|%>
+                        <%  @booked=BookingRecord.where(space_id:spaces.id,booking_date:@start_date..@end_date)%>
+                        <% @booked.each do |booked| %>
+                          
                           <% member=User.find_by(id:booked.user_id)%>
                           <% member_detail=member.user_detail%>
                           <% address=spaces.space_address%>
@@ -63,8 +62,7 @@
                             
                             <% end%>         
                           </tbody>
-                           
-                      <% end%>
+                  <% end %>
                   <% end %> 
               </table>
               </div>

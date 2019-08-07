@@ -138,7 +138,7 @@
                             </div>
                         </div>
                                     <br><br><br>
-                       
+                        
                         <div class="row">
                         </table>
                             <div class="col-lg-6 col-sm-12">
@@ -161,7 +161,7 @@
                                                 
                                                 <div class='col-sm-3'>
                                                    
-                                                        <b>Availability</b>
+                                                <b class="availabilityheading">Availability</b>
                                                         <% @space_available_day=SpaceAvailableDay.new%>
                                                         <%= f.fields_for :space_available_day do |s| %>
                                                             <div class="container-fluid days mt-2">
@@ -217,14 +217,14 @@
                                                         </div>
                                                         
                                                     <%end%>
-                                                  
-
-                                            </div>
-                                       
+                                                </td>     
+                                            </tr>
+                                            
+                                        </div>
                                     </div>
                             </div>  
-                        </div>
-                          
+                        </table>
+                        </div>  
                         <span id="span_time_error" class="error-text"></span>
                             
                         <div class="row">

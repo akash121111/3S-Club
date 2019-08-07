@@ -1,4 +1,8 @@
 class MemberDashboardController < ApplicationController
+
+  before_action :is_member?
+
+
   before_action :is_member?
   protect_from_forgery
 before_action :set_user_addresses, only: [:profile]
@@ -13,9 +17,6 @@ before_action :set_user_addresses, only: [:profile]
       end
       @user_addresses=@user.user_addresses
     end
-
-
-
   def dashboard
     @user1=UserDetail.find_by(user_id: session[:user_id])
     

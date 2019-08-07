@@ -12,15 +12,19 @@
 //
 //= require rails-ujs
 //= require jquery
+
 //= require activestorage
 //= require turbolinks
 //= require underscore
+//= require moment
 //= require_tree .
 
 
 document.addEventListener("turbolinks:load",function(){
-    preloader();
+    preloader();  
 });
 function preloader() {
     $('#preloader').fadeOut('slow');
  }
+ 
+ 
