@@ -2,7 +2,7 @@
 
     
    def destroy
-    byebug
+ 
                               @booking = BookingRecord.find(params[:id])
                               @time_add=@booking.booking_time
                               @user_id=@booking.user_id

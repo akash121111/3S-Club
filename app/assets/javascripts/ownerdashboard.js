@@ -1,12 +1,10 @@
-document.addEventListener("turbolinks:load",function(){
-      
-    
+document.addEventListener("turbolinks:load",function(){ 
       $('#datepickerfrom').datepicker({
-        format: 'yyyy-mm-dd',
+        format: 'dd-mm-yyyy',
         uiLibrary: 'bootstrap4'
     });
     $('#datepickerto').datepicker({
-      format: 'yyyy-mm-dd',
+      format: 'dd-mm-yyyy',
       uiLibrary: 'bootstrap4'
     });
 
@@ -16,9 +14,8 @@ document.addEventListener("turbolinks:load",function(){
     });
     if($('#datepickerfrom').val()===""){
       if($('#datepickerto').val()===""){
-        $('#datepickerfrom').val(moment().format("YYYY-MM-DD"));
-        $('#datepickerto').val(moment().format("YYYY-MM-DD"));
+        $('#datepickerfrom').val(moment().format("DD-MM-YYYY"));
+        $('#datepickerto').val(moment().format("DD-MM-YYYY"));
       }
     }
-    
 });

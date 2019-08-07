@@ -7,17 +7,21 @@
     </div>
     
     <div class="col-lg-10 col-sm-12">
-    <div class="row ml-2 searching-block">
-          <div class="col-lg-3 col-sm-4">
-              <input id="datepickerfrom" width="276" value=<%=@start_date %> >
-          </div>
-          <div class="col-lg-3 col-sm-4">
-             <input id="datepickerto" width="276" value=<%=@end_date %> >
-          </div>
-          <div class="col-lg-3 col-sm-4">
-          <button class="btn btn-primary pt-1 search">Search</button>
-          </div>
+    <div class="row">
+    <div class="col-lg-10 col-sm-12">
+      <div class="row searching-block">
+            <div class="col-lg-4 col-sm-5">
+                <input id="datepickerfrom" width="276" value=<%=@start_date %> >
+            </div>
+            <div class="col-lg-4 col-sm-5">
+              <input id="datepickerto" width="276" value=<%=@end_date %> >
+            </div>
+            <div class="col-lg-4 col-sm-2">
+            <button class="btn btn-primary pt-1 search">Search</button>
+            </div>
+      </div>
     </div>
+  </div>
       <div class="main">
        <div class="container-fluid">
           <div class="row">
@@ -37,7 +41,7 @@
                         </tr>
                         </thead >
                         <% @spaces.each do |spaces|%>
-                        <%  @booked=BookingRecord.where(space_id:spaces.id,booking_date:@start_date.. @end_date)%>
+                        <%  @booked=BookingRecord.where(space_id:spaces.id,booking_date:@start_date..@end_date)%>
                         <% @booked.each do |booked| %>
                           
                           <% member=User.find_by(id:booked.user_id)%>
@@ -48,7 +52,7 @@
                             <input type="text" name="booked_id" value="<%=booked.id%>" hidden>          
                                 <tr>
                                 <th><%= booked.id%></th>
-                                <td><%= booked.booking_date%></td>
+                                <td><%= booked.booking_date.strftime("%d-%m-%Y")%></td>
                                 <td><%= address.house_number%> <%= address.street%> <%= address.city%> <%= address.state%> (<%= address.pincode%>)</td>
                                 <td><%= spaces.space_name%></td>
                                 <td><%= member_detail.first_name.capitalize%> <%= member_detail.last_name.capitalize%></td>

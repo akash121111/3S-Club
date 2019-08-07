@@ -21,9 +21,7 @@
 
 
 document.addEventListener("turbolinks:load",function(){
-    preloader();
-        
-    
+    preloader();  
 });
 function preloader() {
     $('#preloader').fadeOut('slow');

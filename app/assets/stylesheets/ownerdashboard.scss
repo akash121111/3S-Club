@@ -25,6 +25,9 @@
       border: none;
       box-shadow: 0 4px 8px 0 rgba(153, 152, 152, 0.2), 0 6px 20px 0 rgba(146, 144, 144, 0.19);
   }
+  .card_img{
+    height: 175px;
+  }
   .card-footer{
     background: white;
   }
@@ -71,6 +74,7 @@
    .searching-block{
      background: #f7f7f4;
      padding: 30px;
+     margin-left: 18px;
      margin-right: 15px;
      box-shadow: 0 2px 4px 0 rgba(170, 168, 168, 0.2), 0 3px 10px 0 rgba(179, 176, 176, 0.19);
    }

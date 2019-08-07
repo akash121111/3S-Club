@@ -34,7 +34,7 @@
   </button>
   
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="">Hours left: <strong>0 hrs.</strong></a>
+    <a class="dropdown-item disabled" href=""><strong>You Not Subscribe at</strong></a>
    
     <a class="dropdown-item" href="membershipindex?user_id=<%=session[:user_id]%>">get a membership</a>
     
@@ -48,7 +48,7 @@
   </button>
   
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" href="">Hours left: <strong><%= wallet.time_wallet %>hrs.</strong></a>
+    <a class="dropdown-item disabled" href="">Hours left: <strong><%= wallet.time_wallet %>hrs.</strong></a>
    
     <a class="dropdown-item" href="membershipindex?user_id=<%=session[:user_id]%>">Add More Hours</a>
     
