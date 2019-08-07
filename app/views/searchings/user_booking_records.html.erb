@@ -33,7 +33,7 @@
                                      
                                      @booked.each do |br|%>    
                                       <%
-                                      space=SpaceAddress.find(br.space_id) %>
+                                      space=SpaceAddress.find_by(space_id: br.space_id) %>
                                       <% spacename=Space.find(br.space_id)%>
                                       <% 
                                        mobile=UserDetail.find_by(user_id: spacename.user_id)%>

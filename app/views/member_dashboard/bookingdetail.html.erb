@@ -15,32 +15,22 @@
                <div class="col-sm-9">
                  <h3>Here Are Your Wallet Information </h3>
                    <% @users.each do |br| %>
-                       <% space=Space.find(br.space_id) %>
+                       
                         
-                       <% wallet=MemberSubscription.where(user_id: session[:user_id],space_id: br.space_id).first%>
-                       <% address=space.space_address%>
-                      <div class="card mb-3" style="max-width: 1000px;">
-                         <div class="row no-gutters">
-                            <div class="col-md-4">
-                            
-                             <%= image_tag space.images.first,:class =>"card-img" %>
-                            </div>
+                       <% wallet=MemberSubscription.where(user_id: session[:user_id]).first%>
+                       
                          <div class="col-md-8">
                            <div class="card-body">
                              <h5 class="card-title">Hey! Welcome</h5>
                                <p class="card-text">These are your details. Thankyou!</p>
                                  <strong>Address =></strong><label for="space address">
-                                 <%= address.street%>
-                                 <%= address.city%>
-                                 <%= address.pincode%>
-                                 <%= address.state%>
-                                 <%= address.house_number%>
+                                 
                                 </label><br>
                             
                                <strong> <label for="wallet time">Time left in wallet =></label> </strong>
                                    <%= wallet.time_wallet %>
-                                     <td> <%= link_to 'Detail', edit_userbooking_path(br.space_id) ,:class=> "btn btn-primary pt-1 pb-1 w-5" ,:style=> "margin-top: 17px;margin-left: 75px;height: 39px; width: 129px;"%>  </td>
-                                    <%= link_to 'Add more time in wallet', "membershipindex?space_id=#{br.space_id}&user_id=#{session[:user_id]}", :class=> "btn btn-danger", :style=>"margin-top: 17px;bottom:0;float:right"%>
+                                     <td> <%# link_to 'Detail', edit_userbooking_path(br.space_id) ,:class=> "btn btn-primary pt-1 pb-1 w-5" ,:style=> "margin-top: 17px;margin-left: 75px;height: 39px; width: 129px;"%>  </td>
+                                    <%# link_to 'Add more time in wallet', "membershipindex?space_id=#{br.space_id}&user_id=#{session[:user_id]}", :class=> "btn btn-danger", :style=>"margin-top: 17px;bottom:0;float:right"%>
                             </div>
                           </div>
                           </div>

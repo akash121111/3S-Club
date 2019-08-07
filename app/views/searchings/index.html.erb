@@ -40,13 +40,17 @@
                            </div>
     
                            </div>
-                      
+                       <%if  @aftersearchbydayandaddress.blank? || DateTime.parse(params[:booking_date]+" "+params[:start_time]+"+0530") - 480.minutes < DateTime.now   %>
+                                       <%= render 'layouts/error' %> <%
+
+                                    else %>
                            <div class="row">
                               <div class="col-sm-4">
                                    <h1>List View</h1>
                                     <ul class="list-group" style="height:800px; overflow:scroll"> 
                                     <%
-                                    if @start_time && @end_time
+                                    if @start_time && @end_time 
+                                   
                                     i=0 
                                     @aftersearchbydayandaddress.each do |s| %>
                                      <% space=Space.find_by_id(s.space_id) %>
@@ -70,12 +74,12 @@
                                       @user_id= session[:user_id]
                                       @m=@aftersearchbydayandaddress.pluck(:space_id)
                                       @booking_time_calculate=(Time.parse(params['end_time'])  - Time.parse(params['start_time'])) /1.hour
-
-                                      
+                                       @booking_time_calculate_float= @booking_time_calculate.to_f
+                                    
 
                                     
-                                    if(MemberSubscription.where("space_id = ? and user_id=?",@m[i],@user_id).blank?) %>
-                                        <%= link_to 'Get a membership', "membershipindex?space_id=#{@m[i]}&user_id=#{@user_id}&booking_time=#{@booking_time_calculate}", :class=> "btn btn-danger", :style=>"margin-top: 17px;bottom:0;float:right"%>
+                                    if(MemberSubscription.where("user_id=?",@user_id).blank?) %>
+                                        <%= link_to 'Get a membership', "membershipindex?space_id=#{@m[i]}&user_id=#{@user_id}&booking_time=#{@booking_time_calculate_float}", :class=> "btn btn-danger", :style=>"margin-top: 17px;bottom:0;float:right"%>
                                       
                                         <%
                                           i=i+1
@@ -84,7 +88,7 @@
                                       else
                                         %>
                                       
-                                        <%if(MemberSubscription.where("space_id = ? and user_id=? and time_wallet>= ?",@m[i],@user_id,@booking_time_calculate).blank?)%>
+                                        <%if(MemberSubscription.where("user_id=? and time_wallet>= ?",@user_id,@booking_time_calculate_float).blank?)%>
                                                <%= link_to 'Get a membership', "membershipindex?space_id=#{@m[i]}&user_id=#{@user_id}&booking_time=#{@booking_time_calculate}", :class=> "btn btn-danger", :style=>"margin-top: 17px;bottom:0;float:right"%>
                                          <% else %>
                                                <%= link_to 'book now', "bookingdone?space_id=#{@m[i]}&user_id=#{@user_id}&booking_date=#{params['booking_date']}&start_time=#{DateTime.parse(@start_time).strftime("%I:%M%p")}&end_time=#{DateTime.parse(@end_time).strftime("%I:%M%p")}&booking_time=#{@booking_time_calculate}", :class=> "btn btn-success", :style=>"margin-top: 17px;bottom:0;float:right"%>
@@ -101,6 +105,7 @@
                                     </li>
                                     <% 
                                     end
+                                 
                                     end %> 
                                     </ul>
                                 </div>
@@ -109,7 +114,7 @@
                                         <div id="map" style='width: auto; height: 800px; position: fixed;'></div>  
                                     </div>  
                                 </div>
-   
+   <% end %>
                             </div>
                           </div>
                        </div>

@@ -3,7 +3,7 @@ class SearchingsController < ApplicationController
 
   def index
 
-
+       
           if params.has_key?(:booking_date) 
             @DayFind=DateTime.parse(params[:booking_date]).to_date.strftime('%A').downcase
           else 
@@ -18,9 +18,10 @@ class SearchingsController < ApplicationController
        
           finddayid ={ "monday" => "1", "tuesday" => "2", "wednesday" => "3" , "thursday" => "4", "friday" => "5", "saturday" => "6", "sunday" => "7"}
           
-          # if (params[:booking_date]+" "+DateTime.parse(@start_time).strftime("%H:%M:%S") < DateTime.now + 480.minutes)
+           if (DateTime.parse(params[:booking_date]+" "+params[:start_time]+"+0530") - 480.minutes < DateTime.now )
+               flash[:danger] ="Sorry You Have To Book This Space Before 8 Hours"
            
-          # else  
+           else  
 
           @hasesDay=finddayid[@DayFind].to_i
           
@@ -43,7 +44,7 @@ class SearchingsController < ApplicationController
             
 
            @aftersearchbydayandaddress=SpaceAddress.where(space_id:@afterDeleteCheck)
-          # end
+           end
           end
    
           @hash = Gmaps4rails.build_markers(@aftersearchbydayandaddress) do |r, marker|
@@ -85,7 +86,7 @@ class SearchingsController < ApplicationController
                 @booking_record = BookingRecord.new(booking_params)
                         if  @booking_record.save
 
-                            @check_Condition=MemberSubscription.find_by("space_id = ? and user_id=?",@space_id,@user_id)
+                            @check_Condition=MemberSubscription.find_by("user_id=?",@user_id)
                     
 
                             @change_remain_time_wallet=@check_Condition.try(:time_wallet)
@@ -93,11 +94,12 @@ class SearchingsController < ApplicationController
                             @check_Condition.time_wallet=@new_remain_time_wallet
                       
                             @check_Condition.save
+                            #SubscriptionMailMailer.booking_message(@space_id,@user_id,@booking_time, @start_time, @end_time, @booking_date).deliver_now
                 
                 
                 
 
-                          flash[:success] ="Booking was Sucessfully"
+                        
                 
                     
                         else
@@ -122,6 +124,10 @@ class SearchingsController < ApplicationController
                   def booking_params
                   params.permit(:space_id, :user_id,:booking_time,:booking_date,:start_time,:end_time)
                   end
+
+
+
+                
 end
   
 

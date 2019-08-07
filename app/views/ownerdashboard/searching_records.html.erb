@@ -1,8 +1,29 @@
+<body style="background: #e8e9eb">
+
 <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-2 col-xs-2">
+     <%= render "layouts/sidebar" %>
+    </div>
+    
+    <div class="col-lg-10 col-sm-12">
+    <div class="row ml-2 searching-block">
+          <div class="col-lg-3 col-sm-4">
+              <input id="datepickerfrom" width="276" value=<%=@start_date %> >
+          </div>
+          <div class="col-lg-3 col-sm-4">
+             <input id="datepickerto" width="276" value=<%=@end_date %> >
+          </div>
+          <div class="col-lg-3 col-sm-4">
+          <button class="btn btn-primary pt-1 search">Search</button>
+          </div>
+    </div>
+      <div class="main">
+       <div class="container-fluid">
           <div class="row">
             <div class="col-md-10 col-sm-12">
               <h4>Booking Records</h4>
-              <div class="record-table">           
+              <div class="record-table">
               <table class="table table-bordered table-hover bg-white">
                       <thead class="thead-dark">
                         <tr>
@@ -15,12 +36,10 @@
                           <th>Show Details</th>
                         </tr>
                         </thead >
-                        
-                    
-                  <% @spaces.each do |spaces|%>
-                      
-                          <% @booked=BookingRecord.where(booking_date:@start_date.. @end_date)%>
-                          <% @booked.each do |booked| %>
+                        <% @spaces.each do |spaces|%>
+                        <%  @booked=BookingRecord.where(space_id:spaces.id,booking_date:@start_date.. @end_date)%>
+                        <% @booked.each do |booked| %>
+                          
                           <% member=User.find_by(id:booked.user_id)%>
                           <% member_detail=member.user_detail%>
                           <% address=spaces.space_address%>
@@ -39,12 +58,15 @@
                             
                             <% end%>         
                           </tbody>
-                           
-                      <% end%>
+                  <% end %>
                   <% end %> 
-                  
               </table>
               </div>
             </div>    
           </div>
        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

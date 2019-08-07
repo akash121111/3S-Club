@@ -5,7 +5,7 @@ class Space < ApplicationRecord
     has_one:space_address
     has_many:space_availability_timings
     has_one:space_available_day
-    has_many:member_subscriptions
+  
 
     validates_presence_of :space_name, :message => "Space Name can't be empty",on: :create
     validates_format_of :space_name, :with => /^[A-Za-z0-9 _]*[A-Za-z0-9][A-Za-z0-9 _]*$/ ,:multiline => true,:message => "Space Name is Wrong", :allow_blank => true

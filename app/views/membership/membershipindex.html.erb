@@ -41,17 +41,33 @@
 </script>
 </head>
 <body>
-        <input type = "text" value = "<%= @user_id %>" id = "userid" hidden>
-        <input type = "text" value = "<%= @space_id %>" id = "spaceid" hidden>
-    <div class="jumbotron plan" style="background-color: sandybrown;">
-         <h1>Short Offer</h1>
-         <p>You will get 50 hours in your wallet for the building(s)/room(s)/land(s) you choose. </p>
-         <p><button class="btn btn-primary btn-lg" href="#" role="button" onclick="myFunction1()">Select</button></p>
-    </div>
-    <div class="jumbotron" style="background-color: chocolate;">
-         <h1>Long Offer</h1>
-         <p>You will get 150 hours in your wallet for the building(s)/room(s)/land(s) you choose. </p>
-         <p><a class="btn btn-primary btn-lg" href="#" role="button" onclick="myFunction2()">Select</a></p>
-    </div>
+        <div class="container-fluid">
+        <div class="row">
+              <div class="col-lg-2">
+              
+               <%# render "layouts/sidebar"%>
+              </div>
+              <div class="col-lg-10 col-sm-12">
+
+
+                    <input type = "text" value = "<%= @user_id %>" id = "userid" hidden>
+                    <input type = "text" value = "<%= @space_id %>" id = "spaceid" hidden>
+                    <div class="jumbotron plan" style="background-color: sandybrown;">
+                    <h1>Short Offer</h1>
+                    <p>You will get 50 hours in your wallet for the building(s)/room(s)/land(s) you choose. </p>
+                    <p><button class="btn btn-primary btn-lg" href="#" role="button" onclick="myFunction1()">Select</button></p>
+                    </div>
+                    <div class="jumbotron" style="background-color: chocolate;">
+                    <h1>Long Offer</h1>
+                    <p>You will get 150 hours in your wallet for the building(s)/room(s)/land(s) you choose. </p>
+                    <p><a class="btn btn-primary btn-lg" href="#" role="button" onclick="myFunction2()">Select</a></p>
+                    </div>
+        
+              </div>
+
+        </div>
+        </div>
+
+
 </body>
 </html>

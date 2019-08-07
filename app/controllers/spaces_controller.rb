@@ -82,7 +82,7 @@ class SpacesController < ApplicationController
     end
 
     def destroy
-        byebug
+       
         @space.update(deleted_at: Time.now)
         if @space.deleted_at
             flash[:success]="Space Deleted Successfully"

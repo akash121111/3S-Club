@@ -5,7 +5,18 @@
     <div class="col-sm-2 col-xs-2">
      <%= render "layouts/sidebar" %>
     </div>
-    <div class="col-lg-10 col-sm-12 mt-5">
+    <div class="col-lg-10 col-sm-12">
+    <div class="row ml-2 searching-block">
+          <div class="col-lg-3 col-sm-4">
+              <input id="datepickerfrom" width="276" value=<%=@start_date %> >
+          </div>
+          <div class="col-lg-3 col-sm-4">
+             <input id="datepickerto" width="276" value=<%=@end_date %> >
+          </div>
+          <div class="col-lg-3 col-sm-4">
+          <button class="btn btn-primary pt-1 search">Search</button>
+          </div>
+    </div>
       <div class="main">
        <div class="container-fluid">
           <div class="row">

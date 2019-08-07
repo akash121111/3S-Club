@@ -10,7 +10,7 @@
          <div class="container-fluid">
           <div class="row">
             <div class="col-lg-6 col-sm-12 space-details">
-              <div class="container-fluid  bg-light mb-5 ">
+              <div class="container-fluid  bg-light mb-5 details">
                 <center><h3>Space Details</h3></center><hr>
                 <div>
                      <%= image_tag @space.images.first, style:"height:220px;width:100%" %>
@@ -30,10 +30,10 @@
               </div>
             </div>
              <div class="col-lg-6 col-sm-12 member-details">
-               <div class="container-fluid bg-light mb-5 pb-5">
+               <div class="container-fluid bg-light mb-5 pb-5 details">
                 <center><h3>Member Details</h3></center><hr>
                 <div>
-                     <center><img src="/assets/user-1a2e20cc944c895a698cc7855cd5eb338ab82342715346cd202b1f2157cb55a9.png" class="rounded-circle"  alt="spaces" height="100px" width="100px"><hr>
+                     <center><%= gravatar_for @user, style:"heigth:150px;width:150px;" %><hr>
                      <h4><%= @member_details.first_name.capitalize%> <%= @member_details.last_name.capitalize%></h4>
                      </center>
                 </div><hr>
@@ -46,15 +46,9 @@
                   <input type="text" id="email" class="form-control" value="<%= @member.email%>" disabled>
                   <label for="qualification">Qualification</label>
                   <input type="text" id="qualification" class="form-control" value="<%= @member_details.education_details%>" disabled><br>
-                  <% ms=@space.member_subscriptions%>
-                  <% ms.each do |subscription|%>
-                    <% if @member.id==subscription.user_id%>
-                    <% @planId=subscription.membership_plan_id%>
-                    <% break%>
-                    <% end%>
-                  <% end%>
-                  <% plan_name=MembershipPlan.find_by(id:@planId)%>
-                  <footer class="btn btn-success" style="width: 100%"><%= plan_name.plan_name%></footer>
+                  
+                 
+                  <footer class="btn btn-success" style="width: 100%">Member Ship Plan</footer>
                 </div>
               </div>
             </div>
