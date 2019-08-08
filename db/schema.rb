@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_05_124325) do
+ActiveRecord::Schema.define(version: 2019_08_08_022644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_124325) do
     t.datetime "updated_at", null: false
     t.float "time_wallet"
     t.bigint "membership_plan_id"
+    t.string "stripe_token"
     t.index ["membership_plan_id"], name: "index_member_subscriptions_on_membership_plan_id"
     t.index ["user_id"], name: "index_member_subscriptions_on_user_id"
   end
@@ -70,6 +71,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_124325) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "time_alloted"
+    t.float "price"
   end
 
   create_table "searchings", force: :cascade do |t|

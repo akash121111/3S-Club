@@ -2,9 +2,11 @@ Rails.application.configure do
   
   # Store files locally.
   config.active_storage.service = :local
+   
 
+  stripe_secret_key: sk_test_7CiPhwt65YQktcwacGBcOPHQ00rexNjk95
+  stripe_public_key: pk_test_SwQv25XTlv8Q7tT1aZrvLE6b00bPuMoqAx
   # Settings specified here will take precedence over those in config/application.rb.
-
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
