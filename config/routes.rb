@@ -58,6 +58,9 @@ get '/searching', to: 'searchings#index'
  
   get 'membershipindex', to: 'membership#membershipindex'
   get 'membership', to: 'membership#membership'
+  get 'show',to:'membership#show'
+  get 'payment',to:'membership#payment'
+  post 'payment_confirm',to:'membership#create'
 
   get '/new', to:'user#new' 
  
