@@ -26,7 +26,8 @@
                                           <div class="input-group-prepend">
                                                  <span class="input-group-text" id="basic-addon1"><%= image_tag("18dp.png", size:"18x18") %></span>
 
-                                                 <%= text_field_tag(:search, params[:search], placeholder: "Enter a City name", :id => "search", :class=>"form-control col-sm-8") %>
+                                                 <%= text_field_tag(:search, params[:search], placeholder: "Enter a City name", :id => "search", :class=>"form-control col-sm-8", data: { autocomplete_source: autocomplete_index_path} ) %>
+                                               
 
                                                  <%= date_field_tag(:booking_date, params[:booking_date], placeholder: "",:class=>"ml-3" ,:id => "bookingdate", min: Date.today)%>
                                                  <%= time_field_tag(:start_time, params[:start_time],:class=>"input-group date timepicker",:id => "starttime", :class=>"ml-3" )%>

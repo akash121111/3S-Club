@@ -161,3 +161,9 @@ function minFromMidnight(tm) {
     var h = parseInt(clk.match(/^\d+/)[0], 10);
     return h * 60 + m;
 }
+
+jQuery(function () {
+    return $('#search').autocomplete({
+        source: $('#search').data('autocomplete-source')
+    });
+});
