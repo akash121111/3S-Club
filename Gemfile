@@ -42,7 +42,10 @@ gem 'jquery-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'capistrano', '~> 3.11'
+gem 'capistrano-rails', '~> 1.4'
+gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'dotenv-rails',require: 'dotenv/load'

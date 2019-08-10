@@ -126,15 +126,6 @@ ActiveRecord::Schema.define(version: 2019_08_08_022644) do
     t.index ["space_id"], name: "index_space_images_on_space_id"
   end
 
-  create_table "space_locations", force: :cascade do |t|
-    t.float "latitude"
-    t.float "longitude"
-    t.bigint "space_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["space_id"], name: "index_space_locations_on_space_id"
-  end
-
   create_table "spaces", force: :cascade do |t|
     t.string "dimensions"
     t.string "nearby_landmark"
@@ -215,7 +206,6 @@ ActiveRecord::Schema.define(version: 2019_08_08_022644) do
   add_foreign_key "space_availability_timings", "spaces"
   add_foreign_key "space_available_days", "spaces"
   add_foreign_key "space_images", "spaces"
-  add_foreign_key "space_locations", "spaces"
   add_foreign_key "spaces", "users"
   add_foreign_key "user_addresses", "user_address_types"
   add_foreign_key "user_addresses", "users"
