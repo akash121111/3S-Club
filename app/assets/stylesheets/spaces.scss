@@ -5,6 +5,15 @@
 .error-text{
     color: red;
 }
+
+.space-availability-container{
+    height: 300px;
+}
+
+input:read-only { 
+    background-color: lightgray;
+}
+
 .image-heading h3{
     margin-top:0;
 }
@@ -43,6 +52,10 @@
     width: 100%
 }
 
+.new-space-time{
+    margin-bottom: 58%;
+}
+
 #map{
     width: 100%;
     height: 400px;
@@ -67,22 +80,24 @@
 }
 
 input[type=radio]{
-    margin-top: 12px;
+    margin-top: 7px;
 }
 
 input[type=time]{
     height: 30px;
+    position: relative;
+    bottom: 8px;
+}
+
+.btn-space-availability-submit{
+    position: relative;
+    top: 245px;
 }
 
 .start-end-time{
     padding: 0%;
 }
 
-.start-time-heading{
-    position: relative;
-    left: 15%;
-    bottom: 31%;
-}
 .days .row{
     height: 40px;
 }
@@ -105,9 +120,7 @@ and (max-device-width : 767px) {
     left: 23%;
     top: 33%;
 }
-.days .row{
-    height: 40px;
-}
+
 .timing .row{
     height: 40px;
 }

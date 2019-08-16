@@ -1,7 +1,7 @@
 <html>
     <head>
     
-
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     </head>
     <body style="backgound: #e8e9eb">
@@ -188,8 +188,8 @@
                                                             <b>StartTime</b><br>
                                                             <div class="container-fluid timing mt-2">
                                                                 <%@week_days.each do|key,value|%>
-                                                                    <div class="row">
-                                                                        <%=s.time_field key,min:"07:00", max:"23:59",onkeydown:"return false" %>
+                                                                    <div class="row new-space-time">
+                                                                        <%=s.time_field key,min:"07:00", max:"23:59", class:"space-start-time" %>
                                                                     </div>
                                                                 <%end%>
                                                             </div>
@@ -201,8 +201,8 @@
                                                             <b>EndTime</b><br>
                                                             <div class="container-fluid timing mt-2">
                                                                 <%@week_days.each do|key,value|%>
-                                                                    <div class="row">
-                                                                        <%=s.time_field key ,min:"07:00", max:"23:59",onkeydown:"return false" %>
+                                                                    <div class="row new-space-time">
+                                                                        <%=s.time_field key ,min:"07:00", max:"23:59",class:"space-end-time" %>
                                                                     </div>
                                                                     
                                                                     <% provide :head_tags do %>

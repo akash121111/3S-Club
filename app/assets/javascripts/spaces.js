@@ -21,7 +21,7 @@ var spaceStateRegex=/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/is;
     $("#latitude2").css("display","none");
     $("#longitude2").css("display","none");       
     
-    $("#space_space_address_pincode").focusout(geocode);
+    //$("#space_space_address_pincode").focusout(geocode);
 
     //Space Availability toggle in New Page
 
@@ -81,9 +81,30 @@ var spaceStateRegex=/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/is;
         endTimeArray[week_days.indexOf(weekday)].readOnly=true;
     });
 
+    //Time max min
+    $( ".space-start-time" ).focusout(function() {
+        var min = $(this).attr('min');
+        if ($(this).val() < min && $(this).val()!=="" )
+        {
+            $(this).val(min);
+            alert("Please enter time between 07:00 AM to 23:59 PM");
+        }       
+      });
+
+      $( ".space-end-time" ).focusout(function() {
+        var max = $(this).attr('max');
+        var min = $(this).attr('min');
+        if ($(this).val() < min && $(this).val()!=="" )
+        {
+            $(this).val(max);
+            alert("Please enter time between 07:00 AM to 23:59 PM");
+        }       
+      });
+
     //Space Availability Timings Validations in Edit Page
 
     $(".edit_space_available_day").submit(function(){
+        debugger;
         var startTimeValues = $("input[id='space_available_day_space_availability_timing_start_time']").map(function(){return $(this).val();}).get();
         var endTimeValues = $("input[id='space_available_day_space_availability_timing_end_time']").map(function(){return $(this).val();}).get();
         var week_days=["monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
@@ -95,9 +116,9 @@ var spaceStateRegex=/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/is;
                 flag=1;
             }
             else{
-                msg="You have not entered proper start Time or End Time for some Selected Days";
-                
+                msg="You have not entered proper start Time or End Time for some Selected Days";               
                 flag=0;
+                return false;
             }
          }
         });
@@ -183,6 +204,7 @@ var spaceStateRegex=/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/is;
         var regex= spacePincodeRegex;
         var msg="Invalid Pincode";
         validate(element,txtElement,regex,msg);
+        geocode();
     });
     $('#space_space_address_state').focusout(function(){
         var element=$('#space_space_address_state');
@@ -221,6 +243,7 @@ var spaceStateRegex=/^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/is;
         var regex= spacePincodeRegex;
         var msg="Invalid Pincode";
         validate(element,txtElement,regex,msg);
+        geocode();
     });
     $('#space_address_state').focusout(function(){
         var element=$('#space_address_state');
@@ -375,8 +398,11 @@ function geocode(e){
     // Prevent actual submit
     
 
-    var location = document.getElementById('space_space_address_pincode').value;
-
+    var el = document.getElementById('space_space_address_pincode');
+    if(el===null){
+        el = document.getElementById('space_address_pincode');   
+    }
+    location=el.value;
     axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
       params:{
         address:location,
