@@ -39,5 +39,11 @@ class ApplicationController < ActionController::Base
             redirect_to root_url
         end
     end
+
+    def cookie_set
+        @user = current_user
+        return unless current_user
+        cookies[:user] = @user.id
+    end
     
 end

@@ -1,0 +1,45 @@
+// Place all the styles related to the Rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.chat {
+    border: 1px solid lightgrey;
+    background: rgba(228, 225, 225, 0.404);
+    height: 50vh;
+    border-radius: 5px 5px 0 0;
+    overflow-y: auto;
+    width: 95%;
+    .chat-message-container {
+        padding: 5px;
+      
+        .avatar {
+          margin: 5px;
+          border-radius: 50%;
+        }
+      
+        .sender-message-content {
+          padding: 5px;
+          border: 1px solid rgba(20, 126, 226, 0.596);
+          border-radius: 5px;
+          background: rgba(20, 126, 226, 0.596);
+          color: white;
+        }
+
+        .receiver-message-content {
+          padding: 5px;
+          border: 1px solid rgba(25, 170, 12, 0.548);
+          border-radius: 5px;
+          background: rgba(25, 170, 12, 0.548);
+          color: white;
+        }
+      
+        & + .chat-message-container {
+          margin-top: 10px;
+        }
+      }
+  }
+  
+  .chat-input {
+    border-top: 0 none;
+    border-radius: 0 0 5px 5px;
+    width: 90%;
+  }

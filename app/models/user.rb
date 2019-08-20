@@ -38,7 +38,12 @@ class User < ApplicationRecord
     self.signup_active = true
     self.auth_token = nil
     save!(:validate => false)
-    end  
+	end 
+
+	def gravatar_url
+		gravatar_id = Digest::MD5::hexdigest(email).downcase
+		"https://secure.gravatar.com/avatar/#{gravatar_id}?s=40"
+	end
 
 
 	private
@@ -46,7 +51,7 @@ class User < ApplicationRecord
      	if self.auth_token.blank?
         	self.auth_token = SecureRandom.urlsafe_base64.to_s
       	end
-    end   
-	
+	end   
+
 end
  

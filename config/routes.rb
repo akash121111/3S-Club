@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :room_messages
+  resources :rooms
   get 'owner_dashboard', to: "ownerdashboard#upcoming_booking"
   get 'booking_records', to: "ownerdashboard#booking_records"
   get 'searching_records', to: "ownerdashboard#searching_records"
@@ -17,6 +19,8 @@ Rails.application.routes.draw do
   resources:space_addresses
   resources:space_available_days
   resources:user_addresses
+  resources:room_messages
+  resources:rooms
   resources :userbooking, :except => [:index,:update]
    
 
