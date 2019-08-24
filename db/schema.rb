@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_08_022644) do
+ActiveRecord::Schema.define(version: 2019_08_23_204319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(version: 2019_08_08_022644) do
     t.index ["user_id"], name: "index_booking_records_on_user_id"
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.integer "recipient_id"
+    t.integer "sender_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipient_id", "sender_id"], name: "index_conversations_on_recipient_id_and_sender_id", unique: true
+    t.index ["recipient_id"], name: "index_conversations_on_recipient_id"
+    t.index ["sender_id"], name: "index_conversations_on_sender_id"
+  end
+
   create_table "days", force: :cascade do |t|
     t.string "day"
     t.datetime "created_at", null: false
@@ -72,6 +82,33 @@ ActiveRecord::Schema.define(version: 2019_08_08_022644) do
     t.datetime "updated_at", null: false
     t.float "time_alloted"
     t.float "price"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.bigint "user_id"
+    t.bigint "conversation_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "room_messages", force: :cascade do |t|
+    t.bigint "room_id"
+    t.bigint "user_id"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_messages_on_room_id"
+    t.index ["user_id"], name: "index_room_messages_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_rooms_on_name", unique: true
   end
 
   create_table "searchings", force: :cascade do |t|
@@ -201,6 +238,10 @@ ActiveRecord::Schema.define(version: 2019_08_08_022644) do
   add_foreign_key "booking_records", "spaces"
   add_foreign_key "booking_records", "users"
   add_foreign_key "member_subscriptions", "membership_plans"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
+  add_foreign_key "room_messages", "rooms"
+  add_foreign_key "room_messages", "users"
   add_foreign_key "space_addresses", "spaces"
   add_foreign_key "space_availability_timings", "days"
   add_foreign_key "space_availability_timings", "spaces"

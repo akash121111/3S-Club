@@ -35,6 +35,8 @@
                 <div>
                      <center><%= gravatar_for @user, style:"heigth:150px;width:150px;" %><hr>
                      <h4><%= @member_details.first_name.capitalize%> <%= @member_details.last_name.capitalize%></h4>
+                      <%= link_to 'Contact Member', conversations_path(user_id: @member), remote: true, method: :post ,class: 'btn btn-success' %>
+
                      </center>
                 </div><hr>
                 <div>
@@ -49,6 +51,7 @@
                   
                  
                   <footer class="btn btn-success" style="width: 100%">Member Ship Plan</footer>
+
                 </div>
               </div>
             </div>

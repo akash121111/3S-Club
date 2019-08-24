@@ -1,0 +1,20 @@
+<li>
+  <div class="row no-gutters">
+
+    <div class="col">
+        <div class="<%= user.id == message.user_id ? 'message-sent' : 'message-received' %>">
+            <%= gravatar_for(message.user,{size: 40}) %>
+            <p class="mb-1">
+            <%= message.body %>
+            </p>
+
+            <div class="text-right">
+            <small>
+                <%= message.created_at  %>
+            </small>
+            </div>
+        </div>
+    
+    </div>
+</div>
+</li>

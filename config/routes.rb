@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'chats/index'
   get 'owner_dashboard', to: "ownerdashboard#upcoming_booking"
   get 'booking_records', to: "ownerdashboard#booking_records"
   get 'searching_records', to: "ownerdashboard#searching_records"
@@ -17,6 +18,13 @@ Rails.application.routes.draw do
   resources:space_addresses
   resources:space_available_days
   resources:user_addresses
+  resources:chats
+  resources :conversations, only: [:create] do
+    member do
+      post :close
+    end
+  end
+  resources :messages, only: [:create]
   resources :userbooking, :except => [:index,:update]
    
 
