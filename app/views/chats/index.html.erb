@@ -15,8 +15,12 @@
         </div>
         <div class="card-body">
             <ul>
-            <% @users.each do |user| %>
-                <li><%= link_to user.email, conversations_path(user_id: user), remote: true, method: :post %></li>
+            <% @bookings.each do |booking| %>
+                <%if current_user.user_type_id==2%>
+                    <li><%= link_to booking.user.email, conversations_path(user_id: booking.user), remote: true, method: :post %></li>
+                <%else%>
+                    <li><%= link_to booking.space.user.email, conversations_path(user_id: booking.space.user), remote: true, method: :post %></li>
+                <%end%>
             <% end %>
             </ul>
         </div>
