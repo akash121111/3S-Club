@@ -16,11 +16,12 @@ set :keep_releases, 5
 # This is useful if you don't want to use ENV variables
 # append :linked_files, 'config/database.yml', 'config/secrets.yml'
 
-# Default branch is :master
+ Default branch is :master
+2decba0cbce4eba7f09c81a8ff6ab242j
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
-# Default deploy_to directory is /var/www/my_app_name
-# set :deploy_to, "/var/www/my_app_name"
+# Default deploy_to directory is /var/www/3S/3S-Club
+# set :deploy_to, "/var/www/3S/3S-Club"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
